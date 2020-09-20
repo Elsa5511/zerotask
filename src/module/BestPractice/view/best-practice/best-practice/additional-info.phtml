@@ -1,0 +1,36 @@
+<?php
+if($this->isLastRevision){
+    $this->layout()->title = $this->title;
+    $this->headTitle($this->title);
+    
+    $detailAction = 'detail';
+    $proceduresAction = 'procedures';
+    $userManualAction = 'user-manual';
+}else{
+    $title = sprintf("%s (%s: %s)", $this->escapeHtml($this->title),  $this->translate("Revision number"), $this->escapeHtml($this->revisionNumber));
+    $this->layout()->title = $title;
+    $this->headTitle($title);
+    
+    $detailAction = 'old-revision-detail';
+    $proceduresAction = 'procedures-old-revision';
+    $userManualAction = 'user-manual-old-revision';
+}
+?>
+<div class="wrapper frontend" >    
+    <div class="container inner-wrapper">        
+        <div class="row">
+            <div class="span3">
+                <?php echo $this->partial('partial/best-practice-detail-menu.phtml',
+                                array(
+                                    'bestPracticeId' => $this->bestPracticeId,
+                                    'detailAction' => $detailAction,
+                                    'proceduresAction' => $proceduresAction,
+                                    'userManualAction' => $userManualAction,
+                                    'additionalInfoAction' => null
+                                )) ?>
+            </div>
+            <?php echo $this->partial('partial/best-practice-attachments.phtml') ?>
+        </div>
+    </div>
+    <div class="push"></div>
+</div>

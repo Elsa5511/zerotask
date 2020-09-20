@@ -1,0 +1,40 @@
+<?php
+if (!empty($this->checkout)) :
+    ?>
+
+    <dl class="dl-horizontal">
+        <dt><?php echo $this->translate('Checkout date') ?>:</dt>
+        <dd><strong><?php echo $this->dateFormat($checkout->getCheckoutDate(), IntlDateFormatter::SHORT); ?></strong></dd>
+
+        <dt><?php echo $this->translate('Checked out by') ?>:</dt>
+        <dd><strong><?php echo $this->escapeHtml($checkout->getCheckedBy()); ?></strong></dd>
+
+        <dt><?php echo $this->translate('Expected checkin date') ?>:</dt>
+        <dd><?php echo $this->dateFormat($checkout->getCheckinDate(), IntlDateFormatter::SHORT); ?></dd>
+
+
+        <dt><?php echo $this->translate('Organization') ?>:</dt>
+        <dd><?php echo $this->escapeHtml($checkout->getOrganization()); ?></dd>
+
+        <dt><?php echo $this->translate('Contact person') ?>:</dt>
+        <dd><?php echo $this->escapeHtml($checkout->getContactPerson()); ?></dd>
+
+        <dt><?php echo $this->translate('Contact person phone') ?>:</dt>
+        <dd><?php echo $this->escapeHtml($checkout->getContactPersonPhone()); ?></dd>
+
+        <dt><?php echo $this->translate('Contact person position') ?>:</dt>
+        <dd><?php echo $this->escapeHtml($checkout->getContactPersonPosition()); ?></dd>
+
+        <dt><?php echo $this->translate('Comments') ?>:</dt>
+        <dd><?php echo $this->escapeHtml($checkout->getComment()); ?></dd>
+
+    </dl>
+
+    <?php
+else:
+?>
+     <script type="text/javascript">
+        parent.location.reload();
+    </script>
+    <?php    
+endif;

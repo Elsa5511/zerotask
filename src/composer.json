@@ -1,0 +1,78 @@
+{
+    "name": "zendframework/vidum",
+    "description": "Vidum Systems",
+    "license": "Vidum License",
+    "keywords": [
+        "framework",
+        "zf",
+        "vidum"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Application\\": "module/Application/src/",
+                "Album\\": "module/Album/src/"
+            }
+    },
+    "homepage": "http://vidum.no/",
+    
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/webimpress/DoctrineModule.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/webimpress/DoctrineORMModule.git"
+        }
+    ],
+    "require": {
+        "php": "^5.6 || ^7.0",
+        "zendframework/zend-mvc": "^3.1.1",
+        "zfcampus/zf-development-mode": "^3.2",
+        "zendframework/zend-servicemanager-di": "^1.2",
+        "zendframework/zend-mvc-console": "^1.2",
+        "zendframework/zend-filter": "^2.9",
+        "zendframework/zend-form": "^2.14",
+        "zendframework/zend-inputfilter": "^2.10",
+        "zendframework/zend-mvc-i18n": "^1.1",
+        "zendframework/zend-log": "^2.12",
+        "zendframework/zend-mvc-plugin-fileprg": "^1.1",
+        "zendframework/zend-mvc-plugin-flashmessenger": "^1.2",
+        "zendframework/zend-mvc-plugin-identity": "^1.1",
+        "zendframework/zend-mvc-plugin-prg": "^1.2",
+        "zendframework/zend-serializer": "^2.9",
+        "zendframework/zend-validator": "^2.13",
+        "sysco/aurora": "dev-master",
+        "doctrine/doctrine-module": "dev-feature/zf3-support",
+        "doctrine/doctrine-orm-module": "dev-feature/zf3-support",
+        "zf-commons/zfc-base": "dev-master",
+        "zf-commons/zfc-user": "^3.0",
+        "imagine/imagine": "~0.5.0",
+        "phpoffice/phpexcel": "1.8.*",
+        "phpword/phpword": "dev-master",
+        "laminas/laminas-http": ">=2.11.2",
+        "itbz/fpdf": "dev-master",
+        "zendframework/zend-modulemanager": "^2.8"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ApplicationTest\\": "module/Application/test/"
+        }
+    },
+    "scripts": {
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "development-disable": "zf-development-mode disable",
+        "development-enable": "zf-development-mode enable",
+        "development-status": "zf-development-mode status",
+        "post-create-project-cmd": [
+            "@development-enable",
+            "php bin/update-gitignore.php"
+        ],
+        "serve": "php -S 0.0.0.0:8080 -t public",
+        "test": "phpunit"
+    },
+    "require-dev": {
+        "zendframework/zend-component-installer": "^2.1"
+    }
+}

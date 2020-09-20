@@ -1,0 +1,102 @@
+<?php
+if ($this->controlType == 'periodic') {
+    $entityId = "periodicControlId";
+    $controller = 'periodic-control';
+    $title = $this->translate('Periodic Control Results');
+}
+else {
+    $entityId = "visualControlId";
+    $controller = 'visual-control';
+    $title = $this->translate('Visual Control Results');
+}
+
+$this->headTitle($title);
+$this->layout()->title = $title;
+
+function assignColorForControlStatus($output, $view) {
+    $output = trim(strtolower($output));
+    if ($output === 'expired') {
+        return '<span class="label label-warning">' . $view->translate("Expired") . '</span>';
+    }
+    if ($output === 'not approved') {
+        return '<span class="label label-important">' . $view->translate(ucfirst($output)) . '</span>';
+    }
+    if ($output === 'temporarily approved') {
+        return '<span class="label label-warning">' . $view->translate(ucfirst($output)) . '</span>';
+    }
+    if ($output === 'approved') {
+        return '<span class="label label-success">' . $view->translate(ucfirst($output)) . '</span>';
+    }
+    return $output;
+}
+
+?>
+
+    <div class="row row-desktop">
+        <div class="span12">
+            <?php
+            echo $this->bootstrapDataTable($this->instancesControls, array(
+                'object_id' => $entityId,
+                'actions' => array(
+                    'options' => array(
+                        'detail' => array(
+                            'label' => $this->translate("Detail"),
+                            'icon' => 'list',
+                            'attributes' => array(
+                                'href' => $this->application()->url(
+                                    array(
+                                        'controller' => $controller,
+                                        'action' => 'index',
+                                        'id' => ":$entityId",
+                                    )
+                                ),
+                            ),
+                        )
+                    )
+                ),
+                'table_class' => 'table table-striped data-table-net',
+                'search' => false,
+                'columns' => array(
+                    'equipmentInstance' => array(
+                        'label' => $this->translate('Equipment Instance')
+                    ),
+                    'registeredBy' => array(
+                        'label' => $this->translate('Competent Person')
+                    ),
+                    'controlDate' => array(
+                        'label' => $this->translate('Control Date'),
+                        'callback' => function ($output, $view) {
+                            return $view->dateFormat($output, IntlDateFormatter::SHORT);
+                        }
+                    ),
+                    'nextControlDate' => array(
+                        'label' => $this->translate('Next Control Date'),
+                        'callback' => function ($output, $view) {
+                            return $view->dateFormat($output, IntlDateFormatter::SHORT);
+                        }
+                    ),
+                    'controlStatus' => array(
+                        'label' => $this->translate('Control Status'),
+                        'callback' => function ($output, $view) {
+                            return assignColorForControlStatus($output, $view);
+                        }
+                    )
+                ),
+                'params' => array(
+                    'basic' => array('application', 'controller', 'action')
+                ),
+            ));
+            ?>
+        </div>
+    </div>
+
+<?php
+if ($this->searchParams !== null) {
+    echo $this->partial('partial/export-button.phtml', array(
+        'module' => 'application',
+        'controller' => 'equipment-instance',
+        'action' => 'export-control-search',
+        'routeParams' => $this->searchParams
+    ));
+}
+?>

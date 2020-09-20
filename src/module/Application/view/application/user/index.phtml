@@ -1,0 +1,147 @@
+<?php
+$this->headTitle($title);
+$this->layout()->title = $title;
+$this->inlineScript()->appendFile($this->basePath() . '/js/user.js', 'text/javascript');
+?>
+
+<!-- Alert -->
+<div class="delete-alert alert fade in">
+    <button type="button" class="close">&times;</button>    
+    <strong><?php echo $this->translate('You must select a user') ?></strong>
+</div>
+
+<div class="row row-desktop">
+    <div class="span3">
+        <?php echo $this->partial('partial/admin-menu.phtml', 'application') ;?>
+    </div>
+    <div class="span9">
+
+        <?php
+        echo $this->bootstrapDataTable($users, array(
+            'object_id' => 'userId',
+            'actions' => array(
+                'add' => true,
+                'group' => array(
+                    'delete-selected' => array(
+                        'attributes' => array(
+                            'id' => 'user-delete-selected',
+                            'href' => '#'
+                        ),
+                        'label' => $this->translate('Deactivate selected')
+                    )
+                ),
+                'options' => array(
+                    'edit' => true,
+                    'deactivate' => array(
+                        'label' => $this->translate('Deactivate'),
+                        'icon' => 'off',
+                        'attributes' => array(
+                            'href' => $this->application()->url(
+                                    array(
+                                        'controller' => 'user',
+                                        'action' => 'deactivate',
+                                        'id' => ":userId"
+                                    )
+                            ),
+                            'class' => 'button-state',
+                            'user-state' => 'user-active'
+                        )
+                    ),
+                    'reactivate' => array(
+                        'label' => $this->translate('Activate'),
+                        'icon' => 'off',
+                        'attributes' => array(
+                            'href' => $this->application()->url(
+                                    array(
+                                        'controller' => 'user',
+                                        'action' => 'reactivate',
+                                        'id' => ":userId"
+                                    )
+                            ),
+                            'class' => 'button-state',
+                            'user-state' => 'user-deleted'
+                        )
+                    )
+                )
+            ),
+            'table_class' => 'table table-striped data-table-net table-users',
+            'table_row_class' => function($item) {
+                $rowClass = "user-";
+                if($item->getState() == 1) $rowClass .= "active";
+                elseif($item->getState() == 9) $rowClass .= "deleted";
+                return $rowClass;
+            },
+            'table_foot' => false,
+            'search' => false,
+            'columns' => array(
+                'displayName' => array(
+                    'label' => $this->translate('Full name')
+                ),
+                'username' => array(
+                    'label' => $this->translate('Username')
+                ),
+                'email' => array(
+                    'label' => $this->translate('E-mail')
+                ),
+                'firstOrganization' => array(
+                    'label' => $this->translate('Organization')
+                ),
+            ),
+            'params' => array(
+                'basic' => array('application', 'controller', 'action')
+            )
+        ));
+        ?>
+    </div>
+</div>
+
+<!-- Confirm Delete Many Modal -->
+<div class="modal hide fade" role="dialog" id="confirm-delete-many">
+    <div class="modal-header"> 
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3><?php echo $this->translate('Deactivate users') ?></h3>
+    </div>
+    <div class="modal-body">
+        <p id="count-users"><?php echo $this->translate('You are about to deactivate "x" users.') ?></p>
+        <p><?php echo $this->translate('Do you want to proceed?') ?></p>        
+    </div>
+    <div class="modal-footer">
+        <form method="post" action="<?php 
+            echo $this->application()->url(array('action' => 'delete-many',
+                    'controller' => 'user')); ?>">
+            <input name="delete_list" id="delete-list" type="hidden" value="">
+            <button id="delete-many-btn" class="btn btn-danger" href="#"><?php echo $this->translate('Yes') ?></button> 
+            <a class="btn btn-primary" data-dismiss="modal"><?php echo $this->translate('No') ?></a>
+        </form>     
+    </div>
+</div>
+
+<!-- Confirm Deactivate User -->
+<div class="modal hide fade" role="dialog" id="confirm-deactivate-user">
+    <div class="modal-header"> 
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3><?php echo $this->translate('Deactivate user') ?></h3>
+    </div>
+    <div class="modal-body">
+        <p id="count-users"><?php echo $this->translate('Are you sure you want to deactivate this user?') ?></p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger"><?php echo $this->translate('Yes') ?></button>
+        <button class="btn btn-default" data-dismiss="modal"><?php echo $this->translate('No') ?></button>
+    </div>
+</div>
+
+<!-- Confirm Reactivate User -->
+<div class="modal hide fade" role="dialog" id="confirm-reactivate-user">
+    <div class="modal-header"> 
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3><?php echo $this->translate('Activate user') ?></h3>
+    </div>
+    <div class="modal-body">
+        <p id="count-users"><?php echo $this->translate('Are you sure you want to activate this user?') ?></p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger"><?php echo $this->translate('Yes') ?></button>
+        <button class="btn btn-default" data-dismiss="modal"><?php echo $this->translate('No') ?></button>
+    </div>
+</div>

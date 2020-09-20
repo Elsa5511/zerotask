@@ -1,0 +1,129 @@
+<div id="advanced-control-search" class="advanced-search-collapsible collapse">
+    <?php
+    $form = $this->searchAdvancedForm;
+    $form->setAttribute('action', $this->application()->url(array('controller' => 'equipment-instance', 'action' => 'do-control-search')));
+    $form->setAttribute('class', 'well');
+
+    $equipmentInstance = $form->get('equipment_control');
+    $form->setAttribute('method', 'get');
+    $form->prepare();
+    ?>
+    <button class="close advanced-search-toggle pull-right" data-toggle="collapse" data-target="#advanced-control-search">&times;</button>
+    <?php echo $this->form()->openTag($form); ?>
+    <input type="hidden" name="mode[]" value="advanced">
+    <fieldset>
+        <legend><?php echo $this->translate('Control search'); ?></legend>
+        <div class="row">
+            <div class="span5">
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Control type'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('controlType')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Period'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('periodType')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('From date'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('fromDate')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('To date'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('toDate')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Competent Person'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('registeredBy')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Control status'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('controlStatus')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Expertise organ'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('expertiseOrgan')); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="span5">
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Serial number'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('serialNumber')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Reg. number'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('regNumber')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Batch number'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('batchNumber')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Equipment Category'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('category')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Equipment Type'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('equipment')); ?>
+                    </div>
+                </div>
+                <?php if($this->application()->isFieldUsedInEquipment("sap")): ?>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('SAP #'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('sap')); ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Location'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('location')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Usage status'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('usageStatus')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Owner'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('owner')); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn"><i class="icon-search"></i> <?php echo $this->translate('Search'); ?> </button>
+            </div>
+        </div>
+    </fieldset>
+    <?php echo $this->form()->closeTag(); ?>
+</div>
+
+<?php $this->inlineScript()->appendFile($this->basePath() . '/js/equipment/equipment-instance/advanced-control-search.js'); ?>

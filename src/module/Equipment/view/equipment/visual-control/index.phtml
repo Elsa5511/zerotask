@@ -1,0 +1,57 @@
+<?php
+$this->headTitle($this->title);
+$this->layout()->title = $this->title;
+?>
+
+<div class="row" id="equipment-instance-detail">
+    <div class="span3">
+        <ul class="nav nav-tabs nav-stacked scrollspy-nav">
+            <li><a href="#general-information"><i class="icon-chevron-right"></i> <?php echo $this->translate('General information') ?></a></li>
+        </ul>
+    </div>
+    <div class="span9">
+        <section id="general-information">
+            <h3><?php echo $this->translate('General information') ?></h3>            
+            
+            <dl class="dl-horizontal">
+                <dt><?php echo $this->translate('Equipment name') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->equipmentType->getTitle()) ?></dd>
+                <dt><?php echo $this->translate('Serial #') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->instance->getSerialNumber()) ?></dd>
+                <dt><?php echo $this->translate('Registration #') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->instance->getRegNumber()) ?></dd>
+                <dt><?php echo $this->translate('Owner') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->instance->getOwner()) ?></dd>
+                <dt><?php echo $this->translate('Location') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->instance->getLocation()) ?></dd>
+                <dt><?php echo $this->translate('Control number') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->visualControl->getVisualControlId()) ?></dd>
+                <dt><?php echo $this->translate('Registered by') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->visualControl->getRegisteredBy()) ?></dd>
+                <dt><?php echo $this->translate('Control date') ?>:</dt>
+                <dd><?php 
+                    echo $this->dateFormat(
+                                $this->visualControl->getControlDate(), IntlDateFormatter::SHORT) ?></dd>
+                <dt><?php echo $this->translate('Next control date') ?>:</dt>
+                <dd><?php 
+                    echo $this->dateFormat(
+                                $this->visualControl->getNextControlDate(), IntlDateFormatter::SHORT) ?></dd>
+                <dt><?php echo $this->translate('Control status') ?>:</dt>
+                <dd><?php echo $this->translate((string)$this->escapeHtml($this->visualControl->getControlStatus())) ?></dd>
+            </dl>
+            <?php 
+            $remarks = $this->escapeHtml($this->visualControl->getRemarks());
+            if(!empty($remarks)): ?>
+                <dl>
+                    <dt><?php echo $this->translate('Comments') ?>:</dt>
+                    <dd><?php echo nl2br($remarks) ?></dd>
+                </dl>
+            <?php endif; ?>
+        </section>
+        
+        
+    </div>
+</div>
+
+
+

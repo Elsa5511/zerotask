@@ -1,0 +1,72 @@
+<?php
+$columns = array(
+    'placement' => array(
+        'label' => $this->translate('Placement')
+    ),
+    'description' => array(
+        'label' => $this->translate('Description')
+    ),
+    'quantity' => array(
+        'label' => $this->translate('Qty')
+    ),
+    'ruptureStrength' => array(
+        'label' => $this->translate('Breaking Strength daN pr. unit')
+    ),
+    'lc' => array(
+        'label' => $this->translate('WLL (kg)')
+    ),
+    'loadLiftingPointAttachments' => array(
+        'label' => $this->translate('See attachment'),
+        'callback' => function($attachments, $view) {
+            $formattedValue = "";
+            foreach ($attachments as $attachment) {
+                $formattedValue .= $attachment->getTitle() . ', ';
+            }
+            return rtrim($formattedValue, ', ');
+        }
+    )
+);
+
+$liftingPointResource = 'LadocDocumentation\Entity\LoadLiftingPoint';
+
+if ($this->isAllowed($liftingPointResource, 'create')):
+?>
+
+    <a href="<?php echo $this->application()->url(array(
+            'controller' => 'load-lifting-point',
+            'action' => 'index',
+            'documentation_id' => $this->documentationId)) ?>"
+       class="btn btn-small pull-right margin-top-sm margin-bottom"><i class="icon-edit"></i> <?php echo $this->translate("Edit section") ?></a>
+
+    <div class="clearfix"></div>
+
+<?php
+endif;
+
+echo $this->bootstrapDataTable($this->points, array(
+    'object_id' => 'liftingPointId',
+    'actions' => array(),
+    'search' => false,
+    'columns' => $columns,
+    'table_class' => 'table table-striped',
+    'params' => array(
+        'basic' => array('application', 'controller', 'action')
+    )
+));
+
+if($this->descriptionInformation):
+    $description = $this->descriptionInformation->getLiftingPointDescription();
+    if($description): ?>
+        <div class="description-html">
+            <p><?php echo nl2br($description) ?></p>
+        </div>
+    <?php
+    endif;
+endif;
+?>
+
+<?php
+echo $this->partial('ladoc-documentation/partial/point-attachments.phtml', array(
+    'path' => '/content/' . $this->type . '-lifting-point/',
+    'attachments' => $this->attachments));
+?>

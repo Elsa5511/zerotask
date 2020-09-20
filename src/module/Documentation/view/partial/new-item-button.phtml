@@ -1,0 +1,13 @@
+<a href="
+<?php
+echo $this->application()
+        ->url(array(
+            'action' => 'add-attachment',
+            'controller' => $this->controller,
+            'id' => $this->section->getSectionId(),
+                )
+);
+?>
+   "
+   title ="<?php echo $this->translate('New Attachment');?> "
+   class="btn btn-mini add-edit-attachment"><i class="icon-plus"></i><?php echo $this->translate('New attachment')?></a>

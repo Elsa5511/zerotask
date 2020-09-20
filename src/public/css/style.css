@@ -1,0 +1,1232 @@
+/* General
+-------------------------------------------------- */
+body {
+    font-family: 'Droid Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.label {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, legend, blockquote, a.brand, dt, .accordion .accordion-toggle {
+    font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+}
+
+a {
+    color: #f29200;
+    text-decoration: none;
+}
+
+.alt {
+    color: #f29200;
+}
+
+a.alt {
+    color: #0088cc;
+}
+
+a:hover {
+    color: #1f1e21;
+}
+
+.well {
+    webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.breadcrumb .btn {
+    position: relative;
+    top: -1px;
+    left: 6px;
+}
+
+.breadcrumb .go-back i {
+    opacity: 0.5;
+    margin-right: 3px;
+}
+
+blockquote p {
+    margin-bottom: 10px;
+}
+
+table {
+    border-bottom: 1px solid #ddd;
+}
+
+.accordion .accordion-group {
+    border: none;
+}
+
+.accordion .accordion-inner {
+    border-top: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.accordion-inner.row-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.accordion .accordion-heading .accordion-toggle {
+    font-size: 16px;
+    border-top: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.accordion .accordion-heading .accordion-toggle:focus {
+    text-decoration: none;
+    color: #f29200;
+}
+
+.accordion .accordion-heading .accordion-toggle:hover {
+    text-decoration: none;
+    color: #1f1e21;
+}
+
+.accordion .accordion-heading .accordion-toggle i {
+    margin-right: 10px;
+}
+
+.accordion.dark .accordion-toggle {
+    background-color: #f5f5f5;
+    color: #1f1e21;
+}
+
+.accordion.dark .accordion-group, .accordion.dark .accordion-heading {
+    overflow: hidden;
+}
+
+label.required:after {
+    content: " *";
+    color: red
+}
+
+legend + .control-group {
+    margin-top: 0;
+    -webkit-margin-top-collapse: separate;
+}
+
+.dl-horizontal > dd:after {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+.dl-horizontal dt {
+    text-align: left;
+}
+
+.page-header h2 {
+    font-size: 26px;
+    line-height: 32px;
+    margin-bottom: 0;
+}
+
+.collapse button.pull-right {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+input::-webkit-calendar-picker-indicator,
+input::-webkit-inner-spin-button {
+    display: none;
+}
+
+input::-moz-calendar-picker-indicator,
+input::-moz-inner-spin-button {
+    display: none;
+}
+
+input::calendar-picker-indicator,
+input::inner-spin-button {
+    display: none;
+}
+
+input[type="date"]::-webkit-input-placeholder {
+    visibility: hidden !important;
+}
+
+.form-horizontal .input-append+.help-block {
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.input-append span.help-inline {
+    font-size: 14px;
+}
+
+input[type="date"] + .add-on {
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+/* Navigation - Left sidebar menu
+-------------------------------------------------- */
+
+.accordion-heading .accordion-toggle {
+    padding-left: 12px;
+}
+
+.nav-tabs .accordion-group {
+    border: none;
+}
+
+.nav-tabs .accordion-inner {
+    padding: 0 8px 0 8px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.nav-tabs .accordion-inner li a, .nav-tabs .accordion-inner li:last-child a {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-top: 4px;
+    margin-bottom: 5px;
+}
+
+.nav-tabs .accordion-inner ul {
+    margin-bottom: 0;
+}
+
+.accordion-toggle i {
+    opacity: .85;
+    margin-top: 3px;
+}
+
+.nav-tabs li:last-of-type a.accordion-toggle.collapsed {
+    border-radius: 0 0 4px 4px;
+}
+
+.nav-tabs .accordion-body:last-child .accordion-inner {
+    border-bottom: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+}
+
+.nav-tabs .accordion-inner .accordion-inner {
+    /*border: none !important;*/
+    padding-left: 10px;
+    border-right: none;
+    border-left: none;
+}
+
+.nav-tabs .accordion-inner .accordion-toggle i {
+    margin-top: 0;
+    margin-left: 10px;
+}
+
+.nav-tabs .nav-pills > .active > a, .nav-tabs nav-pills > .active > a:hover, .nav-tabs .nav-pills > .active > a:focus {
+    color: #333;
+    background-color: #eeeeee;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
+    color: #333;
+    background-color: #eeeeee;
+}
+
+#exportForm {
+    height: 10px;
+}
+
+.btn-bottom-page {
+    margin-top: 15px;
+}
+
+.btn-modal-lashing-calculator {
+    margin-left: 5px;
+}
+
+/* Affix scrollspy
+-------------------------------------------------- */
+.scrollspy-nav {
+    width: 258px;
+}
+
+.scrollspy-nav.affix {
+    top: 60px;
+}
+
+.scrollspy-nav > .active > a, .scrollspy-nav > .active > a:hover, .scrollspy-nav > .active > a:focus {
+    color: #333;
+    background-color: #eeeeee;
+}
+
+.scrollspy-nav .icon-chevron-right {
+    float: right;
+    margin-top: 2px;
+    margin-right: -6px;
+    opacity: .25;
+}
+
+/*
+.scrollspy-nav > .active > a > [class^="icon-"] {
+    background-image: url('../includes/bootstrap/img/glyphicons-halflings-white.png');
+    opacity: 1;
+}*/
+
+/* Definition list
+-------------------------------------------------- */
+
+dd {
+    margin-left: 0;
+}
+
+dt, dd {
+    line-height: 25px;
+}
+
+/* Popover
+-------------------------------------------------- */
+.popover {
+    max-width: 500px;
+}
+
+.popover dl.dl-horizontal {
+    margin: 0;
+}
+
+.popover dl.dl-horizontal dt {
+    width: 120px;
+}
+
+.popover dl.dl-horizontal dd {
+    margin-left: 130px;
+}
+
+/* Chosen
+-------------------------------------------------- */
+.chosen-container {
+    width: 220px !important;
+}
+
+.chosen-container .chosen-results {
+    max-height: 125px;
+}
+
+.chosen-container .chosen-single {
+    height: 28px;
+    line-height: 29px;
+}
+
+.chosen-container-single .chosen-single div b {
+    background-position: 0px 5px;
+}
+
+.chosen-container-active.chosen-with-drop .chosen-single div b {
+    background-position: -18px 5px;
+}
+
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+    height: 18px;
+    line-height: 18px;
+    padding: 4px 6px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #999 !important;
+}
+
+.chosen-container-single .chosen-search input[type="text"] {
+    height: 24px;
+    line-height: 16px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    border-radius: 4px;
+}
+
+.chosen-container-multi .chosen-choices {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding-right: 5px;
+}
+
+.chosen-container-multi .chosen-choices {
+    background-image: none;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+.chosen-container-active .chosen-choices {
+    border-color: rgba(82, 168, 236, 0.8);
+    outline: 0;
+    outline: thin dotted \9;
+    /* IE6-9 */
+
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+/* Datatables
+-------------------------------------------------- */
+.data-table-net tbody {
+    display: none;
+}
+
+.data-table-net::before {
+    content: url(../images/ajax-loader.gif);
+
+}
+
+.data-table-net.loaded::before {
+    content: "";
+}
+
+.dataTables_wrapper {
+    margin-top: 20px;
+}
+
+.dataTables_wrapper thead {
+    border-top: 1px solid #ddd;
+}
+
+.dataTables_wrapper table {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px !important;
+    clear: both;
+}
+
+.data-table table tfoot {
+    display: none;
+}
+
+.dataTables_wrapper table input {
+    margin-top: 0;
+}
+
+div.dataTables_length label {
+
+    float: left;
+    text-align: left;
+}
+
+div.dataTables_length select {
+    width: 75px;
+    height: 30px;
+}
+
+div.dataTables_filter label {
+    float: right;
+}
+
+div.dataTables_filter label span, div.dataTables_length label span {
+    position: relative;
+    top: -4px;
+}
+
+div.dataTables_info {
+    padding-top: 8px;
+    float: left;
+}
+
+div.dataTables_paginate {
+    float: right;
+    margin: 0;
+}
+
+table.table thead .sorting,
+table.table thead .sorting_asc,
+table.table thead .sorting_desc,
+table.table thead .sorting_asc_disabled,
+table.table thead .sorting_desc_disabled {
+    cursor: pointer;
+    *cursor: hand;
+}
+
+table.table thead .sorting {
+    background: url('../includes/datatables/images/sort_both.png') no-repeat 100% 10%;
+}
+
+table.table thead .sorting_asc {
+    background: url('../includes/datatables/images/sort_asc.png') no-repeat 100% 10%;
+}
+
+table.table thead .sorting_desc {
+    background: url('../includes/datatables/images/sort_desc.png') no-repeat 100% 10%;
+}
+
+table.table thead .sorting_asc_disabled {
+    background: url('../includes/datatables/images/sort_asc_disabled.png') no-repeat 100% 10%;
+}
+
+table.table thead .sorting_desc_disabled {
+    background: url('../includes/datatables/images/sort_desc_disabled.png') no-repeat 100% 10%;
+}
+
+.dataTables_filter input {
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    padding: 4px 30px 4px 14px;
+    width: 180px;
+    background-image: url("../includes/datatables/images/search.png");
+    background-repeat: no-repeat;
+    background-position: 97% 60%;
+}
+
+div.data-table, .responsive-table-wrapper {
+    overflow-x: auto;
+}
+
+td.data-table-column-options {
+    white-space: nowrap;
+}
+
+td a.btn {
+    white-space: nowrap;
+    margin-right: 2px;
+}
+
+/* Helper classes
+----------------------------------------------------------------------------------------------------------------------*/
+
+.margin-top {
+    margin-top: 20px !important;
+}
+
+.margin-top-lg {
+    margin-top: 40px !important;
+}
+
+.margin-top-sm {
+    margin-top: 10px !important;
+}
+
+.margin-bottom {
+    margin-bottom: 20px !important;
+}
+
+.margin-bottom-lg {
+    margin-bottom: 40px !important;
+}
+
+.margin-bottom-sm {
+    margin-bottom: 10px !important;
+}
+
+.margin-right {
+    margin-right: 20px !important;
+}
+
+.margin-right-lg {
+    margin-right: 40px !important;
+}
+
+.margin-right-sm {
+    margin-right: 10px !important;
+}
+
+.margin-left {
+    margin-left: 20px !important;
+}
+
+.margin-left-lg {
+    margin-left: 40px !important;
+}
+
+.margin-left-sm {
+    margin-left: 10px !important;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0 !important;
+}
+
+.margin-top-0 {
+    margin-top: 0 !important;
+}
+
+.margin-left-0 {
+    margin-left: 0 !important;
+}
+
+.margin-right-0 {
+    margin-right: 0 !important;
+}
+
+.no-height {
+    height: 0;
+}
+
+/* Layout
+-------------------------------------------------- */
+
+body {
+    position: relative;
+}
+
+html, body {
+    height: 100%;
+}
+
+.navbar .brand {
+    padding: 0 20px;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+
+.navbar a.brand:hover {
+    color: #999;
+}
+
+.navbar .brand img {
+    position: relative;
+    top: -1px;
+}
+
+.navbar .application-logo {
+    width: 420px;
+    height: 40px;
+    float: left;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -81px;
+}
+
+.inner-wrapper {
+    padding-bottom: 20px;
+}
+
+.push {
+    height: 81px;
+}
+
+.footer {
+    height: 60px;
+}
+
+.page-header .form-search {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.page-header .form-search input {
+    max-width: 150px;
+}
+
+.page-header .form-search input.page-search-query {
+    max-width: 300px;
+}
+
+.form-search .pull-right > .dropdown-menu {
+    right: auto;
+}
+
+.form-search .advanced-search-toggle {
+    height: 30px;
+    line-height: 30px;
+    margin-right: 10px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#advanced-search.in {
+    overflow: visible;
+}
+
+#advanced-search.well {
+    padding: 10px 15px;
+}
+
+.dropdown-menu .help-submenu {
+    padding: 5px;
+    width: 270px;
+    margin: 2px;
+}
+
+/* Layout admin
+-------------------------------------------------- */
+.admin-actions {
+    margin-bottom: 20px;
+}
+
+.admin-actions .advanced-search-toggle {
+    line-height: 30px;
+}
+
+/* Thumbnail
+-------------------------------------------------- */
+
+.thumbnail img {
+    height: auto;
+}
+
+.thumbnail h2 {
+    text-align: center;
+    font-size: 14px;
+    line-height: 26px;
+    height: 26px;
+    margin: 0;
+    overflow: hidden;
+    color: #1f1e21;
+    margin-top: 4px;
+    padding: 0 2px;
+}
+
+.thumbnail.category h2 {
+    background-color: #222222;
+    color: #fff;
+}
+
+.thumbnail.training h2 {
+    background-color: #f5f5f5;
+}
+
+.thumbnail.module h2, .thumbnail.equipment h2 {
+    padding-top: 2px;
+    margin-bottom: -2px;
+}
+
+.thumbnail.best-practice h2 {
+    background-color: #222222;
+    color: #fff;
+}
+
+.thumbnail p {
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+    height: 20px;
+    margin: 0;
+    overflow: hidden;
+    color: #1f1e21;
+    margin-top: 4px;
+    padding: 0 2px;
+}
+
+.thumbnails a:hover {
+    text-decoration: none;
+}
+
+.thumbnail .category-image {
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+.equipment .category-image, .module .category-image {
+    border-bottom: 1px solid #ddd;
+}
+
+.thumbnail.module .category-image {
+    /*background-color: #f29200;*/
+}
+
+.thumbnail .vertical-center-wrapper {
+    height: 40px;
+    overflow: hidden;
+}
+
+.thumbnail .vertical-center {
+    display: table;
+    width: 100%;
+    height: 40px;
+}
+
+.thumbnail .vertical-center h2 {
+
+    display: table-cell;
+    vertical-align: middle;
+    padding: 2px;
+    height: 36px;
+    line-height: 18px;
+}
+
+hr.thumbnails-divider {
+    position: relative;
+    top: -10px;
+}
+
+.edit-buttons-toggle {
+    position: relative;
+}
+
+.edit-buttons {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    display: none;
+}
+
+.accordion .accordion-heading .edit-buttons .btn {
+    margin-left: 5px;
+}
+
+h3.page-header .edit-buttons .btn {
+    font-family: 'Droid Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-left: 5px;
+}
+
+.nav-tabs.nav-stacked .edit-buttons {
+    right: 37px;
+    top: 8px;
+}
+
+.nav-pills.nav-stacked .edit-buttons {
+    right: 30px;
+    top: -2px;
+}
+
+.nav-pills.nav-stacked .edit-buttons .btn {
+    padding: 0 6px;
+}
+
+.row-fluid .thumbnails [class*="span3"]:nth-child(4n +1) {
+    margin-left: 0;
+}
+
+.row-fluid .thumbnails [class*="span2"]:nth-child(6n +1) {
+    margin-left: 0;
+}
+
+/* Edit
+-------------------------------------------------- */
+.modal form {
+    margin-bottom: 0;
+}
+
+.pull-left.edit {
+    margin-right: 10px;
+}
+
+/* Footer
+-------------------------------------------------- */
+
+.footer {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
+}
+
+.footer p {
+    margin-bottom: 0;
+    color: #777;
+}
+
+.footer-links {
+    margin: 10px 0;
+}
+
+.footer-links li {
+    display: inline;
+    padding: 0 2px;
+}
+
+.footer-links li:first-child {
+    padding-left: 0;
+}
+
+.footer #customer-logo {
+    height: 60px;
+    width: auto;
+}
+
+/* Marketing section of Overview
+-------------------------------------------------- */
+
+.marketing {
+    text-align: center;
+    color: #5a5a5a;
+    margin-top: 60px;
+}
+
+.marketing h1 {
+    margin: 20px 0 10px;
+    font-size: 50px;
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -1px;
+    color: #333;
+}
+
+/* Equipment instance detail
+-------------------------------------------------- */
+#equipment-instance-detail h3 {
+    padding-bottom: 6px;
+    margin-bottom: 15px;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Attachment list
+-------------------------------------------------- */
+#attachment-details {
+    display: none;
+}
+
+.span9 #attachment-table .data-table-column-version, .span9 #attachment-table .data-table-column-format, .span9 #attachment-table .column-version, .span9 #attachment-table .column-format {
+    display: none;
+}
+
+/* Periodic control form 
+-------------------------------------------------- */
+#periodic-control-date {
+    margin-bottom: 5px;
+}
+
+#periodic-control-date + .help-block {
+    font-size: 12px;
+}
+
+#control-interval-container {
+    display: none;
+}
+
+#periodic-control textarea[rows="1"] {
+    height: 20px;
+}
+
+
+/* Tests
+-------------------------------------------------- */
+.pagination a.question:hover {
+    color: #1f1e21;
+}
+
+.pagination a.in-progress {
+    background-color: #f89406;
+    color: #fff;
+}
+
+.pagination a.correct {
+    background-color: #468847;
+    color: #fff;
+}
+
+.pagination a.incorrect {
+    background-color: #b94a48;
+    color: #fff;
+}
+
+.pagination a.active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Edit section */
+.edit-section {
+    list-style-type: none;
+    margin-left: 0;
+}
+
+.edit-section.sub-section {
+    margin-left: 25px;
+}
+
+.edit-section li div {
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: move;
+}
+
+.edit-section li div a {
+    height: 30px;
+    line-height: 30px;
+    margin-right: 5px;
+}
+
+.delete-alert, .select-many-alert {
+    display: none;
+}
+
+/** Application/User **/
+#form-login {
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#form-login label {
+    display: none;
+}
+
+#user-btn-cancel {
+    margin-left: 8px;
+}
+
+#forgot-password {
+    max-width: 502px;
+    margin: auto;
+    padding-top: 5px;
+}
+
+/** Forms **/
+
+/** Checkout Form **/
+.controls strong {
+    color: #333;
+    display: block;
+    padding: 5px 0 0 6px;
+}
+
+/** Check In **/
+.checkin-hide a[data-rel="checkin"] {
+    display: none;
+}
+
+.in-progress a[data-rel="start"] {
+    display: none;
+}
+
+.not-started a[data-rel="restart"] {
+    display: none;
+}
+
+.not-started a[data-rel="continue"] {
+    display: none;
+}
+
+.passed a[data-rel="restart"] {
+    display: none;
+}
+
+.passed a[data-rel="continue"] {
+    display: none;
+}
+
+.failed a[data-rel="restart"] {
+    display: none;
+}
+
+.failed a[data-rel="continue"] {
+    display: none;
+}
+
+/* Modal container
+-------------------------------------------------- */
+
+.modal.container {
+    width: 940px;
+    margin-left: -470px;
+}
+
+/* Certifications */
+input[type=radio] {
+    margin-top: 0 !important;
+    margin-right: 10px;
+}
+
+/*** Exam form **/
+#exam .help-block {
+    font-size: 12px;
+}
+
+#exam input[type=checkbox] {
+    margin-top: 0 !important;
+}
+
+/** Question Form **/
+form#question > fieldset > fieldset:nth-child(n + 3) .control-group {
+    float: left;
+}
+
+#add-opt-btn {
+    background-color: #BD362F !important;
+    background-image: none;
+    margin-left: -180px;
+}
+
+#del-opt-btn {
+    background-color: #BD362F !important;
+    background-image: none;
+    margin-left: -140px;
+}
+
+.yellow {
+    color: #f89406;
+}
+
+.red {
+    color: #b94a48;
+}
+
+textarea#revision-comment {
+    padding: 0;
+    border: 0px;
+}
+
+textarea#revision-comment.in {
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+}
+
+/** Point Form **/
+
+form#point_form > fieldset > fieldset:nth-child(n + 3) .control-group,
+/*form#weight-and-dimensions > fieldset > fieldset:nth-child(n + 3) .control-group,*/
+form#weight-and-dimensions > fieldset > fieldset > fieldset > fieldset > .control-group {
+    float: left;
+}
+
+form#weight-and-dimensions > fieldset > fieldset > fieldset > fieldset {
+    height: 224px;
+}
+
+#add-point-btn {
+
+}
+
+#del-point-btn,
+#own-weight-delete-attachment,
+#technical-weight-delete-attachment,
+#own-dimensions-delete-attachment,
+#loading-plan-dimensions-delete-attachment {
+    background-color: #BD362F !important;
+    background-image: none;
+    margin-left: -140px;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+#own-weight-delete-attachment,
+#technical-weight-delete-attachment,
+#own-dimensions-delete-attachment,
+#loading-plan-dimensions-delete-attachment {
+    position: relative;
+    top: -224px;
+    left: 788px;
+}
+
+#own-weight-add-attachment,
+#technical-weight-add-attachment,
+#own-dimensions-add-attachment,
+#loading-plan-dimensions-add-attachment {
+    position: relative;
+    top: -50px;
+}
+
+/* Best practices
+-------------------------------------------------- */
+.thumbnail p {
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+    height: 20px;
+    margin: 0;
+    overflow: hidden;
+    color: #1f1e21;
+    margin-top: 4px;
+    padding: 0 2px;
+}
+
+.thumbnail.best-practice h2 {
+    background-color: #222222;
+    color: #fff;
+}
+
+.carousel-control {
+    top: 50%;
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width: 100%;
+    height: auto;
+}
+
+.carousel .carousel-control {
+    visibility: hidden;
+}
+
+.carousel:hover .carousel-control {
+    visibility: visible;
+}
+
+/* Quiz
+-------------------------------------------------- */
+.question-display {
+    min-height: 350px;
+}
+
+.quiz.pagination li {
+    display: none;
+}
+
+.quiz.pagination li.visible {
+    display: inline;
+}
+
+#quiz-accordion .accordion-toggle {
+    font-size: 24.5px;
+    line-height: 40px;
+    padding-bottom: 9px;
+    margin: 12px 0 0;
+    color: inherit;
+}
+
+#quiz-accordion .accordion-toggle i {
+    margin-top: 15px;
+}
+
+#quiz-accordion .accordion-toggle:hover {
+    text-decoration: none;
+}
+
+/* Ladoc Documentation */
+.ladoc-documentation-attachment-table .column-file,
+.ladoc-documentation-attachment-table .data-table-column-file{
+    width: 70px;
+}
+
+.description-part .modal-body {
+    height: 200px;
+}
+
+.empty-table-row {
+    height: 37px;
+}
+
+.ladoc-previous-button {
+    position: relative;
+    top: -70px;
+    float: left;
+}
+
+#ladoc-continue-button {
+    float: right;
+}
+
+.horizontal-space-60 {
+    min-height: 60px;
+}
+
+.thumbnail-file{
+    width: 206px;
+    height: 20px;
+}
+
+#custom-tooltip {
+    position:absolute;
+    border:1px solid #333;
+    background:#f7f5d1;
+    padding:2px 5px;
+    color:#333;
+    display:none;
+    font-size: 1.1em;
+}
+
+.dl-horizontal.ladoc-documentation dt {
+    width: 162px;
+}
+
+/* Fixing mobile version submenus for touching (VIDUM-1165) */
+.dropdown-backdrop{
+    position: static;
+}
+/* -------------------------- */

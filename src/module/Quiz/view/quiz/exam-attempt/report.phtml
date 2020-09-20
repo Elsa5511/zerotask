@@ -1,0 +1,85 @@
+<?php
+$title = $this->translate("Exam attempts report");
+$this->headTitle($title);
+if ($this->isSearch) {
+    $title .= " - " . $this->translate("Search results");
+}
+$this->layout()->title = $title;
+?>
+
+<!-- Advanced search -->
+<?php echo $this->partial('partial/quiz-attempt-search.phtml', array('form' => $this->searchForm, 'controller' => 'exam-attempt', 'title' => $this->translate('Exam'), 'isSearch' => $this->isSearch))
+?>
+
+<div class="row">
+    <div class="span12">
+        <section id="subinstances">
+            <?php
+            echo $this->bootstrapDataTable($this->attempts, array(
+                'object_id' => 'attemptId',
+                'search' => false,
+                'actions' => false,
+                'table_class' => 'table table-striped data-table-net',
+                'columns' => array(
+                    'user' => array(
+                        'label' => $this->translate('User'),
+                    ),
+                    'quiz' => array(
+                        'label' => $this->translate('Exam'),
+                    ),
+                    'attemptDate' => array(
+                        'label' => $this->translate('Date'),
+                        'callback' => function($date, $view) {
+                    return $view->dateFormat($date, IntlDateFormatter::SHORT);
+                }
+                    ),
+                    'timeUsed' => array(
+                        'label' => $this->translate('Time used'),
+                    ),
+                    'result' => array(
+                        'label' => $this->translate('Result'),
+                    ),
+                    'status' => array(
+                        'label' => $this->translate('Status'),
+                        'callback' => 'assignColor'
+                    ),
+                ),
+                'params' => array(
+                    'basic' => array('application', 'controller', 'action')
+                )
+                    )
+            );
+            ?>
+        </section>
+        <?php
+        echo $this->partial('partial/export-button.phtml', array(
+            'controller' => 'exam-attempt',
+            'action' => 'export-report',
+            'currentFilterParams' => $this->currentFilterParams
+        ));
+        ?>
+    </div>
+</div>
+
+<?php
+
+function assignColor($output, $view) {
+    if ($output === 'not-started') {
+        $statusText = $view->translate("Not started");
+        $statusHtml = "label";
+    }
+    if ($output === 'in-progress') {
+        $statusText = $view->translate("In progress");
+        $statusHtml = "label label-warning";
+    }
+    if ($output === 'passed') {
+        $statusText = $view->translate("Passed");
+        $statusHtml = "label label-success";
+    }
+    if ($output === 'failed') {
+        $statusText = $view->translate("Failed");
+        $statusHtml = "label label-important";
+    }
+    return "<span class=\"$statusHtml\">$statusText</span>";
+}
+?>

@@ -1,0 +1,79 @@
+<?php
+use LadocDocumentation\Entity\LadocDocumentation;
+use Zend\View\Model\ViewModel;
+
+$title = $documentation->getEquipment()->getTitle();
+$this->headTitle($title);
+$this->layout()->title = $title;
+?>
+
+<?php
+echo $this->bootstrapDataTable($documents, array(
+    'object_id' => 'pointAttachmentId',
+    'actions' => array(
+        'add' => array(
+            'label' => $this->translate('Add new'),
+            'attributes' => array(
+                'href' => $this->application()->url(
+                            array(
+                                'controller' => 'ladoc-restraint-certified-document',
+                                'action' => 'add',
+                                'restraint_certified_id' => $this->restraintCertified->getId(),
+                                'type' => $this->type
+                            )
+                )
+            )
+        ),
+        'options' => array(
+            //'edit' => true,
+            'edit' => array(
+                'label' => $this->translate('Edit'),
+                'icon' => 'edit',
+                'attributes' => array(
+                    'href' => $this->application()->url(
+                                    array(
+                                        'controller' => 'ladoc-restraint-certified-document',
+                                        'action' => 'edit',
+                                        'id' => ":pointAttachmentId",
+                                        'type' => $this->type
+                                    )
+                                ),
+                    'data-rel' => 'edit'
+                )
+            ),
+            'delete' => true
+        )
+    ),
+    'table_class' => 'table table-striped',
+    'search' => false,
+    'columns' => array(
+        'title' => array(
+            'label' => $this->translate('Description')
+        ),
+        'file' => array(
+            'label' => $this->translate('File'),
+            'callback' => function($file, $view, $document) {
+                $extension = substr(strrchr($file,'.'), 1);
+                $formattedValue = "<a target='_blank' class='btn btn-mini' data-rel='open-attachment' title='" . 
+                    $document->getTitle() . "' href='/content/restraint-certified-document/" . 
+                    $file . "' data-extension='" . $extension . "'><i class='icon-file'></i></a>";
+                return $formattedValue;
+            }
+        ),
+    ),
+    'params' => array(
+        'basic' => array('application', 'controller', 'action')
+    )
+));
+?>
+
+<a class="btn btn-primary" id="ladoc-continue-button" href="<?php echo $this->application()->url(
+                            array(
+                                'controller' => 'ladoc-documentation',
+                                'action' => 'display',
+                                'id' => $this->documentationId
+                            )
+                        ); ?>">
+    <?php echo $this->translate('Continue') ?>
+</a>
+<div class="clearfix"></div>

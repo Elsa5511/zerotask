@@ -1,0 +1,17 @@
+<!-- Periodic Control Modal -->
+<?php 
+$periodicControlModalParams = array(
+    'id' => 'confirm-periodic-control',
+    'title' => $this->translate('Create periodic controls'),
+    'message' => $this->translate('You are creating periodic control for 0 equipment instances...'),
+    'formAction' => array(
+        'controller' => 'periodic-control',
+        'action' => 'add'
+    ),
+    'hiddenElements' => array(
+        'equipmentId' => $this->equipmentId,
+        'equipmentIntervalDays' => $this->equipmentIntervalDays
+    )
+);
+echo $this->partial('partial/groupActionConfirmModal.phtml', $periodicControlModalParams);
+?>

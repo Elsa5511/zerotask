@@ -1,0 +1,24 @@
+<?php ob_start();
+    $pageName = $this->currentPage->getName();
+    $pageId = $this->currentPage->getPageId();
+?>
+
+    <form  class="form-search span6" method="GET"  action="<?php
+    echo $this->application()->url(array('action' => 'simple-search', 'controller' => 'page', 'id' => $pageId)
+    );
+    ?>">
+        <div class="input-append pull-right">
+            <input type="text" name="keyWord" class="page-search-query" autocomplete="off"
+                   placeholder=" <?php echo $this->translate('Search under') . " <<$pageName>>"; ?>"
+                   data-provide="typeahead" value="<?php echo $this->word ?>" />
+            <button type="submit" class="btn"><i class="icon-search"></i></button>
+        </div>
+    </form>
+    <div></div>
+
+<?php $searchContent = ob_get_clean(); ?>
+
+<?php
+$advancedSearchLinks = array("advanced-search-equipment" => $this->translate('Advanced search'));
+$this->placeholder('simple-search')->set($searchContent);
+?>

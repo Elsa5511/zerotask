@@ -1,0 +1,51 @@
+<?php
+$columns = array(
+    'description' => array(
+        'label' => $this->translate('Description')
+    ),
+    'file' => array(
+        'label' => $this->translate('File'),
+        'callback' => function($file, $view, $attachment) {
+            $formattedValue = "<a target='_blank' class='btn btn-mini' data-rel='open-attachment' data-extension='" . $attachment->getExtension() . "' title='" . $attachment->getDescription() . "' href='/content/ladoc-documentation-attachment/" . $file . "'><i class='icon-file'></i></a>";
+            return $formattedValue;
+        }
+    )
+);
+
+$ladocDocumentationAttachmentResource = 'LadocDocumentation\Entity\LadocDocumentationAttachment';
+
+if ($this->isAllowed($ladocDocumentationAttachmentResource, 'create')):
+?>
+
+    <a href="<?php echo $this->application()->url(array(
+            'controller' => 'ladoc-documentation-attachment',
+            'action' => 'index',
+            'documentation_id' => $this->documentationId)) ?>"
+       class="btn btn-small pull-right margin-top-sm margin-bottom"><i class="icon-edit"></i> <?php echo $this->translate("Edit section") ?></a>
+
+    <div class="clearfix"></div>
+
+<?php
+endif;
+
+echo $this->bootstrapDataTable($this->attachments, array(
+    'object_id' => 'pointAttachmentId',
+    'actions' => array(),
+    'search' => false,
+    'columns' => $columns,
+    'table_class' => 'table table-striped ladoc-documentation-attachment-table',
+    'params' => array(
+        'basic' => array('application', 'controller', 'action')
+    )
+));
+
+if($this->descriptionInformation):
+    $description = $this->descriptionInformation->getDocumentationAttachmentDescription();
+    if($description): ?>
+        <div class="description-html">
+            <p><?php echo nl2br($description) ?></p>
+        </div>
+    <?php
+    endif;
+endif;
+?>

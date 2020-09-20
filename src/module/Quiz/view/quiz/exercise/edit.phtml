@@ -1,0 +1,8 @@
+<?php
+
+$title = ucwords($this->translate($this->action)).' ' . $this->translate('exercise');
+$this->layout()->title = $title;
+$this->headTitle($title);
+
+echo $this->bootstrapForm($this->form);
+?>

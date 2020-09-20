@@ -1,0 +1,93 @@
+<?php
+if($this->controller) :
+    $title = ($title === null ? $this->application() : $title);
+    $this->headTitle($title);
+    $this->layout()->title = $title;
+
+    $question = $this->currentQuestionAndAnswer;
+?>
+<?php
+$addQuestionUrl = array(
+    'controller' => 'question',
+    'action' => 'add',
+    'quiz' => $this->exerciseAttemptId,
+    'ref' => $this->questionNo !== null ? $this->questionNo : 0
+);
+?>
+<a href="<?php echo $this->application()->url($addQuestionUrl) ?>" data-rel="add" class="btn btn-primary ">
+    <i class="icon-plus icon-white"></i>
+    <?php echo $this->translate("Add new question") ?>
+</a>
+
+<?php
+if($this->questionNo) :
+    ?>
+    <a href="<?php echo $this->application()->url(array(
+            'controller' => 'question',
+            'action' => 'edit',
+            'id' => $question->getQuestionId()
+        )) ?>" class="btn">
+        <i class="icon-edit"></i>
+        <?php echo $this->translate("Edit question") ?>
+    </a>
+
+    <a href="<?php echo $this->application()->url(array(
+                'controller' => 'question',
+                'action' => 'delete',
+                'id' => $question->getQuestionId(),
+            )) ?>" data-rel="delete" class="btn">
+        <i class="icon-trash"></i>
+        <?php echo $this->translate("Delete question") ?>
+    </a>
+<?php endif; ?>
+<div class="row">
+    <div class="span8">
+        <?php if($this->questionNo) : ?>
+            <h2 class="page-header">
+                <?php printf($this->translate("Question %d"), $this->questionNo) ?> 
+            </h2>
+
+            <!-- Question Form -->
+            <?php
+            echo $this->partial("partial/quiz-question-attempt.phtml", array(                                
+                                    'attemptId' => $this->exerciseAttemptId,
+                                    'actionForm' => "",
+                                    'question' => $question,
+                                    'selectedOption' => null
+                                ))
+            ?>
+
+            <!-- Pagination -->
+            <?php
+            echo $this->partial("partial/quiz-pagination.phtml", array(
+                                    'controller' => $this->controller,
+                                    'action' => 'detail',
+                                    'questionNumber' => $this->questionNo,
+                                    'exerciseAttemptId' => $this->exerciseAttemptId,
+                                    'totalNoOfQuestions' => $this->totalNoOfQuestions,
+                                    'answerStatuses' => $this->answerStatuses
+                                ));
+
+        endif; ?>
+    </div>
+    <div class="span4 quiz-information">        
+        <div class="accordion" id="quiz-accordion">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                        <i class="icon-chevron-down pull-right"></i>
+                        <?php echo $this->translate("Instructions") ?>
+                    </a>
+                </div>
+                <div id="collapseTwo" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <?php echo $this->partial("partial/quiz-instructions.phtml") ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+endif;
+?>

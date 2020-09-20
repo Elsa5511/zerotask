@@ -1,0 +1,3 @@
+ALTER TABLE control_template ADD standard_text LONGTEXT DEFAULT NULL;
+ALTER TABLE equipment ADD `nsn` VARCHAR(50) DEFAULT NULL, ADD `sap` VARCHAR(255) DEFAULT NULL, ADD `vendor_part` VARCHAR(255) DEFAULT NULL, DROP equipment_type;
+ALTER TABLE equipment_instance ADD price NUMERIC(10, 2) DEFAULT NULL;

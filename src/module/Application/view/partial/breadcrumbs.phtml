@@ -1,0 +1,15 @@
+<?php if (count($this->pages) > 0) : ?>
+    <ul class="breadcrumb">
+        <?php foreach ($this->pages as $page) :
+            $label = $page->getLabel();
+            if ($page->isActive()) :
+                ?>
+                <li class="active"><?php echo $label ?>
+                <?php else: ?>
+                <li><a href="<?php echo $page->getHref() ?>"><?php echo $label ?></a> <span class="divider">/</span>
+            <?php endif; ?>    
+            </li>
+        <?php endforeach; ?>
+        <a href="#" id="breadcrumb-go-back" class="pull-right go-back"><i class="icon-chevron-left"></i><?php echo $this->translate("Go back") ?></a>
+    </ul>
+<?php endif; ?>

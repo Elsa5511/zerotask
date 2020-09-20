@@ -1,0 +1,65 @@
+<div id="advanced-search" class="collapse <?php echo $this->isSearch ? 'in' : ''; ?>">
+    <?php
+    $form = $this->form;
+    if($form):
+    $form->setAttribute('action', $this->application()->url(array('controller' => 'certification', 'action' => 'report')));
+    $form->setAttribute('class', 'well');
+    $fieldset = $form->get('certification-search');
+    $form->prepare();
+    ?>
+    <button class="close advanced-search-toggle pull-right" data-toggle="collapse" data-target="#advanced-search">&times;</button>
+    <?php echo $this->form()->openTag($form); ?>    
+    <fieldset>
+        <legend><?php echo $this->translate('Advanced search'); ?>
+
+        </legend>
+        <div class="row">
+            <div class="span5">
+                <div class="control-group">
+                    <label class="control-label" for="search-equipment"> <?php echo $this->translate('Equipment'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($fieldset->get('equipment')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="valid">
+                        <?php echo $this->translate('Certification status'); ?>
+                    </label>
+                    <div class="controls">
+                        <?php echo $this->formRow($fieldset->get('valid')); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="span5">
+                <div class="control-group">
+                    <label class="control-label" for="theoryPassed">
+                        <?php echo $this->translate('Theory exam result'); ?>
+                    </label>
+                    <div class="controls">
+                        <?php echo $this->formRow($fieldset->get('theoryPassed')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="practicalPassed">
+                        <?php echo $this->translate('Practical exam result'); ?>
+                    </label>
+                    <div class="controls">
+                        <?php echo $this->formRow($fieldset->get('practicalPassed')); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn"><i class="icon-search"></i> <?php echo $this->translate('Search'); ?> </button>
+                <button id="show-all" type="submit" class="btn"><i class="icon-search"></i> <?php echo $this->translate('Show All'); ?> </button>
+            </div>
+        </div>
+    </fieldset>
+    <?php echo $this->form()->closeTag(); ?>
+    
+    <?php echo $this->inlineScript()->appendFile($this->basePath() . '/js/certification/report.js'); ?>
+    <?php endif; ?>
+</div>
+
+

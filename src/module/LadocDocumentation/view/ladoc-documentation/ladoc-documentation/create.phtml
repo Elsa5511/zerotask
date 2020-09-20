@@ -1,0 +1,31 @@
+<?php
+$title = ($title === null ? $this->application() : $title);
+$this->headTitle($title);
+$this->layout()->title = $title;
+?>
+
+<?php $disabled = $this->disableButtons ? 'disabled="disabled"' : '' ?>
+<div class="alert alert-info">
+    <h5><?php echo $this->translate('About the wizard') ?></h5>
+    <p>
+        <?php echo $this->translate('You are about to start the wizard for registering loads and carriers in LADOC.') ?>
+        <?php echo $this->translate('The wizard consists of 5 steps and brings the possibility to register all relevant information about a load or a carrier.') ?>
+    </p>
+    <p>
+        <?php echo $this->translate('You can move back and forward in the wizard, but the information in a section will not be saved until you go forward.') ?>
+        <?php echo $this->translate('After you are through with all the steps and the information has been registered, you can go back any time to edit the information.') ?>
+    </p>
+    <p>
+        <?php echo $this->translate('Connecting a load to carrier or vice versa, can not be done in the wizard, but can be done afterwards in the defail page for the load or the carrier.')  ?>
+    </p>
+</div>
+<form method="post">
+    <input name="equipment-id" type="hidden" value="<?php echo $this->equipmentId ?>">
+    <input name="type" type="hidden" value="load">
+    <button type="submit" class="btn btn-default" <?php echo $disabled ?>><?php echo $this->translate("Create Load Documentation") ?></button>
+</form>
+<form method="post">
+    <input name="equipment-id" type="hidden" value="<?php echo $this->equipmentId ?>">
+    <input name="type" type="hidden" value="carrier">
+    <button type="submit" class="btn btn-default" <?php echo $disabled ?>><?php echo $this->translate("Create Carrier Documentation") ?></button>
+</form>

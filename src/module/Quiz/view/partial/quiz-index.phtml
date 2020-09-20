@@ -1,0 +1,150 @@
+<?php
+
+$isExerciseView = "exercise" === $this->controller;
+
+$actions = array();
+$editAction = array(
+    'label' => $this->translate('Edit'),
+    'icon' => 'edit',
+    'attributes' => array(
+        'href' => $this->application()->url(
+                array(
+                    'controller' => $this->controller,
+                    'action' => 'edit',
+                    'id' => ":quizId",
+                    'equipment_id' => $this->equipmentId
+                )
+        )
+    )
+);
+$deleteAction = array(
+    'label' => $this->translate('Delete'),
+    'icon' => 'trash',
+    'attributes' => array(
+        'href' => $this->application()->url(
+                array(
+                    'controller' => $this->controller,
+                    'action' => 'delete',
+                    'id' => ":quizId",
+                    'equipment_id' => $this->equipmentId
+                )
+        )
+    )
+);
+
+if($isExerciseView) {
+    $viewAction = array(
+        'label' => $this->translate('Questions'),
+        'icon' => 'question-sign',
+        'attributes' => array(
+            'href' => $this->application()->url(
+                    array(
+                        'controller' => $this->controller,
+                        'action' => 'detail',
+                        'quiz' => ":quizId",
+                        'question' => 1
+                    )
+            )
+        )
+    );
+
+    $startAction = array(
+        'label' => $this->translate('Start'),
+        'icon' => 'play',
+        'attributes' => array(
+            'href' => $this->application()->url(
+                    array(
+                        'controller' => $this->controller .  '-attempt',
+                        'action' => 'start',
+                        'quiz' => ":quizId",
+                    )
+            )
+        )
+    );
+
+    $restartAction = array(
+        'label' => $this->translate('Restart'),
+        'icon' => 'repeat',
+        'attributes' => array(
+            'href' => $this->application()->url(
+                    array(
+                        'controller' => $this->controller .  '-attempt',
+                        'action' => 'restart',
+                        'quiz' => ":quizId",
+                    )
+            )
+        )
+    );
+
+
+    $continueAction = array(
+        'label' => $this->translate('Continue'),
+        'icon' => 'forward',
+        'attributes' => array(
+            'href' => $this->application()->url(
+                    array(
+                        'controller' => $this->controller .  '-attempt',
+                        'action' => 'continue',
+                        'quiz' => ":quizId",
+                    )
+            )
+        )
+    );
+
+    $actions['options']['start'] = $startAction;
+    $actions['options']['continue'] = $continueAction;
+    $actions['options']['restart'] = $restartAction;
+}
+if (($isExerciseView && $this->isAllowed('Quiz\Entity\ExerciseAttempt', 'update'))
+    || (!$isExerciseView && $this->isAllowed('Quiz\Entity\ExamAttempt', 'update'))) {
+    $actions['options']['edit'] = $editAction;
+    $actions['options']['delete'] = $deleteAction;
+    if ($isExerciseView) {
+        $actions['options']['question'] = $viewAction;
+    }
+}
+
+echo $this->bootstrapDataTable($this->entities, array(
+    'object_id' => 'quizId',
+    'search' => false,
+    'actions' => $actions,
+    'table_class' => 'table table-striped',
+    'table_row_class' => function($item) {
+        if (method_exists($item, 'getStatus')) {
+            return $item->getStatus();
+        }
+        else {
+            return '';
+        }
+    },
+    'table_foot' => false,
+    'columns' => $this->columns,
+    'params' => array(
+        'basic' => array('application', 'controller', 'action')
+    )
+));
+?>
+
+<?php
+if (($isExerciseView && $this->isAllowed('Quiz\Entity\Exercise', 'create'))
+    || (!$isExerciseView && $this->isAllowed('Quiz\Entity\Exam', 'create'))):
+    ?>
+    <a href="<?php
+    echo $this->application()->url(array(
+        'controller' => $this->controller,
+        'action' => 'add',
+        'equipment_id' => $this->equipmentId
+    ))
+    ?>" class="btn btn-mini">
+        <i class="icon-plus"></i> 
+            <?php 
+            if($isExerciseView) {
+                echo $this->translate('Create new exercise');
+            } else {
+                echo $this->translate('Create new exam');
+            }
+?>
+    </a>
+    <?php
+endif;
+?>

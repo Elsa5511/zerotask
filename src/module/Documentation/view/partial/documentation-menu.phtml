@@ -1,0 +1,92 @@
+<ul class="nav nav-tabs nav-stacked">
+    <?php 
+       
+        $currentParent = $this->currentSection->getParent();
+        $currentSectionId = $this->currentSection != null ? $this->currentSection->getSectionId() : null;
+        $currentParentId = $currentParent != null ? $currentParent->getSectionId() : null;
+        
+    ?>
+    <?php foreach($this->sections as $section): ?>
+        <?php 
+            $subSections = $section->getChildren(); 
+        ?>
+        <?php if(count($subSections) > 0):?>
+            <li class="accordion-heading edit-buttons-toggle <?php echo ($currentSectionId == $this->escapeHtml($section->getSectionId()) || $currentParent == $section) ? 'active' : ''?>">
+                <?php
+                echo $this->partial('partial/section-edit-buttons.phtml', array(
+                    'controller' => $this->currentController.'-section',
+                    'section' => $section,
+                    'equipmentId' => $this->elementId,
+                    'canEditSections' => $this->canEditSections
+                ));
+                ?>
+                <a class="accordion-toggle" href="
+                        <?php echo $this->application()->url(
+                            array(
+                                'action' => 'index',
+                                'controller' => $this->currentController,
+                                'id' => $this->elementId,
+                                'sectionId' => $section->getSectionId(),
+                            )
+                        );?>">
+                    <i class="icon-chevron-down pull-right"></i>
+                    <?php echo $section->getLabel(); ?>
+                </a>
+            </li>
+            <?php
+                $subMenuIsOpen = $currentParentId == $this->escapeHtml($section->getSectionId()) || $currentSectionId == $this->escapeHtml($section->getSectionId());
+            ?>
+            <div id="sectionMenu<?php echo $this->escapeHtml($section->getSectionId()) ?>" class="accordion-body collapse <?php echo $subMenuIsOpen ? 'in' : ''?>">
+                <div class="accordion-inner">
+                    <ul class="nav nav-pills nav-stacked">
+                        <?php foreach($subSections as $subSection): ?>
+                            <li class="edit-buttons-toggle <?php echo ($currentSectionId == $subSection->getSectionID()) ? 'active' : ''?>">
+                                
+                                <?php
+                                echo $this->partial('partial/section-edit-buttons.phtml', array(
+                                    'controller' => $this->currentController.'-section',
+                                    'section' => $subSection,
+                                    'equipmentId' => $this->elementId,
+                                    'canEditSections' => $this->canEditSections
+                                ));
+                                ?>
+                                <a href="<?php echo $this->application()->url(
+                                    array(
+                                        'action' => 'index',
+                                        'controller' => $this->currentController,
+                                        'id' => $this->elementId,
+                                        'sectionId' => $subSection->getSectionId(),
+                                    )
+                                );?>">
+                                    <?php echo $this->escapeHtml($subSection->getLabel()); ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+        <?php else: ?>
+            <li class="edit-buttons-toggle <?php echo ($currentSectionId == $this->escapeHtml($section->getSectionId())) ? 'active' : ''?>">
+                <?php
+                echo $this->partial('partial/section-edit-buttons.phtml', array(
+                    'controller' => $this->currentController.'-section',
+                    'section' => $section,
+                    'equipmentId' => $this->elementId,
+                    'canEditSections' => $this->canEditSections
+                ));
+                ?>
+                <a href="<?php echo $this->application()->url(
+                            array(
+                                'action' => 'index',
+                                'controller' => $this->currentController,
+                                'id' => $this->elementId,
+                                'sectionId' => $section->getSectionId(),
+                            )
+                        );?>">
+                       <?php echo $this->escapeHtml($section->getLabel()); ?>
+                </a>
+            </li>
+        <?php endif; ?>
+    
+    <?php endforeach; ?>
+</ul>

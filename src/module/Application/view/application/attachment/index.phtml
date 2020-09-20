@@ -1,0 +1,33 @@
+<?php
+    $this->headTitle($title);
+    $this->layout()->title = $title;
+?>
+
+
+<?php
+echo $this->bootstrapTable($attachments, array(
+    'title' => 'Attachment',
+    'object_pk' => 'attachment_id',
+    'actions' => array(
+        'delete' => array(
+            'id' => 'user-delete-all',
+            'url' => '#',
+            'label' => $this->translate('Delete')
+        )
+    ),
+    'object_type' => 'entity',
+    'table_class' => 'table table-striped',
+    'button_links' => array('add', 'edit', 'delete'),
+    'columns' => array(
+        'title' => array(
+            'label' => $this->translate('Title')
+        ),
+        'filename' => array(
+            'label' => $this->translate('Filename')
+        ),
+        'mime_type' => array(
+            'label' => $this->translate('Type')
+        )
+    )
+));
+?>

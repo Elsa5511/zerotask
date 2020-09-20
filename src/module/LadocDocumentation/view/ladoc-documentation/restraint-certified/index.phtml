@@ -1,0 +1,64 @@
+<?php
+$columns = array();
+
+if($this->type == 'load') {
+    $title = $this->translate('Load restraint documentation for certified carriers');
+
+    $columns['carrierDocumentation'] = array('label' => $this->translate('Carrier'));
+} else {
+    $title = $this->translate('Carrier restraint documentation for certified load');
+
+    $columns['loadDocumentation'] = array('label' => $this->translate('Load'));
+}
+$this->headTitle($title);
+$this->layout()->title = $title;
+
+?>
+
+<div class="row row-desktop">
+    <div class="span12">
+        <?php
+        $addUrlAttributes = array(
+            'controller' => $this->type . '-restraint-certified',
+            'action' => 'add',
+            'documentation_id' => $this->documentationId
+        );
+        if($this->templateType)
+            $addUrlAttributes['template_type'] = $this->templateType;
+        
+        echo $this->bootstrapDataTable($this->entities, array(
+            'object_id' => 'id',
+            'actions' => array(
+                'add' => array(
+                    'label' => $this->translate('Add new'),
+                    'attributes' => array(
+                        'href' => $this->application()->url($addUrlAttributes)
+                    )
+                ),
+                'options' => array(
+                    'edit' => true,
+                    'delete' => true
+                )
+            ),
+            'table_class' => 'table table-striped',
+            'search' => false,
+            'columns' => $columns,
+            'params' => array(
+                'basic' => array('application', 'controller', 'action')
+            )
+        ));
+        ?>
+    </div>
+</div>
+
+
+<a class="btn btn-primary" id="ladoc-continue-button" href="<?php echo $this->application()->url(
+                            array(
+                                'controller' => 'ladoc-documentation',
+                                'action' => 'display',
+                                'id' => $this->documentationId
+                            )
+                        ); ?>">
+    <?php echo $this->translate('Continue') ?>
+</a>
+<div class="clearfix"></div>

@@ -1,0 +1,34 @@
+<?php
+if($this->action === "add") {
+    $title = $this->translate('Add Exam');
+} else {
+    $title = $this->translate('Edit Exam');
+}
+
+$this->layout()->title = $title;
+$this->headTitle($title);
+$this->inlineScript()
+        ->appendFile($this->basePath() . '/js/quiz/quiz.js');
+?>
+<?php $action = $this->form->getAttribute("action") ; ?>
+<form class="form-horizontal" method="POST" action="<?php echo $action ?>" name="exam" id="exam">    
+    <?php echo $this->bootstrapFormRow($this->form->get('csrf')); ?>
+    <fieldset name="exam">
+    <?php
+    $fieldset = $this->form->get('exam');
+    echo $this->bootstrapFormRow($fieldset->get('name'));
+    echo $this->bootstrapFormRow($fieldset->get('requiredForPass'));
+    echo $this->bootstrapFormRow($fieldset->get('introductionText'));
+    echo $this->bootstrapFormRow($fieldset->get('numberOfQuestions'));
+    echo $this->bootstrapFormRow($fieldset->get('timeLimit'));
+    echo $this->bootstrapFormRow($fieldset->get('baseOnPracticeExercise'));
+
+    if($this->questions) {
+        echo $this->partial('partial/obligatory-questions.phtml', 
+                        array('questions' => $this->questions, 
+                              'questionsIds' => $this->questionsIds));
+    }
+?>
+    </fieldset>
+    <?php echo $this->bootstrapFormRow($this->form->get('submit')); ?>
+</form>

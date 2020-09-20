@@ -1,0 +1,23 @@
+
+<?php
+if (isset($this->messageError)):
+    ?>
+    <script type="text/javascript">
+        $('.modal-footer button', window.parent.document).hide();
+        parent.location = parent.location.href;
+    </script>       
+    <?php
+else:
+    echo $this->bootstrapForm($form);
+    $this->headScript()->appendFile($this->basePath() . '/js/inputmask.js');
+endif;
+?>
+
+<script type="text/javascript">
+    var featuredImagePath = '<?php echo $this->featureImage; ?>';
+</script>
+
+<?php
+$this->inlineScript()
+        ->appendFile($this->basePath() . '/js/equipment/dipslayFeaturedImageOnEdit.js');
+?>

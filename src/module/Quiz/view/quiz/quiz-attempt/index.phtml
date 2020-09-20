@@ -1,0 +1,110 @@
+<?php
+$title = ($title === null ? $this->application() : $title);
+$this->headTitle($title);
+$this->layout()->title = $title;
+
+$question = $this->currentQuestionAndAnswers->getQuestion();
+$selectedOptions = $this->currentQuestionAndAnswers->getSelectedOptions();
+
+$statusLabel = "label-warning";
+$statusAlert = "";
+$statusMessage = "";
+if ($this->currentAnswerStatus === 'correct') {
+    $currentQuestionStatus = $this->translate('Correct');
+    $statusLabel = "label-success";
+    if($this->showStatusMessage){
+        $statusAlert = "alert-success";
+        $statusMessage = $this->translate('The answer is correct');
+    }
+} else if ($this->currentAnswerStatus === 'incorrect') {
+    $currentQuestionStatus = $this->translate('Incorrect');
+    $statusLabel = "label-important";
+    if($this->showStatusMessage){
+        $statusAlert = "alert-error";
+        $statusMessage = $this->translate('The answer is incorrect');
+    }
+} else {
+    $currentQuestionStatus = $this->translate('In progress');
+}
+?>
+
+<div class="row">
+    <div class="span8">        
+        <h2 class="page-header">
+            <?php printf($this->translate("Question %d"), $this->questionNo) ?> 
+        </h2>
+
+        <!-- Question Form -->
+        <?php
+        $actionForm = $this->application()->url(array(
+            'controller' => $this->controller,
+            'action' => 'validate-answer',
+            'question' => $this->questionNo
+        ));
+        echo $this->partial("partial/quiz-question-attempt.phtml", array(
+            'attemptId' => $this->exerciseAttemptId,
+            'actionForm' => $actionForm,
+            'question' => $question,
+            'selectedOptions' => $selectedOptions,
+            'attemptType' => $this->attemptType,
+            'showStatusMessage' => $this->showStatusMessage,
+            'statusAlert' => $statusAlert,
+            'statusMessage' => $statusMessage
+        ))
+        ?>
+
+        <!-- Pagination -->
+        <?php
+        echo $this->partial("partial/quiz-pagination.phtml", array(
+            'controller' => $this->controller,
+            'action' => 'index',
+            'questionNumber' => $this->questionNo,
+            'exerciseAttemptId' => $this->exerciseAttemptId,
+            'totalNoOfQuestions' => $this->totalNoOfQuestions,
+            'answerStatuses' => $this->answerStatuses,
+        ))
+        ?>
+
+        <form action="<?php
+        echo $this->application()->url(array(
+            'controller' => $this->controller,
+            'action' => 'complete-attempt'
+        ))
+        ?>" method="POST">
+            <input type="hidden" name="quizAttemptId" value="<?php echo $this->exerciseAttemptId ?>">
+            <input type="submit" class="btn btn-primary pull-right" value="<?php echo $this->translate('Quit test'); ?>"  />
+        </form>
+
+    </div>
+    <div class="span4 quiz-information">      
+        <div class="accordion" id="quiz-accordion">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                        <i class="icon-chevron-down pull-right"></i>
+                        <?php echo $this->translate("Status") ?>
+                    </a>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <?php echo $this->partial("partial/quiz-status-table.phtml") ?>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                        <i class="icon-chevron-down pull-right"></i>
+                        <?php echo $this->translate("Instructions") ?>
+                    </a>
+                </div>
+                <div id="collapseTwo" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <?php echo $this->partial("partial/quiz-instructions.phtml") ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

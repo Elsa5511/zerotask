@@ -1,0 +1,22 @@
+<?php
+$certificationUserPath = $_SERVER['SERVER_NAME'] .
+        $this->application()->url(array('controller' => 'certification',
+            'action' => 'user',
+            'id' => $this->userId
+        ));
+?>
+
+<h2><strong><?php echo $this->translate('Mr/Mrs.') . ' ' . $this->escapeHtml($this->userFullname); ?> :</strong></h2>
+
+<p><?php
+    if (isset($this->dependent)) {
+        $certificationOwner = $this->dependent;
+    } else {
+        $certificationOwner = $this->translate('you');
+    }
+    echo $this->translate("An administrator has updated  certification information related to ") . $certificationOwner;
+    ?></p>
+<strong><?php echo $this->translate('Certification about'); ?> : </strong><?php echo $this->escapeHtml($this->equipmentName); ?>
+<p>
+    <a href="<?php echo $certificationUserPath ?>" /><?php echo $this->translate('Check Certification') ?></a>
+</p>

@@ -1,0 +1,100 @@
+<?php
+
+function printAttachments($attachments) {
+    $prints = "";
+    foreach ($attachments as $attachment) {
+        $prints = $prints .
+            $attachment->getTitle() . ", ";
+    }
+    return rtrim($prints, ', ');
+}
+
+function printWeightTable($weight) {
+    return "<td>{$weight->getWeight()}</td>" .
+    "<td>{$weight->getFrontAxle()}</td>" .
+    "<td>{$weight->getRearAxle()}</td>" .
+    "<td>{$weight->getOtherAxles()}</td>" .
+    "<td>" . printAttachments($weight->getAttachments()) . "</td>";
+}
+
+function printDimensionsTable($dimensions) {
+    return "<td>{$dimensions->getLength()}</td>" .
+    "<td>{$dimensions->getWidth()}</td>" .
+    "<td colspan=\"2\">{$dimensions->getHeightWithNoLoad()}</td>" .
+    "<td>" . printAttachments($dimensions->getAttachments()) . "</td>";
+}
+
+$weightAndDimensionsResource = 'LadocDocumentation\Entity\CarrierWeightAndDimensions';
+
+if ($this->isAllowed($weightAndDimensionsResource, 'create')):?>
+    <a href="<?php echo $this->application()->url(array(
+        'controller' => 'carrier-weight-and-dimensions',
+        'action' => 'edit',
+        'id' => $this->id
+    )) ?>" class="btn btn-small pull-right margin-top-sm margin-bottom"><i class="icon-edit"></i> <?php echo $this->translate("Edit section") ?></a>
+<?php endif; ?>
+
+<table class="table table-striped">
+    <tbody>
+    <tr>
+        <th><?php echo $this->translate("Description") ?></th>
+        <th><?php echo $this->translate("Total weight (kg)") ?></th>
+        <th><?php echo $this->translate("Front axle (kg)") ?></th>
+        <th><?php echo $this->translate("Rear axle (kg)") ?></th>
+        <th><?php echo $this->translate("Other axles (kg)") ?></th>
+        <th><?php echo $this->translate("See attachment") ?></th>
+    </tr>
+    <tr>
+        <td><?php echo $this->translate("Own weight") ?></td>
+        <?php echo printWeightTable($this->ownWeight) ?>
+    </tr>
+
+    <tr>
+        <td><?php echo $this->translate("Technical weight") ?></td>
+        <?php echo printWeightTable($this->technicalWeight) ?>
+    </tr>
+    </tbody>
+</table>
+
+<?php if (!empty($this->weightAdditionalInfo)): ?>
+    <div class="description-html">
+        <p class="margin-bottom-lg">
+            <?php echo nl2br($this->weightAdditionalInfo) ?>
+        </p>
+    </div>
+<?php endif ?>
+
+
+<table class="table table-striped">
+    <tbody>
+    <tr>
+        <th><?php echo $this->translate("Description") ?></th>
+        <th><?php echo $this->translate("Length (mm)") ?></th>
+        <th><?php echo $this->translate("Width (mm)") ?></th>
+        <th colspan="2"><?php echo $this->translate("Height with no load (mm)") ?></th>
+        <th><?php echo $this->translate("See attachment") ?></th>
+    </tr>
+    <tr>
+        <td><?php echo $this->translate("Carrier") ?></td>
+        <?php echo printDimensionsTable($this->ownDimensions) ?>
+    </tr>
+    <tr>
+        <td><?php echo $this->translate("Loading plan") ?></td>
+        <?php echo printDimensionsTable($this->loadingPlanDimensions) ?>
+    </tr>
+    </tbody>
+</table>
+
+<?php if (!empty($this->dimensionsAdditionalInfo)): ?>
+    <div class="description-html">
+        <p>
+            <?php echo nl2br($this->dimensionsAdditionalInfo) ?>
+        </p>
+    </div>
+<?php endif ?>
+
+<?php
+echo $this->partial('ladoc-documentation/partial/point-attachments.phtml', array(
+    'path' => '/content/weight-and-dimensions/',
+    'attachments' => $this->attachments));
+?>

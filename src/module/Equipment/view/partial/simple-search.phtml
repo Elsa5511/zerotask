@@ -1,0 +1,34 @@
+<form  class="form-search span6" method="GET"  action="<?php
+echo $this->application()->url(array('action' => 'do-search', 'controller' => 'equipment')
+);
+?>">
+    <input type="hidden" name="mode[]" value="basic">
+    <div class="input-append pull-right">
+        <input type="text" name="keyWord" class="search-query" autocomplete="off"
+               placeholder=" <?php echo $this->translate('Search for equipment'); ?>" 
+               data-provide="typeahead" data-items="10" data-source='[<?php
+       $dataSource = array();
+       if (!empty($this->jsonEquipments)) {
+           foreach ($this->jsonEquipments as $equipment):
+               $dataSource[] = '"' . addslashes($equipment->title) . '"';
+           endforeach;
+       }
+       echo implode(',', $dataSource);
+?>]'>
+        <button type="submit" class="btn"><i class="icon-search"></i></button>
+    </div>
+    <div class="pull-right">
+        <?php
+        foreach($this->advancedSearchLinks as $htmlId => $text):
+        ?>
+            <a href="#" class="advanced-search-toggle" data-toggle="collapse"
+               data-target="#<?php echo $htmlId ?>"><?php echo $text; ?>
+            </a>
+        <?php
+        endforeach;
+        ?>
+    </div>
+</form>
+
+<?php
+$this->inlineScript()->appendFile($this->basePath() . '/js/advanced-search.js', 'text/javascript');

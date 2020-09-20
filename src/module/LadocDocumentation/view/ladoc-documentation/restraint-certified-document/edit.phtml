@@ -1,0 +1,37 @@
+<?php
+$title = $this->action == 'add' ? $this->translate('Add document') : $this->translate('Edit document');
+$this->layout()->title = $title;
+$this->headTitle($title);
+
+?>
+
+
+<a class="btn btn-default pull-right" href="<?php echo $this->application()->url(
+                            array(
+                                'controller' => $this->controllerName,
+                                'action' => 'index',
+                                'restraint_certified_id' => $this->restraintCertifiedId,
+                                'type' => $this->type
+                            )
+                        ); ?>">
+    <i class="icon-list"></i> <?php echo $this->translate('Return to list') ?>
+</a>
+
+<?php
+
+echo $this->bootstrapForm($this->form);
+
+if($this->action == 'edit') {
+    $this->inlineScript()
+                ->appendScript("
+                 var imageSrc = '" . $this->image . "';
+                 var imageError = " . json_encode($this->imageError) . ";
+                ", 'text/javascript', array('noescape' => true));
+    $this->inlineScript()->appendFile($this->basePath() . '/js/ladoc-documentation/restraint-certified-document.js');
+} else {
+    $this->inlineScript()
+        ->appendScript("
+            $(document).ready(function(){
+                 $('form#restraint-document span.fileupload-new').text(system.translations['Select file']);
+            });", 'text/javascript', array('noescape' => true));
+}

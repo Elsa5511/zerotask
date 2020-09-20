@@ -1,0 +1,185 @@
+/* General
+------------------------------------------------------------------------------*/
+
+@media (max-width: 979px) and (min-width: 768px) {
+    .span2 {
+        width: 166px;
+    }
+}
+
+/* Typography
+------------------------------------------------------------------------------*/
+@media (max-width: 979px) and (min-width: 641px) 
+{
+    h1 { font-size: 32px; }
+    h2 { font-size: 28px; }
+} 
+
+@media (max-width: 640px) 
+{
+    h1 { font-size: 24px; }
+    h2 { font-size: 21px; }
+    h3 { font-size: 18px; }
+    h4 { font-size: 16px; }
+}
+
+/* Desktop rows
+------------------------------------------------------------------------------*/
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .row-desktop.row-fluid {
+    width: 100%;
+  }
+  .row-desktop.row {
+    margin-left: 0;
+  }
+  .row-desktop > [class*="span"],
+  .row-desktop > [class*="span"] {
+    float: none;
+    display: block;
+    width: auto;
+    margin: 0;
+  }
+}
+
+/* Layout
+------------------------------------------------------------------------------*/
+
+@media (max-width: 767px) {
+    .footer, 
+    .navbar-fixed-top, 
+    .navbar-fixed-bottom, 
+    .navbar-static-top {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    
+    .page-header {
+        margin-top: 0;
+    }
+    
+    body {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .no-height {
+        height: inherit;
+    }
+}
+
+@media (min-width: 980px) {
+    .inner-wrapper {
+        padding-top: 40px;
+    }
+}
+
+/* Page header
+------------------------------------------------------------------------------*/
+@media (max-width: 640px) {
+    .page-header h1,
+    .page-header form
+    {
+        text-align: center;
+    }
+
+    .page-header .pull-right {
+        float: none;
+    }
+    
+    a.advanced-search-toggle {
+        margin-top: 10px;
+        display: block;
+    }
+}
+
+/* Tables
+------------------------------------------------------------------------------*/
+@media (max-width: 640px) {
+    div.dataTables_length label, 
+    div.dataTables_filter label, 
+    div.dataTables_info, 
+    div.dataTables_paginate {
+        float: none;
+        text-align: center;
+    }
+    
+    .data-table-actions {
+        text-align: center;
+    }
+    
+    div.dataTables_info {
+        padding-bottom: 8px;
+    }
+}
+/* Affix scrollspy
+------------------------------------------------------------------------------*/
+
+@media (min-width: 980px) and (max-width: 1199px) {
+    .scrollspy-nav {
+        width: 210px;
+    }
+}
+
+@media (max-width: 979px) {
+    .scrollspy-nav {
+        width: 100%;
+    }
+}
+
+/* Login form
+----------------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+    #form-login input,
+    #form-login button {
+        width: 80%;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+}
+
+/* Modal container
+----------------------------------------------------------------------------- */
+
+@media (min-width: 1200px) {
+	.modal.container {
+		width: 1170px;
+		margin-left: -585px;
+	}
+}
+
+@media (max-width: 979px) {
+	.modal, 
+	.modal.container,
+	.modal.modal-overflow 	{
+		top: 1%;
+		right: 1%;
+		left: 1%;
+		bottom: auto;
+		width: auto !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	
+	.modal.fade.in, 
+	.modal.container.fade.in,
+	.modal.modal-overflow.fade.in {
+		top: 1%;
+		bottom: auto;
+	}
+	
+	.modal-body,
+	.modal-overflow .modal-body {
+		position: static;
+		margin: 0;
+		max-height: none !important;
+		overflow: visible !important;
+	}
+	
+	.modal-footer,
+	.modal-overflow .modal-footer {
+		position: static;
+	}
+}
+

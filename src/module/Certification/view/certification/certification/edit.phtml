@@ -1,0 +1,18 @@
+<?php
+if ($this->form) :
+    $title = ($this->certificationId) ? $this->translate('Edit certification') : $this->translate('Add certification');
+    $this->layout()->title = $title;
+    $this->headTitle($title);
+    ?>
+    <div class="form-horizontal">        
+        <div class="control-group">
+            <label class="control-label"><?php echo $this->translate('Equipment') ?></label>
+            <div class="controls">
+                <strong><?php echo $this->escapeHtml($this->equipmentName) ?></strong>
+            </div>
+        </div>
+    </div>
+    <?php
+    echo $this->bootstrapForm($this->form);
+endif;
+?>

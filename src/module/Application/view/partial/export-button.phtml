@@ -1,0 +1,80 @@
+<?php
+
+function createHiddenInputFieldsFrom($filterParams, $prepend) {
+    if (is_array($filterParams)) {
+        $keys = array_keys($filterParams);
+        foreach ($keys as $key) {
+            createHiddenInputFieldsFrom($filterParams[$key], $prepend . '[' . $key . ']');
+        }
+    } else if (is_string($filterParams)) {
+        echo '<input type = "hidden" ';
+        echo 'name = "' . $prepend . '" ';
+        echo 'value = "' . $filterParams . '" />';
+    }
+}
+
+$urlParams = array(
+    'controller' => $this->controller,
+    'action' => $this->action,
+);
+
+if ($this->routeParams) {
+    foreach ($this->routeParams as $key => $routeParam) {
+        $urlParams[$key] = $routeParam;
+    }
+}
+
+?>
+
+<form id="exportForm" action="<?php
+
+
+echo $this->application()->url($urlParams);
+?>" method="POST">
+          <?php createHiddenInputFieldsFrom($this->currentFilterParams, 'filter-params'); ?>
+    <input id="exportType" type="hidden" name="exportType" />
+    <div class="btn-group pull-right">
+        <button class="btn btn-small" data-toggle="dropdown"><i class="icon-file"></i> <?php echo $this->translate('Export to') ?>
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="javascript:void(0)"
+                   id="exportExcel"
+                   class="add-element">
+                       <?php echo $this->translate('Excel (.xslx)') ?>
+                </a>                
+            </li>
+            <li><a href="javascript:void(0)"
+                   id="exportWord"
+                   class="add-element">
+                       <?php echo $this->translate('Word (.docx)') ?>
+                </a>                
+            </li>
+            <li><a href="javascript:void(0)"
+                   id="exportPdf"
+                   class="add-element">
+                    <?php echo $this->translate('PDF') ?>
+                </a>                
+            </li>
+        </ul>
+    </div>
+
+</form>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#exportExcel").click(function() {
+            $("#exportType").val("excel");
+            $("#exportForm").submit();
+        });
+        $("#exportWord").click(function() {
+            $("#exportType").val("word");
+            $("#exportForm").submit();
+        });
+        $("#exportPdf").click(function() {
+            $("#exportType").val("pdf");
+            $("#exportForm").submit();
+        });
+    });
+</script>

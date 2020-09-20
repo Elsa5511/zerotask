@@ -1,0 +1,2 @@
+insert into control_point_to_template(control_point_id, control_template_id)
+select control_point_id, control_template_id from control_templates_control_points;

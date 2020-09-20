@@ -1,0 +1,168 @@
+<?php
+$attachmentResource = $this->ownerEntity;
+
+$actionsArray = array(
+    'options' => array(
+        'open' => array(
+            'label' => $this->translate('Open'),
+            'icon' => 'file',
+            'attributes' => array(
+                'href' => $this->application()->url(
+                    array(
+                        'controller' => $controller,
+                        'action' => 'handle',
+                        'id' => ":attachmentId"
+                    )
+                ),
+            )
+        ),
+        'attachment-detail-popover' => array(
+            'label' => $this->translate('Details'),
+            'icon' => 'list',
+            'attributes' => array(
+                'href' => $this->application()->url(array('controller' => 'attachment', 'action' => 'detail', 'id' => ":attachmentId"))
+            )
+        )
+    )
+);
+
+if ($this->isAllowed($attachmentResource, 'create')) {
+    $actionsArray['add'] = array(
+        'label' => $this->translate('Add new'),
+        'attributes' => array(
+            'href' => $this->application()->url(array('controller' => $controller, 'action' => $addAction, 'id' => "{$id}")),
+            'class' => 'add-edit-attachment',
+            'title' => $this->translate('Add new attachment')
+        )
+    );
+}
+
+if ($this->isAllowed($attachmentResource, 'update')) {
+    $actionsArray['options']['edit'] = array(
+        'label' => $this->translate('Edit'),
+        'icon' => 'edit',
+        'attributes' => array(
+            'href' => $this->application()->url(array('controller' => $controller, 'action' => $editAction, 'id' => ":attachmentId")),
+            'class' => 'add-edit-attachment',
+            'title' => $this->translate('Edit attachment')
+        )
+    );
+}
+
+if ($this->isAllowed($attachmentResource, 'delete')) {
+    $actionsArray['options']['delete'] = array(
+        'label' => $this->translate('Delete'),
+        'icon' => 'trash',
+        'attributes' => array(
+            'href' => $this->application()->url(array('controller' => $controller,
+                'action' => $this->deleteAction, 'id' => ":attachmentId"))
+        )
+    );
+
+    $actionsArray['group'] = array(
+        'delete-selected-x' => array(
+            'label' => $this->translate('Delete selected'),
+            'attributes' => array(
+                'href' => $this->application()->url(array('controller' => $controller,
+                    'action' => 'delete')),
+                'data-rel' => 'delete-selected'
+            )
+        )
+    );
+}
+
+?>
+
+    <div id="attachment-table">
+        <?php
+        echo $this->bootstrapDataTable($this->attachments, array(
+                'object_id' => 'attachmentId',
+                'search' => false,
+                'actions' => $actionsArray,
+                'table_class' => 'table table-striped data-table-net',
+                'table_row_class' => function($item) {
+                    $attachmentFile = $item->getFile();
+                    $class = $item->getLink() !== null && ($attachmentFile === null || empty($attachmentFile)) ? "link" : "";
+                    $class .= ($item instanceof \Equipment\Entity\EquipmentAttachment) ? " isEquipmentAttachment" : "";
+                    return $class;
+                },
+                'columns' => array(
+                    'title' => array(
+                        'label' => $this->translate('Title')
+                    ),
+                    'attachmentTaxonomy' => array(
+                        'label' => $this->translate('Type'),
+                        'callback_method' => 'getType',
+                    ),
+                    'author' => array(
+                        'label' => $this->translate('Created by'),
+                    ),
+                    'dateAdd' => array(
+                        'label' => $this->translate('Date'),
+                        'callback' => function ($output, $view) {
+                            return $view->dateFormat($output, IntlDateFormatter::SHORT);
+                        }
+                    ),
+                    'version' => array(
+                        'label' => $this->translate('Version')
+                    ),
+                    'file' => array(
+                        'label' => $this->translate('Format'),
+                        'callback' => 'getFormat',
+                    ),
+                ),
+                'params' => array(
+                    'basic' => array('application', 'controller', 'action')
+                )
+            )
+        );
+        ?>
+    </div>
+    <div id="attachment-details">
+        <?php
+        $i = 0;
+        foreach ($this->attachments as $attachment):
+            ?>
+            <div id="details-attachment-<?php echo $i ?>"
+                 data-title="<?php echo $this->escapeHtml($attachment->getTitle()) ?>">
+                <dl class="dl-horizontal">
+                    <dt><?php echo $this->translate('Document type') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($attachment->getAttachmentTaxonomy()) ?></dd>
+                    <dt><?php echo $this->translate('Created by') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($attachment->getAuthor()) ?></dd>
+                    <dt><?php echo $this->translate('Version') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($attachment->getVersion()) ?></dd>
+                    <dt><?php echo $this->translate('Date') ?>:</dt>
+                    <dd><?php echo $this->dateFormat($attachment->getDateAdd(), IntlDateFormatter::SHORT); ?></dd>
+                    <dt><?php echo $this->translate('Format') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($attachment->getExtension()) ?></dd>
+                </dl>
+                <dl>
+                    <dt><?php echo $this->translate('Description') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($attachment->getDescription()) ?></dd>
+                </dl>
+            </div>
+            <?php
+            $i++;
+        endforeach;
+        ?>
+    </div>
+<?php
+
+function getFormat($output) {
+    if ($output) {
+        $fileInfo = pathinfo($output);
+        $extension = strtolower($fileInfo['extension']);
+        return $extension;
+    }
+    else {
+        return "Link";
+    }
+}
+
+$this->inlineScript()->appendScript("var linkMap = " . json_encode($this->linkMap),
+    'text/javascript', array('noescape' => true));
+
+$this->inlineScript()->prependFile($this->basePath('js/attachment-table.js'));
+$this->inlineScript()->prependFile($this->basePath('js/equipment/equipment-instance/attachment-table-custom.js'));
+?>

@@ -1,0 +1,82 @@
+<?php
+$title = $this->user->getDisplayName() . ': ' . $this->translate("Certifications");
+$this->headTitle($title);
+$this->layout()->title = $title;
+$this->inlineScript()->appendFile($this->basePath() . '/js/certification/certification.js', 'text/javascript');
+?>
+
+<div class="row">
+
+    <div class="span12">
+    <?php if ($this->user) : ?>
+        <section>
+            <div class="row-fluid">
+                <dl class="dl-horizontal span6">                                        
+                    <dt><?php echo $this->translate('Organization') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->user->getOrganizationId()); ?></dd>
+                    <dt><?php echo $this->translate('Superior') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->user->getSuperiorId()); ?></dd>
+                    <dt><?php echo $this->translate('Email') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->user->getEmail()); ?></dd>
+                    <dt><?php echo $this->translate('Phone') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->user->getPhone1()); ?></dd>
+                    <dt><?php echo $this->translate('Address') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->user->getAddress()); ?></dd>
+                </dl>
+            </div>            
+        </section>
+
+        <?php if ($this->certifications) : ?>
+            <section id="subinstances">
+                <h3><?php echo $this->translate('Certifications') ?></h3>
+                <?php
+                echo $this->bootstrapDataTable($this->certifications, 
+                        array(
+                            'object_id' => 'certificationId',
+                            'search' => false,
+                            'actions' => false,
+                            'table_class' => 'table table-striped data-table-net',
+                            'columns' => array(
+                                'equipment' => array(
+                                    'label' => $this->translate('Equipment'),
+                                ),
+                                'theoryPassed' => array(
+                                    'label' => $this->translate('Theory exam'),
+                                    'callback' => 'isPassed'
+                                ),
+                                'practicalPassed' => array(
+                                    'label' => $this->translate('Practical exam'),
+                                    'callback' => 'isPassed'
+                                ),
+                                'valid' => array(
+                                    'label' => $this->translate('Certified'),
+                                    'callback' => 'isPassed'
+                                ),
+                                'expirationDate' => array(
+                                    'label' => $this->translate('Expires'),
+                                    'callback' => function($date, $view) {
+                                        $output = $view->dateFormat($date, IntlDateFormatter::SHORT);
+                                        if($view->application()->isDateExpired($date))
+                                            $output = "<span class='red'>" . $output . "</span>";
+                                        return $output;
+                                    }
+                                ),
+                            ),
+                            'params' => array(
+                                'basic' => array('application', 'controller', 'action')
+                            )
+                        )
+                );
+                ?>
+            </section>
+            <?php endif; ?>
+    <?php endif; ?>
+    </div>
+</div>
+
+<?php
+
+function isPassed($passed) 
+{
+    return ($passed) ? '<i class="icon-ok"></i>' : '';
+}

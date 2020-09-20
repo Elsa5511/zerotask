@@ -1,0 +1,67 @@
+<?php
+
+$this->layout()->title = $this->title;
+$this->headTitle($this->title);
+
+?>
+
+
+<a class="btn btn-default pull-right" href="<?php echo $this->application()->url(
+                            array(
+                                'controller' => $this->controllerName,
+                                'action' => 'index',
+                                'documentation_id' => $this->documentationId
+                            )
+                        ); ?>">
+    <i class="icon-list"></i> <?php echo $this->translate('Return to list') ?>
+</a>
+
+<?php
+
+echo $this->bootstrapForm($this->form);
+
+//Code for attachments
+$images = array();
+$attachmentsIndex = null;
+$attachments = null;
+switch($this->controllerName) {
+    case 'load-lashing-point':
+        $attachmentsIndex = "loadLashingPointAttachments";
+        $attachments = $this->point ? $this->point->getLoadLashingPointAttachments() : null;
+        break;
+    case 'carrier-lashing-point':
+        $attachmentsIndex = "carrierLashingPointAttachments";
+        $attachments = $this->point ? $this->point->getCarrierLashingPointAttachments() : null;;
+        break;
+    case 'load-lifting-point':
+        $attachmentsIndex = "loadLiftingPointAttachments";
+        $attachments = $this->point ? $this->point->getLoadLiftingPointAttachments() : null;;
+        break;
+    case 'carrier-lashing-equipment':
+        $attachmentsIndex = "carrierLashingEquipmentAttachments";
+        $attachments = $this->point ? $this->point->getCarrierLashingEquipmentAttachments() : null;;
+        break;
+}
+
+if($attachments && count($attachments) > 0) {
+	foreach($attachments as $attachment)
+		$images[] = $attachment->getFile();
+}
+$errorAttachments = array();
+$newAttachments = array();
+if($this->customError && is_array($this->customError)) {
+    $errorAttachments = $this->customError['attachments'];
+    $newAttachments = $this->customError['new_attachments'];
+}
+
+$this->inlineScript()
+    ->appendScript("
+             $('#add-point-btn').removeClass('btn-primary');
+             var pointAttachments = " . json_encode($images) . ";
+             var controllerName = '" . $this->controllerName  . "';
+             var attachmentsIndex = '" . $attachmentsIndex . "';
+             var errorAttachments = " . json_encode($errorAttachments) . ";
+             var newAttachments = " . json_encode($newAttachments) . ";
+            ", 'text/javascript', array('noescape' => true));
+$this->inlineScript()->appendFile($this->basePath() . '/js/ladoc-documentation/attachments.js');
+

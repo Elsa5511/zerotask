@@ -1,0 +1,28 @@
+<?php if ($canEditSections): ?>
+    <div class="edit-buttons">
+        <a class="btn btn-mini add-edit-section" 
+            href="
+               <?php
+               echo $this->application()->url(array(
+                   'action' => 'edit-section',
+                   'controller' => $controller,
+                   'id' => $section->getSectionId(),
+                       )
+               );
+               ?>">
+            <i class="icon-pencil"></i></a>
+        <a data-rel="delete" class="btn btn-mini" 
+            href="
+               <?php
+               echo $this->application()->url(array(
+                   'action' => 'delete-section',
+                   'controller' => $controller,
+                   'id' => $section->getSectionId(),
+                   'referenceId' => $this->equipmentId
+                       )
+               );
+               ?>">
+            <i class="icon-trash"></i>
+        </a>
+    </div>
+<?php endif; ?>

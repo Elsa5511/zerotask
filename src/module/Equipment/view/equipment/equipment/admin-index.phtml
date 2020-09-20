@@ -1,0 +1,172 @@
+<?php
+$this->headTitle($title);
+$this->layout()->title = $title;
+
+$equipmentResource = $this->entityResource;
+$canCreateEquipment = $this->isAllowed($equipmentResource, 'create');
+$canUpdateEquipment = $this->isAllowed($equipmentResource, 'update');
+$canDeleteEquipment = $this->isAllowed($equipmentResource, 'delete');
+?>
+<!-- Alert -->
+<div class="delete-alert alert fade in">
+    <button type="button" class="close">&times;</button>    
+    <strong><?php echo $this->translate('You must select an equipment') ?></strong>
+</div>
+<div class="row row-desktop">
+    <div class="span3">
+        <?php echo $this->partial('partial/admin-menu.phtml', 'application') ?>
+    </div>
+    <div class="span9">
+
+        <div class="row admin-actions">
+            <div class="span6">
+                <?php if($canCreateEquipment): ?>
+                    <a data-form="equipment-form" href="<?php echo $this->application()->url(array('controller' => 'equipment', 'action' => 'add')); ?>"
+                       class="btn btn-primary add-element" title="<?php echo $this->translate('Equipment information')?>" >
+                        <i class="icon-plus icon-white"></i> <?php echo $this->translate('Add new') ?>
+                    </a>
+
+                <div class="btn-group">
+                    <button class="btn" data-toggle="dropdown"><?php echo $this->translate('Group actions') ?></button>
+                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" class="deactivate-equipment-list" data-rel="deactivate-selected">
+                                <?php echo $this->translate('Deactivate') ?></a></li>
+
+                    </ul>
+                </div>
+                <?php endif; ?>
+            </div>
+            <div class="span3">
+                <div class="checkbox pull-right"><label><input type="checkbox" id="show-inactive-checkbox" /><?php echo $this->translate("Show inactive") ?></label></div>
+            </div>
+        </div>
+            <table class="table table-striped data-table-net">
+                <thead>
+                    <tr>
+                        <th class="data-table-column-check"><input type="checkbox" class="check-all"/></th>
+                        <th><?php echo $this->translate('Name') ?></th>
+                        <th><?php echo $this->translate('Category') ?></th>
+                        <?php if($this->application()->isFieldUsedInEquipment("sap")): ?>
+                            <th><?php echo $this->translate('SAP #') ?></th>
+                        <?php endif; ?>
+                        <th><?php echo $this->translate('Status') ?></th>
+                        <th class="column-options"><?php echo $this->translate('Actions') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($this->equipments as $equipment):
+                        ?>
+                        <tr>
+                            <td class="data-table-column-check">
+                                <input type="checkbox" name="id[<?php echo $equipment->getEquipmentId() ?>]"  value="<?php echo $equipment->getEquipmentId() ?>" /></td>
+                            <td>
+                                <?php echo ucfirst($this->escapeHtml($equipment->getTitle())); ?>
+                            </td>
+                            <td>
+                                <?php
+                                if (!empty($this->taxonomies[$equipment->getEquipmentId()])):
+                                    echo implode($this->taxonomies[$equipment->getEquipmentId()], ', ');
+                                endif;
+                                ?>
+                            </td>
+                            <?php if($this->application()->isFieldUsedInEquipment("sap")): ?>
+                            <td>
+                                <?php
+                                    $sap = $equipment->getSap();
+                                    if (!empty($sap)):
+                                        echo $sap;
+                                    endif;
+                                ?>
+                            </td>
+                            <?php endif; ?>
+                            <td>
+                                <?php
+                                if ($equipment->getActiveStatus() === 'inactive') {
+                                    echo $this->translate("Inactive");
+                                }
+                                else if ($equipment->getActiveStatus() === 'active') {
+                                    echo $this->translate("Active");
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php if($canUpdateEquipment): ?>
+                                    <a data-form="equipment-form" href="<?php echo $this->application()->url(array('controller' => 'equipment', 'action' => 'edit', 'id' => $equipment->getEquipmentId())); ?>"
+                                       class="btn btn-mini edit-element"
+                                       title="<?php echo  $this->translate('Edit Equipment information')?>"
+                                       ><i class="icon-edit"></i>
+                                        <?php echo $this->translate('Edit') ?></a>
+                                <?php endif; ?>
+
+                                <?php if($canDeleteEquipment): ?>
+                                    <?php if ($equipment->getActiveStatus() === 'active'): ?>
+                                        <button class="btn btn-mini deactivate-equipment-button" data-id="<?php echo $equipment->getEquipmentId() ?>">
+                                            <i class="icon-off"></i><?php echo $this->translate("Deactivate") ?>
+                                        </button>
+                                    <?php elseif ($equipment->getActiveStatus() === 'inactive'): ?>
+                                        <button class="btn btn-mini reactivate-equipment-button" data-id="<?php echo $equipment->getEquipmentId() ?>">
+                                            <i class="icon-off"></i><?php echo $this->translate("Activate") ?>
+                                        </button>
+                                    <?php endif ?>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+    </div>
+</div>
+<!-- Confirm Delete Many Modal -->
+<div class="modal hide fade" role="dialog" id="confirm-deactivate-many">
+    <div class="modal-header"> 
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3><?php echo $this->translate('Deactivate Equipments') ?></h3>
+    </div>
+    <div class="modal-body">
+        <p id="count-locations"><?php echo $this->translate('You are about to deactivate "x" equipments.') ?></p>
+        <p><?php echo $this->translate('Do you want to proceed?') ?></p>        
+    </div>
+    <div class="modal-footer">
+        <form method="post" action="
+              <?php
+        echo $this->application()->url(array('controller' => 'equipment',
+            'action' => 'deactivate-many'
+        ));
+        ?>
+              ">
+            <input name="deactivate_ids" id="deactivate-ids" type="hidden" value="">
+            <button id="deactivate-many-btn" class="btn btn-danger" href="#"><?php echo $this->translate('Yes') ?></button>
+            <a class="btn btn-primary" data-dismiss="modal"><?php echo $this->translate('No') ?></a>
+        </form>     
+    </div>
+</div>
+
+
+
+<?php
+echo $this->partial('partial/submit-modal.phtml', array(
+    'controller' => 'equipment',
+    'action' => 'deactivate',
+    'title' => $this->translate('Deactivate equipment'),
+    'message' => $this->translate('You are about to deactivate this equipment.')
+));
+
+echo $this->partial('partial/submit-modal.phtml', array(
+    'controller' => 'equipment',
+    'action' => 'reactivate',
+    'title' => $this->translate('Reactivate equipment'),
+    'message' => $this->translate('You are about to reactivate this equipment.')
+));
+
+
+$this->inlineScript()
+        ->appendScript('
+            var saveButtonName ="' . $this->translate('Save') . '";    
+            ', 'text/javascript', array('noescape' => true))
+        ->appendFile($this->basePath() . '/js/equipment/equipment/index.js')
+        ->appendFile($this->basePath() . '/js/application/datatable-active-filter.js');
+?>

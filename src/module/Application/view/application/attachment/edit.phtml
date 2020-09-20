@@ -1,0 +1,36 @@
+<?php
+$this->headTitle('Attachment');
+$this->layout()->title = 'Attachment';
+?>
+
+<?php
+if (isset($message)):
+    $this->inlineScript()
+            ->appendScript(' 
+            var imageDecorator =false;
+            
+
+                 $(".modal-footer button", window.parent.document).hide();
+                parent.location.reload();
+       
+        ', 'text/javascript', array('noescape' => true));
+else:
+    echo $this->bootstrapForm($form);
+endif;
+
+$this->inlineScript()
+        ->appendScript(' 
+            var imageDecorator =false;
+
+            ', 'text/javascript', array('noescape' => true));
+if ($this->filename !== null && trim($this->filename) !== '') :
+    $this->inlineScript()
+            ->appendScript(' 
+            var imageDecorator =false;
+            var filename = "' . $this->filename . '";
+            ', 'text/javascript', array('noescape' => true));
+    $this->inlineScript()->prependFile($this->basePath('js/application/attachments/edit.js'));
+
+endif;
+?>
+

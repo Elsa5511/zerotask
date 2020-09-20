@@ -1,0 +1,9 @@
+<?php
+$title = isset($organizationId) ? $this->translate('Edit Organization') : $this->translate('Add Organization');
+$this->layout()->title = $title;
+$this->headTitle($title);
+$this->inlineScript()->appendFile($this->basePath() . '/js/organization.js', 'text/javascript');
+?>
+<?php
+echo $this->bootstrapForm($form);
+?>

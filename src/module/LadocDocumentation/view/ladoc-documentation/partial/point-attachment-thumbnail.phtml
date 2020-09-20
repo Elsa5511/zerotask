@@ -1,0 +1,28 @@
+<?php
+    $extension = $this->attachment->getExtension();
+    $attachmentUrl = $this->path . $this->attachment->getFile();
+    $thumbnailPath = str_replace('.'.$extension, '-thumb.'.$extension, $attachmentUrl);
+    $thumbnailUrl = file_exists($_SERVER['DOCUMENT_ROOT'] . $thumbnailPath) ? $thumbnailPath : $attachmentUrl;
+?>
+
+<a target="_blank" data-rel="open-attachment" data-extension="<?php echo $extension;?>"
+   href="<?php echo $attachmentUrl ?>" title="<?php echo $this->attachment->getTitle(); ?>" >
+    <div class="thumbnail category">
+        <?php  
+            $backgroundImageUrl = in_array($extension, array('jpg', 'png', 'gif')) ?
+                $thumbnailUrl :
+                $this->basePath('/images/training/' . $this->attachment->getExtension() . '.png');
+        ?>
+        <div class="category-image" style="
+            background-image: url('<?php echo $backgroundImageUrl ?>');
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $backgroundImageUrl ?>', sizingMethod='scale');
+            ">
+            <img src="<?php echo $this->basePath('/images/equipment-thumbnail-placeholder.png'); ?>" 
+                 alt="<?php echo $this->escapeHtml($this->attachment->getTitle()) ?>">
+        </div>
+        <div class="vertical-center">
+            <h2><?php echo $this->attachment->getTitle(); ?></h2>
+        </div>
+    </div>
+</a>
+                                                    

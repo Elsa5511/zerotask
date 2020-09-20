@@ -1,0 +1,34 @@
+<?php
+$videoPath = $this->basePath('/attachment/' . $this->fileName);
+
+if ($this->mimeType === 'video/x-ms-wmv' || $this->mimeType === 'video/x-ms-asf'):
+    ?>
+    <object width="100%" height="100%"
+            type="<?php echo $this->escapeHtml($this->mimeType) ?>" url="<?php echo $this->escapeHtml($videoPath); ?>" data="<?php echo $this->escapeHtml($videoPath); ?>"
+            classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6">
+        <param name="url" value="<?php echo $videoPath; ?>">
+        <param name="filename" value="<?php echo $videoPath; ?>">
+        <param name="autostart" value="1">
+        <param name="uiMode" value="full">
+        <param name="autosize" value="1">
+        <param name="playcount" value="1">                              
+        <embed type="application/x-mplayer2" src="<?php echo $videoPath; ?>" width="100%" height="100%" autostart="true" showcontrols="true" 
+               pluginspage="http://www.microsoft.com/Windows/MediaPlayer/"></embed>
+    </object>
+    <?php
+else:
+    ?>
+    <video width="100%" height="100%" controls>
+        <source src="<?php echo $this->basePath('/attachment/' . $this->fileName) ?>" type="<?php echo $this->mimeType ?>">
+        <div class="alert alert-danger" >
+            <?php echo $this->translate('Your browser does not support the html5 video.'); ?>
+        </div>
+        <a class="btn btn-primary" href="<?php echo str_replace('video-handle', 'handle', $this->serverUrl(true)); ?>">
+            <?php echo $this->translate('Download File'); ?>
+        </a>
+
+    </video> 
+<?php
+endif;
+?>
+

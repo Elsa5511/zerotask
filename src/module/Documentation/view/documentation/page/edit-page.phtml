@@ -1,0 +1,29 @@
+<?php if ($this->success): ?>
+    <script type="text/javascript">
+        parent.location = parent.location.href;
+    </script>
+    <?php
+elseif (isset($this->form)) :
+    echo $this->bootstrapForm($this->form);
+    ?>
+    <script type="text/javascript">
+        $(document).ready(function() {
+    <?php
+    if (!empty($this->featuredImage)):
+        ?>
+                var featureImagePath = '<?php echo $this->featuredImage; ?>';
+                var preview = $('.fileupload-preview.fileupload-exists.thumbnail');
+                preview.parent().removeClass('fileupload-new').addClass('fileupload-exists');
+                preview.html(
+                        '<img src="' + system.basePath + '/content/page/' + featureImagePath + '">');
+        <?php
+    endif;
+    ?>
+
+            $('form').append('<input type="hidden" name="remove_image">');
+            $('a[data-dismiss="fileupload"]').on('click', function() {
+                $('input[name="remove_image"]').val(1);
+            });
+        });
+    </script>
+<?php endif; ?>

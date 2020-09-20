@@ -1,0 +1,67 @@
+<?php
+if($this->type == 'load')
+    $basicInformationResource = 'LadocDocumentation\Entity\LoadBasicInformation';
+else
+    $basicInformationResource = 'LadocDocumentation\Entity\CarrierBasicInformation';
+
+if ($this->isAllowed($basicInformationResource, 'create')):?>
+    <a href="<?php echo $this->application()->url(array(
+        'controller' => $this->type . '-basic-information',
+        'action' => 'edit',
+        'id' => $this->id )) ?>"
+       class="btn btn-small pull-right"><i class="icon-edit"></i> <?php echo $this->translate("Edit section") ?></a>
+<?php endif; ?>
+
+<p>
+    <?php if ($this->image): ?>
+        <img src="/content/ladoc-documentation/<?php echo $this->image ?>" /></p>
+    <?php endif ?>
+<div class="clearfix"></div>
+<p>
+<hr>
+<dl class="dl-horizontal">
+    <dt><?php echo $this->translate('Approved name') ?></dt>
+    <dd><?php echo $this->approvedName ?></dd>
+    <dt><?php echo $this->translate('Colloquial name') ?></dt>
+    <dd><?php echo $this->colloquialName ?></dd>
+    <dt><?php echo $this->translate('NATO #') ?></dt>
+    <dd><?php echo $this->nsn ?></dd>
+    <dt><?php echo $this->translate('Material no.') ?></dt>
+    <dd><?php echo $this->sap ?></dd>
+</dl>
+<hr>
+<dl class="dl-horizontal ladoc-documentation">
+    <dt><?php echo $this->translate('Approved for') ?></dt>
+    <?php $approvedFormsOfTransportationString = "" ?>
+    <?php for ($i = 0; $i <= $this->approvedFormsOfTransportation->count(); $i++): ?>
+        <?php $approvedFormsOfTransportationString .= $this->approvedFormsOfTransportation->get($i) . ', ' ?>
+    <?php endfor ?>
+    <dd><?php echo rtrim($approvedFormsOfTransportationString, ', ') ?></dd>
+
+    <dt>
+        <?php echo $this->translate('According to STANAGs') ?>
+    </dt>
+    <?php $stanagsString = "" ?>
+    <?php for ($i = 0; $i <= $this->stanags->count(); $i++): ?>
+        <?php $stanagsString .= $this->stanags->get($i) . ', ' ?>
+    <?php endfor ?>
+    <dd><?php echo rtrim($stanagsString, ', ') ?></dd>
+
+    <dt><?php echo $this->translate('MLC') ?></dt>
+    <dd><?php echo $this->mlc ?></dd>
+
+    <?php if ($this->type === 'carrier'): ?>
+        <dt><?php echo $this->translate('Technical payload (kg)') ?></dt>
+        <dd><?php echo $this->technicalPayload ?></dd>
+    <?php endif ?>
+
+    <?php if ($this->type === 'load'): ?>
+        <dt><?php echo $this->translate('Equivalent models') ?></dt>
+        <dd><?php echo $this->equivalentModels ?></dd>
+    <?php endif ?>
+
+    <dt><?php echo $this->translate('Responsible office') ?></dt>
+    <?php $responsibleOfficesString = "" ?>
+    <dd><?php echo $this->responsibleOffices ?></dd>
+</dl>
+

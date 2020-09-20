@@ -1,0 +1,27 @@
+<?php
+
+return array(
+    'equipment' => array(
+        'title' => array('mandatory' => true),
+        'equipmentTaxonomy' => array('mandatory' => true),
+        'feature_image' => array('mandatory' => true),
+        'description' => array('mandatory' => true),
+        'featureOverrides' => array('mandatory' => false, 'applications' => array('ladoc', 'liftdoc', 'falldoc')),
+        'vendor' => array('mandatory' => true),
+        'manufacturer' => array('mandatory' => true),
+        'hasToBeUsedWith' => array('mandatory' => true),
+        'canBeUsedWith' => array('mandatory' => true),
+        'controlIntervalByDays' => array('mandatory' => true),
+        'instanceType' => array('mandatory' => true),
+        'status' => array('mandatory' => true),
+        'nsn' => array('mandatory' => false, 'applications' => 'all'),
+        'sap' => array('mandatory' => false, 'applications' => 'all'),
+        'vendorPart' => array('mandatory' => false, 'applications' => 'all'),
+        'wll' => array('mandatory' => false, 'applications' => array('vedos-mechanical')),
+        'length' => array('mandatory' => false, 'applications' => array('vedos-mechanical')),
+        'materialQuality' => array('mandatory' => false, 'applications' => array('vedos-mechanical')),
+        'standard' => array('mandatory' => false, 'applications' => array('vedos-mechanical')),
+        'typeApproval' => array('mandatory' => false, 'applications' => array('vedos-mechanical')),
+        'controlOrgan' => array('mandatory' => false, 'applications' => array('vedos-mechanical')),
+    )
+);

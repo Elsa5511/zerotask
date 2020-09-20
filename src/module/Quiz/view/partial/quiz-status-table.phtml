@@ -1,0 +1,63 @@
+<table class="table table-striped">
+    <tr>
+        <td><?php echo $this->translate('Questions answered:') ?></td>
+        <td>
+            <?php echo $this->escapeHtml($this->statusOverview->getQuestionsAnswered()); ?> 
+            /
+            <?php echo $this->escapeHtml($this->statusOverview->getTotalNoOfQuestions()); ?>
+        </td>
+    </tr>
+    <tr>
+        <td><?php echo $this->translate('Correct answers:') ?></td>
+        <td>
+            <?php echo $this->escapeHtml($this->statusOverview->getCorrectAnswers()); ?> 
+            /
+            <?php echo $this->escapeHtml($this->statusOverview->getQuestionsAnswered()); ?> 
+        </td>
+    </tr>
+    <tr>
+        <td><?php echo $this->translate('Current score:') ?></td>
+        <td>
+            <?php echo number_format($this->escapeHtml($this->statusOverview->getResultAsPercentage()), 1); ?> %
+        </td>
+    </tr>
+    <tr>
+        <td><?php echo $this->translate('Required score:') ?></td>
+        <td>
+            <?php echo $this->escapeHtml($this->statusOverview->getRequiredScorePercentage()); ?> %
+        </td>
+    </tr>
+    <tr>
+        <td><?php echo $this->translate('Current status:') ?></td>
+        <td>
+            <?php
+            $status = $this->statusOverview->getCurrentStatus();
+            $statusForPrint = $this->translate('Failed');
+            $labelClass = 'label-important';
+            if ($status === 'passed') {
+                $statusForPrint = $this->translate('Passed');
+                $labelClass = 'label-success';
+            }
+
+            echo '<span class="label ' . $labelClass . '">' . $statusForPrint . '</span>'
+            ?>
+        </td>
+    </tr>
+    <?php if ($this->attemptType === 'exam'): ?>
+    <tr>
+        <td><?php echo $this->translate('Time remaining:') ?></td>
+        <td id="examTimer" 
+            data-total-time-in-seconds="<?php echo $this->totalTimeInSeconds ?>"
+            data-time-left-in-seconds="<?php echo $this->timeLeftInSeconds ?>">
+                <?php echo '.' ?>
+        </td>
+    </tr>
+    <?php endif ?>
+</table>
+
+<?php
+$this->inlineScript()
+        ->appendFile($this->basePath() . '/js/quiz/examAttemptTimer.js');
+?>
+
+</script>

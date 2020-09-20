@@ -1,0 +1,136 @@
+<?php
+$this->headTitle($this->title);
+$this->layout()->title = $this->title;
+$this->inlineScript()->appendFile($this->basePath() . '/js/equipment/periodic-control.js', 'text/javascript');
+?>
+
+<div class="row row-desktop" id="equipment-instance-detail">
+    <div class="span3">
+        <ul class="nav nav-tabs nav-stacked scrollspy-nav">
+            <li><a href="#general-information"><i
+                        class="icon-chevron-right"></i> <?php echo $this->translate('General information') ?></a></li>
+            <li><a href="#control-points"><i
+                        class="icon-chevron-right"></i> <?php echo $this->translate('Control points') ?></a></li>
+            <li><a href="#attachments"><i class="icon-chevron-right"></i> <?php echo $this->translate('Attachments') ?>
+                </a></li>
+        </ul>
+    </div>
+    <div class="span9">
+        <section id="general-information">
+            <h3><?php echo $this->translate('General information') ?></h3>
+
+            <dl class="dl-horizontal">
+                <dt><?php echo $this->translate('Equipment name') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->equipmentType->getTitle()) ?></dd>
+                <dt><?php echo $this->translate('Serial #') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->instance->getSerialNumber()) ?></dd>
+                <dt><?php echo $this->translate('Registration #') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->instance->getRegNumber()) ?></dd>
+                <dt><?php echo $this->translate('Owner') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->instance->getOwner()) ?></dd>
+                <dt><?php echo $this->translate('Location') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->instance->getLocation()) ?></dd>
+                <dt><?php echo $this->translate('Control number') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->periodicControl->getPeriodicControlId()) ?></dd>
+                <dt><?php echo $this->translate('Competent Person') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->periodicControl->getRegisteredBy()) ?></dd>
+                <dt><?php echo $this->translate('Control date') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->dateFormat($this->periodicControl->getControlDate(), IntlDateFormatter::SHORT)) ?></dd>
+                <dt><?php echo $this->translate('Next control date') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->dateFormat($this->periodicControl->getNextControlDate(), IntlDateFormatter::SHORT)) ?></dd>
+                <dt><?php echo $this->translate('Expertise organ') ?>:</dt>
+                <dd><?php echo $this->escapeHtml($this->periodicControl->getExpertiseOrgan()) ?></dd>
+                <dt><?php echo $this->translate('Control status') ?>:</dt>
+                <dd><?php echo $this->translate((string)$this->escapeHtml($this->periodicControl->getControlStatus())) ?></dd>
+            </dl>
+            <?php if ($this->periodicControl->getComment() != ''): ?>
+                <dl>
+                    <dt><?php echo $this->translate('Comments') ?>:</dt>
+                    <dd><?php echo nl2br($this->escapeHtml($this->periodicControl->getComment())) ?></dd>
+                </dl>
+            <?php endif; ?>
+        </section>
+        <section id="control-points">
+            <h3><?php echo $this->translate('Control points') ?></h3>
+
+            <div class="responsive-table-wrapper">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th><?php echo $this->translate('Control point') ?></th>
+                        <th><?php echo $this->translate('Status') ?></th>
+                        <th><?php echo $this->translate('Comments') ?></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php $i = 0;
+                    foreach ($this->periodicControl->getOrderedControlPointResults() as $controlPointResult):
+                        ?>
+                        <tr>
+                            <th><?php echo ++$i . '. ' . $this->translate($this->escapeHtml($controlPointResult->getControlPoint())) ?></th>
+                            <td><?php echo $this->translate((string)$this->escapeHtml($controlPointResult->getControlPointOption())) ?></td>
+                            <td><?php echo $this->escapeHtml($controlPointResult->getRemark()) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="attachments">
+            <h3><?php echo $this->translate('Attachments') ?></h3>
+            <?php echo $this->attachmentTable ?>
+        </section>
+
+        <br/>
+        <section>
+            <?php if($this->controlTemplate){
+                echo $this->controlTemplate->getStandardText();
+            }
+            ?>
+            <br/>
+            <p><?php echo $this->translate('Customer signature Date') ?></p>
+            <br/>
+            <p><?php echo $this->translate('Verifier signature Date') ?></p>
+
+            <?php echo $this->escapeHtml($this->periodicControl->getRegisteredBy()) ?>
+            <br/>
+        </section>
+
+        <div class="pull-right">
+            <?php
+            $exportToPdfUrl = $this->application()->url(
+                array(
+                    'controller' => 'periodic-control',
+                    'action' => 'export-to-pdf',
+                    'id' => $this->periodicControl->getPeriodicControlId())
+            );
+            ?>
+
+            <a target="_blank" href="<?php echo $exportToPdfUrl ?>" type="button" class="btn"><i
+                    class="icon-file"></i><?php echo $this->translate('Export PDF'); ?></a>
+        </div>
+    </div>
+</div>
+<?php
+$deleteManymodalParams = array(
+    'id' => 'confirm-delete-many',
+    'title' => $this->translate('Delete attachments'),
+    'message' => $this->translate('Are you sure to delete selected attachments'),
+    'formAction' => array(
+        'controller' => 'periodic-control-attachment',
+        'action' => 'delete-many-attachment'
+    )
+);
+echo $this->partial('partial/groupActionConfirmModal.phtml', $deleteManymodalParams);
+?>
+
+<?php
+$this->inlineScript()
+    ->appendScript('
+            var titleIframe ="' . $this->translate('Periodic control attachment') . '";            
+            var saveButtonName ="' . $this->translate('Save') . '";    
+            ', 'text/javascript', array('noescape' => true))
+    ->appendFile($this->basePath() . '/js/application/attachments/default.js');
+?>
+

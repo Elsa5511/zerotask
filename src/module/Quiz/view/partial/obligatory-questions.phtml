@@ -1,0 +1,14 @@
+<div class="control-group questions">
+    <label class="control-label">
+        <?php echo $this->translate("Choose obligatory questions") ?></label>
+    <div class="controls">
+        <?php foreach ($this->questions as $question) : ?>
+        <?php 
+            $checkedAttribute = (in_array($question->getQuestionId(), $this->questionsIds)) ? "checked" : "";
+        ?>
+        <label><input name="questions[]" <?php echo $checkedAttribute; ?> 
+                          value="<?php echo $this->escapeHtml($question->getQuestionId()) ?>" 
+                          type="checkbox"> <?php echo $this->escapeHtml($question->getQuestionText()) ?></label>
+        <?php endforeach; ?>
+    </div>
+</div>

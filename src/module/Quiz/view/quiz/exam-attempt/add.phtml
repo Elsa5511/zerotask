@@ -1,0 +1,7 @@
+<?php
+$title = $this->translate('Add exam attempt');
+$this->layout()->title = $title;
+$this->headTitle($title);
+$this->inlineScript()->appendFile($this->basePath() . '/js/quiz/exam-attempt/add.js', 'text/javascript');
+
+echo $this->bootstrapForm($this->form);

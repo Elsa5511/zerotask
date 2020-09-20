@@ -1,0 +1,8 @@
+<?php
+$title = $languageId ? $this->translate('Edit language') : $this->translate('Add language');
+$this->layout()->title = $title;
+$this->headTitle($title);
+?>
+<?php
+echo $this->bootstrapForm($form);
+?>

@@ -1,0 +1,559 @@
+<?php
+/* @TODO: Do we need our own view helper for dateFormat? */
+$this->title = sprintf($this->translate('%s: %s'), $this->equipmentType->getTitle(), $this->instance->getSerialNumber());
+$this->headTitle($this->title);
+$this->layout()->title = $this->title;
+$this->inlineScript()->appendFile($this->basePath() . '/js/equipment/periodic-control.js', 'text/javascript');
+$this->inlineScript()->appendFile($this->basePath() . '/js/equipment/checkout.js', 'text/javascript');
+
+$equipmentInstanceResource = 'Equipment\Entity\EquipmentInstance';
+$periodicControlResource = 'Equipment\Entity\PeriodicControl';
+$visualControlResource = 'Equipment\Entity\VisualControl';
+
+/**
+ * @param boolean $value
+ */
+function yesOrNo($value) {
+    return $value
+        ? 'Yes'
+        : 'No';
+}
+
+?>
+
+<div class="different-type-alert alert hide alert-error">
+    <button type="button" class="close">&times;</button>
+    <strong><?php echo $this->translate('You must select only instances with the same equipment type') ?></strong>
+</div>
+<div class="row row-desktop" id="equipment-instance-detail">
+    <div class="span3">
+        <ul class="nav nav-tabs nav-stacked scrollspy-nav">
+            <li><a href="#equipment-type"><i
+                        class="icon-chevron-right"></i> <?php echo $this->translate('Equipment type') ?></a></li>
+            <li><a href="#instance-data"><i
+                        class="icon-chevron-right"></i> <?php echo $this->translate('Instance data') ?></a></li>
+            <?php if (count($this->periodicControls) > 0): ?>
+                <li><a href="#periodic-control"><i
+                            class="icon-chevron-right"></i> <?php echo $this->translate('Periodic controls') ?></a></li>
+            <?php endif; ?>
+            <?php if (count($this->visualControls) > 0): ?>
+                <li><a href="#visual-control"><i
+                            class="icon-chevron-right"></i> <?php echo $this->translate('Visual controls') ?></a></li>
+            <?php endif; ?>
+            <li><a href="#subinstances"><i
+                        class="icon-chevron-right"></i> <?php echo $this->translate('Subinstances') ?></a></li>
+            <li><a href="#attachments"><i class="icon-chevron-right"></i> <?php echo $this->translate('Attachments') ?>
+                </a></li>
+        </ul>
+    </div>
+    <div class="span9">
+        <section id="equipment-type">
+            <h3><?php echo $this->translate('Equipment type') ?></h3>
+
+            <div class="row-fluid">
+                <dl class="dl-horizontal span6">
+                    <dt><?php echo $this->translate('Equipment name') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->equipmentType->getTitle()) ?></dd>
+                    <dt><?php echo $this->translate('Equipment category') ?>:</dt>
+                    <dd>
+                        <?php foreach ($this->equipmentType->getEquipmentTaxonomy() as $category): ?>
+                            <a href="<?php echo $this->application()->url(array('controller' => 'equipment', 'action' => 'index', 'category' => $category->getEquipmentTaxonomyId())); ?>">
+                                <?php echo $this->escapeHtml($category->getName()) ?>
+                            </a>
+                            <br>
+                        <?php endforeach; ?>
+                    </dd>
+                    <?php if($this->application()->isFieldUsedInEquipment("nsn")): ?>
+                        <dt><?php echo $this->translate('NATO #') ?>:</dt>
+                        <dd><?php echo $this->escapeHtml($this->equipmentType->getNsn()); ?></dd>
+                    <?php endif; ?>
+                    <?php if($this->application()->isFieldUsedInEquipment("sap")): ?>
+                        <dt><?php echo $this->translate('Material #') ?>:</dt>
+                        <dd><?php echo $this->escapeHtml($this->equipmentType->getSap()); ?></dd>
+                    <?php endif; ?>
+                    <?php if($this->application()->isFieldUsedInEquipment("vendorPart")): ?>
+                        <dt><?php echo $this->translate('Vendor part #') ?>:</dt>
+                        <dd><?php echo $this->escapeHtml($this->equipmentType->getVendorPart()); ?></dd>
+                    <?php endif; ?>
+                </dl>
+                <dl class="dl-horizontal span6">
+                    <dt><?php echo $this->translate('Has to be used with') ?>:</dt>
+                    <dd>
+                        <?php foreach ($this->equipmentType->getHasToBeUsedWith() as $equipment):
+                            ?>
+                            <a href="<?php
+                            echo $this->application()->url(
+                                array('controller' => 'equipment', 'action' => 'detail', 'id' => $equipment->getEquipmentId()));
+                            ?>">
+                                <?php echo $this->escapeHtml($equipment->getTitle()) ?>
+                            </a>
+                            <br>
+                        <?php endforeach; ?>
+                    </dd>
+                    <dt><?php echo $this->translate('Can be used with') ?>:</dt>
+                    <dd>
+                        <?php foreach ($this->equipmentType->getCanBeUsedWith() as $equipment): ?>
+                            <a href="<?php echo $this->application()->url(array('controller' => 'equipment', 'action' => 'detail', 'id' => $equipment->getEquipmentId())); ?>">
+                                <?php echo $this->escapeHtml($equipment->getTitle()) ?>
+                            </a>
+                            <br>
+                        <?php endforeach; ?>
+                    </dd>
+                    <dt><?php echo $this->translate('Competence areas') ?>:</dt>
+                    <dd>
+                        <?php echo $this->equipmentType->getFormattedCompetenceAreas(); ?>
+                    </dd>
+                </dl>
+            </div>
+
+            <?php
+            $wllIsVisible = $this->application()->isFieldUsedInEquipment("wll");
+            $lengthIsVisible = $this->application()->isFieldUsedInEquipment("length");
+            $materialQualityIsVisible = $this->application()->isFieldUsedInEquipment("materialQuality");
+            $standardIsVisible = $this->application()->isFieldUsedInEquipment("standard");
+            $typeApprovalIsVisible = $this->application()->isFieldUsedInEquipment("typeApproval");
+            $controlOrganIsVisible = $this->application()->isFieldUsedInEquipment("controlOrgan");
+
+            if ($wllIsVisible || $lengthIsVisible || $materialQualityIsVisible ||
+                    $standardIsVisible || $typeApprovalIsVisible || $controlOrganIsVisible): ?>
+                <div class="row-fluid">
+                    <dl class="dl-horizontal span6">
+                        <?php if($wllIsVisible): ?>
+                            <dt><?php echo $this->translate('WLL') ?>:</dt>
+                            <dd><?php echo $this->escapeHtml($this->equipmentType->getWll()) ?></dd>
+                        <?php endif; ?>
+                        <?php if($lengthIsVisible): ?>
+                            <dt><?php echo $this->translate('Length') ?>:</dt>
+                            <dd><?php echo $this->escapeHtml($this->equipmentType->getLength()) ?></dd>
+                        <?php endif; ?>
+                        <?php if($materialQualityIsVisible): ?>
+                            <dt><?php echo $this->translate('Material quality') ?>:</dt>
+                            <dd><?php echo $this->escapeHtml($this->equipmentType->getMaterialQuality()) ?></dd>
+                        <?php endif; ?>
+                    </dl>
+                    <dl class="dl-horizontal span6">
+                        <?php if($standardIsVisible): ?>
+                            <dt><?php echo $this->translate('Standard') ?>:</dt>
+                            <dd><?php echo $this->escapeHtml($this->equipmentType->getStandard()) ?></dd>
+                        <?php endif; ?>
+                        <?php if($typeApprovalIsVisible): ?>
+                            <dt><?php echo $this->translate('Type approval') ?>:</dt>
+                            <dd><?php echo $this->escapeHtml($this->equipmentType->getTypeApproval()) ?></dd>
+                        <?php endif; ?>
+                        <?php if($controlOrganIsVisible): ?>
+                            <dt><?php echo $this->translate('Control organ') ?>:</dt>
+                            <dd><?php echo $this->escapeHtml($this->equipmentType->getControlOrgan()) ?></dd>
+                        <?php endif; ?>
+                    </dl>
+                </div>
+            <?php endif ?>
+
+
+            <?php if ($this->equipmentType->getDescription() != ''): ?>
+                <dl>
+                    <dt><?php echo $this->translate('Description') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->equipmentType->getDescription()) ?></dd>
+                </dl>
+            <?php endif; ?>
+        </section>
+
+
+        <section id="instance-data">
+            <h3><?php echo $this->translate('Instance data') ?></h3>
+            <div class="row-fluid">
+                <dl class="dl-horizontal span6">
+                    <dt><?php echo $this->translate('Owner') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->instance->getOwner()) ?></dd>
+                    <dt><?php echo $this->translate('Location') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->instance->getLocation()) ?></dd>
+                    <dt><?php echo $this->translate('Price') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->instance->getPrice()) ?></dd>
+                    <dt><?php echo $this->translate('Usage status') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->instance->getUsageStatus()) ?></dd>
+                    <dt><?php echo $this->translate('Checked out') ?>:</dt>
+                    <dd><?php
+                        if ($this->instance->isCheckedOut()) :
+                            echo $this->translate('Yes');
+                            if (!empty($this->checkoutId)):
+                                ?>
+                                <a id="detail-checkout" class="btn btn-mini pull-right"
+                                   href="<?php
+                                   echo $this->application()->url(array('controller' => 'check-in-and-out',
+                                       'action' => 'detail-checkout',
+                                       'id' => $this->checkoutId,
+                                   ));
+                                   ?>">
+                                    <i class="icon-list"></i><?php echo $this->translate('Details') ?>
+                                </a>
+                            <?php
+                            endif;
+                        else :
+                            echo $this->translate('No');
+                        endif;
+                        ?></dd>
+                    <dt><?php echo $this->translate('Next periodic control') ?>:</dt>
+                    <dd><?php
+                        echo $this->dateFormat(
+                            $this->instance->getPeriodicControlDate(), IntlDateFormatter::SHORT)
+                        ?>
+                    </dd>
+                    <?php if (!empty($this->lastVisualControl)): ?>
+                        <dt><?php echo $this->translate('Next visual control') ?>:</dt>
+                        <dd><?php
+                            echo $this->dateFormat(
+                                $this->lastVisualControl->getNextControlDate(), IntlDateFormatter::SHORT) ?></dd>
+                    <?php endif; ?>
+                    <?php if ($this->instance->getRemarks() != ''): ?>
+                        <dt><?php echo $this->translate('Remarks') ?>:</dt>
+                        <dd><?php echo $this->escapeHtml($this->instance->getRemarks()) ?></dd>
+                    <?php endif; ?>
+                </dl>
+                <dl class="dl-horizontal span6">
+                    <dt><?php echo $this->translate('Manufacturer') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->instance->getManufacturer()) ?></dd>
+                    <dt><?php echo $this->translate('Vendor') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->instance->getVendor()) ?></dd>
+                </dl>
+            </div>
+
+            <div class="row-fluid">
+                <dl class="dl-horizontal span6">
+                    <dt><?php echo $this->translate('Serial #') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->instance->getSerialNumber()) ?></dd>
+                    <dt><?php echo $this->translate('Registration #') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->instance->getRegNumber()) ?></dd>
+                    <dt><?php echo $this->translate('Batch #') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->instance->getBatchNumber()) ?></dd>
+                    <dt><?php echo $this->translate('Certificate #') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->instance->getCertificateNumber()) ?></dd>
+                    <dt><?php echo $this->translate('Order #') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->instance->getOrderNumber()) ?></dd>
+                    <dt><?php echo $this->translate('RFID') ?>:</dt>
+                    <dd><?php echo $this->escapeHtml($this->instance->getRfid()) ?></dd>
+                </dl>
+                <dl class="dl-horizontal span6">
+                    <dt><?php echo $this->translate('Production date') ?>:</dt>
+                    <dd><?php
+                        echo $this->dateFormat(
+                            $this->instance->getProductionDate(), IntlDateFormatter::SHORT)
+                        ?>
+                    </dd>
+                    <dt><?php echo $this->translate('Purchase date') ?>:</dt>
+                    <dd><?php
+                        echo $this->dateFormat(
+                            $this->instance->getPurchaseDate(), IntlDateFormatter::SHORT)
+                        ?>
+                    </dd>
+                    <dt><?php echo $this->translate('Technical lifetime') ?>:</dt>
+                    <dd><?php
+                        echo $this->dateFormat(
+                            $this->instance->getTechnicalLifetime(), IntlDateFormatter::SHORT)
+                        ?>
+                    </dd>
+                    <dt><?php echo $this->translate('Guarantee date') ?>:</dt>
+                    <dd><?php
+                        echo $this->dateFormat(
+                            $this->instance->getGuaranteeTime(), IntlDateFormatter::SHORT)
+                        ?>
+                    </dd>
+                    <dt><?php echo $this->translate('Reception control') ?>:</dt>
+                    <dd><?php
+                        echo $this->dateFormat(
+                            $this->instance->getReceptionControl(), IntlDateFormatter::SHORT)
+                        ?>
+                    </dd>
+                    <dt><?php echo $this->translate('First time used') ?>:</dt>
+                    <dd><?php
+                        echo $this->dateFormat(
+                            $this->instance->getFirstTimeUsed(), IntlDateFormatter::SHORT)
+                        ?>
+                    </dd>
+                </dl>
+            </div>
+
+            <?php if ($this->equipmentType->getInstanceType() === 'container'): ?>
+                <div class="row-fluid">
+                    <dl class="dl-horizontal span6">
+                        <dt><?php echo $this->translate('Isolated') ?>:</dt>
+                        <dd><?php echo $this->translate(yesOrNo($this->instance->getIsIsolated())) ?></dd>
+                        <dt><?php echo $this->translate('Dryair') ?>:</dt>
+                        <dd><?php echo $this->translate(yesOrNo($this->instance->getHasDryair())) ?></dd>
+                        <dt><?php echo $this->translate('Communication racks') ?>:</dt>
+                        <dd><?php echo $this->translate(yesOrNo($this->instance->getHasCommunicationRacks())) ?></dd>
+
+                    </dl>
+                    <dl class="dl-horizontal span6">
+                        <dt><?php echo $this->translate('220 volt') ?>:</dt>
+                        <dd><?php echo $this->translate(yesOrNo($this->instance->getHasVolt220())) ?></dd>
+                        <dt><?php echo $this->translate('400 volt') ?>:</dt>
+                        <dd><?php echo $this->translate(yesOrNo($this->instance->getHasVolt400())) ?></dd>
+                        <dt><?php echo $this->translate('Other decor') ?>:</dt>
+                        <dd><?php echo $this->translate(yesOrNo($this->instance->getHasOtherDecor())) ?></dd>
+                    </dl>
+                </div>
+            <?php endif ?>
+
+            <p>
+                <small><?php echo $this->translate('Last modified') ?>:
+                    <?php echo $this->dateFormat(
+                        $this->instance->getDateUpdated(), IntlDateFormatter::SHORT) ?>
+                    <?php echo $this->translate('by') ?> <?php echo $this->instance->getUpdatedBy() ?></small>
+            </p>
+        </section>
+        <?php if (count($this->periodicControls) > 0): ?>
+            <section id="periodic-control">
+                <h3><?php echo $this->translate('Periodic controls') ?></h3>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th><?php echo $this->translate("Control date") ?></th>
+                        <th><?php echo $this->translate("Control status") ?></th>
+                        <th><?php echo $this->translate("Competent Person") ?></th>
+                        <th><?php echo $this->translate("Actions") ?></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($this->periodicControls as $periodicControl): ?>
+                        <tr>
+                            <td><?php echo $this->dateFormat($periodicControl->getControlDate(),
+                                    IntlDateFormatter::SHORT); ?></td>
+                            <td><?php echo assignColor($periodicControl->getControlStatus(), $this) ?></td>
+                            <td><?php echo $periodicControl->getRegisteredBy() ?></td>
+                            <td>
+                                <a href="<?php echo $this->application()->url(array(
+                                    'controller' => 'periodic-control',
+                                    'action' => 'index',
+                                    'id' => $periodicControl->getPeriodicControlId()
+                                )) ?>" class="btn btn-mini">
+                                    <i class="icon icon-list"></i> <?php echo $this->translate('Details') ?>
+                                </a>
+                                <?php if ($periodicControl->isDeletable($this->currentUserObject)): ?>
+                                    <button class="btn btn-mini"
+                                            data-action="confirm-delete-periodic-control"
+                                            data-id="<?php echo $periodicControl->getPeriodicControlId() ?>">
+                                        <i class="icon icon-trash"></i> <?php echo $this->translate('Delete') ?>
+                                    </button>
+                                <?php endif ?>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+            </section>
+
+        <?php endif ?>
+
+        <?php if (count($this->visualControls) > 0): ?>
+            <section id="visual-control">
+                <h3><?php echo $this->translate('Visual controls') ?></h3>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th><?php echo $this->translate("Control date") ?></th>
+                        <th><?php echo $this->translate("Control status") ?></th>
+                        <th><?php echo $this->translate("Registered by") ?></th>
+                        <th><?php echo $this->translate("Actions") ?></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($this->visualControls as $periodicControl): ?>
+                        <tr>
+                            <td><?php echo $this->dateFormat($periodicControl->getControlDate(),
+                                    IntlDateFormatter::SHORT); ?></td>
+                            <td><?php echo assignColor($periodicControl->getControlStatus(), $this) ?></td>
+                            <td><?php echo $periodicControl->getRegisteredBy() ?></td>
+                            <td>
+                                <a href="<?php echo $this->application()->url(array(
+                                    'controller' => 'visual-control',
+                                    'action' => 'index',
+                                    'id' => $periodicControl->getVisualControlId()
+                                )) ?>" class="btn btn-mini">
+                                    <i class="icon icon-list"></i> <?php echo $this->translate('Details') ?>
+                                </a>
+                                <?php if ($periodicControl->isDeletable($this->currentUserObject)): ?>
+                                    <button class="btn btn-mini"
+                                            data-action="confirm-delete-visual-control"
+                                            data-id="<?php echo $periodicControl->getVisualControlId() ?>">
+                                        <i class="icon icon-trash"></i> <?php echo $this->translate('Delete') ?>
+                                    </button>
+                                <?php endif ?>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+            </section>
+
+        <?php endif ?>
+
+        <section id="subinstances">
+            <h3><?php echo $this->translate('Subinstances') ?></h3>
+            <?php
+
+            $actionsArray = array(
+                'options' => array()
+            );
+
+            if ($this->isAllowed($equipmentInstanceResource, 'update')) {
+                $actionsArray['add'] = array(
+                    'label' => $this->translate('Add new'),
+                    'attributes' => array(
+                        'href' => $this->application()->url(array('controller' => 'equipment-instance',
+                            'action' => 'add-subinstance',
+                            'id' => $instanceId)),
+                        'id' => 'add-subinstance'
+                    )
+                );
+
+                $actionsArray['options']['unlink'] = array(
+                    'label' => $this->translate('Unlink'),
+                    'icon' => 'ban-circle',
+                    'attributes' => array(
+                        'href' => $this->application()->url(array('controller' => 'equipment-instance',
+                            'action' => 'unlink',
+                            'id' => ':equipmentInstanceId',
+                            'parent_id' => $instanceId
+                        ))
+                    )
+                );
+            }
+
+            $actionsArray['options']['detail'] = array(
+                'label' => $this->translate('Details'),
+                'icon' => 'list',
+                'attributes' => array(
+                    'href' => $this->application()->url(array('controller' => 'equipment-instance',
+                        'action' => 'detail',
+                        'id' => ':equipmentInstanceId'))
+                )
+            );
+
+            if ($this->isAllowed($periodicControlResource, 'create')) {
+
+                if(!isset($actionsArray['group']))  $actionsArray['group'] = array();
+
+                $actionsArray['group']['periodic-control'] = array(
+                    'label' => $this->translate('Periodic control'),
+                    'attributes' => array(
+                        'href' => '#',
+                        'id' => 'periodic-control-action'
+                    )
+                );
+            }
+
+            if ($this->isAllowed($visualControlResource, 'create')) {
+
+                if (!isset($actionsArray['group'])) $actionsArray['group'] = array();
+
+                $actionsArray['group']['visual-control'] = array(
+                    'label' => $this->translate('Visual control'),
+                    'attributes' => array(
+                        'href' => '#'
+                    )
+                );
+            }
+
+            echo $this->bootstrapDataTable($this->subinstances, array(
+                    'object_id' => 'equipmentInstanceId',
+                    'search' => false,
+                    'actions' => $actionsArray,
+                    'table_class' => 'table table-striped data-table-net',
+                    'table_row_class' => function ($item) {
+                        $equipmentClass = 'equipment-' . $item->getEquipment()->getEquipmentId();
+                        $intervalDayClass = ' intervalDays-' . $item->getEquipment()->getControlIntervalByDays();
+                        return $equipmentClass . $intervalDayClass;
+                    },
+                    'columns' => array(
+                        'equipment' => array(
+                            'label' => $this->translate('Equipment type'),
+                        ),
+                        'serialNumber' => array(
+                            'label' => $this->translate('Serial #'),
+                        ),
+                        'usageStatus' => array(
+                            'label' => $this->translate('Usage status'),
+                            'callback_method' => 'getName',
+                        ),
+                        'controlStatus' => array(
+                            'label' => $this->translate('Control status'),
+                            'callback' => 'assignColor',
+                        ),
+                        'periodicControlDate' => array(
+                            'label' => $this->translate('Next control'),
+                            'callback' => function ($output, $view) {
+                                return $view->dateFormat($output, IntlDateFormatter::SHORT);
+                            }
+                        )
+                    )
+                )
+            );
+
+            function assignColor($output, $view) {
+                $output = trim(strtolower($output));
+                if ($output === 'expired') {
+                    return '<span class="label label-warning">' . $view->translate("Expired") . '</span>';
+                }
+                if ($output === 'not approved') {
+                    return '<span class="label label-important">' . $view->translate(ucfirst($output)) . '</span>';
+                }
+                if ($output === 'temporarily approved') {
+                    return '<span class="label label-warning">' . $view->translate(ucfirst($output)) . '</span>';
+                }
+                if ($output === 'approved') {
+                    return '<span class="label label-success">' . $view->translate(ucfirst($output)) . '</span>';
+                }
+                return $output;
+            }
+
+            ?>
+        </section>
+        <section id="attachments">
+            <h3><?php echo $this->translate('Attachments') ?></h3>
+            <?php echo $attachmentTable ?>
+        </section>
+
+    </div>
+</div>
+<?php
+$deleteManymodalParams = array(
+    'id' => 'delete-many-attachments',
+    'title' => $this->translate('Delete attachments'),
+    'message' => $this->translate('Are you sure to delete selected attachments'),
+    'formAction' => array(
+        'controller' => 'equipment-instance-attachment',
+        'action' => 'delete-many-attachment'
+    )
+);
+echo $this->partial('partial/groupActionConfirmModal.phtml', $deleteManymodalParams);
+
+echo $this->partial('partial/submit-modal.phtml', array(
+    'name' => 'delete-periodic-control',
+    'controller' => 'periodic-control',
+    'action' => 'delete',
+    'title' => $this->translate('Delete periodic control'),
+    'message' => $this->translate('You are about to delete a periodic control.')
+));
+
+echo $this->partial('partial/submit-modal.phtml', array(
+    'name' => 'delete-visual-control',
+    'controller' => 'visual-control',
+    'action' => 'delete',
+    'title' => $this->translate('Delete visual control'),
+    'message' => $this->translate('You are about to delete a visual control.')
+));
+
+
+?>
+<?php echo $this->partial('partial/periodicControlModal.phtml'); ?>
+
+
+<?php
+$this->inlineScript()
+    ->appendScript('
+            var titleIframe ="' . $this->translate('Equipment Instance attachment') . '";
+            var titleIframeCheckout ="' . $this->translate('Detail Checkout') . '";
+            var titleIframeSubinstance ="' . $this->translate('Add equipment subinstance') . '";
+            var saveButtonName ="' . $this->translate('Save') . '";
+            ', 'text/javascript', array('noescape' => true))
+    ->appendFile($this->basePath() . '/js/application/attachments/default.js');
+?>

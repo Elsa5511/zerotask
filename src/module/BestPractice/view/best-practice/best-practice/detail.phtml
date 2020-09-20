@@ -1,0 +1,124 @@
+<?php
+if($this->isLastRevision){
+    $this->layout()->title = $this->title;
+    $this->headTitle($this->title);
+    
+    $proceduresAction = 'procedures';
+    $userManualAction = 'user-manual';
+    $additionalInfoAction = 'additional-info';
+}else{
+    $title = sprintf("%s (%s: %s)", $this->title,  $this->translate("Revision number"), $this->revisionNumber);
+    $this->layout()->title = $title;
+    $this->headTitle($title);
+    
+    $proceduresAction = 'procedures-old-revision';
+    $userManualAction = 'user-manual-old-revision';
+    $additionalInfoAction = 'additional-info-old-revision';
+}
+$isAdmin = $this->zfcUserIdentity()->hasRole('admin');
+?>
+<div class="wrapper frontend" >    
+    <div class="container inner-wrapper">
+        <div class="row">
+            <div class="span3">
+                <?php echo $this->partial('partial/best-practice-detail-menu.phtml',
+                                array(
+                                    'bestPracticeId' => $this->bestPracticeId,
+                                    'detailAction' => null,
+                                    'proceduresAction' => $proceduresAction,
+                                    'userManualAction' => $userManualAction,
+                                    'additionalInfoAction' => $additionalInfoAction
+                                ));
+                if($this->isLastRevision):
+                ?>
+                    <?php
+                        $classBtn = "";
+                        $classIcon = "icon-black";
+                        $actionLink = "subscribe";
+                        $titleLink = $this->translate("Subscribe");
+                        if($this->isSubscribed){
+                            $classBtn = "btn-primary";
+                            $classIcon = "icon-white";
+                            $actionLink = "unsubscribe";
+                            $titleLink = $this->translate("Unsubscribe");
+                        }
+                    ?>
+                    <p>
+                        <a href="<?php
+                        echo $this->application()->url(array(
+                            'controller' => 'best-practice',
+                            'action' => $actionLink,
+                            'id' => $this->bestPracticeId))
+                        ?>" title="<?php echo $titleLink ?>" class="btn <?php echo $classBtn ?> btn-small" data-toggle="button">
+                            <i class="icon-star <?php echo $classIcon ?>"></i> <?php echo $titleLink ?></a>
+                    </p>
+                    <p>
+                        <a href="<?php
+                        echo $this->application()->url(array(
+                            'controller' => 'best-practice',
+                            'action' => 'export-to-pdf',
+                            'id' => $this->bestPracticeId))
+                        ?>" title="<?php echo $this->translate("Export to PDF"); ?>" class="btn btn-small"><i class="icon-print"></i> <?php echo $this->translate("Export to PDF"); ?></a>
+                    </p>
+                    <p>
+                        <a href="&#109;ailto:<?php echo $this->adminEmail ?>" title="<?php echo $this->translate("Suggest update"); ?>" class="btn btn-small"><i class="icon-envelope"></i> <?php echo $this->translate("Suggest update"); ?></a>
+                    </p>
+                    <?php
+                    if($isAdmin): ?>
+                        <p>
+                            <a href="<?php
+                                echo $this->application()->url(array(
+                                'controller' => 'best-practice',
+                                'action' => 'revision-history',
+                                'id' => $this->bestPracticeId))
+                            ?>" title="<?php echo $this->translate("Revision history"); ?>" class="btn btn-small"><i class="icon-list-alt"></i> <?php echo $this->translate("Revision history"); ?></a>
+                        </p>
+                    <?php
+                    endif; ?>
+                <?php endif; ?>
+            </div>
+            <div class="span9">
+                <div id="myCarousel" class="carousel slide" data-interval="false">
+                    <ol class="carousel-indicators">
+                        <?php for ($i = 0; $i < count($this->slides); $i++): ?>
+                        <li data-target="#myCarousel" data-slide-to="<?php echo $i; ?>" <?php echo $i === 0 ? 'class="active"' : ''; ?>></li>
+                        <?php endfor; ?>
+                    </ol>
+                    <div class="carousel-inner">
+                        <?php foreach($this->slides as $i => $slide): ?>
+                        <div class="item <?php echo $i == 0 ? 'active' : '' ?>">
+                            <img src="<?php echo $this->basePath() . '/content/best-practice/' . $slide; ?>" alt="Best Practice slide">
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php if (count($this->slides) > 1): ?>
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                    <?php endif; ?>
+                </div>
+                <?php 
+                if($this->isLastRevision):
+                ?>
+                    <?php
+                    if ($isAdmin) :
+                        $addAttachmentLink = $this->application()->url(array('controller' => 'best-practice-attachment',
+                                                        'action' => 'add-attachment', 'id' => $this->bestPracticeId));
+                        $addAttachmentTitle = $this->translate('New Attachment');
+                        ?>
+                    <a href="<?php echo $addAttachmentLink ?>" title ="<?php echo $addAttachmentTitle ?>" class="btn btn-mini add-edit-attachment">
+                        <i class="icon-plus"></i><?php echo $addAttachmentTitle ?></a>
+                        <?php
+                    endif;
+                    ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <div class="push"></div>
+</div>
+<?php
+if($this->isLastRevision){
+    $this->inlineScript()
+            ->appendScript('var saveButtonName = "' . $this->translate('Save') . '";', 'text/javascript', array('noescape' => true))
+            ->appendFile($this->basePath() . '/js/application/attachments/default.js');
+}

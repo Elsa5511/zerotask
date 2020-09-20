@@ -1,0 +1,80 @@
+<?php
+$title = $this->translate("Certifications report");
+$this->headTitle($title);
+if ($this->isSearch) {
+    $title .= " - " . $this->translate("Search results");
+}
+$this->layout()->title = $title;
+$this->inlineScript()->appendFile($this->basePath() . '/js/certification/certification.js', 'text/javascript');
+?>
+<div class="row">
+    <a href="#" class="pull-right advanced-search-toggle" data-toggle="collapse" data-target="#advanced-search">
+        <?php echo $this->translate('Advanced search'); ?>
+    </a>
+</div>
+
+<!-- Advanced search -->
+<?php echo $this->partial('partial/certification-search.phtml', array('form' => $this->searchForm, 'isSearch' => $this->isSearch)) ?>
+
+
+
+<div class="row">    
+    <div class="span12">
+        <section id="subinstances">
+            <?php
+            echo $this->bootstrapDataTable($this->certifications, array(
+                'object_id' => 'certificationId',
+                'search' => false,
+                'actions' => false,
+                'table_class' => 'table table-striped data-table-net',
+                'columns' => array(
+                    'equipment' => array(
+                        'label' => $this->translate('Equipment'),
+                    ),
+                    'user' => array(
+                        'label' => $this->translate('User'),
+                    ),
+                    'theoryPassed' => array(
+                        'label' => $this->translate('Theory exam'),
+                        'callback' => 'isPassed'
+                    ),
+                    'practicalPassed' => array(
+                        'label' => $this->translate('Practical exam'),
+                        'callback' => 'isPassed'
+                    ),
+                    'valid' => array(
+                        'label' => $this->translate('Certified'),
+                        'callback' => 'isPassed'
+                    ),
+                    'expirationDate' => array(
+                        'label' => $this->translate('Expires'),
+                        'callback' => function($date, $view) {
+                    return $view->dateFormat($date, IntlDateFormatter::SHORT);
+                }
+                    ),
+                ),
+                'params' => array(
+                    'basic' => array('application', 'controller', 'action')
+                )
+                    )
+            );
+            ?>
+        </section>
+
+        <?php
+        echo $this->partial('partial/export-button.phtml', array(
+            'module' => 'application',
+            'controller' => 'certification',
+            'action' => 'export-report',
+            'currentFilterParams' => $this->currentFilterParams
+            ));
+        ?>
+
+    </div>
+</div>
+
+<?php
+
+function isPassed($passed) {
+    return ($passed) ? '<i class="icon-ok"></i>' : '';
+}

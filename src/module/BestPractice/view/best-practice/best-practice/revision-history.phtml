@@ -1,0 +1,74 @@
+<?php
+$this->layout()->title = $this->translate("Revision History");
+$this->headTitle($this->layout()->title);
+?>
+
+<div class="row">    
+    <div class="span8"> 
+        <?php echo $this->translate("Current Revision:"); ?> <h4><b><?php echo $this->escapeHtml($this->title) ?></b></h4>
+    </div>
+    <?php
+    if(is_array($this->oldRevisions) && count($this->oldRevisions) > 0): ?>
+        <?php
+        $viewAction = array(
+            'label' => $this->translate('View'),
+            'icon' => 'chevron-right',
+            'attributes' => array(
+                'href' => $this->application()->url(
+                        array(
+                            'controller' => $this->controller,
+                            'action' => 'old-revision-detail',
+                            'id' => ":bestPracticeId"
+                        )
+                )
+            )
+        );
+        ?>
+        <div class="span12">
+            <?php
+            //TODO: change the funcionality at sysco.js, for manage the sort columns
+            echo $this->bootstrapDataTable($this->oldRevisions, array(
+                'object_id' => 'bestPracticeId',
+                'table_class' => 'table table-striped data-table-net',
+                'search' => false,
+                'actions' => array(
+                    'options' => array(
+                        'view' => $viewAction
+                    )
+                ),
+                'columns' => array(
+                    'title' => array(
+                        'label' => $this->translate('Title'),
+                    ),
+                    'subtitle' => array(
+                        'label' => $this->translate('Subtitle'),
+                    ),
+                    'versionId' => array(
+                        'label' => $this->translate('Version Id'),
+                    ),
+                    'revisionDate' => array(
+                        'label' => $this->translate('Revision Date'),
+                        'callback' => function($date, $view) {
+                            return $view->dateFormat($date, IntlDateFormatter::SHORT);
+                        }
+                    ),
+                    'revisionNumber' => array(
+                        'label' => $this->translate('Revision Number'),
+                    ),
+                ),
+                'params' => array(
+                    'basic' => array('application', 'controller', 'action')
+                )
+            ));
+            ?>
+        </div>
+    <?php
+    else: ?>
+        <div class="span8"> 
+            <p class="text-warning">
+                <?php echo $this->translate("No old revisions were found"); ?>
+            </p>
+        </div>
+    <?php
+    endif; ?>
+</div>

@@ -1,0 +1,138 @@
+<?php
+$this->headTitle($this->title);
+$this->layout()->title = $this->titlePrefix . $this->translate('Instances expired on control date');
+$this->inlineScript()->appendFile($this->basePath() . '/js/equipment/periodic-control.js', 'text/javascript');
+?>
+
+<!-- Alert -->
+<div class="delete-alert alert fade in">
+    <button type="button" class="close">&times;</button>    
+    <strong><?php echo $this->translate('You must select an equipment instance') ?></strong>
+</div>
+<div class="different-type-alert alert hide alert-error">
+    <button type="button" class="close">&times;</button>    
+    <strong><?php echo $this->translate('You must select only instances with the same equipment type') ?></strong>
+</div>
+
+<?php
+echo $this->bootstrapDataTable($this->equipmentInstances, array(
+    'object_id' => 'equipmentInstanceId',
+    'search' => false,
+    'actions' => array(
+        'add' => null,
+        'options' => array(
+            'detail' => array(
+                'label' => $this->translate('Details'),
+                'icon' => 'list',
+                'attributes' => array(
+                    'href' => $this->application()->url(array('controller' => 'equipment-instance',
+                        'action' => 'detail',
+                        'id' => ':equipmentInstanceId'))
+                )
+            ),
+        ),
+        'group' => array(
+            'periodic-control' => array(
+                'label' => $this->translate('Periodic control'),
+                'attributes' => array(
+                    'href' => '#',
+                    'id' => 'periodic-control-action'
+                )
+            ),
+        )
+    ),
+    'table_class' => 'table table-striped data-table-net',
+    'table_row_class' => 'getTableRowClass',
+    'columns' => array(
+        'equipment' => array(
+            'label' => $this->translate('Equipment type'),
+            'class' => 'span3 column-equipment'
+        ),
+        'serialNumber' => array(
+            'label' => $this->translate('Serial #'),
+        ),
+        'regNumber' => array(
+            'label' => $this->translate('Reg. number'),
+        ),
+        'location' => array(
+            'label' => $this->translate('Location'),
+            'callback_method' => 'getSlug',
+        ),
+        'usageStatus' => array(
+            'label' => $this->translate('Usage status'),
+            'callback' => 'getTranslatedValue',
+        ),
+        'controlStatusOrExpiredStatus' => array(
+            'label' => $this->translate('Control status'),
+            'callback' => 'assignColor',
+        ),
+        'minPeriodicControlDate' => array(
+            'label' => $this->translate('Next control'),
+            'callback' => function($output, $view) {
+        return $view->dateFormat($output, IntlDateFormatter::SHORT);
+    }
+        )
+    ),
+    'params' => array(
+        'basic' => array('application', 'controller', 'action')
+    )
+        )
+);
+?>
+
+<?php
+
+$routeParams = array();
+if ($this->reportLevel) {
+    $routeParams['report_level'] = $this->reportLevel;
+    $routeParams['id'] = $this->id;
+}
+
+echo $this->partial('partial/export-button.phtml', array(
+    'module' => 'application',
+    'controller' => 'equipment-instance',
+    'action' => 'export-periodic-control-report',
+    'routeParams' => $routeParams
+    ));
+?>
+
+<!-- Periodic Control Modal -->
+<?php echo $this->partial('partial/periodicControlModal.phtml'); ?>
+
+<?php
+
+function getTranslatedValue($output, $view) {
+    return $view->translate((string) $output);
+}
+
+function assignColor($output, $view) {
+    $output = trim(strtolower($output));
+    $statusText = '';
+    $spanClass = '';
+    if ($output === 'expired') {
+        $statusText = $view->translate('Expired');
+        $spanClass = 'label label-warning';
+    }
+    if ($output === 'not approved') {
+        $statusText = $view->translate('Not approved');
+        $spanClass = 'label label-important';
+    }
+    if ($output === 'temporarily approved') {
+        $statusText = $view->translate('Temporarily approved');
+        $spanClass = 'label label-warning';
+    }
+    if ($output === 'approved') {
+        $statusText = $view->translate('Approved');
+        $spanClass = 'label label-success';
+    }
+    return '<span class="' . $spanClass . '">' . $statusText . '</span>';
+}
+
+function getTableRowClass($item) {
+    $equipment = $item->getEquipment();
+    $equipmentClass = 'equipment-' . $equipment->getEquipmentId();
+    $intervalDayClass = 'intervalDays-' . (int) $equipment->getControlIntervalByDays();
+    $newTableRowClass = $equipmentClass . ' ' . $intervalDayClass;
+    return $newTableRowClass;
+}
+?>

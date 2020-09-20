@@ -1,0 +1,185 @@
+<?php
+$title = ($title === null ? $this->application() : $title);
+$this->headTitle($title);
+$this->layout()->title = $title;
+
+if ($this->isAllowed($htmlContentSectionResource, 'create')): ?>
+    <a class="btn btn-mini pull-right edit_documentation">
+        <i class="icon-edit"></i> 
+        <?php echo $this->translate('Edit Document') ?>
+    </a>
+<?php endif; ?>
+
+<div class="row row-desktop">
+    <div class="span3">
+        <?php if (count($this->sections) > 0): ?>
+            <?php
+            echo $this->partial('partial/documentation-menu.phtml', array(
+                'currentController' => $this->currentController,
+                'sections' => $this->sections,
+                'currentSection' => $this->currentSection,
+                'elementId' => $this->elementId,
+                'canEditSections' => $this->isAllowed($sectionResource, 'update')));
+            ?>
+        <?php endif; ?>
+        <?php if ($this->isAllowed($sectionResource, 'create')): ?>
+            <a href="
+            <?php
+            echo $this->application()->url(array('action' => 'add-section',
+                'controller' => $this->currentController . '-section',
+                'id' => $this->elementId,
+                    )
+            );
+            ?>"
+               class="btn btn-mini add-edit-section"><i class="icon-plus"></i> <?php echo $this->translate('New section') ?></a>
+           <?php endif; ?>
+    </div>
+
+    <div class="span9 <?php echo $this->application()?>-documentation">
+
+        <?php if (!empty($this->currentSection)): ?>
+            <form method="post" action="<?php
+            echo $this->application()->url(array('action' => 'save',
+                'controller' => 'html-content-' . $this->currentController . '-section',
+                'id' => $this->currentSection->getSectionId()
+                    )
+            )
+            ?>">
+                <div id="documentationContent<?php echo $this->currentSection->getSectionId(); ?>" class="tinymce-content">    
+                    <?php echo $this->currentSection->getHtmlContent(); ?>
+                </div>
+            </form>
+            <?php if ($this->isAllowed($inlineSectionResource, 'create')): ?>
+                <p><a href="
+                <?php
+                echo $this->application()->url(array('action' => 'add-section',
+                    'controller' => $this->inlineController,
+                    'id' => $this->currentSection->getSectionId(),
+                        )
+                );
+                ?>"
+                   class="btn btn-mini add-edit-section"><i class="icon-plus"></i> <?php echo $this->translate('New inline section') ?></a></p>
+               <?php endif; ?>
+
+        <?php endif; ?>
+
+        <?php if (!empty($this->inlineSections)): ?>
+            <div  class="accordion" id="documentation-accordion">
+                <?php
+                foreach ($this->inlineSections as $inlineSection):
+                    $controller = $this->inlineController . '-attachment';
+                    ?>
+                    <div class="accordion-group">
+                        <div class="accordion-heading edit-buttons-toggle">
+                            <?php
+                            echo $this->partial('partial/section-edit-buttons.phtml', array(
+                                'controller' => $this->inlineController,
+                                'section' => $inlineSection,
+                                'equipmentId' => $this->elementId,
+                                'canEditSections' => $this->isAllowed($inlineSectionResource, 'update')
+                            ));
+                            ?>
+                            <a href="#inlineSection<?php echo $inlineSection->getSectionId() ?>"  data-toggle="collapse" data-parent="#documentation-accordion" class="accordion-toggle collapsed">
+                                <i class="icon-chevron-down"></i><?php echo $this->escapeHtml($inlineSection->getLabel()) ?>
+
+                            </a>
+
+                        </div>
+                        <div class="accordion-body collapse" id="inlineSection<?php echo $inlineSection->getSectionId() ?>" >
+                            <form method="post" action="<?php
+                            echo $this->application()->url(array('action' => 'save',
+                                'controller' => 'html-content-' . $this->inlineController,
+                                'id' => $inlineSection->getSectionId()
+                                    )
+                            )
+                            ?>">
+
+                                <div id="inlineContent<?php echo $inlineSection->getSectionId() ?>" class="accordion-inner tinymce-content" >
+
+                                    <?php
+                                    echo $inlineSection->getHtmlContent();
+                                    ?>
+
+
+                                </div>
+                            </form>
+                            <div class="row-fluid">
+                                <ul class="thumbnails">
+                                    <?php
+                                    $inlineMethod = $this->inlineMethodToGetAttachments;
+                                    foreach ($inlineSection->$inlineMethod() as $attachment) :
+                                        ?>
+                                        <li class="span3 edit-buttons-toggle">
+                                            <?php
+                                            echo $this->partial('partial/attachment-thumbnail.phtml', array(
+                                                'controller' => $controller,
+                                                'attachment' => $attachment,
+                                                'attachmentResource' => $inlineSectionAttachmentResource,
+                                                'equipmentId' => $this->pageId));
+                                            ?>
+                                        </li>
+                                    <?php endforeach; ?>                                    
+                                </ul>
+                            </div>
+                            <?php
+                            if ($this->isAllowed($inlineSectionAttachmentResource, 'create')) {
+                                echo $this->partial('partial/new-item-button.phtml', array(
+                                    'controller' => $controller,
+                                    'section' => $inlineSection)
+                                );
+                            }
+                            ?>
+                        </div>                        
+                    </div>                
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($this->currentSection)): ?>
+            <?php $controller = $this->currentController . "-section-attachment"; ?>
+
+            <div class="row-fluid">
+                <ul class="thumbnails">
+                    <?php
+                    $method = 'get' . ucwords($this->currentController) . 'SectionAttachments';
+                    foreach ($this->currentSection->$method() as $attachment) :
+                        ?>
+                        <li class="span3 edit-buttons-toggle">
+                            <?php
+                            echo $this->partial('partial/attachment-thumbnail.phtml', array(
+                                'controller' => $controller,
+                                'attachment' => $attachment,
+                                'attachmentResource' => $sectionAttachmentResource,
+                                'equipmentId' => $this->pageId));
+                            ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <?php
+            if ($this->isAllowed($sectionAttachmentResource, 'create')) {
+                $controller = $this->currentController . '-section-attachment';
+                echo $this->partial('partial/new-item-button.phtml', array(
+                    'controller' => $controller,
+                    'section' => $this->currentSection)
+                );
+            }
+            ?>
+        <?php endif; ?>
+
+
+    </div>
+</div>
+
+<?php
+$this->inlineScript()
+        ->appendScript(' 
+            var titleIframe ="' . $this->translate('Section information') . '";
+            var titleIframeAttachment ="' . $this->translate('Attachment information') . '";
+            var saveButtonName ="' . $this->translate('Save') . '";
+           
+            ', 'text/javascript', array('noescape' => true))
+        ->appendFile($this->basePath() . '/js/application/sections/default.js')
+        ->appendFile($this->basePath() . '/includes/tinymce/js/tinymce/tinymce.min.js')
+        ->appendFile($this->basePath() . '/js/tinymce.js')
+        ->appendFile($this->basePath() . '/js/application/attachments/default.js');

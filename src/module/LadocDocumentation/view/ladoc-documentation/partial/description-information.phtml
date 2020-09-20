@@ -1,0 +1,24 @@
+<div>
+    <?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->application()->url(array('controller' => 'ladoc-documentation', 'action' => 'description', 'documentation_id' => $this->documentationId)));
+    $descriptionFieldset = $form->get('description_fieldset');
+    $form->prepare();
+    ?>
+    <?php echo $this->form()->openTag($form); ?>
+    <?php echo $this->bootstrapFormRow($this->form->get('csrf')); ?>
+    <label><strong><?php echo $this->translate('General description') ?></strong></label>
+    <fieldset>
+        <?php echo $this->formRow($descriptionFieldset->get('type')); ?>
+
+        <div class="control-group">
+            <div class="controls">
+                <?php echo $this->formRow($descriptionFieldset->get('description')); ?>
+            </div>
+        </div>
+
+        <button type="submit" class="btn"><?php echo $this->translate('Save description'); ?> </button>
+
+    </fieldset>
+    <?php echo $this->form()->closeTag(); ?>
+</div>

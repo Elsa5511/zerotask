@@ -1,0 +1,75 @@
+<?php
+if (isset($this->form)) :
+    $title = $this->translate("Check in an equipment instance");
+    $this->layout()->title = $title;
+    $this->headTitle($title);
+    $this->inlineScript()->appendFile($this->basePath() . '/js/equipment/checkout.js', 'text/javascript');
+    ?>
+    <?php if (isset($this->checkoutObject)) :  
+            $checkout = $this->checkoutObject; ?>
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label"><?php echo $this->translate('Checked out date') ?></label>
+                <div class="controls">
+                    <strong><?php echo $this->dateFormat($checkout->getCheckoutDate(), 
+                                                         IntlDateFormatter::SHORT) ?></strong>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><?php echo $this->translate('Checked out by') ?></label>
+                <div class="controls">
+                    <strong><?php echo $this->escapeHtml($checkout->getCheckedBy()) ?></strong>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><?php echo $this->translate('Expected checkin date') ?></label>
+                <div class="controls">
+                    <strong><?php echo $this->dateFormat($checkout->getCheckinDate(), 
+                                                         IntlDateFormatter::SHORT) ?></strong>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><?php echo $this->translate('Organization') ?></label>
+                <div class="controls">
+                    <strong><?php echo $this->escapeHtml($checkout->getOrganization()) ?></strong>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><?php echo $this->translate('Contact person full name') ?></label>
+                <div class="controls">
+                    <strong><?php echo $this->escapeHtml($checkout->getContactPerson()) ?></strong>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><?php echo $this->translate('Phone') ?></label>
+                <div class="controls">
+                    <strong><?php echo $this->escapeHtml($checkout->getContactPersonPhone()) ?></strong>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><?php echo $this->translate('Position') ?></label>
+                <div class="controls">
+                    <strong><?php echo $this->escapeHtml($checkout->getContactPersonPosition()) ?></strong>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><?php echo $this->translate('Comment') ?></label>
+                <div class="controls">
+                    <strong><?php echo $this->escapeHtml($checkout->getComment()) ?></strong>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+    <hr />
+    <div class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label"><?php echo $this->translate('Checked in by') ?></label>
+            <div class="controls">
+                <strong><?php echo $this->escapeHtml($this->currentUser) ?></strong>
+            </div>
+        </div>
+    </div>
+
+    <?php
+    echo $this->bootstrapForm($this->form);
+endif;

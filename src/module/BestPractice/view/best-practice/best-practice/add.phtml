@@ -1,0 +1,8 @@
+<?php
+$title = $this->translate('Add a Best Practice');
+$this->layout()->title = $title;
+$this->headTitle($title);
+
+if($this->form) {
+    echo $this->bootstrapForm($this->form);
+}

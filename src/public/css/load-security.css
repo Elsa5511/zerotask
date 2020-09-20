@@ -1,0 +1,45 @@
+.bottom-spacing {
+    padding-bottom: 10px;
+}
+
+.strong-display {    
+    color: black !important;
+    font-weight: bold !important;
+}
+
+.mini {
+    font-size: 11px;
+}
+
+.truck-image {
+    position: relative;
+    left: 0;
+    top: 0;
+    overflow: hidden;    
+}
+
+.roughboy {
+    position: absolute; left: 95px; top: 21px;    
+}
+
+.angle-line {
+    position: absolute;
+}
+
+.angle-horizontal {
+    left: 95px;
+    top: 21px;
+}
+
+.angle-vertical {
+    left: 194px;
+}
+
+.vertical-upper {
+   top: 0px;
+}
+
+.vertical-lower {
+   top: 81px;    
+}
+

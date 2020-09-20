@@ -1,0 +1,16 @@
+<?php
+if(isset($this->form)) :
+
+    $title = $this->translate('Add Equipment Subinstance');
+    $this->layout()->title = $title;
+    $this->headTitle($title);
+    $this->inlineScript()->appendFile($this->basePath() . '/js/equipment/equipment-instance.js', 'text/javascript');
+   
+    echo $this->bootstrapForm($this->form);
+else:
+?>
+     <script type="text/javascript">
+        parent.location = parent.location.href;
+    </script>
+    <?php    
+endif;?>

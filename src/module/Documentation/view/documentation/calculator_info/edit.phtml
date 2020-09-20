@@ -1,0 +1,33 @@
+<?php
+if ($this->success): ?>
+    <script type="text/javascript">
+        parent.location = parent.location.href;
+    </script>
+<?php
+elseif (isset($this->form)) : ?>
+
+<div>
+    <?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->application()->url(array('controller' => 'calculator-info', 'action' => 'edit')));
+    $fieldset = $form->get('CalculatorInfo');
+    $form->prepare();
+    ?>
+    <?php echo $this->form()->openTag($form); ?>
+    <?php echo $this->bootstrapFormRow($this->form->get('csrf')); ?>
+    <fieldset>
+        <div class="control-group">
+            <div class="controls">
+                <?php echo $this->formRow($fieldset->get('description')); ?>
+            </div>
+        </div>
+    </fieldset>
+    <?php echo $this->form()->closeTag(); ?>
+</div>
+
+<?php
+endif;
+
+$this->inlineScript()
+    ->appendFile($this->basePath() . '/includes/tinymce/js/tinymce/tinymce.min.js')
+    ->appendFile($this->basePath() . '/js/ladoc-documentation/richtext.js');

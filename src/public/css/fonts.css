@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/opensans-light.eot'); /* IE 5-8 */ 
+  src: local('☺'),             /* sneakily trick IE */
+        url('../fonts/opensans-light.woff') format('woff'),    /* FF 3.6, Chrome 5, IE9 */
+        url('../fonts/opensans-light.ttf') format('truetype'), /* Opera, Safari */
+        url('../fonts/opensans-light.svg#font') format('svg'); /* iOS */
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: url('../fonts/opensans-light-italic.eot'); /* IE 5-8 */ 
+  src: local('☺'),             /* sneakily trick IE */
+        url('../fonts/opensans-light-italic.woff') format('woff'),    /* FF 3.6, Chrome 5, IE9 */
+        url('../fonts/opensans-light-italic.ttf') format('truetype'), /* Opera, Safari */
+        url('../fonts/opensans-light-italic.svg#font') format('svg'); /* iOS */
+}
+
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/droidsans.eot'); /* IE 5-8 */ 
+  src: local('☺'),             /* sneakily trick IE */
+        url('../fonts/droidsans.woff') format('woff'),    /* FF 3.6, Chrome 5, IE9 */
+        url('../fonts/droidsans.ttf') format('truetype'), /* Opera, Safari */
+        url('../fonts/droidsans.svg#font') format('svg'); /* iOS */
+}
+
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/droidsans-bold.eot'); /* IE 5-8 */ 
+  src: local('☺'),             /* sneakily trick IE */
+        url('../fonts/droidsans-bold.woff') format('woff'),    /* FF 3.6, Chrome 5, IE9 */
+        url('../fonts/droidsans-bold.ttf') format('truetype'), /* Opera, Safari */
+        url('../fonts/droidsans-bold.svg#font') format('svg'); /* iOS */
+}
+

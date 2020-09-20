@@ -1,0 +1,61 @@
+/* Layout */
+
+a.brand {
+    width: 235px;
+}
+
+.inner-wrapper {
+    padding-top: 40px;
+}
+
+.navbar-fixed-top .container
+{
+    width: 1170px;
+}
+
+/* Common elements */
+
+.thumbnail {
+    background-color: #fff;
+    box-shadow: none;
+}
+
+.thumbnail h2 {
+    font-size: 12px;
+}
+
+.thumbnail .vertical-center h2 {
+    height: 32px;
+    line-height: 16px;
+}
+
+/* IE8 Fixes */
+.category.edit-buttons-toggle .edit-buttons, .equipment.edit-buttons-toggle .edit-buttons {
+    top: -150px;
+}
+
+.mce-window .mce-textbox, .moxman-window .moxman-textbox {
+    height: 28px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Login form */
+
+#form-login label {
+    display: inline-block !important;
+    width: 220px;
+    text-align: left;
+}
+
+#form-login label.last-label {
+    margin-right: 70px;
+}
+
+.thumbnail .category-image {
+    background-image: none !important;
+}
+
+
+

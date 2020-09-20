@@ -1,0 +1,35 @@
+<?php
+$title = $this->action == 'add' ? $this->translate('Add document') : $this->translate('Edit document');
+$this->layout()->title = $title;
+$this->headTitle($title);
+
+?>
+
+
+<a class="btn btn-default pull-right" href="<?php echo $this->application()->url(
+                            array(
+                                'controller' => $this->controllerName,
+                                'action' => 'index'
+                            )
+                        ); ?>">
+    <i class="icon-list"></i> <?php echo $this->translate('Return to list') ?>
+</a>
+
+<?php
+
+echo $this->bootstrapForm($this->form);
+
+if($this->action == 'edit') {
+    $this->inlineScript()
+                ->appendScript("
+                 var imageSrc = '" . $this->image . "';
+                 var imageError = " . json_encode($this->imageError) . ";
+                ", 'text/javascript', array('noescape' => true));
+    $this->inlineScript()->appendFile($this->basePath() . '/js/load-security/calculator-attachment.js');
+} else {
+    $this->inlineScript()
+        ->appendScript("
+            $(document).ready(function(){
+                 $('form#calculator_attachment span.fileupload-new').text(system.translations['Select document']);
+            });", 'text/javascript', array('noescape' => true));
+}

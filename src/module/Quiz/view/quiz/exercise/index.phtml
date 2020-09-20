@@ -1,0 +1,74 @@
+<?php
+$title = ($title === null ? $this->application() : $title);
+$this->headTitle($title);
+$this->layout()->title = $title;
+$this->inlineScript()
+        ->appendFile($this->basePath() . '/js/application/attachments/default.js');
+?>
+
+<div class="row">
+    
+    <div class="span12">
+        <?php if (!$this->zfcUserIdentity()): ?>
+            <div class="alert alert-error ">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <?php echo $this->translate('You need to be logged in order to perform exercises') ?>
+            </div>
+        <?php endif; ?>
+        <?php echo $this->partial('partial/about-tests.phtml'); ?>
+        <h2 class="page-header"><?php echo $this->translate('Exercises') ?></h2>
+        <?php
+        $exerciseColumns = array(
+            'name' => array(
+                'label' => $this->translate('Name'),
+            ),
+            'lastAttempt' => array(
+                'label' => $this->translate('Last attempt'),
+                'callback' => function($dateString) {
+            $date = strtotime($dateString);
+            $dateFormatter = IntlDateFormatter::create(null, IntlDateFormatter::SHORT, IntlDateFormatter::NONE);
+            return $dateFormatter->format($date);
+        }
+            ),
+            'bestResult' => array(
+                'label' => $this->translate('Best result'),
+                'callback' => function($bestResult) {
+            if (!$bestResult) {
+                return null;
+            }
+            return number_format($bestResult, 0) . ' %';
+        }
+            ),
+            'status' => array(
+                'label' => $this->translate('Status'),
+                'callback' => 'assignColor'
+            )
+        );
+        echo $this->partial('partial/quiz-index.phtml', array(
+            'controller' => 'exercise',
+            'entities' => $this->exercises,
+            'equipmentId' => $this->equipmentId,
+            'columns' => $exerciseColumns));
+        ?>
+
+    </div>
+</div>
+
+<?php
+
+function assignColor($output, $view) {
+    if ($output === 'not-started') {
+        return '<span class="label">' . $view->translate('Not started') . '</span>';
+    }
+    if ($output === 'in-progress') {
+        return '<span class="label label-warning">' . $view->translate('In progress') . '</span>';
+    }
+    if ($output === 'passed') {
+        return '<span class="label label-success">' . $view->translate('Passed') . '</span>';
+    }
+    if ($output === 'failed') {
+        return '<span class="label label-important">' . $view->translate('Failed') . '</span>';
+    }
+    return $output;
+}
+?>

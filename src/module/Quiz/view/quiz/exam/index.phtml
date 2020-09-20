@@ -1,0 +1,155 @@
+<?php
+$title = ($title === null ? $this->application() : $title);
+$this->headTitle($title);
+$this->layout()->title = $title;
+$this->inlineScript()
+        ->appendFile($this->basePath() . '/js/application/attachments/default.js');
+?>
+
+<div class="row">
+    <div class="span12">
+        <?php if (!$this->zfcUserIdentity()): ?>
+            <div class="alert alert-error ">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <?php echo $this->translate('You need to be logged in order to perform exams') ?>
+            </div>
+        <?php endif; ?>
+        <?php echo $this->partial('partial/about-tests.phtml'); ?>
+        <h2 class="page-header"><?php echo $this->translate('Exams attempts') ?></h2>
+        <?php
+        echo $this->bootstrapDataTable($this->examAttempts, array(
+            'object_id' => 'attemptId',
+            'search' => false,
+            'actions' => false,
+            'table_class' => 'table table-striped table-exam-attempts',
+            'table_foot' => false,
+            'columns' => array(
+                'quiz' => array(
+                    'label' => $this->translate('Name'),
+                ),
+                'expirationDate' => array(
+                    'label' => $this->translate('Expiration date'),
+                    'callback' => function($date, $view) {
+                        return $view->dateFormat($date, IntlDateFormatter::SHORT);
+                    }),
+                'attemptDate' => array(
+                    'label' => $this->translate('Completed date'),
+                    'callback' => function($date, $view) {
+                return $view->dateFormat($date, IntlDateFormatter::SHORT);
+            }
+                ),
+                'timeUsed' => array(
+                    'label' => $this->translate('Time used'),
+                    'callback' => function($timeUsed) {
+                if (!is_null($timeUsed)) {
+                    return $timeUsed . ' min';
+                } else {
+                    return null;
+                }
+            }
+                ),
+                'result' => array(
+                    'label' => $this->translate('Result')
+                ),
+                'status' => array(
+                    'label' => $this->translate('Status'),
+                    'callback' => 'assignColor'
+                ),
+                'toStart' => array(
+                    'label' => $this->translate('Options'),
+                    'callback' => 'startButton',
+                ),
+                'toContinue' => array(
+                    'label' => '',
+                    'callback' => 'continueButton'
+                ),
+            ),
+            'params' => array(
+                'basic' => array('application', 'controller', 'action')
+            )
+        ));
+        ?>
+
+        <br />
+
+        <?php
+        if ($this->isAllowed('Quiz\Entity\ExamAttempt', 'create')) {
+            $examColumns = array(
+                'equipment' => array(
+                    'label' => $this->translate('Equipment type'),
+                ),
+                'name' => array(
+                    'label' => $this->translate('Name'),
+                ),
+                'baseOnPracticeExercise' => array(
+                    'label' => $this->translate('Based on Exercise'),
+                ),
+                'numberOfQuestions' => array(
+                    'label' => $this->translate('Number of questions'),
+                )
+            );
+        ?>
+            <h2 class="page-header"><?php echo $this->translate('Exams') ?></h2>
+        <?php
+            echo $this->partial('partial/quiz-index.phtml', array(
+                'controller' => 'exam',
+                'entities' => $this->exams,
+                'equipmentId' => $this->equipmentId,
+                'columns' => $examColumns));
+        }
+        ?>
+
+    </div>
+</div>
+
+<?php
+
+function showButton($output, $buttonTitle, $href) {
+    if ($output > 0) {
+        $button = '<a href="' . $href . '" data-rel="start" class="btn btn-mini "><i class="icon-play"></i>'
+                . $buttonTitle . '</a>';
+        return $button;
+    } else {
+        return "";
+    }
+}
+
+function startButton($output, $view) {
+    $buttonTitle = $view->translate("Start");
+    $href = $view->application()->url(
+            array(
+                'controller' => 'exam-attempt',
+                'action' => 'start',
+                'quiz' => $output
+    ));
+
+    return showButton($output, $buttonTitle, $href);
+}
+
+function continueButton($output, $view) {
+    $href = $view->application()->url(
+            array(
+                'controller' => 'exam-attempt',
+                'action' => 'index',
+                'quiz' => $output
+    ));
+    $buttonTitle = $view->translate("Continue");
+    return showButton($output, $buttonTitle, $href);
+}
+
+function assignColor($output, $view) {
+    if ($output === 'not-started') {
+        return '<span class="label">' . $view->translate('Not started') . '</span>';
+    }
+    if ($output === 'in-progress') {
+        return '<span class="label label-warning">' . $view->translate('In progress') . '</span>';
+    }
+    if ($output === 'passed') {
+        return '<span class="label label-success">' . $view->translate('Passed') . '</span>';
+    }
+    if ($output === 'failed') {
+        return '<span class="label label-important">' . $view->translate('Failed') . '</span>';
+    }
+    return $output;
+}
+?>

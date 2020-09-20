@@ -1,0 +1,24 @@
+<h1 class="page-header"><?php echo $this->translate('No access') ?></h1>
+<p>
+    <?php if(true): ?>
+        <?php echo $this->translate('Your user role does not permit you to access this page.') ?>
+    <?php // for debugging ?>
+    <?php elseif(\BjyAuthorize\Guard\Controller::ERROR === $error) : ?>
+        You are not authorized to access <?php echo($controller);?>
+        <?php if ($action) : ?>
+        ::<?php echo($this->escapeHtml($action));?>Action()
+        <?php endif;?>
+        .
+    <?php elseif (\BjyAuthorize\Guard\Route::ERROR === $error)  : ?>
+        You are not authorized to access <?php echo $this->escapeHtml($route);?>.
+    <?php elseif ($error == 'error-unauthorized') : ?>
+        You are not authorized <?php echo $this->escapeHtml($reason); ?>.
+    <?php else : ?>
+        An unknown error occurred.
+    <?php endif;?>
+</p>
+<p class="margin-top">
+    <a href="#" id="breadcrumb-go-back" class="btn go-back">
+        <i class="icon-chevron-left"></i><?php echo $this->translate('Go back') ?>
+    </a>
+</p>

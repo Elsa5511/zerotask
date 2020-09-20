@@ -1,0 +1,7 @@
+<?php
+$title = ($locationId > 0) ? $this->translate('Edit Location') : $this->translate('Add Location');
+$this->layout()->title = $title;
+$this->headTitle($title);
+
+echo $this->bootstrapForm($form);
+?>

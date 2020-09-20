@@ -1,0 +1,120 @@
+<div id="advanced-search-equipment-instance" class="advanced-search-collapsible collapse">
+    <?php
+    $form = $this->searchAdvancedForm;
+    $form->setAttribute('action', $this->application()->url(array('controller' => 'equipment-instance', 'action' => 'do-search')));
+    $form->setAttribute('class', 'well');
+
+    $equipmentInstance = $form->get('equipment_instance');
+    $form->setAttribute('method', 'get');
+    $form->prepare();
+    ?>
+    <button class="close advanced-search-toggle pull-right" data-toggle="collapse" data-target="#advanced-search-equipment-instance">&times;</button>
+    <?php echo $this->form()->openTag($form); ?>
+    <input type="hidden" name="mode[]" value="advanced">
+    <fieldset>
+        <legend><?php echo $this->translate('Instance search'); ?></legend>
+        <div class="row-fluid">
+            <div class="span5">
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Equipment Category'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('category')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Equipment Type'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('equipment')); ?>
+                    </div>
+                </div>
+                <?php if($this->application()->isFieldUsedInEquipment("nsn")): ?>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('NATO #'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('nsn')); ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <?php if($this->application()->isFieldUsedInEquipment("sap")): ?>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('SAP #'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('sap')); ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Vendor'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('vendor')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Serial Number'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('serialNumber')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Reg. Number'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('regNumber')); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="span5">
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Batch Number'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('batchNumber')); ?>
+                    </div>
+                </div>
+                <?php if(!$this->removeOwner): ?>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Owner'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('owner')); ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Location'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('location')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Usage status'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('usageStatus')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Checkout status'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('checkoutStatus')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('Order Number'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('orderNumber')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> <?php echo $this->translate('RFID'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipmentInstance->get('rfid')); ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn"><i class="icon-search"></i> <?php echo $this->translate('Search'); ?> </button>
+            </div>
+        </div>
+    </fieldset>
+    <?php echo $this->form()->closeTag(); ?>
+</div>

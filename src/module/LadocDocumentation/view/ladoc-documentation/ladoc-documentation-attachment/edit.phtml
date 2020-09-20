@@ -1,0 +1,36 @@
+<?php
+$title = $this->action == 'add' ? $this->translate('Add attachment') : $this->translate('Edit attachment');
+$this->layout()->title = $title;
+$this->headTitle($title);
+
+?>
+
+
+<a class="btn btn-default pull-right" href="<?php echo $this->application()->url(
+                            array(
+                                'controller' => $this->controllerName,
+                                'action' => 'index',
+                                'documentation_id' => $this->documentationId
+                            )
+                        ); ?>">
+    <i class="icon-list"></i> <?php echo $this->translate('Return to list') ?>
+</a>
+
+<?php
+
+echo $this->bootstrapForm($this->form);
+
+if($this->action == 'edit') {
+    $this->inlineScript()
+                ->appendScript("
+                 var imageSrc = '" . $this->image . "';
+                 var imageError = " . json_encode($this->imageError) . ";
+                ", 'text/javascript', array('noescape' => true));
+    $this->inlineScript()->appendFile($this->basePath() . '/js/ladoc-documentation/documentation-attachment.js');
+} else {
+    $this->inlineScript()
+        ->appendScript("
+            $(document).ready(function(){
+                 $('form#documentation-attachment span.fileupload-new').text(system.translations['Select file']);
+            });", 'text/javascript', array('noescape' => true));
+}

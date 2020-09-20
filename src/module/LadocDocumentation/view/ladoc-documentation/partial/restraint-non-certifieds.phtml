@@ -1,0 +1,89 @@
+<?php
+use Equipment\Entity\EquipmentTaxonomyTemplateTypes;
+
+$restraintNonCertifiedResource = 'LadocDocumentation\Entity\LadocRestraintNonCertified';
+
+if ($this->isAllowed($restraintNonCertifiedResource, 'create')):
+    $editSectionParams = array(
+        'controller' => $this->type . '-restraint-non-certified',
+        'action' => 'index',
+        'documentation_id' => $this->documentationId
+    );
+
+    if($this->type == "load")
+        $editSectionParams['template_type'] = $this->templateType;
+?>
+
+    <a href="<?php echo $this->application()->url($editSectionParams) ?>"
+       class="btn btn-small pull-right margin-top-sm margin-bottom"><i class="icon-edit"></i> <?php echo $this->translate("Edit section") ?></a>
+
+    <div class="clearfix"></div>
+
+<?php
+endif;
+
+$columns = array();
+
+switch($this->templateType) {
+    case EquipmentTaxonomyTemplateTypes::COUNTRY_ROAD:
+        if($this->type == 'load') {
+            $columns['carrierDocumentation'] = array('label' => $this->translate('Without certificate'));
+        } else {
+            $columns['loadDocumentation'] = array('label' => $this->translate('Loads without certificate'));
+        }
+        break;
+    case EquipmentTaxonomyTemplateTypes::AIRCRAFT:
+        if($this->type == 'load') {
+            $columns['carrierDocumentation'] = array('label' => $this->translate('Without ATTLA approval'));
+        } else {
+            $columns['loadDocumentation'] = array('label' => $this->translate('Loads without ATTLA approval'));
+        }
+        break;
+    case EquipmentTaxonomyTemplateTypes::RAILWAY:
+        if($this->type == 'load') {
+            $columns['carrierDocumentation'] = array('label' => $this->translate('Without tunell profile'));
+        } else {
+            $columns['loadDocumentation'] = array('label' => $this->translate('Loads without tunell profile'));
+        }
+        break;
+    case EquipmentTaxonomyTemplateTypes::NAVAL_CRAFT:
+        if($this->type == 'load') {
+            $columns['carrierDocumentation'] = array('label' => $this->translate('Without certificate'));
+        } else {
+            $columns['loadDocumentation'] = array('label' => $this->translate('Loads without certificate'));
+        }
+        break;
+}
+
+$filteredEntities = array();
+foreach ($this->entities as $ent) {
+    if ($this->type == "load" && $this->templateType == $ent->getCarrierDocumentation()->getLowestTaxonomyTemplateType()) {
+        $filteredEntities[] = $ent;
+    } elseif($this->type == "carrier") {
+        $filteredEntities[] = $ent;
+    }
+}
+
+echo $this->bootstrapDataTable($filteredEntities, array(
+    'object_id' => 'id',
+    'table_class' => 'table table-striped',
+    'actions' => array(
+        'options' => array(
+            'detail' => array(
+                'label' => $this->translate('Detail'),
+                'icon' => 'list',
+                'attributes' => array(
+                    'href' => $this->application()->url(array('controller' => $this->type . '-restraint-non-certified',
+                        'action' => 'detail',
+                        'id' => ':id'))
+                )
+            )
+        )
+    ),
+    'search' => false,
+    'columns' => $columns,
+    'params' => array(
+        'basic' => array('application', 'controller', 'action')
+    )
+));
+?>

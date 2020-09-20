@@ -1,0 +1,16 @@
+<p>
+    <a href="#" class="btn btn-mini about-tests-toggle pull-right" data-toggle="collapse" data-target="#about-tests"><i class="icon-info-sign"></i> <?php echo $this->translate('About tests'); ?></a>
+    <div class="clearfix"></div>
+</p>
+<div class="collapse" id="about-tests">
+    <button class="close advanced-search-toggle pull-right" data-toggle="collapse" data-target="#about-tests">×</button>
+    <div class="well">
+        <h3><?php echo $this->translate('About tests'); ?></h3>
+        <p><?php echo $this->translate('In this part of') . ' ' . $this->application() . ' ' . $this->translate('you will find different tests related to the selected equipment. You can choose which test you want to perform in the table to the left. Exercises can be performed any time and as many times as you want. Exams can only be performed once and after approval from the admin.'); ?></p>
+        <p><?php echo $this->translate('The test will display as'); ?> <span class="label label-warning"> <?php echo $this->translate('In progress'); ?></span> <?php echo $this->translate('until you have answered and confirmed all the questions. If you want to restart an exercise you can click'); ?>  <a class="btn btn-mini"><i class="icon-repeat"></i> 
+                <?php echo $this->translate('Restart'); ?></a> <?php echo $this->translate('to start over.'); ?> </p>
+        <p><?php echo $this->translate('The answers are weighted based on importance from 1 to 9. During the test the number of correct and incorrect answers will be displayed, as well as your total score. The test will be marked as '); ?>
+            <span class="label label-success"><?php echo $this->translate('Passed'); ?></span> <?php echo $this->translate('if you reached the required number of points, and '); ?>
+            <span class="label label-important"><?php echo $this->translate('Failed'); ?></span> <?php echo $this->translate('if you did not.'); ?></p>
+    </div>
+</div>

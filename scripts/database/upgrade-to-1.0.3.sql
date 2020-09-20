@@ -1,0 +1,1 @@
+CREATE INDEX FK_equipment_instance_reg_number ON equipment_instance (reg_number);

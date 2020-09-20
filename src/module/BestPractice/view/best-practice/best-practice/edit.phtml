@@ -1,0 +1,17 @@
+<?php
+$title = $this->translate('Edit a Best Practice');
+$this->layout()->title = $title;
+$this->headTitle($title);
+
+if($this->form) {
+    $bestPractice = $this->form->getObject();
+    $slideArray = $bestPractice->getSlides();
+    echo $this->bootstrapForm($this->form);
+    $this->headScript()
+            ->appendScript('          
+            var featuredImagePath = "' . $bestPractice->getFeaturedImage() . '";
+            var slideOneImagePath = "' . $slideArray[0] . '";
+            var slideTwoImagePath = "' . $slideArray[1] . '";
+            ', 'text/javascript', array('noescape' => true))
+            ->appendFile($this->basePath() . '/js/best-practice/best-practice.js');
+}

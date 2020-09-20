@@ -1,0 +1,52 @@
+<?php
+$this->headTitle($title);
+$this->layout()->title = $title;
+?>
+<div class="row row-desktop">
+    <div class="span3">
+        <?php echo $this->partial('partial/admin-menu.phtml', 'application') ?>
+    </div>
+    <div class="span9">
+        <?php
+        echo $this->bootstrapDataTable($languages, array(
+            'object_id' => 'languageId',
+            'table_class' => 'table table-striped data-table-net',
+            'search' => false,
+            'columns' => array(
+                'name' => array(
+                    'label' => $this->translate('Name')
+                ),
+                'isocode' => array(
+                    'label' => $this->translate('ISO')
+                ),
+                'status' => array(
+                    'label' => $this->translate('Status'),
+                    'callback' => 'getLanguageStatus',
+                )
+            ),
+            'actions' => array(
+                'add' => true,
+                'options' => array(
+                    'edit' => true,
+                    'delete' => true
+                )
+            ),
+            'params' => array(
+                'basic' => array('application', 'controller', 'action')
+            )
+        ));
+        ?>
+    </div>
+</div>
+<?php
+function getLanguageStatus($output, $view)
+{
+    $output = trim(strtolower($output));
+    if ($output === 'active') {
+        return $view->translate("Active");
+    } else if ($output === 'inactive') {
+        return $view->translate("Inactive");
+    }
+    return $output;
+}
+?>

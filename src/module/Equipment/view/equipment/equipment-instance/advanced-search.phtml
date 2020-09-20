@@ -1,0 +1,25 @@
+<?php
+
+$advancedSearchLinks = array(
+    "advanced-search-equipment-instance" => $this->translate('Instance search'),
+    "advanced-control-search" => $this->translate('Control search')
+);
+$this->placeholder('simple-search')->set($this->partial('partial/simple-search.phtml',
+    array(
+        'jsonEquipments' => $this->jsonEquipments,
+        'advancedSearchLinks' => $advancedSearchLinks
+    )
+));
+
+echo $this->partial('partial/advanced-instance-search.phtml', array(
+    'searchAdvancedForm' => $this->searchAdvancedForm,
+    'equipmentValueOptions' => $this->equipmentValueOptions,
+    'locationValueOptions' => $this->locationValueOptions,
+    'removeOwner' => $this->removeOwner
+));
+
+echo $this->partial('partial/advanced-control-search.phtml', array(
+    'searchAdvancedForm' => $this->controlSearchAdvancedForm,
+    'equipmentValueOptions' => $this->equipmentValueOptions,
+    'locationValueOptions' => $this->locationValueOptions
+));

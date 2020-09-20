@@ -1,0 +1,30 @@
+
+<?php
+$title = $this->translate('Search results for') . ' ' . $this->currentPage->getName();
+$this->headTitle($title);
+$this->layout()->title = $title;
+?>
+
+<div class="row row-desktop">
+    <div class="span12">
+        <?php if($this->result): ?>
+            <?php foreach($this->result as $sectionId => $r): ?>
+                <p>
+                    <a href="<?php echo $this->application()->url(
+                        array(
+                            'action' => 'index',
+                            'controller' => 'page',
+                            'id' => $this->currentPage->getPageId(),
+                            'sectionId' => $sectionId
+                        )
+                    ) ?>">
+                        <?php echo $r['title'] ?>
+                    </a><br />
+                    <?php echo $r['content'] ?>
+                </p>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <?php echo $this->translate('No results found') ?>
+        <?php endif; ?>
+    </div>
+</div>

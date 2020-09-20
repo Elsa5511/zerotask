@@ -1,0 +1,16 @@
+<?php
+$certificationUserPath = '/Vedos/certification/user/id/' . $this->userId
+?>
+
+<h2><strong><?php echo $this->translate('Mr/Mrs.') . ' ' . $this->escapeHtml($this->userFullname); ?> :</strong></h2>
+
+<p><?php
+    if (isset($this->dependent)) {
+        $certificationOwner = $this->dependent;
+    } else {
+        $certificationOwner = $this->translate('you');
+    }
+    $message = $this->translate("%d month(s) %d day(s) left to expired a Certification related to %s");
+    echo sprintf($message, $this->months, $this->days, $certificationOwner);
+    ?></p>
+<strong><?php echo $this->translate('Certification about'); ?> : </strong><?php echo $this->escapeHtml($this->equipmentName); ?>

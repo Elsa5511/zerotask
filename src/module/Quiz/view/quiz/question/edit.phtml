@@ -1,0 +1,30 @@
+<?php
+$title = ucwords($this->action) . ' ' . $this->translate('question');
+$this->layout()->title = $title;
+$this->headTitle($title);
+
+$this->inlineScript()->appendFile($this->basePath() . '/js/quiz/quiz.js');
+
+echo $this->bootstrapForm($this->form);
+
+?>
+
+<div id="option-alert" class="alert alert-error hide">
+    <button type="button" class="close">&times;</button>    
+    <strong><?php echo $this->translate('You must select a correct answer') ?></strong>
+</div>
+
+<div id="one-option-alert" class="alert alert-error hide">
+    <button type="button" class="close">&times;</button>    
+    <strong><?php echo $this->translate('You must select only one correct answer') ?></strong>
+</div>
+
+<?php
+if (!empty($this->image)):
+    $this->inlineScript()
+            ->appendScript('
+             var imageSrc ="' . $this->image . '";   
+            ', 'text/javascript', array('noescape' => true))
+            ->appendFile($this->basePath() . '/js/quiz/default.js');
+endif;
+?>

@@ -1,0 +1,13 @@
+<div class="row-fluid">
+    <ul class="thumbnails">
+        <?php foreach($this->attachments as $attachment): ?>
+            <li class="span2">
+                <?php
+                echo $this->partial('ladoc-documentation/partial/point-attachment-thumbnail.phtml', array(
+                    'path' => $this->path,
+                    'attachment' => $attachment));
+                ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

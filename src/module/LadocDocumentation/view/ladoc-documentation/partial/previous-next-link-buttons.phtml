@@ -1,0 +1,43 @@
+<?php use LadocDocumentation\Entity\LadocDocumentation; ?>
+
+<div class="horizontal-space-60">
+    <?php if ($this->showPreviousButton): ?>
+        <a class="btn" href="<?php echo $this->application()->url(
+            array(
+                'controller' => 'ladoc-documentation',
+                'action' => 'wizard',
+                'id' => $this->documentationId,
+                'current_page' => $this->currentPage,
+                'direction' => LadocDocumentation::DIRECTION_PREVIOUS
+            )); ?>"><?php echo $this->translate('Previous') ?>
+        </a>
+        <a id="ladoc-continue-button"
+           class="btn btn-primary"
+           href="<?php echo $this->application()->url(
+               array(
+                   'controller' => 'ladoc-documentation',
+                   'action' => 'wizard',
+                   'id' => $this->documentationId,
+                   'current_page' => $this->currentPage,
+                   'direction' => LadocDocumentation::DIRECTION_NEXT
+               )); ?>"><?php echo $this->translate('Continue') ?>
+        </a>
+    <?php endif ?>
+    <?php if (!$this->showPreviousButton): ?>
+        <a id="ladoc-continue-button"
+           class="btn btn-primary"
+           href="<?php echo $this->application()->url(
+               array(
+                   'controller' => 'ladoc-documentation',
+                   'action' => 'display',
+                   'id' => $this->documentationId,
+               )); ?>"><?php echo $this->translate('Continue') ?>
+        </a>
+    <?php endif ?>
+</div>
+
+<?php if ($this->showPreviousButton) {
+    echo $this->inlineScript()->appendFile($this->basePath() .
+        '/js/ladoc-documentation/hide-breadcrumb-back.js');
+}
+?>

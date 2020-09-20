@@ -1,0 +1,16 @@
+<?php
+if(isset($form)) {
+    $title = isset($equipmentInstanceId) ? $this->translate('Edit Equipment Instance') : $this->translate('Add Equipment Instance');
+    $this->layout()->title = $title;
+    $this->headTitle($title);
+    $this->inlineScript()->appendFile($this->basePath() . '/js/equipment/equipment-instance.js', 'text/javascript');
+    echo $this->bootstrapForm($form);
+}
+?>
+<div id="control-interval-container">
+    <span id="control-interval-for-equipment">
+        <?php echo $this->equipment->getControlIntervalByDays() ?>
+    </span>
+</div>
+
+<?php $this->partial('partial/set-control-date-js.phtml', array('controlInterval' => $this->equipment->getControlIntervalByDays()));

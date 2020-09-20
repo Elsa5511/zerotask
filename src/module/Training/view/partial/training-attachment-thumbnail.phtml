@@ -1,0 +1,52 @@
+<a data-rel="open-attachment"
+   data-link="<?php echo $trainingMaterial->getLink() ?>"
+   data-extension="<?php echo $trainingMaterial->getExtension();?>" href="
+    <?php echo $this->application()->url(
+        array(
+            'controller' => 'training-section-attachment',
+            'action' => 'handle',
+            'id' => $trainingMaterial->getAttachmentId()
+        )
+    )?>
+" >
+    <div class="thumbnail equipment">
+        <?php $trainingBackgroundImage = $this->basePath('/images/training/' . $this->escapeHtml($trainingMaterial->getExtension()) . '.png'); ?>
+        <div class="category-image" style="
+            background-image: url('<?php echo $trainingBackgroundImage ?>');
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $trainingBackgroundImage ?>', sizingMethod='scale');
+            ">
+            <img src="<?php echo $this->basePath('/images/equipment-thumbnail-placeholder.png'); ?>" 
+                 alt="<?php echo $this->escapeHtml($trainingMaterial->getTitle()) ?>">
+        </div>
+        <h2><?php echo $trainingMaterial->getTitle(); ?></h2>
+    </div>
+</a>
+<?php if ($this->isAllowed('Training\Entity\TrainingSectionAttachment', 'update')): ?>
+    <div class="edit-buttons">
+        <a class="btn btn-mini add-edit-attachment"
+           title="<?php echo $this->translate('Edit Attachment')?>"
+           href="<?php
+           echo $this->application()->url(array(
+                   'action' => 'edit-attachment',
+                   'controller' => 'training-section-attachment',
+                   'id'=>$trainingMaterial->getAttachmentId()
+               )
+           );
+           ?>"
+            ><i class="icon-pencil"></i></a>
+        <a data-rel="delete" class="btn btn-mini"
+           href="<?php
+           echo $this->application()->url(array(
+                   'action' => 'delete-attachment',
+                   'controller' => 'training-section-attachment',
+                   'id' => $trainingMaterial->getAttachmentId(),
+                   'referenceId' => $equipmentId
+               )
+           );
+           ?>">
+            <i class="icon-trash"></i>
+        </a>
+
+    </div>
+<?php endif; ?>
+                                                    

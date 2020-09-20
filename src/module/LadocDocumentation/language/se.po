@@ -1,0 +1,979 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Vidum 0.1\n"
+"POT-Creation-Date: 2016-04-07 13:26-0500\n"
+"PO-Revision-Date: 2016-04-07 13:27-0500\n"
+"Last-Translator: bjornakr <100bak@sysco.no>\n"
+"Language-Team: Sysco Peru\n"
+"Language: no\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;translate;sendFlashMessage\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../src/LadocDocumentation/Controller/CarrierLashingEquipmentController.php:22
+#: ../view/ladoc-documentation/ladoc-documentation/display.phtml:71
+msgid "Lashing Equipments"
+msgstr "Lastsäkringsutrustning"
+
+#: ../src/LadocDocumentation/Controller/CarrierLashingEquipmentController.php:23
+msgid "Add Lashing Equipment"
+msgstr "Lägg till lastsäkringsutrustning"
+
+#: ../src/LadocDocumentation/Controller/CarrierLashingEquipmentController.php:24
+msgid "Edit Lashing Equipment"
+msgstr "Endra lastsäkringsutrustning"
+
+#: ../src/LadocDocumentation/Controller/CarrierLashingPointController.php:23
+#: ../src/LadocDocumentation/Controller/LoadLashingPointController.php:23
+#: ../view/ladoc-documentation/ladoc-documentation/display.phtml:42
+msgid "Lashing points"
+msgstr "Lastsäkringspunkter"
+
+#: ../src/LadocDocumentation/Controller/CarrierLashingPointController.php:24
+#: ../src/LadocDocumentation/Controller/LoadLashingPointController.php:24
+msgid "Add lashing point"
+msgstr "Lägg till lastsäkringspunkt"
+
+#: ../src/LadocDocumentation/Controller/CarrierLashingPointController.php:25
+#: ../src/LadocDocumentation/Controller/LoadLashingPointController.php:25
+msgid "Edit lashing point"
+msgstr "Endra lastsäkringspunkt"
+
+#: ../src/LadocDocumentation/Controller/LadocDocumentationAttachmentController.php:111
+#: ../src/LadocDocumentation/Controller/PointBaseController.php:137
+#: ../src/LadocDocumentation/Controller/RestraintCertifiedController.php:130
+#: ../src/LadocDocumentation/Controller/RestraintNonCertifiedController.php:103
+msgid "The entity was deleted successfully."
+msgstr "Enheten har raderats"
+
+#: ../src/LadocDocumentation/Controller/LadocDocumentationAttachmentController.php:127
+#: ../src/LadocDocumentation/Form/BasicInformationFieldset.php:153
+#: ../src/LadocDocumentation/Form/LadocDocumentationAttachmentFieldset.php:88
+#: ../src/LadocDocumentation/Form/LadocDocumentationAttachmentFieldset.php:122
+#: ../src/LadocDocumentation/Form/MultipleAttachmentFieldset.php:86
+#: ../src/LadocDocumentation/Form/MultipleAttachmentFieldset.php:120
+#: ../src/LadocDocumentation/Form/PointAttachmentFieldset.php:95
+#: ../src/LadocDocumentation/Form/PointAttachmentFieldset.php:129
+#: ../src/LadocDocumentation/Form/RestraintAttachmentFieldset.php:95
+#: ../src/LadocDocumentation/Form/RestraintAttachmentFieldset.php:129
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:310
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:329
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:346
+#: ../src/LadocDocumentation/Service/LoadWeightAndDimensionsService.php:42
+#: ../src/LadocDocumentation/Service/PointService.php:107
+#: ../src/LadocDocumentation/Service/RestraintCertifiedService.php:115
+#: ../src/LadocDocumentation/Service/RestraintCertifiedService.php:123
+msgid "The file was not detected"
+msgstr "Det gick inte att hitta filen"
+
+#: ../src/LadocDocumentation/Controller/LadocDocumentationController.php:56
+msgid "Create documentation"
+msgstr "Skapa dokumentation"
+
+#: ../src/LadocDocumentation/Controller/LadocDocumentationController.php:63
+#: ../src/LadocDocumentation/Controller/LadocDocumentationController.php:86
+msgid "This equipment doesn't exist"
+msgstr "Utrustningen fins inte"
+
+#: ../src/LadocDocumentation/Controller/LadocDocumentationController.php:216
+msgid "The parameter 'type' is not correct."
+msgstr "Parametern \"typ\" är ogiltig"
+
+#: ../src/LadocDocumentation/Controller/LadocDocumentationController.php:220
+msgid "The description is not valid."
+msgstr "Beskrivningen är ogiltig"
+
+#: ../src/LadocDocumentation/Controller/LoadLiftingPointController.php:21
+msgid "Lifting Points"
+msgstr "Lyftpunkter"
+
+#: ../src/LadocDocumentation/Controller/LoadLiftingPointController.php:22
+#: ../src/LadocDocumentation/Controller/LoadLiftingPointController.php:23
+msgid "Lifting Point"
+msgstr "Lyftpunkt"
+
+#: ../src/LadocDocumentation/Controller/RestraintCertifiedController.php:100
+#: ../src/LadocDocumentation/Controller/RestraintNonCertifiedController.php:84
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:3
+#: ../view/ladoc-documentation/restraint-non-certified/detail.phtml:2
+msgid "on"
+msgstr "på"
+
+#: ../src/LadocDocumentation/Form/BasicInformationFieldset.php:21
+msgid "Introduction picture"
+msgstr "Innledning, bild"
+
+#: ../src/LadocDocumentation/Form/BasicInformationFieldset.php:35
+#: ../view/ladoc-documentation/partial/basic-information.phtml:23
+msgid "Approved name"
+msgstr "Antagen namn"
+
+#: ../src/LadocDocumentation/Form/BasicInformationFieldset.php:46
+#: ../view/ladoc-documentation/partial/basic-information.phtml:25
+msgid "Colloquial name"
+msgstr "Namn dagligt tal"
+
+#: ../src/LadocDocumentation/Form/BasicInformationFieldset.php:59
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:134
+#: ../view/ladoc-documentation/partial/basic-information.phtml:34
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:28
+msgid "Approved for"
+msgstr "Godkänd för"
+
+#: ../src/LadocDocumentation/Form/BasicInformationFieldset.php:73
+#: ../view/ladoc-documentation/partial/basic-information.phtml:42
+msgid "According to STANAGs"
+msgstr "STANAGer och standarder"
+
+#: ../src/LadocDocumentation/Form/BasicInformationFieldset.php:89
+#: ../view/ladoc-documentation/partial/basic-information.phtml:61
+msgid "Responsible office"
+msgstr "Ansvarig avdelning"
+
+#: ../src/LadocDocumentation/Form/BasicInformationFieldset.php:92
+msgid "Choose a responsible office"
+msgstr "Välj ansvarig avdelning"
+
+#: ../src/LadocDocumentation/Form/BasicInformationFieldset.php:105
+#: ../src/LadocDocumentation/Form/CarrierWeightAndDimensionsFieldset.php:82
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:192
+#: ../view/ladoc-documentation/partial/previous-next-link-buttons.phtml:23
+#: ../view/ladoc-documentation/partial/previous-next-link-buttons.phtml:34
+#: ../view/ladoc-documentation/restraint-certified/index.phtml:60
+#: ../view/ladoc-documentation/restraint-non-certified/index.phtml:60
+msgid "Continue"
+msgstr "Fortsätta"
+
+#: ../src/LadocDocumentation/Form/BasicInformationFieldset.php:151
+msgid "The file must be of type "
+msgstr "Filen måste vara av typen"
+
+#: ../src/LadocDocumentation/Form/CarrierBasicInformationFieldset.php:21
+#: ../view/ladoc-documentation/partial/basic-information.phtml:52
+msgid "Technical payload (kg)"
+msgstr "Tekniska nyttolast (kg)"
+
+#: ../src/LadocDocumentation/Form/CarrierDimensionsFieldset.php:17
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:26
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:72
+msgid "Length (mm)"
+msgstr "Längd (mm)"
+
+#: ../src/LadocDocumentation/Form/CarrierDimensionsFieldset.php:28
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:37
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:73
+msgid "Width (mm)"
+msgstr "Bredd (mm)"
+
+#: ../src/LadocDocumentation/Form/CarrierDimensionsFieldset.php:39
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:74
+msgid "Height with no load (mm)"
+msgstr "Höjd, utan last (mm)"
+
+#: ../src/LadocDocumentation/Form/CarrierDimensionsFieldset.php:51
+#: ../src/LadocDocumentation/Form/CarrierLashingEquipmentFieldset.php:79
+#: ../src/LadocDocumentation/Form/CarrierLashingPointFieldset.php:42
+#: ../src/LadocDocumentation/Form/CarrierWeightFieldset.php:61
+#: ../src/LadocDocumentation/Form/LoadLashingPointFieldset.php:42
+#: ../src/LadocDocumentation/Form/LoadLiftingPointFieldset.php:42
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:165
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:199
+msgid "Add attachments"
+msgstr "Lägg till bilagor"
+
+#: ../src/LadocDocumentation/Form/CarrierDimensionsFieldset.php:67
+#: ../src/LadocDocumentation/Form/CarrierWeightFieldset.php:77
+#: ../src/LadocDocumentation/Form/PointAttachmentFieldset.php:62
+#: ../src/LadocDocumentation/Form/RestraintAttachmentFieldset.php:62
+msgid "Delete attachment"
+msgstr "Radera bilagor"
+
+#: ../src/LadocDocumentation/Form/CarrierDimensionsFieldset.php:79
+#: ../src/LadocDocumentation/Form/CarrierLashingEquipmentFieldset.php:93
+#: ../src/LadocDocumentation/Form/CarrierLashingPointFieldset.php:56
+#: ../src/LadocDocumentation/Form/CarrierWeightFieldset.php:89
+#: ../src/LadocDocumentation/Form/LoadLashingPointFieldset.php:56
+#: ../src/LadocDocumentation/Form/LoadLiftingPointFieldset.php:56
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:179
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:213
+#: ../view/ladoc-documentation/ladoc-documentation-attachment/edit.phtml:2
+msgid "Add attachment"
+msgstr "Lägg till bilagor"
+
+#: ../src/LadocDocumentation/Form/CarrierLashingEquipmentFieldset.php:19
+#: ../src/LadocDocumentation/Form/LadocDocumentationAttachmentFieldset.php:26
+#: ../src/LadocDocumentation/Form/PointFieldset.php:31
+#: ../src/LadocDocumentation/Form/RestraintAttachmentFieldset.php:31
+#: ../view/ladoc-documentation/carrier-lashing-equipment/index.phtml:42
+#: ../view/ladoc-documentation/carrier-lashing-point/index.phtml:46
+#: ../view/ladoc-documentation/ladoc-documentation-attachment/index.phtml:42
+#: ../view/ladoc-documentation/load-lashing-point/index.phtml:46
+#: ../view/ladoc-documentation/load-lifting-point/index.phtml:46
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:40
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:71
+#: ../view/ladoc-documentation/partial/documentation-attachments.phtml:4
+#: ../view/ladoc-documentation/partial/lashing-equipments.phtml:4
+#: ../view/ladoc-documentation/partial/lashing-points.phtml:7
+#: ../view/ladoc-documentation/partial/lifting-points.phtml:7
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:64
+msgid "Description"
+msgstr "Beskrivning"
+
+#: ../src/LadocDocumentation/Form/CarrierLashingEquipmentFieldset.php:31
+#: ../view/ladoc-documentation/carrier-lashing-equipment/index.phtml:45
+#: ../view/ladoc-documentation/partial/basic-information.phtml:27
+#: ../view/ladoc-documentation/partial/lashing-equipments.phtml:7
+msgid "NATO #"
+msgstr "NATO nr."
+
+#: ../src/LadocDocumentation/Form/CarrierLashingEquipmentFieldset.php:42
+#: ../src/LadocDocumentation/Form/PointFieldset.php:43
+#: ../view/ladoc-documentation/carrier-lashing-equipment/index.phtml:48
+#: ../view/ladoc-documentation/carrier-lashing-point/index.phtml:49
+#: ../view/ladoc-documentation/partial/lashing-equipments.phtml:10
+msgid "Count"
+msgstr "Antal"
+
+#: ../src/LadocDocumentation/Form/CarrierLashingEquipmentFieldset.php:53
+#: ../view/ladoc-documentation/carrier-lashing-equipment/index.phtml:51
+#: ../view/ladoc-documentation/partial/lashing-equipments.phtml:13
+msgid "Length (m)"
+msgstr "Längd (m)"
+
+#: ../src/LadocDocumentation/Form/CarrierLashingEquipmentFieldset.php:64
+#: ../src/LadocDocumentation/Form/CarrierLashingPointFieldset.php:27
+#: ../src/LadocDocumentation/Form/LoadLashingPointFieldset.php:27
+#: ../view/ladoc-documentation/carrier-lashing-equipment/index.phtml:54
+#: ../view/ladoc-documentation/carrier-lashing-point/index.phtml:55
+#: ../view/ladoc-documentation/load-lashing-point/index.phtml:55
+#: ../view/ladoc-documentation/partial/lashing-equipments.phtml:16
+#: ../view/ladoc-documentation/partial/lashing-points.phtml:18
+msgid "LC daN"
+msgstr "LC daN"
+
+#: ../src/LadocDocumentation/Form/CarrierLashingEquipmentFieldset.php:105
+#: ../src/LadocDocumentation/Form/CarrierLashingPointFieldset.php:68
+#: ../src/LadocDocumentation/Form/LadocDocumentationAttachmentFieldset.php:55
+#: ../src/LadocDocumentation/Form/LoadLashingPointFieldset.php:68
+#: ../src/LadocDocumentation/Form/LoadLiftingPointFieldset.php:68
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:225
+#: ../src/LadocDocumentation/Form/RestraintNonCertifiedFieldset.php:30
+msgid "Save changes"
+msgstr "Spara ändringar"
+
+#: ../src/LadocDocumentation/Form/CarrierLashingPointFieldset.php:16
+#: ../src/LadocDocumentation/Form/LoadLashingPointFieldset.php:16
+#: ../view/ladoc-documentation/carrier-lashing-point/index.phtml:52
+msgid "Rupture Strength daN"
+msgstr "Brottsstyrka daN"
+
+#: ../src/LadocDocumentation/Form/CarrierWeightAndDimensionsFieldset.php:40
+msgid "Weight - Additional information"
+msgstr "Vikt - Ytterligare information"
+
+#: ../src/LadocDocumentation/Form/CarrierWeightAndDimensionsFieldset.php:66
+msgid "Dimensions - Additional information"
+msgstr "Mått - Ytterligare information"
+
+#: ../src/LadocDocumentation/Form/CarrierWeightFieldset.php:16
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:41
+msgid "Total weight (kg)"
+msgstr "Total vikt (kg)"
+
+#: ../src/LadocDocumentation/Form/CarrierWeightFieldset.php:27
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:42
+msgid "Front axle (kg)"
+msgstr "Framaxel (kg)"
+
+#: ../src/LadocDocumentation/Form/CarrierWeightFieldset.php:38
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:43
+msgid "Rear axle (kg)"
+msgstr "Bakaxeln (kg)"
+
+#: ../src/LadocDocumentation/Form/CarrierWeightFieldset.php:49
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:44
+msgid "Other axles (kg)"
+msgstr "Övriga axlar (kg)"
+
+#: ../src/LadocDocumentation/Form/DescriptionInformationFieldset.php:35
+msgid "Update description"
+msgstr "Uppdaterade beskrivning"
+
+#: ../src/LadocDocumentation/Form/LadocDocumentationAttachmentFieldset.php:46
+#: ../src/LadocDocumentation/Form/MultipleAttachmentFieldset.php:54
+#: ../src/LadocDocumentation/Form/PointAttachmentFieldset.php:52
+#: ../src/LadocDocumentation/Form/RestraintAttachmentFieldset.php:52
+#: ../view/ladoc-documentation/ladoc-documentation-attachment/index.phtml:45
+#: ../view/ladoc-documentation/partial/documentation-attachments.phtml:7
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:67
+msgid "File"
+msgstr "Fil"
+
+#: ../src/LadocDocumentation/Form/LadocDocumentationAttachmentFieldset.php:124
+#: ../src/LadocDocumentation/Form/MultipleAttachmentFieldset.php:122
+#: ../src/LadocDocumentation/Form/PointAttachmentFieldset.php:131
+#: ../src/LadocDocumentation/Form/RestraintAttachmentFieldset.php:131
+msgid ""
+"The file type must be images (jpg, jpeg, gif, png), documents (pdf, doc, "
+"docx, ppt, pptx, xls, xlsx), videos (mov, mpeg4, avi, wmv)"
+msgstr ""
+"Filändelsen måste vara den typ av bild (jpg, jpeg, gif, png), dokument (pdf, "
+"doc, docx, ppt, pptx, .xls) eller video (mov, MPEG4, AVI, WMV)"
+
+#: ../src/LadocDocumentation/Form/LoadBasicInformationFieldset.php:21
+#: ../view/ladoc-documentation/partial/basic-information.phtml:57
+msgid "Equivalent models"
+msgstr "Motsvarande modeller"
+
+#: ../src/LadocDocumentation/Form/LoadLiftingPointFieldset.php:16
+msgid "Rupture Strength daN pr. unit"
+msgstr "Brottsstyrka daN per. st."
+
+#: ../src/LadocDocumentation/Form/LoadLiftingPointFieldset.php:27
+#: ../view/ladoc-documentation/load-lifting-point/index.phtml:55
+#: ../view/ladoc-documentation/partial/lifting-points.phtml:16
+msgid "WLL (kg)"
+msgstr "WLL (kg)"
+
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:48
+msgid "Max height with own weight (mm)"
+msgstr "Maximal höjd med egenvikt (mm)"
+
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:59
+msgid "Ground clearance with own weight (mm)"
+msgstr "Markfrigång med egenvikt (mm)"
+
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:70
+msgid "Own weight (kg)"
+msgstr "Egenvikt (kg) se dokumentation"
+
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:81
+msgid "Technical total weight (kg)"
+msgstr "Tekniska totalvikt (kg)"
+
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:92
+msgid "Gravity in all 3 axises with own weight"
+msgstr "Tyngdpunkt i alla 3 axlar med egenvikt"
+
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:103
+msgid "Gravity in all 3 axises with total weight"
+msgstr "Tyngdpunkt i alla 3 axlar med tekniska totalvikt"
+
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:114
+msgid "Gauge exterior/interior of wheels or tracks (mm)"
+msgstr "Gauge exterior/interior of wheels or tracks (mm)"
+
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:125
+msgid "Overhang angle front/rear"
+msgstr "Överhäng vinkel fram / bak"
+
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:136
+msgid "Overhang front / wheelbase / overhang rear (mm)"
+msgstr "Överhäng fram / hjulbas / överhäng bak (mm)"
+
+#: ../src/LadocDocumentation/Form/LoadWeightAndDimensionsFieldset.php:147
+msgid "Additional information"
+msgstr "Övrig information"
+
+#: ../src/LadocDocumentation/Form/MultipleAttachmentFieldset.php:43
+#: ../src/LadocDocumentation/Form/PointAttachmentFieldset.php:31
+msgid "Title"
+msgstr "Titel"
+
+#: ../src/LadocDocumentation/Form/PointFieldset.php:19
+#: ../view/ladoc-documentation/carrier-lashing-point/index.phtml:43
+#: ../view/ladoc-documentation/load-lashing-point/index.phtml:43
+#: ../view/ladoc-documentation/load-lifting-point/index.phtml:43
+#: ../view/ladoc-documentation/partial/lashing-points.phtml:4
+#: ../view/ladoc-documentation/partial/lifting-points.phtml:4
+msgid "Placement"
+msgstr "Placering"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:32
+msgid "Illustration image"
+msgstr "Illustration bild"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:50
+msgid "Load restraint sheet image"
+msgstr "Index för lastsäkring"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:70
+msgid "Pdf information"
+msgstr "Pdf informationen"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:78
+msgid "The same certification is valid for"
+msgstr "Samma certifiering gäller även"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:92
+#: ../src/LadocDocumentation/Form/RestraintNonCertifiedFieldset.php:42
+msgid "Choose a Carrier"
+msgstr "Välj lastbärare"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:93
+#: ../src/LadocDocumentation/Form/RestraintNonCertifiedFieldset.php:43
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:78
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:16
+#: ../view/ladoc-documentation/restraint-certified/index.phtml:7
+#: ../view/ladoc-documentation/restraint-non-certified/index.phtml:7
+msgid "Carrier"
+msgstr "Lastbärare"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:114
+#: ../src/LadocDocumentation/Form/RestraintNonCertifiedFieldset.php:65
+msgid "Choose a Load"
+msgstr "Välj last"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:115
+#: ../src/LadocDocumentation/Form/RestraintNonCertifiedFieldset.php:66
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:12
+#: ../view/ladoc-documentation/restraint-certified/index.phtml:11
+#: ../view/ladoc-documentation/restraint-non-certified/index.phtml:11
+msgid "Load"
+msgstr "Last"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:148
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:40
+msgid "Elaborated by"
+msgstr "Sammanställd av"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:160
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:42
+msgid "Approved by"
+msgstr "Godkänt av"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:175
+msgid "Approved date"
+msgstr "Datum"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:183
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:48
+msgid "Important prerequisites"
+msgstr "Viktiga förutsättningar"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:331
+msgid "The file type must be images (jpg, jpeg, gif, png)"
+msgstr "Filen måste vara en bild (jpg, jpeg, gif, png)"
+
+#: ../src/LadocDocumentation/Form/RestraintCertifiedFieldset.php:348
+msgid "The file type must be pdf"
+msgstr "Filen måste vara en Pdf"
+
+#: ../src/LadocDocumentation/Service/LoadLiftingPointService.php:23
+msgid "Load Documentation does not exist."
+msgstr "Lastdokumentation existerar inte"
+
+#: ../view/ladoc-documentation/basic-information/add-edit.phtml:2
+#: ../view/ladoc-documentation/carrier-lashing-equipment/index.phtml:4
+#: ../view/ladoc-documentation/carrier-lashing-point/index.phtml:5
+#: ../view/ladoc-documentation/ladoc-documentation-attachment/index.phtml:5
+#: ../view/ladoc-documentation/load-lashing-point/index.phtml:5
+#: ../view/ladoc-documentation/load-lifting-point/index.phtml:5
+#: ../view/ladoc-documentation/weight-and-dimensions/add-edit.phtml:2
+msgid "Section"
+msgstr "Sektion"
+
+#: ../view/ladoc-documentation/basic-information/add-edit.phtml:2
+msgid "Basic information"
+msgstr "Grundläggande information"
+
+#: ../view/ladoc-documentation/carrier-lashing-equipment/index.phtml:22
+#: ../view/ladoc-documentation/carrier-lashing-point/index.phtml:23
+#: ../view/ladoc-documentation/ladoc-documentation-attachment/index.phtml:22
+#: ../view/ladoc-documentation/load-lashing-point/index.phtml:23
+#: ../view/ladoc-documentation/load-lifting-point/index.phtml:23
+#: ../view/ladoc-documentation/restraint-certified/index.phtml:25
+#: ../view/ladoc-documentation/restraint-non-certified/index.phtml:25
+msgid "Add new"
+msgstr "Lägg till ny"
+
+#: ../view/ladoc-documentation/ladoc-documentation-attachment/edit.phtml:2
+msgid "Edit attachment"
+msgstr "Ändra bilagor"
+
+#: ../view/ladoc-documentation/ladoc-documentation-attachment/edit.phtml:16
+#: ../view/ladoc-documentation/point/edit.phtml:16
+#: ../view/ladoc-documentation/restraint-certified/edit.phtml:19
+#: ../view/ladoc-documentation/restraint-non-certified/edit.phtml:20
+msgid "Return to list"
+msgstr "Tillbaka till lista"
+
+#: ../view/ladoc-documentation/ladoc-documentation-attachment/index.phtml:5
+msgid "Documentation attachments"
+msgstr "Dokumentation"
+
+#: ../view/ladoc-documentation/ladoc-documentation/create.phtml:9
+msgid "About the wizard"
+msgstr "Om guiden"
+
+#: ../view/ladoc-documentation/ladoc-documentation/create.phtml:11
+msgid ""
+"You are about to start the wizard for registering loads and carriers in "
+"LADOC."
+msgstr ""
+"Du är på väg att starta guiden för registrering en last eller en lastbärare  "
+"i LADOC."
+
+#: ../view/ladoc-documentation/ladoc-documentation/create.phtml:12
+msgid ""
+"The wizard consists of 5 steps and brings the possibility to register all "
+"relevant information about a load or a carrier."
+msgstr ""
+"Guiden består av 5 steg och ger möjlighet att spela in all relevant "
+"information om en last eller lastbärare ."
+
+#: ../view/ladoc-documentation/ladoc-documentation/create.phtml:15
+msgid ""
+"You can move back and forward in the wizard, but the information in a "
+"section will not be saved until you go forward."
+msgstr ""
+"Du kan flytta fram och tillbaka i guiden, men informationen i ett avsnitt "
+"sparas inte förrän du klickar igenom."
+
+#: ../view/ladoc-documentation/ladoc-documentation/create.phtml:16
+msgid ""
+"After you are through with all the steps and the information has been "
+"registered, you can go back any time to edit the information."
+msgstr ""
+"När du har gått igenom alla steg i guiden och informationen registreras, kan "
+"du när som helst gå in för att redigera informationen senare."
+
+#: ../view/ladoc-documentation/ladoc-documentation/create.phtml:19
+msgid ""
+"Connecting a load to carrier or vice versa, can not be done in the wizard, "
+"but can be done afterwards in the defail page for the load or the carrier."
+msgstr ""
+"Knytning av en last på en lastbärare eller en lastbärare  till en "
+"belastning, kan man inte göra i den här guiden, den måste göras efteråt i "
+"skärmen för en last eller lastbärare ."
+
+#: ../view/ladoc-documentation/ladoc-documentation/create.phtml:25
+msgid "Create Load Documentation"
+msgstr "Skapa dokumentation för last"
+
+#: ../view/ladoc-documentation/ladoc-documentation/create.phtml:30
+msgid "Create Carrier Documentation"
+msgstr "Skapa dokumentation för lastbärare "
+
+#: ../view/ladoc-documentation/ladoc-documentation/display.phtml:3
+msgid "Load documentation"
+msgstr "Last dokumentation"
+
+#: ../view/ladoc-documentation/ladoc-documentation/display.phtml:4
+msgid "Carrier documentation"
+msgstr "Lastbærer dokumentation"
+
+#: ../view/ladoc-documentation/ladoc-documentation/display.phtml:19
+#: ../view/ladoc-documentation/weight-and-dimensions/add-edit.phtml:2
+msgid "Dimensions, weight and center of gravity"
+msgstr "Mått, vikt och tyngdpunkt"
+
+#: ../view/ladoc-documentation/ladoc-documentation/display.phtml:22
+msgid "Dimensions and weight"
+msgstr "Mått och vikt"
+
+#: ../view/ladoc-documentation/ladoc-documentation/display.phtml:56
+msgid "Lifting points"
+msgstr "Lyftpunkter"
+
+#: ../view/ladoc-documentation/ladoc-documentation/display.phtml:85
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:56
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: ../view/ladoc-documentation/ladoc-documentation/display.phtml:98
+msgid "Load on Carrier"
+msgstr "Last på Lastbärare"
+
+#: ../view/ladoc-documentation/load-lashing-point/index.phtml:49
+#: ../view/ladoc-documentation/load-lifting-point/index.phtml:49
+#: ../view/ladoc-documentation/partial/lashing-points.phtml:10
+#: ../view/ladoc-documentation/partial/lifting-points.phtml:10
+msgid "Qty"
+msgstr "Antal"
+
+#: ../view/ladoc-documentation/load-lashing-point/index.phtml:52
+#: ../view/ladoc-documentation/partial/lashing-points.phtml:13
+msgid "Breaking Strength daN"
+msgstr "Brottstyrka daN"
+
+#: ../view/ladoc-documentation/load-lifting-point/index.phtml:52
+#: ../view/ladoc-documentation/partial/lifting-points.phtml:13
+msgid "Breaking Strength daN pr. unit"
+msgstr "Brottstyrka daN pr. st."
+
+#: ../view/ladoc-documentation/partial/basic-information.phtml:12
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:34
+#: ../view/ladoc-documentation/partial/documentation-attachments.phtml:24
+#: ../view/ladoc-documentation/partial/lashing-equipments.phtml:39
+#: ../view/ladoc-documentation/partial/lashing-points.phtml:44
+#: ../view/ladoc-documentation/partial/lifting-points.phtml:39
+#: ../view/ladoc-documentation/partial/load-weight-and-dimensions.phtml:9
+#: ../view/ladoc-documentation/partial/restraint-certifieds.phtml:11
+#: ../view/ladoc-documentation/partial/restraint-non-certifieds.phtml:11
+msgid "Edit section"
+msgstr "Redigera sektion"
+
+#: ../view/ladoc-documentation/partial/basic-information.phtml:29
+msgid "Material no."
+msgstr "Materialnummer"
+
+#: ../view/ladoc-documentation/partial/basic-information.phtml:43
+msgid "and standards"
+msgstr "som uppfyller"
+
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:45
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:75
+#: ../view/ladoc-documentation/partial/lashing-equipments.phtml:19
+#: ../view/ladoc-documentation/partial/lashing-points.phtml:22
+#: ../view/ladoc-documentation/partial/lifting-points.phtml:19
+msgid "See attachment"
+msgstr "Se bilaga"
+
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:48
+msgid "Own weight"
+msgstr "Egenvikt"
+
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:53
+msgid "Technical weight"
+msgstr "Tekniska totalvikt"
+
+#: ../view/ladoc-documentation/partial/carrier-weight-and-dimensions.phtml:82
+msgid "Loading plan"
+msgstr "Lastplan"
+
+#: ../view/ladoc-documentation/partial/description-information.phtml:10
+msgid "General description"
+msgstr "Allmän beskrivning"
+
+#: ../view/ladoc-documentation/partial/description-information.phtml:20
+msgid "Save description"
+msgstr "Spara beskrivning"
+
+#: ../view/ladoc-documentation/partial/load-weight-and-dimensions.phtml:15
+msgid ""
+"Length\n"
+"(mm)"
+msgstr ""
+"längd\n"
+" (mm)"
+
+#: ../view/ladoc-documentation/partial/load-weight-and-dimensions.phtml:16
+msgid ""
+"Width\n"
+"(mm)"
+msgstr ""
+"Bredd\n"
+"(mm)"
+
+#: ../view/ladoc-documentation/partial/load-weight-and-dimensions.phtml:17
+msgid ""
+"Max height with\n"
+"own weight (mm)"
+msgstr ""
+"Maximal höjd med\n"
+"egenvikt (mm)"
+
+#: ../view/ladoc-documentation/partial/load-weight-and-dimensions.phtml:18
+msgid ""
+"Ground clearance with\n"
+"own weight (mm)"
+msgstr ""
+"Markfrigång  med\n"
+"egenvikt (mm)"
+
+#: ../view/ladoc-documentation/partial/load-weight-and-dimensions.phtml:19
+msgid ""
+"Own weight (kg)\n"
+"see documentation"
+msgstr ""
+"Egenvikt (kg)\n"
+" se dokumentation"
+
+#: ../view/ladoc-documentation/partial/load-weight-and-dimensions.phtml:20
+msgid ""
+"Technical total weight\n"
+"(kg)"
+msgstr ""
+"Tekniska totalvikt\n"
+" (kg)"
+
+#: ../view/ladoc-documentation/partial/load-weight-and-dimensions.phtml:32
+msgid ""
+"Gravity in all 3 axises\n"
+"with own weight"
+msgstr ""
+"Tyngdpunkt i alla 3 axlar\n"
+" med egenvikt"
+
+#: ../view/ladoc-documentation/partial/load-weight-and-dimensions.phtml:33
+msgid ""
+"Gravity in all 3 axises\n"
+"with total weight"
+msgstr ""
+"Tyngdpunkt i alla 3 axlar\n"
+" med tekniska totalvikt"
+
+#: ../view/ladoc-documentation/partial/load-weight-and-dimensions.phtml:34
+msgid ""
+"Gauge exterior/interior of\n"
+"wheels or tracks"
+msgstr ""
+"Gauge exterior/interior \n"
+" of wheels or tracks (mm)"
+
+#: ../view/ladoc-documentation/partial/load-weight-and-dimensions.phtml:35
+msgid ""
+"Overhang angle\n"
+"front/rear"
+msgstr ""
+"Överhäng vinkel\n"
+" fram / bak"
+
+#: ../view/ladoc-documentation/partial/load-weight-and-dimensions.phtml:36
+msgid ""
+"Overhang front / wheelbase /\n"
+"overhang rear"
+msgstr ""
+"Överhäng fram / hjulbas / \n"
+" överhäng bak (mm)"
+
+#: ../view/ladoc-documentation/partial/previous-next-link-buttons.phtml:12
+#: ../view/ladoc-documentation/weight-and-dimensions/add-edit.phtml:57
+msgid "Previous"
+msgstr "Föregående"
+
+#: ../view/ladoc-documentation/partial/restraint-certifieds.phtml:19
+msgid "Certified carriers"
+msgstr "Certifierade lastbärare "
+
+#: ../view/ladoc-documentation/partial/restraint-certifieds.phtml:21
+msgid "Certified loads"
+msgstr "Certifierade laster"
+
+#: ../view/ladoc-documentation/partial/restraint-certifieds.phtml:29
+#: ../view/ladoc-documentation/partial/restraint-non-certifieds.phtml:31
+msgid "Detail"
+msgstr "Detaljer"
+
+#: ../view/ladoc-documentation/partial/restraint-non-certifieds.phtml:20
+msgid "Non-certified carriers"
+msgstr "Icke-certifierade lastbärare"
+
+#: ../view/ladoc-documentation/partial/restraint-non-certifieds.phtml:22
+msgid "Non-certified loads"
+msgstr "Icke-certifierade laster"
+
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:14
+msgid "Load NATO #"
+msgstr "Last NATO nr."
+
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:18
+msgid "Carrier NATO #"
+msgstr "Lastbärare NATO nr."
+
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:21
+msgid "The same certification"
+msgstr "Samma certifiering"
+
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:22
+msgid "is valid for"
+msgstr "gäller även"
+
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:38
+msgid ""
+"This documentation has been created in accordance with guidelines given by "
+"FLO."
+msgstr ""
+"Denna dokumentation är upprättad i enlighet med riktlinjer som utfärdats av "
+"XXXXXX"
+
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:44
+msgid "Date"
+msgstr "Datum"
+
+#: ../view/ladoc-documentation/restraint-certified/detail.phtml:96
+msgid "Read more"
+msgstr "Läs mer"
+
+#: ../view/ladoc-documentation/restraint-certified/edit.phtml:3
+msgid "Certified carrier: Edit load restraint documentation"
+msgstr "Certifierade lastbärare : Ändra lastsäkringsbeskrivning"
+
+#: ../view/ladoc-documentation/restraint-certified/edit.phtml:5
+msgid "Certified load: Edit carrier restraint documentation"
+msgstr "Certifierade laster: Ändra lastsäkringsbeskrivning"
+
+#: ../view/ladoc-documentation/restraint-certified/index.phtml:5
+msgid "Load restraint documentation for certified carriers"
+msgstr "Lastsäkringsbeskrivning för certifierad lastbärare"
+
+#: ../view/ladoc-documentation/restraint-certified/index.phtml:9
+msgid "Carrier restraint documentation for certified load"
+msgstr "Lastsäkringsbeskrivning för certifierad last"
+
+#: ../view/ladoc-documentation/restraint-non-certified/edit.phtml:3
+msgid "Non-certified carrier: Edit load restraint documentation"
+msgstr "Icke-certifierade lastbärare : Ändra lastsäkringsbeskrivning"
+
+#: ../view/ladoc-documentation/restraint-non-certified/edit.phtml:5
+msgid "Non-certified load: Edit Carrier restraint documentation"
+msgstr "Icke-certifierad last: Ändra lastsäkringsbeskrivning"
+
+#: ../view/ladoc-documentation/restraint-non-certified/index.phtml:5
+msgid "Load restraint documentation for non-certified carriers"
+msgstr "Lastsäkringsbeskrivning för icke-certifierad lastbärare"
+
+#: ../view/ladoc-documentation/restraint-non-certified/index.phtml:9
+msgid "Carrier restraint documentation for non-certified loads"
+msgstr "Lastsäkringsbeskrivning för icke-certifierad last"
+
+#~ msgid "Carrier restraint documentation for certified carriers"
+#~ msgstr "Lastsikringsbeskrivelse for sertifiserte lastbærere"
+
+#~ msgid "Carrier restraint documentation for load carriers"
+#~ msgstr "Lastsikringsbeskrivelse for sertifisert last"
+
+#~ msgid "Technical payload"
+#~ msgstr "Teknisk nyttelast"
+
+#~ msgid "Documentation created by"
+#~ msgstr "Dokumentasjon opprettet av"
+
+#~ msgid "Documentation approved by"
+#~ msgstr "Dokumentasjon godkjent av"
+
+#~ msgid "Other loads with same restraint"
+#~ msgstr "Flere laster som sikres på samme måte"
+
+#~ msgid "Created by"
+#~ msgstr "Utarbeidet av"
+
+#~ msgid "Equivalent loads"
+#~ msgstr "Ekvivalente laster"
+
+#~ msgid "Length"
+#~ msgstr "Lengde"
+
+#~ msgid "Width"
+#~ msgstr "Bredde"
+
+#~ msgid "Height with no load"
+#~ msgstr "Høyde, ubelastet"
+
+#~ msgid "Weight"
+#~ msgstr "Vekt"
+
+#~ msgid "Front axle"
+#~ msgstr "Foraksel"
+
+#~ msgid "Rear axle"
+#~ msgstr "Bakaksel"
+
+#~ msgid "Other axles"
+#~ msgstr "Øvrige aksler"
+
+#~ msgid "Total weight"
+#~ msgstr "Total vekt"
+
+#~ msgid "Dimensions"
+#~ msgstr "Mål"
+
+#~ msgid "Attachments"
+#~ msgstr "Vedlegg"
+
+#~ msgid "Own dimensions"
+#~ msgstr "Egne mål"
+
+#~ msgid "Loading plan dimensions"
+#~ msgstr "Lasteflatemål"
+
+#~ msgid "Own weight, see documentation (kg)"
+#~ msgstr "Egenvekt (kg) se dokumentasjon"
+
+#~ msgid "Load Restraint Documentations"
+#~ msgstr "Lastsikringsbeskrivelse"
+
+#~ msgid "Responsible offices"
+#~ msgstr "Ansvarlige fagkontorer"
+
+#~ msgid "Max height with own weight"
+#~ msgstr "Største høyde med egenvekt"
+
+#~ msgid "Ground clearance with own weight"
+#~ msgstr "Bakkeklaring med egenvekt"
+
+#~ msgid "Technical total weight"
+#~ msgstr "Teknisk totalvekt"
+
+#~ msgid "Gauge exterior/interior of wheels or tracks"
+#~ msgstr "Sporvidde utvendig / innvendig på hjulene eller beltene"
+
+#~ msgid "Overhang front / wheelbase / overhang rear"
+#~ msgstr "Overheng front / alle akselavstander / overheng bak"
+
+#~ msgid "NSN"
+#~ msgstr "NSN"
+
+#~ msgid "Add Lashing Point"
+#~ msgstr "Legg til lastsikringspunkt"
+
+#~ msgid "Edit Lashing Point"
+#~ msgstr "Endre lastsikringspunkt"
+
+#~ msgid "Lashing Points"
+#~ msgstr "Lastsikringspunkter"
+
+#~ msgid "Please add attachments"
+#~ msgstr "Vennligst legg til vedlegg"
+
+#~ msgid "Documentation Attachments"
+#~ msgstr "Vedlegg til dokumentasjon"
+
+#~ msgid "Edit Load Restraint Documentations for Certified Carrier"
+#~ msgstr "Endre lastsikringsbeskrivelse for sertifisert lastbærer"
+
+#~ msgid "Restraint Documentation for Certified Carriers"
+#~ msgstr "Lastsikringsbeskrivelse for sertifiserte lastbærere"
+
+#~ msgid "Edit Load Restraint Documentations for Non Certified Carrier"
+#~ msgstr "Endre lastsikringsbeskrivelse for ikke-sertifisert lastbærer"
+
+#~ msgid "Restraint Documentation for Non Certified Carriers"
+#~ msgstr "Lastsikringsbeskrivelse for ikke-sertifiserte lastbærere"
+
+#~ msgid "Colloquially"
+#~ msgstr "Kollokvial"
+
+#~ msgid "Edit"
+#~ msgstr "Endre"
+
+#~ msgid "Edit description"
+#~ msgstr "Endre beskrivelse"
+
+#~ msgid "Certified Carriers"
+#~ msgstr "Sertifiserte lastbærere"
+
+#~ msgid "Non Certified Carriers"
+#~ msgstr "Ikke sertifiserte lastbærere"
+
+#, fuzzy
+#~ msgid "The ladoc documentation doesn't exist"
+#~ msgstr "Dokumenasjonen finnes ikke."
+
+#, fuzzy
+#~ msgid "Ladoc Documentation does not exist."
+#~ msgstr "Dokumentasjon eksisterer ikke"
+
+#, fuzzy
+#~ msgid "Add an attachment"
+#~ msgstr "Legg til vedlegg (NB! Gjentakelse)"
+
+#, fuzzy
+#~ msgid "Additional info"
+#~ msgstr "Tilleggsinformasjon"

@@ -1,0 +1,279 @@
+<?php
+use Equipment\Entity\EquipmentTaxonomyTemplateTypes;
+
+$restraintCertifiedResource = 'LadocDocumentation\Entity\LadocRestraintCertified';
+$restraintCertifiedDocumentResource = 'LadocDocumentation\Entity\LadocRestraintCertifiedDocument';
+
+if ($this->isAllowed($restraintCertifiedResource, 'create')):
+    $editSectionParams = array(
+        'controller' => $this->type . '-restraint-certified',
+        'action' => 'index',
+        'documentation_id' => $this->documentationId
+    );
+
+    if($this->type == "load")
+        $editSectionParams['template_type'] = $this->templateType;
+?>
+
+    <a href="<?php echo $this->application()->url($editSectionParams) ?>"
+       class="btn btn-small pull-right margin-top-sm margin-bottom"><i class="icon-edit"></i> <?php echo $this->translate("Edit section") ?></a>
+    <div class="clearfix"></div>
+
+<?php
+endif;
+
+$columns = array();
+
+switch($this->templateType) {
+    case EquipmentTaxonomyTemplateTypes::COUNTRY_ROAD:
+        if($this->type == 'load')
+            $columns['carrierDocumentation'] = array('label' => $this->translate('With certificate for'));
+        else
+            $columns['loadDocumentation'] = array('label' => $this->translate('Loads with certificate'));
+
+        $columns['imageInformation'] = array(
+            'label' => '',
+            'callback' => function($imageInformation, $view) {
+                if (!empty($imageInformation)) {
+                    return '<a target="_blank" href="/content/ladoc-restraint-certified/' . $imageInformation .
+                        '" class="btn btn-mini "><i class="icon-list"></i> ' . $this->translate('Certificate') . '</a>';
+                }
+
+                return "";
+            }
+        );
+
+        $columns['calculationInformation'] = array(
+            'label' => '',
+            'callback' => function($calculation, $view) {
+                if (!empty($calculation)) {
+                    return '<a target="_blank" href="/content/ladoc-restraint-certified/' . $calculation .
+                        '" class="btn btn-mini "><i class="icon-list"></i> ' . $this->translate('Calculation') . '</a>';
+                }
+
+                return "";
+            }
+        );
+        break;
+    case EquipmentTaxonomyTemplateTypes::NAVAL_CRAFT:
+        if($this->type == 'load')
+            $columns['carrierDocumentation'] = array('label' => $this->translate('With certificate for'));
+        else
+            $columns['loadDocumentation'] = array('label' => $this->translate('Loads with certificate'));
+
+        $columns['imageInformation'] = array(
+            'label' => '',
+            'callback' => function($imageInformation, $view) {
+                if (!empty($imageInformation)) {
+                    return '<a target="_blank" href="/content/ladoc-restraint-certified/' . $imageInformation .
+                        '" class="btn btn-mini "><i class="icon-list"></i> ' . $this->translate('Certificate') . '</a>';
+                }
+
+                return "";
+            }
+        );
+
+        $columns['calculationInformation'] = array(
+            'label' => '',
+            'callback' => function($calculation, $view) {
+                if (!empty($calculation)) {
+                    return '<a target="_blank" href="/content/ladoc-restraint-certified/' . $calculation .
+                        '" class="btn btn-mini "><i class="icon-list"></i> ' . $this->translate('Calculation') . '</a>';
+                }
+
+                return "";
+            }
+        );
+
+        break;
+    case EquipmentTaxonomyTemplateTypes::AIRCRAFT:
+        if($this->type == 'load')
+            $columns['carrierDocumentation'] = array('label' => $this->translate('With ATTLA approval'));
+        else
+            $columns['loadDocumentation'] = array('label' => $this->translate('Loads with ATTLA approval'));
+
+        $columns['attla'] = array(
+            'label' => '',
+            'callback' => function($attla, $view) {
+                if (!empty($attla)) {
+                    return '<a target="_blank" href="/content/ladoc-restraint-certified/' . $attla .
+                        '" class="btn btn-mini "><i class="icon-list"></i> ' . $this->translate('ATTLA') . '</a>';
+                }
+
+                return "";
+            }
+        );
+
+        $columns['controlList'] = array(
+            'label' => '',
+            'callback' => function($controlList, $view) {
+                if (!empty($controlList)) {
+                    return '<a target="_blank" href="/content/ladoc-restraint-certified/' . $controlList .
+                        '" class="btn btn-mini "><i class="icon-list"></i> ' . $this->translate('Control list') . '</a>';
+                }
+
+                return "";
+            }
+        );
+        break;
+    case EquipmentTaxonomyTemplateTypes::RAILWAY:
+        if($this->type == 'load')
+            $columns['carrierDocumentation'] = array('label' => $this->translate('With tunell profile'));
+        else
+            $columns['loadDocumentation'] = array('label' => $this->translate('Loads with tunell profile'));
+
+        $columns['railwayTunellProfile'] = array(
+            'label' => '',
+            'callback' => function($railwayTunellProfile, $view) {
+                if (!empty($railwayTunellProfile)) {
+                    return '<a target="_blank" href="/content/ladoc-restraint-certified/' . $railwayTunellProfile .
+                        '" class="btn btn-mini "><i class="icon-list"></i> ' . $this->translate('Tunell Profile') . '</a>';
+                }
+
+                return "";
+            }
+        );
+
+        $columns['railwayCertificate'] = array(
+            'label' => '',
+            'callback' => function($railwayCertificate, $view) {
+                if (!empty($railwayCertificate)) {
+                    return '<a target="_blank" href="/content/ladoc-restraint-certified/' . $railwayCertificate .
+                        '" class="btn btn-mini "><i class="icon-list"></i> ' . $this->translate('Certificate') . '</a>';
+                }
+
+                return "";
+            }
+        );
+
+        $columns['railwayCalculation'] = array(
+            'label' => '',
+            'callback' => function($railwayCalculation, $view) {
+                if (!empty($railwayCalculation)) {
+                    return '<a target="_blank" href="/content/ladoc-restraint-certified/' . $railwayCalculation .
+                        '" class="btn btn-mini "><i class="icon-list"></i> ' . $this->translate('Calculation') . '</a>';
+                }
+
+                return "";
+            }
+        );
+        break;
+}
+
+$filteredEntities = array();
+foreach ($this->entities as $ent) {
+    if ($this->type == "load" && $this->templateType == $ent->getCarrierDocumentation()->getLowestTaxonomyTemplateType()) {
+        $filteredEntities[] = $ent;
+    } elseif($this->type == "carrier") {
+        $filteredEntities[] = $ent;
+    }
+}
+// TODO modify this view to combine data in the table in order to show documents
+?>
+<style>
+.restraint-certifieds-table.table-striped tbody>tr:nth-child(odd)>td, 
+.restraint-certifieds-table.table-striped tbody>tr:nth-child(odd)>th {
+    background-color: transparent;
+}
+.restraint-certifieds-table.table-striped .tr-restraint td {
+    background-color: #f9f9f9 !important;
+}
+.restraint-certifieds-table.table-striped .tr-restraint td .btn {
+    width: 90px;
+    /*float: right;*/
+}
+.restraint-certifieds-table.table-striped .restraint-document-td {
+    position: relative;
+}
+.restraint-certifieds-table.table-striped .restraint-document-td > div {
+    padding-left: 2em; 
+    padding-right: 3em;
+}
+.restraint-certifieds-table.table-striped .restraint-document-td > a {
+    position: absolute;
+    right: 10px;
+    top: 30%;
+    transform: translateY(-20%);
+}
+</style>
+<table class="table table-striped restraint-certifieds-table">
+    <thead>
+        <tr>
+        <?php 
+        $colCount = 1;
+        foreach($columns as $ck => $cv): 
+            if($colCount == 1): ?>
+                <th class="column-<?php echo $ck ?>"><?php echo $cv['label'] ?></th>
+            <?php 
+            endif;
+            $colCount++;
+        endforeach; ?>
+            <th class="column-second"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        //$colspan = count($columns);
+        foreach($filteredEntities as $rc): ?>
+            <tr class="tr-restraint">
+                <?php 
+                $colCount = 1;
+                $value = '';
+                foreach($columns as $ck => $cv): 
+                    $getMethod = 'get' . ucfirst($ck);
+                    if ($colCount == 1):
+                        $value = isset($cv['callback']) ? $cv['callback']($rc->$getMethod(), null) : $rc->$getMethod(); ?>
+                        <td class="data-table-column-<?php echo $ck ?>"><?php echo $value ?></td>
+                    <?php
+                        $value = '';
+                    else:
+                        $value .= isset($cv['callback']) ? $cv['callback']($rc->$getMethod(), null) : $rc->$getMethod();
+                    endif;
+                    $colCount++;
+                endforeach; ?>
+                <td class="data-table-column-second">
+                    <div style="width: 340px; text-align: right;"><?php echo $value ?></div>
+                </td>
+            </tr>
+            <?php if ($this->isAllowed($restraintCertifiedDocumentResource, 'create')): 
+                $editDocumentsParams = array(
+                    'controller' => 'ladoc-restraint-certified-document',
+                    'action' => 'index',
+                    'restraint_certified_id' => $rc->getId(),
+                    'type' => $this->type
+                );
+            ?>
+                <tr>
+                    <td colspan="2">
+                        <a href="<?php echo $this->application()->url($editDocumentsParams) ?>"
+            class="btn btn-small pull-right margin-top-sm"><i class="icon-edit"></i> <?php echo $this->translate("Edit section") ?></a>
+                    </td>
+                </tr>
+            <?php endif; ?>
+            <?php foreach($rc->getLadocRestraintCertifiedDocuments() as $rcd): ?>
+                <tr>
+                    <td colspan="2" class="restraint-document-td">
+                        <div><?php echo $rcd->getTitle() ?></div>
+                        <?php 
+                        $file = $rcd->getFile();
+                        $extension = substr(strrchr($file,'.'), 1);
+                        echo "<a target='_blank' class='btn btn-mini document-attachment' data-rel='open-attachment' href='/content/restraint-certified-document/" . 
+                            $file . "' data-extension='" . $extension . "'><i class='icon-file'></i></a>";
+                        ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<?php /*echo $this->bootstrapDataTable($filteredEntities, array(
+    'object_id' => 'id',
+    'table_class' => 'table table-striped restraint-certifieds-table',
+    'actions' => false,
+    'search' => false,
+    'columns' => $columns,
+    'params' => array(
+        'basic' => array('application', 'controller', 'action')
+    )
+));*/
+?>

@@ -1,0 +1,73 @@
+<?php
+use Zend\View\Model\ViewModel;
+
+$title = $this->translate('Section') . ' 4/5: ' . $this->title;
+$this->headTitle($title);
+$this->layout()->title = $title;
+
+$descriptionForm = $this->layout()->getVariable('descriptionForm');
+if($descriptionForm)
+    echo $descriptionForm;
+?>
+
+<hr />
+
+<div class="row row-desktop">
+    <div class="span12">
+        <?php
+        echo $this->bootstrapDataTable($points, array(
+            'object_id' => 'lashingEquipmentId',
+            'actions' => array(
+                'add' => array(
+                    'label' => $this->translate('Add new'),
+                    'attributes' => array(
+                        'href' => $this->application()->url(
+                                    array(
+                                        'controller' => 'carrier-lashing-equipment', 
+                                        'action' => 'add',
+                                        'documentation_id' => $this->documentationId
+                                    )
+                        )
+                    )
+                ),
+                'options' => array(
+                    'edit' => true,
+                    'delete' => true
+                )
+            ),
+            'table_class' => 'table table-striped',
+            'search' => false,
+            'columns' => array(
+                'description' => array(
+                    'label' => $this->translate('Description')
+                ),
+                'nsn' => array(
+                    'label' => $this->translate('NATO #')
+                ),
+                'quantity' => array(
+                    'label' => $this->translate('Count')
+                ),
+                'length' => array(
+                    'label' => $this->translate('Length (m)')
+                ),
+                'lc' => array(
+                    'label' => $this->translate('LC daN')
+                ),
+            ),
+            'params' => array(
+                'basic' => array('application', 'controller', 'action')
+            )
+        ));
+        ?>
+    </div>
+</div>
+
+<div class="row-fluid">
+        <?php echo $this->partial('ladoc-documentation/partial/previous-next-link-buttons.phtml',
+            $this->buttonConfig); ?>
+</div>
+
+<?php
+$this->inlineScript()
+    ->appendFile($this->basePath() . '/includes/tinymce/js/tinymce/tinymce.min.js')
+    ->appendFile($this->basePath() . '/js/ladoc-documentation/richtext.js');

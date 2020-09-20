@@ -1,0 +1,59 @@
+<?php
+$weightAndDimensionsResource = 'LadocDocumentation\Entity\LoadWeightAndDimensions';
+
+if ($this->isAllowed($weightAndDimensionsResource, 'create')):?>
+<a href="<?php echo $this->application()->url(array(
+    'controller' => 'load-weight-and-dimensions',
+    'action' => 'edit',
+    'id' => $this->id
+)) ?>" class="btn btn-small pull-right margin-top-sm margin-bottom"><i class="icon-edit"></i> <?php echo $this->translate("Edit section") ?></a>
+<?php endif; ?>
+
+<table class="table table-striped">
+    <tbody>
+    <tr>
+        <th><?php echo nl2br($this->translate("Length\n(mm)")) ?></th>
+        <th><?php echo nl2br($this->translate("Width\n(mm)")) ?></th>
+        <th><?php echo nl2br($this->translate("Max height with\nown weight (mm)")) ?></th>
+        <th><?php echo nl2br($this->translate("Ground clearance with\nown weight (mm)")) ?></th>
+        <th><?php echo nl2br($this->translate("Own weight (kg)\nsee documentation")) ?></th>
+        <th><?php echo nl2br($this->translate("Technical total weight\n(kg)")) ?></th>
+    </tr>
+    <tr>
+        <td><?php echo $this->length ?></td>
+        <td><?php echo $this->width ?></td>
+        <td><?php echo $this->maxHeightWithOwnWeight ?></td>
+        <td><?php echo $this->groundClearanceWithOwnWeight ?></td>
+        <td><?php echo $this->ownWeight ?></td>
+        <td><?php echo $this->technicalTotalWeight ?></td>
+    </tr>
+
+    <tr>
+        <th><?php echo nl2br($this->translate("Gravity in all 3 axises\nwith own weight")) ?></th>
+        <th><?php echo nl2br($this->translate("Gravity in all 3 axises\nwith total weight")) ?></th>
+        <th><?php echo nl2br($this->translate("Gauge exterior/interior of\nwheels or tracks")) ?></th>
+        <th><?php echo nl2br($this->translate("Overhang angle\nfront/rear")) ?></th>
+        <th colspan="2"><?php echo nl2br($this->translate("Overhang front / wheelbase /\noverhang rear")) ?></th>
+    </tr>
+    <tr>
+        <td><?php echo $this->gravityWithOwnWeight ?></td>
+        <td><?php echo $this->gravityWithTotalWeigth ?></td>
+        <td><?php echo $this->gaugeOfWheels ?></td>
+        <td><?php echo $this->overhangAngle ?></td>
+        <td colspan="2"><?php echo $this->overhang ?></td>
+    </tr>
+    </tbody>
+</table>
+<?php if (!empty($this->additionalInfo)): ?>
+<div class="description-html">
+    <p>
+        <?php echo nl2br($this->additionalInfo) ?>
+    </p>
+</div>
+<?php endif ?>
+<?php
+
+echo $this->partial('ladoc-documentation/partial/point-attachments.phtml', array(
+    'path' => '/content/weight-and-dimensions/',
+    'attachments' => $this->attachments));
+?>

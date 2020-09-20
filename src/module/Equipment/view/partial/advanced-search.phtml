@@ -1,0 +1,61 @@
+<div id="advanced-search-equipment" class="advanced-search-collapsible collapse">
+    <?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->application()->url(array('controller' => 'equipment', 'action' => 'do-search')));
+    $form->setAttribute('class', 'well');
+    
+    $equipment = $form->get('equipment');
+    $form->setAttribute('method', 'get');
+    $form->prepare();
+    ?>
+    <button class="close advanced-search-toggle pull-right" data-toggle="collapse" data-target="#advanced-search">&times;</button>
+    <?php echo $this->form()->openTag($form); ?>
+    <input type="hidden" name="mode[]" value="advanced">
+    <fieldset>
+        <legend><?php echo $this->translate('Advanced search'); ?>
+
+        </legend>
+        <div class="row">
+            <div class="span5">
+                <div class="control-group">
+                    <label class="control-label" for="search-category"> <?php echo $this->translate('Category'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipment->get('category')); ?>
+                    </div>
+                </div>
+                <?php if($this->application != 'ladoc'): ?>
+                    <div class="control-group">
+                        <label class="control-label" for="search-supplier">
+                            <?php echo $this->translate('Supplier'); ?>
+                        </label>
+                        <div class="controls">
+                            <?php echo $this->formRow($equipment->get('supplier')); ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="span5">
+                <div class="control-group">
+                    <label class="control-label" for="search-nsn"><?php echo $this->translate('NATO # (ex. 2320-15-180-8279)'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipment->get('nsn')); ?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="search-sap"><?php echo $this->translate('SAP #'); ?></label>
+                    <div class="controls">
+                        <?php echo $this->formRow($equipment->get('sap')); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn"><i class="icon-search"></i> <?php echo $this->translate('Search'); ?> </button>
+            </div>
+        </div>
+    </fieldset>
+    <?php echo $this->form()->closeTag(); ?>
+</div>
+
+

@@ -1,0 +1,5 @@
+<?php $this->inlineScript()->appendScript('
+        var controlInterval = ' . $controlInterval,
+        'text/javascript', array('noescape' => true))
+        ->appendFile($this->basePath() . '/js/equipment/equipment-instance/set-control-date.js');
+ ?>

@@ -1,0 +1,2432 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Vidum 0.1\n"
+"POT-Creation-Date: 2015-10-28 13:43-0500\n"
+"PO-Revision-Date: 2016-03-22 08:01-0500\n"
+"Last-Translator: bjornakr <100bak@sysco.no>\n"
+"Language-Team: Sysco Peru\n"
+"Language: no\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;translate;sendFlashMessage\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: ../src/Equipment/Controller/CheckInAndOutController.php:22
+msgid "Checkout does not exist"
+msgstr "Utlåning existerar inte"
+
+#: ../src/Equipment/Controller/CheckInAndOutController.php:56
+msgid "Equipment instance doesn't exist or it's not checked out"
+msgstr "Individen finns inte eller är inte lånades ut"
+
+#: ../src/Equipment/Controller/CheckInAndOutController.php:84
+msgid "You have not selected any equipment instance"
+msgstr "Du måste välja ett individ"
+
+#: ../src/Equipment/Controller/CheckInAndOutController.php:142
+#, php-format
+msgid "The equipment instance \"%s\" has been successfully checked in."
+msgstr "Individ \"%s\" har checkats inn"
+
+#: ../src/Equipment/Controller/CheckInAndOutController.php:145
+#, php-format
+msgid "The equipment instance \"%s\" could not be checked in. Try again later."
+msgstr "Individ \"%s\"  kunde inte checkats inn. Försök igen senare."
+
+#: ../src/Equipment/Controller/EquipmentController.php:156
+msgid "Equipment Information was saved succesfully."
+msgstr "Utrustnings informationen lagrades"
+
+#: ../src/Equipment/Controller/EquipmentController.php:229
+msgid "Equipment does not exist"
+msgstr "Utrustningen existerar inte"
+
+#: ../src/Equipment/Controller/EquipmentController.php:394
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:160
+#: ../view/equipment/equipment-instance/index.phtml:185
+#: ../view/equipment/equipment/index.phtml:306
+msgid "Equipment"
+msgstr "Utrustning"
+
+#: ../src/Equipment/Controller/EquipmentController.php:466
+#: ../src/Equipment/Controller/EquipmentController.php:510
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:70
+msgid "Equipment doesn't exist"
+msgstr "Utsrustningen existerar inte"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:145
+msgid "Equipment instance doesn't exist"
+msgstr "Individet existerar inte"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:200
+#: ../src/Equipment/Controller/PeriodicControlController.php:52
+msgid "Periodic Control doesn't exist"
+msgstr "Periodisk inspektion existerar inte"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:211
+#: ../src/Equipment/Controller/PeriodicControlController.php:63
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:36
+#: ../view/equipment/equipment-instance/detail.phtml:401
+#: ../view/equipment/equipment-instance/index.phtml:241
+msgid "Periodic control"
+msgstr "Periodisk inspektion"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:228
+#: ../src/Equipment/Controller/VisualControlController.php:48
+msgid "Visual Control doesn't exist"
+msgstr "Visuell inspektion existerar inte"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:239
+#: ../src/Equipment/Controller/VisualControlController.php:58
+#: ../view/equipment/equipment-instance/detail.phtml:414
+#: ../view/equipment/equipment-instance/index.phtml:249
+msgid "Visual control"
+msgstr "Visuell inspektion"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:284
+#: ../src/Equipment/Service/EquipmentInstanceService.php:144
+msgid "Incorrect Equipment instance id"
+msgstr "Ogiltig individ id"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:425
+msgid "The action could not be processed, try again later "
+msgstr "Åtgärden kunde inte utföras - försök igen senare"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:429
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:488
+msgid "The equipment doesn't exist "
+msgstr "Utsrustningen existerar inte"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:449
+msgid "The instances has been saved successfully."
+msgstr "Individen sparades"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:581
+msgid "Search results"
+msgstr "Sökresultat"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:659
+msgid "The equipment instance has been successfully saved."
+msgstr "Individen sparades"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:665
+msgid "The equipment instance could not be saved. Try again later."
+msgstr "Individen kan inte sparas. Försök igen senare"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:681
+msgid "The serial number already exists."
+msgstr "Serienumret är redan i bruk."
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:686
+msgid "The reg. number already exists."
+msgstr "Reg. nummer är redan i bruk."
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:760
+msgid "Action could not be completed"
+msgstr "Åtgärden kunde inte slutföras"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:778
+msgid "Equipment Subinstance was added successfully"
+msgstr "Individen sparades"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:782
+msgid "no subinstance added"
+msgstr "Intet individ ble funnet"
+
+#: ../src/Equipment/Controller/EquipmentInstanceController.php:801
+msgid "EquipmentInstance doesn't existerror"
+msgstr "Individen existerar inte"
+
+#: ../src/Equipment/Controller/EquipmentTaxonomyController.php:18
+msgid "Categories"
+msgstr "Kategorier"
+
+#: ../src/Equipment/Controller/EquipmentTaxonomyController.php:33
+msgid "Incorrect category id format"
+msgstr "Fel format för kategori id"
+
+#: ../src/Equipment/Controller/EquipmentTaxonomyController.php:155
+msgid "The category has been saved."
+msgstr "Kategorin har sparats"
+
+#: ../src/Equipment/Controller/PeriodicControlController.php:94
+msgid "You are not qualified to perform periodic control on this equipment."
+msgstr ""
+"Du är inte kvalificerad att utföra regelbundna inspektioner på denna "
+"utrustning."
+
+#: ../src/Equipment/Controller/PeriodicControlController.php:173
+msgid "The attachments must have a file or a link."
+msgstr "Bilagor måste ha en fil eller en länk."
+
+#: ../src/Equipment/Form/CheckinFieldset.php:20
+msgid "Checkin date"
+msgstr "Incheckningsdatum"
+
+#: ../src/Equipment/Form/CheckinFieldset.php:29
+#: ../src/Equipment/Form/CheckoutFieldset.php:78
+#: ../src/Equipment/Form/PeriodicControlFieldset.php:116
+#: ../src/Equipment/Service/PeriodicControlReportService.php:85
+#: ../view/equipment/check-in-and-out/detail-checkout.phtml:28
+#: ../view/equipment/periodic-control/index.phtml:48
+#: ../view/equipment/periodic-control/index.phtml:62
+#: ../view/equipment/visual-control/index.phtml:46
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: ../src/Equipment/Form/CheckinFieldset.php:37
+#: ../src/Equipment/Form/CheckoutFieldset.php:86
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:282
+#: ../src/Equipment/Form/EquipmentSubinstanceFieldset.php:71
+#: ../src/Equipment/Form/PeriodicControlForm.php:101
+#: ../src/Equipment/Form/VisualControlFieldset.php:80
+msgid "Save changes"
+msgstr "Spara ändringar"
+
+#: ../src/Equipment/Form/CheckoutFieldset.php:21
+#: ../view/equipment/check-in-and-out/checkin.phtml:25
+#: ../view/equipment/check-in-and-out/detail-checkout.phtml:12
+msgid "Expected checkin date"
+msgstr "Förväntad incheckningsdatum "
+
+#: ../src/Equipment/Form/CheckoutFieldset.php:34
+#: ../src/Equipment/Form/EquipmentFieldset.php:100
+#: ../src/Equipment/Form/EquipmentFieldset.php:123
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:108
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:84
+msgid "Choose an organization"
+msgstr "Välj en organisation"
+
+#: ../src/Equipment/Form/CheckoutFieldset.php:36
+#: ../view/equipment/check-in-and-out/checkin.phtml:32
+#: ../view/equipment/check-in-and-out/detail-checkout.phtml:16
+msgid "Organization"
+msgstr "Organisation"
+
+#: ../src/Equipment/Form/CheckoutFieldset.php:54
+#: ../view/equipment/check-in-and-out/checkin.phtml:38
+msgid "Contact person full name"
+msgstr "Kontaktperson - fullständiga namn"
+
+#: ../src/Equipment/Form/CheckoutFieldset.php:62
+#: ../view/equipment/check-in-and-out/checkin.phtml:44
+msgid "Phone"
+msgstr "Telefon"
+
+#: ../src/Equipment/Form/CheckoutFieldset.php:70
+#: ../view/equipment/check-in-and-out/checkin.phtml:50
+msgid "Position"
+msgstr "Befattning"
+
+#: ../src/Equipment/Form/ControlPointResultFieldset.php:100
+msgid "Choose an option"
+msgstr "Välj ett alternativ"
+
+#: ../src/Equipment/Form/ControlPointResultFieldset.php:112
+msgid "Remark"
+msgstr "Anteckning"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:32
+#: ../src/Equipment/Form/EquipmentFieldset.php:35
+#: ../src/Equipment/Service/PeriodicControlReportService.php:30
+#: ../view/equipment/equipment-instance/detail.phtml:55
+#: ../view/equipment/periodic-control/index.phtml:23
+#: ../view/equipment/visual-control/index.phtml:17
+msgid "Equipment name"
+msgstr "Namn"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:48
+#: ../view/partial/advanced-control-search.phtml:81
+#: ../view/partial/advanced-instance-search.phtml:19
+msgid "Equipment Category"
+msgstr "Kategori"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:62
+#: ../src/Equipment/Form/EquipmentTaxonomyFieldset.php:90
+msgid "Featured image"
+msgstr "Featured bild"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:71
+#: ../src/Equipment/Form/EquipmentTaxonomyFieldset.php:42
+#: ../view/equipment/equipment-instance/attachment-table.phtml:141
+#: ../view/equipment/equipment-instance/detail.phtml:128
+msgid "Description"
+msgstr "Beskrivning"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:86
+msgid "Feature override"
+msgstr "Feature override"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:102
+#: ../view/equipment/equipment-instance/detail.phtml:76
+#: ../view/partial/advanced-instance-search.phtml:43
+msgid "Vendor"
+msgstr "Leverantör"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:125
+msgid "Producer"
+msgstr "Tillverkare"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:151
+#: ../view/equipment/equipment-instance/detail.phtml:78
+msgid "Has to be used with"
+msgstr "Måste användas med"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:173
+#: ../view/equipment/equipment-instance/detail.phtml:91
+msgid "Can be used with"
+msgstr "Kan användas med"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:189
+#: ../src/Equipment/Form/EquipmentFieldset.php:192
+msgid "Control Interval days"
+msgstr "Control Interval days"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:204
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:56
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:59
+#: ../view/equipment/equipment-instance/detail.phtml:117
+msgid "Standard"
+msgstr "Standard"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:205
+msgid "Container"
+msgstr "Container"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:210
+msgid "Equipment instance type"
+msgstr "Utrustning typ"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:220
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:269
+#: ../view/equipment/equipment-instance/index.phtml:172
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:74
+#: ../view/equipment/equipment/admin-index.phtml:87
+msgid "Active"
+msgstr "Aktiv"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:221
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:270
+#: ../view/equipment/equipment-instance/index.phtml:174
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:76
+#: ../view/equipment/equipment/admin-index.phtml:84
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:257
+#: ../src/Equipment/Form/EquipmentFieldset.php:260
+msgid "Vendor part"
+msgstr "Leverantör artikelnummer"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:310
+msgid "The input has to be equal or greater than 3"
+msgstr "Värdet måste vara större än eller lika med 3"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:321
+msgid "The input does not appear to be an integer"
+msgstr "Värdet måste vara ett heltal"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:367
+msgid "The input must contain only digits"
+msgstr "Fält får bara innehålla siffror"
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:393
+msgid "NATO no. must be 9 or 13 characters."
+msgstr "NATO nr. Måste bestå av 9 eller 13 tecken."
+
+#: ../src/Equipment/Form/EquipmentFieldset.php:403
+#, php-format
+msgid "%s is already registered"
+msgstr "%s är redan registrerad"
+
+#: ../src/Equipment/Form/EquipmentInstanceAdvancedSearchBaseFieldSet.php:21
+#: ../src/Equipment/Form/SearchAdvancedFieldset.php:30
+msgid "Choose a category"
+msgstr "Välj en kategori"
+
+#: ../src/Equipment/Form/EquipmentInstanceAdvancedSearchBaseFieldSet.php:47
+msgid "Choose an equipment"
+msgstr "Välj utrustning"
+
+#: ../src/Equipment/Form/EquipmentInstanceAdvancedSearchBaseFieldSet.php:98
+msgid "Choose an owner"
+msgstr "Välj ägare"
+
+#: ../src/Equipment/Form/EquipmentInstanceAdvancedSearchBaseFieldSet.php:121
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:84
+msgid "Choose a location"
+msgstr "Välj en plats"
+
+#: ../src/Equipment/Form/EquipmentInstanceAdvancedSearchBaseFieldSet.php:132
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:60
+msgid "Choose an usage status"
+msgstr "Välj ett användningsstatus"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:22
+#: ../src/Equipment/Repository/Equipment.php:91
+#: ../view/partial/advanced-control-search.phtml:63
+msgid "Serial number"
+msgstr "Serienummer"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:31
+msgid "Reg number"
+msgstr "Reg. nummer"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:40
+#: ../view/partial/advanced-control-search.phtml:75
+msgid "Batch number"
+msgstr "Batchnummer"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:49
+msgid "Certificate number"
+msgstr "Certifikatnummer"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:62
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:147
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:165
+#: ../view/equipment/equipment-instance-report/expired-guarantee.phtml:54
+#: ../view/equipment/equipment-instance-report/expired-lifetime.phtml:54
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:62
+#: ../view/equipment/equipment-instance/detail.phtml:144
+#: ../view/equipment/equipment-instance/detail.phtml:439
+#: ../view/partial/advanced-control-search.phtml:105
+#: ../view/partial/advanced-instance-search.phtml:81
+msgid "Usage status"
+msgstr "Användningsstatus"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:85
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:146
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:163
+#: ../src/Equipment/Service/PeriodicControlReportService.php:34
+#: ../view/equipment/equipment-instance-report/expired-guarantee.phtml:50
+#: ../view/equipment/equipment-instance-report/expired-lifetime.phtml:50
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:58
+#: ../view/equipment/equipment-instance/detail.phtml:140
+#: ../view/equipment/equipment-instance/index.phtml:129
+#: ../view/equipment/periodic-control/index.phtml:31
+#: ../view/equipment/visual-control/index.phtml:25
+#: ../view/partial/advanced-control-search.phtml:99
+#: ../view/partial/advanced-instance-search.phtml:75
+msgid "Location"
+msgstr "Plats"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:110
+#: ../src/Equipment/Service/PeriodicControlReportService.php:33
+#: ../view/equipment/equipment-instance/detail.phtml:138
+#: ../view/equipment/periodic-control/index.phtml:29
+#: ../view/equipment/visual-control/index.phtml:23
+#: ../view/partial/advanced-control-search.phtml:111
+#: ../view/partial/advanced-instance-search.phtml:69
+msgid "Owner"
+msgstr "Ägare"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:133
+#: ../view/equipment/equipment-instance/detail.phtml:200
+msgid "Production date"
+msgstr "Produktionsdatum"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:145
+#: ../view/equipment/equipment-instance/detail.phtml:206
+msgid "Purchase date"
+msgstr "Inköpsdatum"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:157
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:194
+#: ../view/equipment/equipment-instance-report/expired-lifetime.phtml:58
+#: ../view/equipment/equipment-instance/detail.phtml:212
+msgid "Technical lifetime"
+msgstr "Teknisk livslängd"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:169
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:200
+#: ../view/equipment/equipment-instance-report/expired-guarantee.phtml:58
+msgid "Guarantee time"
+msgstr "Garanti"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:181
+#: ../view/equipment/equipment-instance/detail.phtml:224
+msgid "Reception control"
+msgstr "Mottagningskontroll genomfört"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:193
+#: ../view/equipment/equipment-instance/detail.phtml:230
+msgid "First time used"
+msgstr "Första gång tillämpad"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:205
+msgid "Periodic control date"
+msgstr "Datum för periodisk kontroll"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:206
+#: ../src/Equipment/Form/PeriodicControlFieldset.php:57
+msgid "Control interval (Days): "
+msgstr "Kontrollintervall (dagar):"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:228
+msgid "Order number"
+msgstr "Ordernummer"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:236
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:164
+#: ../view/equipment/equipment-instance/detail.phtml:142
+#: ../view/equipment/equipment-instance/index.phtml:133
+msgid "Price"
+msgstr "Pris"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:249
+#: ../view/equipment/equipment-instance/detail.phtml:196
+#: ../view/partial/advanced-instance-search.phtml:99
+msgid "RFID"
+msgstr "RFID"
+
+#: ../src/Equipment/Form/EquipmentInstanceBaseFieldset.php:259
+#: ../src/Equipment/Form/VisualControlFieldset.php:72
+#: ../view/equipment/equipment-instance/detail.phtml:180
+msgid "Remarks"
+msgstr "Anmärkningar"
+
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:21
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:35
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:49
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:63
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:77
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:91
+#: ../view/equipment/equipment-instance/detail.phtml:149
+#: ../view/equipment/equipment/admin-index.phtml:137
+#: ../view/equipment/equipment/index.phtml:264
+msgid "Yes"
+msgstr "Ja"
+
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:22
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:36
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:50
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:64
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:78
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:92
+#: ../view/equipment/equipment-instance/detail.phtml:164
+#: ../view/equipment/equipment/admin-index.phtml:138
+#: ../view/equipment/equipment/index.phtml:265
+msgid "No"
+msgstr "Nej"
+
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:26
+#: ../view/equipment/equipment-instance/detail.phtml:242
+msgid "Isolated"
+msgstr "Isolerat"
+
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:40
+#: ../view/equipment/equipment-instance/detail.phtml:244
+msgid "Dryair"
+msgstr "Torrluft"
+
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:54
+#: ../view/equipment/equipment-instance/detail.phtml:251
+msgid "220 volt"
+msgstr "220 volt"
+
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:68
+#: ../view/equipment/equipment-instance/detail.phtml:253
+msgid "400 volt"
+msgstr "400 volt"
+
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:82
+#: ../view/equipment/equipment-instance/detail.phtml:246
+msgid "Communication racks"
+msgstr "Sambandsracking"
+
+#: ../src/Equipment/Form/EquipmentInstanceContainerFieldset.php:96
+#: ../view/equipment/equipment-instance/detail.phtml:255
+msgid "Other decor"
+msgstr "Annan fast inredning"
+
+#: ../src/Equipment/Form/EquipmentInstanceEditManyFieldset.php:29
+msgid "Update visual control ?"
+msgstr "Uppdatera visuell kontroll?"
+
+#: ../src/Equipment/Form/EquipmentSubinstanceFieldset.php:61
+#: ../view/equipment/equipment-instance/detail.phtml:44
+#: ../view/equipment/equipment-instance/detail.phtml:355
+msgid "Subinstances"
+msgstr "Subinstances"
+
+#: ../src/Equipment/Form/EquipmentTaxonomyFieldset.php:33
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:64
+#: ../view/equipment/equipment/admin-index.phtml:50
+msgid "Name"
+msgstr "Namn"
+
+#: ../src/Equipment/Form/EquipmentTaxonomyFieldset.php:55
+#: ../src/Equipment/Service/PeriodicControlReportService.php:84
+#: ../view/equipment/equipment-instance/index.phtml:168
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:70
+#: ../view/equipment/equipment/admin-index.phtml:53
+#: ../view/equipment/periodic-control/index.phtml:61
+msgid "Status"
+msgstr "Status"
+
+#: ../src/Equipment/Form/EquipmentTaxonomyFieldset.php:65
+msgid "Control Template"
+msgstr "Kontrollmal"
+
+#: ../src/Equipment/Form/EquipmentTaxonomyFieldset.php:68
+#: ../src/Equipment/Form/EquipmentTaxonomyFieldset.php:82
+#: ../src/Equipment/Form/EquipmentTaxonomyFieldset.php:97
+msgid "None"
+msgstr "Ingen"
+
+#: ../src/Equipment/Form/EquipmentTaxonomyFieldset.php:79
+msgid "Competence area"
+msgstr "Kompetensområde"
+
+#: ../src/Equipment/Form/EquipmentTaxonomyFieldset.php:98
+msgid "Parent Category"
+msgstr "Förälder kategori"
+
+#: ../src/Equipment/Form/FormFactory.php:212
+msgid "Add attachments"
+msgstr "Lägg till bilagor"
+
+#: ../src/Equipment/Form/PeriodicControlFieldset.php:18
+#: ../view/equipment/equipment-instance/detail.phtml:276
+#: ../view/equipment/equipment-instance/instance-controls.phtml:64
+#: ../view/equipment/periodic-control/index.phtml:35
+#: ../view/partial/advanced-control-search.phtml:43
+msgid "Competent Person"
+msgstr "Kompetent person"
+
+#: ../src/Equipment/Form/PeriodicControlFieldset.php:43
+#: ../src/Equipment/Form/VisualControlFieldset.php:24
+#: ../src/Equipment/Service/PeriodicControlReportService.php:37
+#: ../view/equipment/equipment-instance/detail.phtml:274
+#: ../view/equipment/equipment-instance/detail.phtml:317
+#: ../view/equipment/periodic-control/index.phtml:37
+#: ../view/equipment/visual-control/index.phtml:31
+msgid "Control date"
+msgstr "Kontrolldatum"
+
+#: ../src/Equipment/Form/PeriodicControlFieldset.php:56
+#: ../src/Equipment/Form/VisualControlFieldset.php:64
+#: ../src/Equipment/Service/PeriodicControlReportService.php:38
+#: ../view/equipment/periodic-control/index.phtml:39
+#: ../view/equipment/visual-control/index.phtml:35
+msgid "Next control date"
+msgstr "Nästa kontrolldatum"
+
+#: ../src/Equipment/Form/PeriodicControlFieldset.php:68
+#: ../src/Equipment/Form/SearchAdvancedForInstanceControlFieldset.php:120
+msgid "Choose an expertise organ"
+msgstr "Velg et sakkunnig organ"
+
+#: ../src/Equipment/Form/PeriodicControlFieldset.php:70
+#: ../src/Equipment/Service/PeriodicControlReportService.php:39
+#: ../view/equipment/periodic-control/index.phtml:41
+#: ../view/partial/advanced-control-search.phtml:55
+msgid "Expertise organ"
+msgstr "Sakkunnig organ"
+
+#: ../src/Equipment/Form/PeriodicControlFieldset.php:95
+#: ../src/Equipment/Form/SearchAdvancedForInstanceControlFieldset.php:94
+#: ../src/Equipment/Form/VisualControlFieldset.php:38
+msgid "Choose a control status"
+msgstr "Välj en kontrollstatus"
+
+#: ../src/Equipment/Form/PeriodicControlFieldset.php:97
+#: ../src/Equipment/Form/VisualControlFieldset.php:40
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:153
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:166
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:178
+#: ../src/Equipment/Service/PeriodicControlReportService.php:40
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:66
+#: ../view/equipment/equipment-instance/detail.phtml:275
+#: ../view/equipment/equipment-instance/detail.phtml:318
+#: ../view/equipment/equipment-instance/detail.phtml:443
+#: ../view/equipment/periodic-control/index.phtml:43
+#: ../view/equipment/visual-control/index.phtml:39
+#: ../view/partial/advanced-control-search.phtml:49
+msgid "Control status"
+msgstr "Kontrollstatus"
+
+#: ../src/Equipment/Form/PeriodicControlForm.php:79
+msgid "Add attachment"
+msgstr "Lägg till bilagor"
+
+#: ../src/Equipment/Form/PeriodicControlForm.php:89
+msgid "Remove attachment"
+msgstr "Ta bort bilagor"
+
+#: ../src/Equipment/Form/SearchAdvancedFieldset.php:56
+msgid "Choose a supplier"
+msgstr "Välj en leverantör"
+
+#: ../src/Equipment/Form/SearchAdvancedFieldset.php:96
+#: ../view/partial/advanced-control-search.phtml:120
+#: ../view/partial/advanced-instance-search.phtml:109
+#: ../view/partial/advanced-search.phtml:52
+msgid "Search"
+msgstr "Sök"
+
+#: ../src/Equipment/Form/SearchAdvancedForInstanceControlFieldset.php:22
+msgid "Periodic"
+msgstr "Periodiska"
+
+#: ../src/Equipment/Form/SearchAdvancedForInstanceControlFieldset.php:23
+msgid "Visual"
+msgstr "Visuell"
+
+#: ../src/Equipment/Form/SearchAdvancedForInstanceControlFieldset.php:33
+msgid "Future"
+msgstr "Kommande"
+
+#: ../src/Equipment/Form/SearchAdvancedForInstanceControlFieldset.php:34
+msgid "Historical"
+msgstr "Historiska"
+
+#: ../src/Equipment/Form/SearchAdvancedForInstanceControlFieldset.php:66
+msgid "Choose a user"
+msgstr "Välj en användare"
+
+#: ../src/Equipment/Form/SearchAdvancedForInstancesFieldset.php:34
+msgid "Choose a vendor"
+msgstr "Välja en leverantör"
+
+#: ../src/Equipment/Form/SearchAdvancedForInstancesFieldset.php:52
+msgid "All statuses"
+msgstr "Alle statusar"
+
+#: ../src/Equipment/Form/SearchAdvancedForInstancesFieldset.php:54
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:63
+#: ../view/equipment/equipment-instance/detail.phtml:146
+#: ../view/equipment/equipment-instance/index.phtml:2
+msgid "Checked out"
+msgstr "Utcheckad"
+
+#: ../src/Equipment/Form/SearchAdvancedForInstancesFieldset.php:55
+msgid "Not Checked out"
+msgstr "Inte utcheckad"
+
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:23
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:26
+msgid "WLL (kg)"
+msgstr "WLL (kg)"
+
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:34
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:37
+msgid "Length (cm)"
+msgstr "Längd (cm)"
+
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:45
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:48
+#: ../view/equipment/equipment-instance/detail.phtml:113
+msgid "Material quality"
+msgstr "Materialkvalitet"
+
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:67
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:70
+#: ../view/equipment/equipment-instance/detail.phtml:119
+msgid "Type approval"
+msgstr "Typgodkännande"
+
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:85
+#: ../view/equipment/equipment-instance/detail.phtml:121
+msgid "Control organ"
+msgstr "Kontrollorgan"
+
+#: ../src/Equipment/Form/VedosMechanicalEquipmentFieldset.php:96
+msgid "The input should be a number"
+msgstr "Värdet måste vara ett nummer"
+
+#: ../src/Equipment/Repository/Equipment.php:90
+msgid "Equipment instance"
+msgstr "Individ"
+
+#: ../src/Equipment/Repository/Equipment.php:103
+msgid "Attachment"
+msgstr "Bilagor"
+
+#: ../src/Equipment/Repository/EquipmentTaxonomy.php:85
+msgid "Subcategories"
+msgstr "Underkategorier"
+
+#: ../src/Equipment/Repository/EquipmentTaxonomy.php:91
+msgid "Equipments"
+msgstr "Utrustning"
+
+#: ../src/Equipment/Repository/EquipmentTaxonomy.php:97
+msgid "Pages"
+msgstr "Sidor"
+
+#: ../src/Equipment/Service/CheckoutService.php:59
+#, php-format
+msgid "\"%s\" is already checked out"
+msgstr "\"%s\" är redan checkat ut"
+
+#: ../src/Equipment/Service/CheckoutService.php:65
+#: ../src/Equipment/Service/PeriodicControlService.php:69
+#: ../src/Equipment/Service/VisualControlService.php:82
+#, php-format
+msgid "\"%s\" has been updated successfully"
+msgstr "\"%s\" uppdaterades"
+
+#: ../src/Equipment/Service/CheckoutService.php:69
+#: ../src/Equipment/Service/PeriodicControlService.php:72
+#: ../src/Equipment/Service/VisualControlService.php:91
+msgid "Equipment Instance doesn't exist"
+msgstr "Individen existerar inte"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:35
+msgid "Search results: Instances"
+msgstr "Sökresultat:: Individer"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:46
+msgid "Search results: Controls"
+msgstr "Sökresultat:: Kontroller"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:81
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:113
+#: ../view/equipment/equipment-instance/detail.phtml:459
+#: ../view/equipment/equipment-instance/index.phtml:348
+#: ../view/equipment/equipment-instance/instance-controls.phtml:19
+msgid "Expired"
+msgstr "Utgånget"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:106
+msgid "Instances expired on control date report"
+msgstr "Individer löpt inspektionsdatum"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:121
+msgid "Instances expired on guarantee date report"
+msgstr "Individer löpt garanti"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:136
+msgid "Instances expired on technical lifetime report"
+msgstr "Individer löpt tekniska livslängd"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:143
+#: ../view/equipment/equipment-instance-report/expired-guarantee.phtml:40
+#: ../view/equipment/equipment-instance-report/expired-lifetime.phtml:40
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:48
+#: ../view/equipment/equipment-instance/detail.phtml:32
+#: ../view/equipment/equipment-instance/detail.phtml:51
+#: ../view/equipment/equipment-instance/detail.phtml:433
+msgid "Equipment type"
+msgstr "Utrustning typ"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:144
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:161
+#: ../src/Equipment/Service/PeriodicControlReportService.php:31
+#: ../view/equipment/equipment-instance-report/expired-guarantee.phtml:44
+#: ../view/equipment/equipment-instance-report/expired-lifetime.phtml:44
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:52
+#: ../view/equipment/equipment-instance/detail.phtml:186
+#: ../view/equipment/equipment-instance/detail.phtml:436
+#: ../view/equipment/periodic-control/index.phtml:25
+#: ../view/equipment/visual-control/index.phtml:19
+msgid "Serial #"
+msgstr "Serienummer"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:145
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:162
+#: ../view/equipment/equipment-instance-report/expired-guarantee.phtml:47
+#: ../view/equipment/equipment-instance-report/expired-lifetime.phtml:47
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:55
+#: ../view/equipment/equipment-instance/index.phtml:126
+#: ../view/partial/advanced-control-search.phtml:69
+msgid "Reg. number"
+msgstr "Reg. nummer"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:154
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:168
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:70
+#: ../view/equipment/equipment-instance/detail.phtml:447
+msgid "Next control"
+msgstr "Nästa kontroll"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:167
+msgid "Check-out status"
+msgstr "Utlåningsstatus"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:174
+#: ../view/equipment/equipment-instance/instance-controls.phtml:61
+msgid "Equipment Instance"
+msgstr "Individ"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:175
+#: ../src/Equipment/Service/PeriodicControlReportService.php:36
+msgid "Competent person"
+msgstr "Kompetent person"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:176
+#: ../view/equipment/equipment-instance/instance-controls.phtml:67
+msgid "Control Date"
+msgstr "Kontrolldatum"
+
+#: ../src/Equipment/Service/EquipmentInstanceReportService.php:177
+#: ../view/equipment/equipment-instance/instance-controls.phtml:73
+msgid "Next Control Date"
+msgstr "Nästa kontrolldatum"
+
+#: ../src/Equipment/Service/EquipmentInstanceService.php:102
+msgid "Too many instances were returned. Please add more filters"
+msgstr "För många fall återlämnades. Vänligen lägga till fler filter"
+
+#: ../src/Equipment/Service/EquipmentInstanceService.php:128
+msgid "Too many controls were returned. Please add more filters"
+msgstr "Alltför många kontroller returnerades. Vänligen lägg till fler filter"
+
+#: ../src/Equipment/Service/EquipmentInstanceService.php:140
+msgid "Equipment instance unlinked"
+msgstr "Individen blev bortkopplad"
+
+#: ../src/Equipment/Service/EquipmentService.php:97
+#, php-format
+msgid "Could not find equipment with id %u"
+msgstr "Det gick inte att hitta utrustning med id %u"
+
+#: ../src/Equipment/Service/EquipmentService.php:106
+msgid "has been deleted successfully"
+msgstr "har tagits bort"
+
+#: ../src/Equipment/Service/EquipmentService.php:118
+#, php-format
+msgid ""
+"Cannot delete %s: It has related documentation that needs to be deleted "
+"first."
+msgstr ""
+"Kan inte raderas %s: Utrustningen har tillhörande dokumentation som måste "
+"tas bort först."
+
+#: ../src/Equipment/Service/EquipmentService.php:120
+#, php-format
+msgid ""
+"Cannot delete %s: It has related attachments that need to be deleted first."
+msgstr ""
+"Kan inte raderas %s: Utrustningen har tillhörande bilagor som behöver tas "
+"bort först."
+
+#: ../src/Equipment/Service/EquipmentService.php:122
+#, php-format
+msgid ""
+"Cannot delete %s: It has related instances that need to be deleted first."
+msgstr ""
+"Kan inte raderas %s: Utrustningen har tillhörande individer som behöver tas "
+"bort först."
+
+#: ../src/Equipment/Service/EquipmentService.php:124
+#, php-format
+msgid ""
+"Cannot delete %s: It has related training materials that need to be deleted "
+"first."
+msgstr ""
+"Kan inte raderas %s: Utrustningen har associerat utbildningsmaterial som "
+"behöver tas bort först."
+
+#: ../src/Equipment/Service/EquipmentService.php:126
+#, php-format
+msgid ""
+"Cannot delete %s: It has related certifications that need to be deleted "
+"first."
+msgstr ""
+"Kan inte raderas %s: Utrustningen har tillhörande certifieringar som behöver "
+"tas bort först."
+
+#: ../src/Equipment/Service/EquipmentService.php:128
+#, php-format
+msgid ""
+"Cannot delete %s: It has related exercises that need to be deleted first."
+msgstr ""
+"Kan inte raderas %s: Utrustningen har tillhörande övningar som behöver tas "
+"bort först."
+
+#: ../src/Equipment/Service/EquipmentService.php:130
+#, php-format
+msgid ""
+"Cannot delete %s: It has related best practices that need to be deleted "
+"first."
+msgstr ""
+"Kan inte raderas %s: Utrustningen har associerat bästa praxis som behöver "
+"tas bort först."
+
+#: ../src/Equipment/Service/EquipmentTaxonomyService.php:129
+#, php-format
+msgid "Category \"%s\" was removed successfully."
+msgstr "Kategori \"%s\" har tagits bort"
+
+#: ../src/Equipment/Service/EquipmentTaxonomyService.php:150
+msgid "Category doesn't exist"
+msgstr "Kategori existerar inte"
+
+#: ../src/Equipment/Service/PeriodicControlPdfExporter.php:76
+msgid "Attestation for periodic control"
+msgstr "Intyga för återkommande sakkunnig kontroll"
+
+#: ../src/Equipment/Service/PeriodicControlPdfExporter.php:77
+msgid ""
+"Defence specialist operations are certified by Norsk Sertifisering AS "
+"through its own approval. The control should be in accordance with the "
+"procedures and systems subject to this approval. The equipment is controlled "
+"in accordance with requirements in these regulations:"
+msgstr "Text Försvarsmakten"
+
+#: ../src/Equipment/Service/PeriodicControlPdfExporter.php:78
+msgid ""
+"Regulations concerning the performance of work (703) FOR 2011-12-06-1357"
+msgstr "Föreskrifter för utförande av arbete (703) FÖR 2011-12-06-1357"
+
+#: ../src/Equipment/Service/PeriodicControlPdfExporter.php:79
+msgid "Regulations on administrative arrangements (706) FOR 2011-12-06-1360"
+msgstr "Regulations on administrative arrangements (706) FOR 2011-12-06-1360"
+
+#: ../src/Equipment/Service/PeriodicControlPdfExporter.php:80
+msgid "Regulations on equipment (522) FOR 2009-05-20 Annex 1"
+msgstr "Föreskrifter om maskin (522) FÖR 2009-05-20 Bilaga 1"
+
+#: ../src/Equipment/Service/PeriodicControlPdfExporter.php:81
+#: ../view/equipment/periodic-control/index.phtml:93
+msgid "Customer signature Date"
+msgstr "Kund signatur             Datum"
+
+#: ../src/Equipment/Service/PeriodicControlPdfExporter.php:82
+#: ../view/equipment/periodic-control/index.phtml:95
+msgid "Verifier signature Date"
+msgstr "Kontrollörens signatur          Datum"
+
+#: ../src/Equipment/Service/PeriodicControlReportService.php:19
+msgid "Periodic control: "
+msgstr "Periodisk kontroll:"
+
+#: ../src/Equipment/Service/PeriodicControlReportService.php:25
+#: ../view/equipment/periodic-control/index.phtml:11
+#: ../view/equipment/periodic-control/index.phtml:20
+#: ../view/equipment/visual-control/index.phtml:9
+#: ../view/equipment/visual-control/index.phtml:14
+msgid "General information"
+msgstr "Allmän information"
+
+#: ../src/Equipment/Service/PeriodicControlReportService.php:32
+#: ../view/equipment/equipment-instance/detail.phtml:188
+#: ../view/equipment/periodic-control/index.phtml:27
+#: ../view/equipment/visual-control/index.phtml:21
+msgid "Registration #"
+msgstr "Reg. nummer"
+
+#: ../src/Equipment/Service/PeriodicControlReportService.php:35
+#: ../view/equipment/periodic-control/index.phtml:33
+#: ../view/equipment/visual-control/index.phtml:27
+msgid "Control number"
+msgstr "Kontrollnummer"
+
+#: ../src/Equipment/Service/PeriodicControlReportService.php:74
+#: ../language/translatable.phtml:1
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:125
+#: translatable.phtml:1
+msgid "Approved"
+msgstr "Godkänd"
+
+#: ../src/Equipment/Service/PeriodicControlReportService.php:75
+#: ../language/translatable.phtml:1 ../language/translatable.phtml:2
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:117
+#: translatable.phtml:1 translatable.phtml:2
+msgid "Not approved"
+msgstr "Ej godkänd"
+
+#: ../src/Equipment/Service/PeriodicControlReportService.php:76
+#: ../language/translatable.phtml:1 ../language/translatable.phtml:2
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:121
+#: translatable.phtml:1 translatable.phtml:2
+msgid "Temporarily approved"
+msgstr "Temporärt godkänd"
+
+#: ../src/Equipment/Service/PeriodicControlReportService.php:83
+#: ../view/equipment/periodic-control/index.phtml:60
+msgid "Control point"
+msgstr "Kontrollpunkt"
+
+#: ../src/Equipment/Service/PeriodicControlReportService.php:98
+#: ../view/equipment/periodic-control/index.phtml:13
+#: ../view/equipment/periodic-control/index.phtml:54
+msgid "Control points"
+msgstr "Kontrollpunkter"
+
+#: ../src/Equipment/Service/VisualControlService.php:47
+#, php-format
+msgid "\"%s\" has not visual control enabled"
+msgstr "%s har inte aktiverat visuell inspektion"
+
+#: ../src/Equipment/Service/VisualControlService.php:86
+#, php-format
+msgid "Visual control is not enabled for \"%s\"."
+msgstr "Visuell kontroll är inte aktiverat för \"%s\"."
+
+#: ../language/translatable.phtml:1 ../view/equipment/equipment/detail.phtml:30
+#: translatable.phtml:1
+msgid "Instances"
+msgstr "Individ"
+
+#: ../language/translatable.phtml:2 translatable.phtml:2
+msgid "VEDOS-MEDICAL"
+msgstr "VEDOS-MEDICINSK"
+
+#: ../language/translatable.phtml:2 translatable.phtml:2
+msgid "VEDOS-MECHANICAL"
+msgstr "VEDOS-MEKANISKT"
+
+#: ../language/translatable.phtml:3 translatable.phtml:3
+msgid "Ladoc Documentation"
+msgstr "Dokumentation"
+
+#: ../view/equipment/check-in-and-out/checkin.phtml:3
+msgid "Check in an equipment instance"
+msgstr "Checka in et individ"
+
+#: ../view/equipment/check-in-and-out/checkin.phtml:12
+msgid "Checked out date"
+msgstr "Utcheckad datum"
+
+#: ../view/equipment/check-in-and-out/checkin.phtml:19
+#: ../view/equipment/check-in-and-out/checkout.phtml:16
+#: ../view/equipment/check-in-and-out/detail-checkout.phtml:9
+msgid "Checked out by"
+msgstr "Utcheckad av"
+
+#: ../view/equipment/check-in-and-out/checkin.phtml:56
+msgid "Comment"
+msgstr "Kommentar"
+
+#: ../view/equipment/check-in-and-out/checkin.phtml:66
+msgid "Checked in by"
+msgstr "Checkat in av"
+
+#: ../view/equipment/check-in-and-out/checkout.phtml:3
+msgid "Check out equipment instances"
+msgstr "Checka ut individ"
+
+#: ../view/equipment/check-in-and-out/checkout.phtml:10
+#: ../view/equipment/check-in-and-out/detail-checkout.phtml:6
+msgid "Checkout date"
+msgstr "Utcheck datum"
+
+#: ../view/equipment/check-in-and-out/detail-checkout.phtml:19
+msgid "Contact person"
+msgstr "Kontaktperson"
+
+#: ../view/equipment/check-in-and-out/detail-checkout.phtml:22
+msgid "Contact person phone"
+msgstr "Kontaktperson tel"
+
+#: ../view/equipment/check-in-and-out/detail-checkout.phtml:25
+msgid "Contact person position"
+msgstr "Position"
+
+#: ../view/equipment/equipment-instance-report/expired-guarantee.phtml:3
+msgid "Instances expired on guarantee date"
+msgstr "Individer utgått på garantitid"
+
+#: ../view/equipment/equipment-instance-report/expired-guarantee.phtml:10
+#: ../view/equipment/equipment-instance-report/expired-lifetime.phtml:10
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:10
+#: ../view/equipment/equipment-instance/index.phtml:17
+msgid "You must select an equipment instance"
+msgstr "Du måste välja en individ"
+
+#: ../view/equipment/equipment-instance-report/expired-guarantee.phtml:14
+#: ../view/equipment/equipment-instance-report/expired-lifetime.phtml:14
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:14
+#: ../view/equipment/equipment-instance/detail.phtml:26
+#: ../view/equipment/equipment-instance/index.phtml:21
+msgid "You must select only instances with the same equipment type"
+msgstr "Du kan endast välja individ med samma typ av utrustning"
+
+#: ../view/equipment/equipment-instance-report/expired-guarantee.phtml:25
+#: ../view/equipment/equipment-instance-report/expired-lifetime.phtml:25
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:25
+#: ../view/equipment/equipment-instance/attachment-table.phtml:20
+#: ../view/equipment/equipment-instance/detail.phtml:159
+#: ../view/equipment/equipment-instance/detail.phtml:293
+#: ../view/equipment/equipment-instance/detail.phtml:336
+#: ../view/equipment/equipment-instance/detail.phtml:387
+#: ../view/equipment/equipment-instance/index.phtml:77
+msgid "Details"
+msgstr "Detaljer"
+
+#: ../view/equipment/equipment-instance-report/expired-lifetime.phtml:3
+msgid "Instances expired on technical lifetime"
+msgstr "Individer passerat teknisk livslängd"
+
+#: ../view/equipment/equipment-instance-report/expired-periodic-control.phtml:3
+msgid "Instances expired on control date"
+msgstr "Individer passerat inspektionsdatum"
+
+#: ../view/equipment/equipment-instance/add-subinstance.phtml:4
+msgid "Add Equipment Subinstance"
+msgstr "Skapa underindivid"
+
+#: ../view/equipment/equipment-instance/advanced-search.phtml:4
+#: ../view/partial/advanced-instance-search.phtml:15
+msgid "Instance search"
+msgstr "Individ sök"
+
+#: ../view/equipment/equipment-instance/advanced-search.phtml:5
+#: ../view/partial/advanced-control-search.phtml:15
+msgid "Control search"
+msgstr "Kontroll sök"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:7
+msgid "Open"
+msgstr "Öppna"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:31
+#: ../view/equipment/equipment-instance/detail.phtml:364
+#: ../view/equipment/equipment-instance/index.phtml:222
+#: ../view/equipment/equipment/admin-index.phtml:26
+msgid "Add new"
+msgstr "Skapa ny"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:35
+msgid "Add new attachment"
+msgstr "Lägg till ny bilaga"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:42
+#: ../view/equipment/equipment-instance/index.phtml:26
+#: ../view/equipment/equipment/admin-index.phtml:97
+msgid "Edit"
+msgstr "Redigera"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:47
+msgid "Edit attachment"
+msgstr "Redigera bilaga"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:54
+#: ../view/equipment/equipment-instance/detail.phtml:299
+#: ../view/equipment/equipment-instance/detail.phtml:342
+msgid "Delete"
+msgstr "Radera"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:64
+msgid "Delete selected"
+msgstr "Radera markerade"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:91
+msgid "Title"
+msgstr "Titel"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:94
+msgid "Type"
+msgstr "Typ"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:98
+#: ../view/equipment/equipment-instance/attachment-table.phtml:131
+msgid "Created by"
+msgstr "Skapad av"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:101
+#: ../view/equipment/equipment-instance/attachment-table.phtml:135
+msgid "Date"
+msgstr "Datum"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:107
+#: ../view/equipment/equipment-instance/attachment-table.phtml:133
+msgid "Version"
+msgstr "Utgåva"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:110
+#: ../view/equipment/equipment-instance/attachment-table.phtml:137
+msgid "Format"
+msgstr "Format"
+
+#: ../view/equipment/equipment-instance/attachment-table.phtml:129
+msgid "Document type"
+msgstr "Dokumenttyp"
+
+#: ../view/equipment/equipment-instance/detail.phtml:3
+#, php-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: ../view/equipment/equipment-instance/detail.phtml:34
+#: ../view/equipment/equipment-instance/detail.phtml:136
+msgid "Instance data"
+msgstr "Individdata"
+
+#: ../view/equipment/equipment-instance/detail.phtml:37
+#: ../view/equipment/equipment-instance/detail.phtml:270
+msgid "Periodic controls"
+msgstr "Periodiska kontroller"
+
+#: ../view/equipment/equipment-instance/detail.phtml:41
+#: ../view/equipment/equipment-instance/detail.phtml:313
+msgid "Visual controls"
+msgstr "Visuella kontroller"
+
+#: ../view/equipment/equipment-instance/detail.phtml:45
+#: ../view/equipment/equipment-instance/detail.phtml:476
+#: ../view/equipment/periodic-control/index.phtml:14
+#: ../view/equipment/periodic-control/index.phtml:81
+msgid "Attachments"
+msgstr "Bilagor"
+
+#: ../view/equipment/equipment-instance/detail.phtml:57
+msgid "Equipment category"
+msgstr "Utrustningskategori"
+
+#: ../view/equipment/equipment-instance/detail.phtml:66
+#: ../view/partial/advanced-instance-search.phtml:31
+#: ../view/partial/advanced-search.phtml:37
+msgid "NATO #"
+msgstr "NATO nr."
+
+#: ../view/equipment/equipment-instance/detail.phtml:68
+msgid "Material #"
+msgstr "Materialnummer"
+
+#: ../view/equipment/equipment-instance/detail.phtml:70
+msgid "Vendor part #"
+msgstr "Artikelnummer"
+
+#: ../view/equipment/equipment-instance/detail.phtml:74
+msgid "Manufacturer"
+msgstr "Tillverkare"
+
+#: ../view/equipment/equipment-instance/detail.phtml:100
+msgid "Competence areas"
+msgstr "Behörighetsområdet"
+
+#: ../view/equipment/equipment-instance/detail.phtml:109
+msgid "WLL"
+msgstr "WLL"
+
+#: ../view/equipment/equipment-instance/detail.phtml:111
+msgid "Length"
+msgstr "Längd"
+
+#: ../view/equipment/equipment-instance/detail.phtml:167
+#: ../view/equipment/equipment-instance/index.phtml:161
+msgid "Next periodic control"
+msgstr "Nästa periodiska kontroll"
+
+#: ../view/equipment/equipment-instance/detail.phtml:174
+#: ../view/equipment/equipment-instance/index.phtml:153
+msgid "Next visual control"
+msgstr "Nästa visuella kontroll"
+
+#: ../view/equipment/equipment-instance/detail.phtml:190
+msgid "Batch #"
+msgstr "Batchnummer"
+
+#: ../view/equipment/equipment-instance/detail.phtml:192
+msgid "Certificate #"
+msgstr "Certifikatnummer"
+
+#: ../view/equipment/equipment-instance/detail.phtml:194
+msgid "Order #"
+msgstr "Beställningsnummer"
+
+#: ../view/equipment/equipment-instance/detail.phtml:218
+msgid "Guarantee date"
+msgstr "Garantidatum"
+
+#: ../view/equipment/equipment-instance/detail.phtml:262
+msgid "Last modified"
+msgstr "Senast ändrad"
+
+#: ../view/equipment/equipment-instance/detail.phtml:265
+msgid "by"
+msgstr "av"
+
+#: ../view/equipment/equipment-instance/detail.phtml:277
+#: ../view/equipment/equipment-instance/detail.phtml:320
+#: ../view/equipment/equipment/admin-index.phtml:54
+msgid "Actions"
+msgstr "Val"
+
+#: ../view/equipment/equipment-instance/detail.phtml:319
+#: ../view/equipment/visual-control/add.phtml:10
+#: ../view/equipment/visual-control/index.phtml:29
+msgid "Registered by"
+msgstr "Registrerad av"
+
+#: ../view/equipment/equipment-instance/detail.phtml:374
+msgid "Unlink"
+msgstr "Ta bort länk"
+
+#: ../view/equipment/equipment-instance/detail.phtml:485
+#: ../view/equipment/equipment/attachment-index.phtml:10
+#: ../view/equipment/periodic-control/index.phtml:119
+msgid "Delete attachments"
+msgstr "Radera bilagor"
+
+#: ../view/equipment/equipment-instance/detail.phtml:486
+#: ../view/equipment/equipment/attachment-index.phtml:11
+#: ../view/equipment/periodic-control/index.phtml:120
+msgid "Are you sure to delete selected attachments"
+msgstr "Är du säker på att du vill ta bort den markerade bilagan"
+
+#: ../view/equipment/equipment-instance/detail.phtml:498
+msgid "Delete periodic control"
+msgstr "Radera periodiska kontroll"
+
+#: ../view/equipment/equipment-instance/detail.phtml:499
+msgid "You are about to delete a periodic control."
+msgstr "Du kommer att radera en periodisk kontroll"
+
+#: ../view/equipment/equipment-instance/detail.phtml:506
+msgid "Delete visual control"
+msgstr "Raderra visuell kontroll"
+
+#: ../view/equipment/equipment-instance/detail.phtml:507
+msgid "You are about to delete a visual control."
+msgstr "Du kommer att radera en visuell kontroll"
+
+#: ../view/equipment/equipment-instance/detail.phtml:518
+msgid "Equipment Instance attachment"
+msgstr "Bifogade til för individ"
+
+#: ../view/equipment/equipment-instance/detail.phtml:519
+msgid "Detail Checkout"
+msgstr "Mer information om utlåning"
+
+#: ../view/equipment/equipment-instance/detail.phtml:520
+msgid "Add equipment subinstance"
+msgstr "Skapa underidivid"
+
+#: ../view/equipment/equipment-instance/detail.phtml:521
+#: ../view/equipment/equipment-instance/index.phtml:369
+#: ../view/equipment/equipment/admin-index.phtml:163
+#: ../view/equipment/equipment/attachment-index.phtml:22
+#: ../view/equipment/equipment/index.phtml:348
+#: ../view/equipment/periodic-control/index.phtml:133
+msgid "Save"
+msgstr "Spara"
+
+#: ../view/equipment/equipment-instance/edit-many.phtml:4
+msgid "Mass update of instances"
+msgstr "Massuppdatera individer"
+
+#: ../view/equipment/equipment-instance/edit.phtml:3
+msgid "Edit Equipment Instance"
+msgstr "Redigera individ"
+
+#: ../view/equipment/equipment-instance/edit.phtml:3
+msgid "Add Equipment Instance"
+msgstr "Skapa individ"
+
+#: ../view/equipment/equipment-instance/index.phtml:3
+#, php-format
+msgid "%s: Instances"
+msgstr "%s: Individer"
+
+#: ../view/equipment/equipment-instance/index.phtml:36
+msgid "Copy"
+msgstr "Kopiera"
+
+#: ../view/equipment/equipment-instance/index.phtml:47
+#: ../view/equipment/equipment-instance/index.phtml:265
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:27
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:49
+#: ../view/equipment/equipment/admin-index.phtml:36
+#: ../view/equipment/equipment/admin-index.phtml:103
+msgid "Deactivate"
+msgstr "Inaktivera"
+
+#: ../view/equipment/equipment-instance/index.phtml:62
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:35
+#: ../view/equipment/equipment/admin-index.phtml:107
+msgid "Activate"
+msgstr "Aktivera"
+
+#: ../view/equipment/equipment-instance/index.phtml:87
+msgid "Check in"
+msgstr "Utcheck"
+
+#: ../view/equipment/equipment-instance/index.phtml:123
+msgid ""
+"Serial\n"
+"number"
+msgstr ""
+"Serie\n"
+"nummer"
+
+#: ../view/equipment/equipment-instance/index.phtml:137
+msgid "Visual control status"
+msgstr "Visuell kontrollstatus"
+
+#: ../view/equipment/equipment-instance/index.phtml:143
+msgid ""
+"Periodic control\n"
+"status"
+msgstr ""
+"Periodisk kontroll\n"
+"status"
+
+#: ../view/equipment/equipment-instance/index.phtml:148
+msgid ""
+"Check-out\n"
+"status"
+msgstr "Utlåningsstatus"
+
+#: ../view/equipment/equipment-instance/index.phtml:231
+msgid "Edit selected"
+msgstr "Redigera utvalda"
+
+#: ../view/equipment/equipment-instance/index.phtml:257
+msgid "Check out"
+msgstr "Checka ut"
+
+#: ../view/equipment/equipment-instance/index.phtml:313
+msgid "Deactivate Equipment Instances"
+msgstr "Inaktktivera individer"
+
+#: ../view/equipment/equipment-instance/index.phtml:314
+msgid "You are about to deactivate some equipment instances."
+msgstr "Du kommer att inaktivera indivd"
+
+#: ../view/equipment/equipment-instance/index.phtml:333
+msgid "Checking out"
+msgstr "Utcheck"
+
+#: ../view/equipment/equipment-instance/index.phtml:334
+msgid "You are about to check out 0 equipment instances..."
+msgstr "Du är kommer att utchecka 0 individer..."
+
+#: ../view/equipment/equipment-instance/index.phtml:368
+msgid "Edit multiple equipment instances"
+msgstr "Redigera flera individ"
+
+#: ../view/equipment/equipment-instance/instance-controls.phtml:5
+msgid "Periodic Control Results"
+msgstr "Sökresultat: Periodiska kontroller"
+
+#: ../view/equipment/equipment-instance/instance-controls.phtml:10
+msgid "Visual Control Results"
+msgstr "Sökresultat: Visuella kontroller"
+
+#: ../view/equipment/equipment-instance/instance-controls.phtml:43
+msgid "Detail"
+msgstr "Detaljer"
+
+#: ../view/equipment/equipment-instance/instance-controls.phtml:79
+msgid "Control Status"
+msgstr "Kontrollstatus"
+
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:10
+msgid "You must select a category"
+msgstr "Du måste välja en kategori"
+
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:67
+msgid "Parent category"
+msgstr "Parent Category"
+
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:94
+msgid "Deactivate categories"
+msgstr "Deaktivera kategorier"
+
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:95
+msgid "You are about to deactivate several categories."
+msgstr "Du kommer att inaktivera flera kategorier."
+
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:101
+#: ../view/equipment/equipment/index.phtml:339
+msgid "Deactivate category"
+msgstr "Inaktivera kategori"
+
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:102
+msgid "You are about to deactivate a category."
+msgstr "Du kommer att inaktivera en kategori."
+
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:108
+msgid "Reactivate category"
+msgstr "Reaktivera kategori"
+
+#: ../view/equipment/equipment-taxonomy/admin-index.phtml:109
+msgid "You are about to reactivate a category."
+msgstr "Du kommer att reaktivera en kategori."
+
+#: ../view/equipment/equipment/admin-index.phtml:13
+msgid "You must select an equipment"
+msgstr "Du måste välja utrustning"
+
+#: ../view/equipment/equipment/admin-index.phtml:25
+#: ../view/equipment/equipment/index.phtml:347
+msgid "Equipment information"
+msgstr "utrustningsinformation"
+
+#: ../view/equipment/equipment/admin-index.phtml:30
+msgid "Group actions"
+msgstr "Grupp alternativ"
+
+#: ../view/equipment/equipment/admin-index.phtml:43
+msgid "Show inactive"
+msgstr "Visa inaktiva"
+
+#: ../view/equipment/equipment/admin-index.phtml:51
+#: ../view/equipment/equipment/index.phtml:290
+#: ../view/partial/advanced-search.phtml:21
+msgid "Category"
+msgstr "Kategori"
+
+#: ../view/equipment/equipment/admin-index.phtml:95
+msgid "Edit Equipment information"
+msgstr "Ändra utrustningsinformation"
+
+#: ../view/equipment/equipment/admin-index.phtml:122
+msgid "Deactivate Equipments"
+msgstr "Inaktivera utrustning"
+
+#: ../view/equipment/equipment/admin-index.phtml:125
+msgid "You are about to deactivate \"x\" equipments."
+msgstr "Du kommer att inaktivera \"x\" utrustning"
+
+#: ../view/equipment/equipment/admin-index.phtml:126
+#: ../view/equipment/equipment/index.phtml:260
+msgid "Do you want to proceed?"
+msgstr "Vill du fortsätta?"
+
+#: ../view/equipment/equipment/admin-index.phtml:149
+#: ../view/equipment/equipment/index.phtml:198
+#: ../view/equipment/equipment/index.phtml:331
+msgid "Deactivate equipment"
+msgstr "Inaktivera utrustning"
+
+#: ../view/equipment/equipment/admin-index.phtml:150
+#: ../view/equipment/equipment/index.phtml:332
+msgid "You are about to deactivate this equipment."
+msgstr "Du kommer at inaktivera denna utrustning"
+
+#: ../view/equipment/equipment/admin-index.phtml:156
+msgid "Reactivate equipment"
+msgstr "Reaktivera utrustning"
+
+#: ../view/equipment/equipment/admin-index.phtml:157
+msgid "You are about to reactivate this equipment."
+msgstr "Du kommer att aktivera denna utrustning"
+
+#: ../view/equipment/equipment/advanced-search.phtml:2
+#: ../view/partial/advanced-search.phtml:15
+msgid "Advanced search"
+msgstr "Avancerad sökning"
+
+#: ../view/equipment/equipment/attachment-index.phtml:21
+msgid "Equipment attachment"
+msgstr "Bifogad fil för utrustning"
+
+#: ../view/equipment/equipment/index.phtml:23
+msgid "HMS and quality assurance suite for medical equipment containing:"
+msgstr ""
+"Säkerhet och kvalitetssäkringsprogram  för medicinsk utrustning, innehåller:"
+
+#: ../view/equipment/equipment/index.phtml:24
+msgid "Technical Documentation"
+msgstr "Teknisk dokumentation"
+
+#: ../view/equipment/equipment/index.phtml:25
+msgid "Training"
+msgstr "Utbildning"
+
+#: ../view/equipment/equipment/index.phtml:26
+msgid "Exercises"
+msgstr "Övningar"
+
+#: ../view/equipment/equipment/index.phtml:27
+msgid "Test and Certification"
+msgstr "Test och certifiering"
+
+#: ../view/equipment/equipment/index.phtml:28
+msgid "Competence register"
+msgstr "Kompetensregister"
+
+#: ../view/equipment/equipment/index.phtml:77
+msgid "Edit category"
+msgstr "Redigera kategori"
+
+#: ../view/equipment/equipment/index.phtml:129
+msgid "Edit Page"
+msgstr "Redigera sida"
+
+#: ../view/equipment/equipment/index.phtml:174
+msgid "Load"
+msgstr "Last"
+
+#: ../view/equipment/equipment/index.phtml:175
+msgid "Carrier"
+msgstr "Lastbärare"
+
+#: ../view/equipment/equipment/index.phtml:192
+msgid "Edit equipment"
+msgstr "Redigera utrustning"
+
+#: ../view/equipment/equipment/index.phtml:227
+msgid "Lashing Calculator"
+msgstr "lastsäkrings kalkylator"
+
+#: ../view/equipment/equipment/index.phtml:255
+msgid "Delete Category"
+msgstr "Radera kategori"
+
+#: ../view/equipment/equipment/index.phtml:258
+msgid "You are about to delete a Category, this procedure is irreversible."
+msgstr "Du kommer att ta bort en kategori. Detta förfarande är oåterkallelig."
+
+#: ../view/equipment/equipment/index.phtml:275
+msgid "Create new"
+msgstr "Skapa ny"
+
+#: ../view/equipment/equipment/index.phtml:289
+msgid "Add category"
+msgstr "Lägg till kategori"
+
+#: ../view/equipment/equipment/index.phtml:304
+msgid "Add Equipment"
+msgstr "Lägg till kategori"
+
+#: ../view/equipment/equipment/index.phtml:317
+msgid "Add Page"
+msgstr "Lägg till sida"
+
+#: ../view/equipment/equipment/index.phtml:317
+msgid "Page"
+msgstr "Sida"
+
+#: ../view/equipment/equipment/index.phtml:340
+msgid "You are about to deactivate this category."
+msgstr "Du kommer att inaktivera denna kategori."
+
+#: ../view/equipment/equipment/index.phtml:354
+msgid "Choose category"
+msgstr "Välj en kategori"
+
+#: ../view/equipment/equipment/index.phtml:355
+msgid "Choose supplier"
+msgstr "Välj leverantör"
+
+#: ../view/equipment/equipment/index.phtml:356
+#: ../view/equipment/equipment/index.phtml:357
+msgid "digits"
+msgstr "Siffror"
+
+#: ../view/equipment/periodic-control/add.phtml:2
+msgid "Add periodic control"
+msgstr "Skapa periodisk kontroll"
+
+#: ../view/equipment/periodic-control/index.phtml:112
+msgid "Export PDF"
+msgstr "exportera PDF"
+
+#: ../view/equipment/periodic-control/index.phtml:132
+msgid "Periodic control attachment"
+msgstr "Bifogad fil för periodisk kontroll"
+
+#: ../view/equipment/visual-control/add.phtml:3
+msgid "Visual control for equipment instances"
+msgstr "Visuell kontroll för individ"
+
+#: ../view/error/404.phtml:1
+msgid "A 404 error occurred"
+msgstr "En 404 fel inträffade"
+
+#: ../view/error/404.phtml:10
+msgid "The requested controller was unable to dispatch the request."
+msgstr "Begäran kunde inte utföras"
+
+#: ../view/error/404.phtml:13
+msgid ""
+"The requested controller could not be mapped to an existing controller class."
+msgstr "Begäran kunde inte utföras"
+
+#: ../view/error/404.phtml:16
+msgid "The requested controller was not dispatchable."
+msgstr "Begäran kunde inte utföras"
+
+#: ../view/error/404.phtml:19
+msgid "The requested URL could not be matched by routing."
+msgstr "Begäran kunde inte utföras"
+
+#: ../view/error/404.phtml:22
+msgid "We cannot determine at this time why a 404 was generated."
+msgstr "En 404 fel inträffade"
+
+#: ../view/error/404.phtml:34
+msgid "Controller"
+msgstr "Kontrollera"
+
+#: ../view/error/404.phtml:41
+#, php-format
+msgid "resolves to %s"
+msgstr "omgjøres til %s"
+
+#: ../view/error/404.phtml:53 ../view/error/index.phtml:8
+msgid "Additional information"
+msgstr "Övrig information"
+
+#: ../view/error/404.phtml:56 ../view/error/404.phtml:80
+#: ../view/error/index.phtml:11 ../view/error/index.phtml:35
+msgid "File"
+msgstr "Fil"
+
+#: ../view/error/404.phtml:60 ../view/error/404.phtml:84
+#: ../view/error/index.phtml:15 ../view/error/index.phtml:39
+msgid "Message"
+msgstr "Meddelande"
+
+#: ../view/error/404.phtml:64 ../view/error/404.phtml:88
+#: ../view/error/index.phtml:19 ../view/error/index.phtml:43
+msgid "Stack trace"
+msgstr "Stack trace"
+
+#: ../view/error/404.phtml:74 ../view/error/index.phtml:29
+msgid "Previous exceptions"
+msgstr "Tidigare undantag"
+
+#: ../view/error/404.phtml:103 ../view/error/index.phtml:58
+msgid "No Exception available"
+msgstr "Inget undantag tillgänglig"
+
+#: ../view/error/index.phtml:1
+msgid "An error occurred"
+msgstr "Ett fel uppstod"
+
+#: ../view/partial/advanced-control-search.phtml:19
+msgid "Control type"
+msgstr "Kontrolltyp"
+
+#: ../view/partial/advanced-control-search.phtml:25
+msgid "Period"
+msgstr "Period"
+
+#: ../view/partial/advanced-control-search.phtml:31
+msgid "From date"
+msgstr "Från datum"
+
+#: ../view/partial/advanced-control-search.phtml:37
+msgid "To date"
+msgstr "Till datum"
+
+#: ../view/partial/advanced-control-search.phtml:87
+#: ../view/partial/advanced-instance-search.phtml:25
+msgid "Equipment Type"
+msgstr "Utrustning typ"
+
+#: ../view/partial/advanced-control-search.phtml:93
+#: ../view/partial/advanced-instance-search.phtml:37
+#: ../view/partial/advanced-search.phtml:43
+msgid "SAP #"
+msgstr "SAP nr."
+
+#: ../view/partial/advanced-instance-search.phtml:49
+msgid "Serial Number"
+msgstr "Serienummer"
+
+#: ../view/partial/advanced-instance-search.phtml:55
+msgid "Reg. Number"
+msgstr "Reg. nummer"
+
+#: ../view/partial/advanced-instance-search.phtml:63
+msgid "Batch Number"
+msgstr "Batchnummer"
+
+#: ../view/partial/advanced-instance-search.phtml:87
+msgid "Checkout status"
+msgstr "Utcheck status"
+
+#: ../view/partial/advanced-instance-search.phtml:93
+msgid "Order Number"
+msgstr "Ordernummer"
+
+#: ../view/partial/advanced-search.phtml:28
+msgid "Supplier"
+msgstr "Leverantör"
+
+#: ../view/partial/expired-instance-totals.phtml:38
+msgid "instances passed periodic control date"
+msgstr "Individ som löpt inspektionsdatum"
+
+#: ../view/partial/expired-instance-totals.phtml:48
+msgid "instances passed guarantee date"
+msgstr "Individ som löpt garantitid"
+
+#: ../view/partial/expired-instance-totals.phtml:58
+msgid "instances passed technical lifetime"
+msgstr "Individ som löpt tekniska livslängd"
+
+#: ../view/partial/groupActionConfirmModal.phtml:25
+msgid "Continue"
+msgstr "Fortsätta"
+
+#: ../view/partial/groupActionConfirmModal.phtml:27
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../view/partial/periodicControlModal.phtml:5
+msgid "Create periodic controls"
+msgstr "Skapa periodisk kontroll"
+
+#: ../view/partial/periodicControlModal.phtml:6
+msgid "You are creating periodic control for 0 equipment instances..."
+msgstr "Du skapar periodisk kontroll för 0 individ"
+
+#: ../view/partial/simple-search.phtml:8
+msgid "Search for equipment"
+msgstr "Sök utrustning"
+
+#: ../view/partial/visualControlModal.phtml:4
+msgid "Create visual controls"
+msgstr "Nesta visuella kontroll"
+
+#: ../view/partial/visualControlModal.phtml:5
+msgid "You are creating visual control for 0 equipment instances..."
+msgstr "Du skapar kontroll för 0 individ"
+
+#~ msgid "Registered By"
+#~ msgstr "Registrert av"
+
+#~ msgid "Choose a person"
+#~ msgstr "Velg en person"
+
+#~ msgid ""
+#~ "Defence specialist operations are certified by Norsk Sertifisering AS "
+#~ "through its own approval."
+#~ msgstr ""
+#~ "Forsvarets sakkyndige virksomheter er sertifisert av Norsk Sertifisering "
+#~ "AS gjennom egen godkjenning."
+
+#~ msgid ""
+#~ "The control should be in accordance with the procedures and systems "
+#~ "subject to this approval. The equipment is controlled in accordance with "
+#~ "requirements in these regulations:"
+#~ msgstr ""
+#~ "Kontrollen utføres i henhold til prosedyrer og systemer underlagt denne "
+#~ "godkjenningen. Utstyret er kontrollert i henhold til krav i følgende "
+#~ "forskrifter:"
+
+#~ msgid "You must select an Equipment taxonomy"
+#~ msgstr "Du må velge en taksonomi Utstyr"
+
+#~ msgid "You must select an Organization"
+#~ msgstr "Du må velge en organisasjon"
+
+#~ msgid "NATO # must be 9 or 13 characters."
+#~ msgstr "NATO nr. må bestå av 9 eller 13 tegn."
+
+#~ msgid "NATO # must have the format 0000 00 000 0000 or 0000 00 000."
+#~ msgstr "NATO # må ha formatet 0000 00 000 0000 eller 0000 00 000."
+
+#~ msgid "Periodic control status"
+#~ msgstr "Periodisk kontrollstatus"
+
+#~ msgid "Control interval (days): "
+#~ msgstr "Kontrolintervall (dager)"
+
+#~ msgid "NATO # must have the format 0000 00 000 0000."
+#~ msgstr "NATO nr. må ha formatet 0000 00 000 0000."
+
+#~ msgid "Next periodic control - from"
+#~ msgstr "Neste periodiske kontroll - fra"
+
+#~ msgid "Next periodic control - to"
+#~ msgstr "Neste periodiske kontroll - til"
+
+#~ msgid "Last visual control"
+#~ msgstr "Siste visuelle kontroll"
+
+#~ msgid ""
+#~ "Defence specialist operations are certified by Norwegian Certification "
+#~ "A / S through its own approval.\n"
+#~ "Inspection should be in accordance with the procedures and systems "
+#~ "subject to this approval.\n"
+#~ "The equipment is controlled according to the requirements of the "
+#~ "Regulations best. No.. 555 Use of work equipment and regulatory best. "
+#~ "No.. 522 Machines, Appendix 1.\n"
+#~ "When status is not approved, this audit report signed by the customer and "
+#~ "inspector."
+#~ msgstr ""
+#~ "Forsvarets sakkyndige virksomheter er sertifisert av Norsk Sertifisering "
+#~ "A/S gjennom egen godkjenning.Kontrollen utføres i henhold til prosedyrer "
+#~ "og systemer underlagt denne godkjenningen.Utstyret er kontrollert i "
+#~ "henhold til krav i forskrift best. nr. 555 Bruk av arbeidsutstyr og "
+#~ "forskrift best. nr. 522 Maskiner, vedlegg 1.Ved status ikke godkjent skal "
+#~ "denne kontrollrapport underskrives av kunde og kontrollør."
+
+#~ msgid "Competence aras"
+#~ msgstr "Kompetanseområde"
+
+#~ msgid "NSN #"
+#~ msgstr "NSN nummer"
+
+#~ msgid "\"%s\" has been deleted successfully"
+#~ msgstr "\"%s\" ble slettet"
+
+#~ msgid "\"%s\" can't be deleted because it is related to other entities."
+#~ msgstr "\"%s\" kan ikke slettes fordi det er relatert til andre enheter."
+
+#~ msgid "Edit the relationships and try again:"
+#~ msgstr "Rediger relasjonene og prøv igjen:"
+
+#~ msgid "Delete Equipments"
+#~ msgstr "Slett utstyr"
+
+#~ msgid ""
+#~ "You are about to delete \"x\" equipments, this procedure is irreversible."
+#~ msgstr "Du vil slette \"x\" brukere. Denne prosedyren er irreversibel."
+
+#~ msgid "Last periodic control"
+#~ msgstr "Siste periodiske kontroll"
+
+#~ msgid "Result"
+#~ msgstr "Resultat"
+
+#~ msgid "Delete Equipment Instances"
+#~ msgstr "Slett individ"
+
+#~ msgid ""
+#~ "You are about to delete some equipment instances, this procedure is "
+#~ "irreversible."
+#~ msgstr "Du vil slette flere individer. Denne prosedyren er irreversibel."
+
+#~ msgid "Incorrect Equipment"
+#~ msgstr "Feil utstyr"
+
+#~ msgid "Cannot delete equipment with training materials."
+#~ msgstr "Kan ikke slette utstyr med opplæringsmateriell."
+
+#, fuzzy
+#~ msgid "Control form"
+#~ msgstr "Kontroller"
+
+#, fuzzy
+#~ msgid "User manual"
+#~ msgstr "Brukernavn"
+
+#, fuzzy
+#~ msgid "Competency proof"
+#~ msgstr "Kompetent person"
+
+#, fuzzy
+#~ msgid "Control form template"
+#~ msgstr "Kontrollmal"
+
+#, fuzzy
+#~ msgid "Additional info"
+#~ msgstr "Tilleggsinformasjon"
+
+#, fuzzy
+#~ msgid "Damages"
+#~ msgstr "Sider"
+
+#, fuzzy
+#~ msgid "Maintenance"
+#~ msgstr "Underindivider"
+
+#, fuzzy
+#~ msgid "Calibration"
+#~ msgstr "Organisasjon"
+
+#, fuzzy
+#~ msgid "Function control"
+#~ msgstr "Mottakskontroll utført"
+
+#, fuzzy
+#~ msgid "Job number"
+#~ msgstr "Reg. nummer"
+
+#, fuzzy
+#~ msgid "Constancy control"
+#~ msgstr "Visuell kontroll"
+
+#, fuzzy
+#~ msgid "Status control"
+#~ msgstr "Neste kontroll"
+
+#, fuzzy
+#~ msgid "Validation"
+#~ msgstr "Organisasjon"
+
+#, fuzzy
+#~ msgid "Postregistration of equipment"
+#~ msgstr "Velg utstyr"
+
+#, fuzzy
+#~ msgid "Control error"
+#~ msgstr "Kontroller"
+
+#, fuzzy
+#~ msgid "Reception error"
+#~ msgstr "Mottakskontroll utført"
+
+#, fuzzy
+#~ msgid "Contract"
+#~ msgstr "Kontrolldato"
+
+#, fuzzy
+#~ msgid "Cleaning"
+#~ msgstr "Opplæring"
+
+#, fuzzy
+#~ msgid "Equipment sale"
+#~ msgstr "Navn"
+
+#, fuzzy
+#~ msgid "User related"
+#~ msgstr "Brukernavn"
+
+#, fuzzy
+#~ msgid "Not coded"
+#~ msgstr "Ikke godkjent"
+
+#, fuzzy
+#~ msgid "No error found"
+#~ msgstr "En feil oppstod"
+
+#, fuzzy
+#~ msgid "Periodic error"
+#~ msgstr "Periodisk kontroll"
+
+#, fuzzy
+#~ msgid "Not performed"
+#~ msgstr "Ikke godkjent"
+
+#, fuzzy
+#~ msgid "Modified"
+#~ msgstr "Sist endret"
+
+#, fuzzy
+#~ msgid "Repaired"
+#~ msgstr "Utløpt"
+
+#, fuzzy
+#~ msgid "Not controlled"
+#~ msgstr "Neste kontroll"
+
+#, fuzzy
+#~ msgid "Not applicable"
+#~ msgstr "Ikke godkjent"
+
+#, fuzzy
+#~ msgid "Medical equipment"
+#~ msgstr "Rediger utstyr"
+
+#, fuzzy
+#~ msgid "X-ray and radiation equipment"
+#~ msgstr "Rediger utstyr"
+
+#, fuzzy
+#~ msgid "Dental equipment"
+#~ msgstr "Rediger utstyr"
+
+#, fuzzy
+#~ msgid "Laboratory equipment"
+#~ msgstr "Søk etter utstyr"
+
+#, fuzzy
+#~ msgid "Not Approved"
+#~ msgstr "Ikke godkjent"
+
+#, fuzzy
+#~ msgid "Lab equipment"
+#~ msgstr "Rediger utstyr"
+
+#~ msgid "Feature image"
+#~ msgstr "Fremhevet bilde"
+
+#, fuzzy
+#~ msgid "Featured imagezz"
+#~ msgstr "Fremhevet bilde"
+
+#~ msgid "Checked by"
+#~ msgstr "Sjekket ut av"
+
+#~ msgid "Home"
+#~ msgstr "Hjem"
+
+#~ msgid "Visual control (MOCKUP)"
+#~ msgstr "Visuell kontroll"
+
+#~ msgid "Last visual control (MOCKUP)"
+#~ msgstr "Siste visuelle kontroll"
+
+#~ msgid "This input contains invalid characters. Only letters are allowed."
+#~ msgstr "Denne inngangen inneholder ugyldige tegn. Kun bokstaver er tillatt."
+
+#~ msgid "Value is required"
+#~ msgstr "Verdi er påkrevd"
+
+#~ msgid "The input is less than \"x\" character(s) long"
+#~ msgstr "Inngangen er mindre enn \"x \" karakter (s) lang"
+
+#~ msgid "The input is more than \"x\" characters long"
+#~ msgstr "Inngangen er mer enn \"x\" tegn"
+
+#~ msgid "Periodic control (MOCKUP)"
+#~ msgstr "Periodisk kontroll (mockup)"
+
+#~ msgid "Control interval (Day): "
+#~ msgstr "Kontroll (dager)"
+
+#~ msgid "Select image"
+#~ msgstr "Velg bilde"
+
+#~ msgid "Remove"
+#~ msgstr "Fjern"
+
+#~ msgid "Change"
+#~ msgstr "endring"
+
+#~ msgid "Admin"
+#~ msgstr "Admin"
+
+#~ msgid "The input is less than 3 characters long"
+#~ msgstr "Inngangen er mindre enn 3 tegn"
+
+#~ msgid "The input is more than 100 characters long"
+#~ msgstr "Inngangen er mer enn 100 tegn"
+
+#~ msgid "Value is required and can't be empty"
+#~ msgstr "Verdi er nødvendig, og kan ikke være tom"
+
+#~ msgid "The file must be of type "
+#~ msgstr "Filen må være av typen"
+
+#~ msgid "The file was not detected"
+#~ msgstr "Filen ble ikke oppdaget"
+
+#~ msgid "The input is less than 8 characters long"
+#~ msgstr "Inngangen er mindre enn 8 tegn"
+
+#~ msgid "The input is less than 13 characters long"
+#~ msgstr "Inngangen er mindre enn 13 tegn"
+
+#~ msgid "The input is more than 13 characters long"
+#~ msgstr "Inngangen er mer enn 13 tegn"
+
+#~ msgid "NSN is already registered"
+#~ msgstr "NSN er allerede registrert"
+
+#~ msgid "The category could not be saved."
+#~ msgstr "Kategorien kunne ikke lagres."
+
+#~ msgid "none"
+#~ msgstr "none"
+
+#~ msgid "Have to be used with"
+#~ msgstr "Må brukes med"
+
+#~ msgid "Reg #"
+#~ msgstr "Reg #"
+
+#~ msgid ""
+#~ "You are about to delete \"x\" equipment instances, this procedure is "
+#~ "irreversible."
+#~ msgstr "Du vil slette \"x\" brukere. Denne prosedyren er irreversibel."
+
+#~ msgid "Vidum Systems"
+#~ msgstr "Vidum Systems"
+
+#~ msgid "Equipment(s) deleted successfully."
+#~ msgstr "Utstyr (er) slettet."
+
+#~ msgid "No equipments selected"
+#~ msgstr "Ingen utstyr utvalgte"
+
+#~ msgid "Equipments haven't been deleted "
+#~ msgstr "Utstyr har ikke blitt slettet"
+
+#~ msgid "Equipment Instance was deleted successfully"
+#~ msgstr "Utstyr enkelte ble slettet"
+
+#~ msgid "Last periodic control (MOCKUP)"
+#~ msgstr "Siste periodisk kontroll (mockup)"
+
+#~ msgid "Image could not be uploaded just JPG,PNG and GIF files are allowed"
+#~ msgstr "Bildet kunne ikke lastes opp bare JPG, er PNG og GIF-filer tillatt"
+
+#~ msgid "Select one"
+#~ msgstr "Velg ett"
+
+#~ msgid "The input is less than 1 character long"
+#~ msgstr "Inngangen er mindre enn 1 tegn"
+
+#~ msgid "Parent"
+#~ msgstr "Parent"
+
+#, fuzzy
+#~ msgid "Feature Image"
+#~ msgstr "Utvalgte bilde"
+
+#~ msgid "Change category"
+#~ msgstr "Endre kategori"
+
+#~ msgid "Filters"
+#~ msgstr "Filtre"
+
+#~ msgid "Choose a producer"
+#~ msgstr "Velg en produsent"
+
+#~ msgid "Suppliers"
+#~ msgstr "Leverandører"
+
+#~ msgid "Departments"
+#~ msgstr "Avdelinger"
+
+#~ msgid "Owners"
+#~ msgstr "Eiere"
+
+#~ msgid "13 digits"
+#~ msgstr "13 siffer"
+
+#~ msgid "8 digits"
+#~ msgstr "8 sifre"
+
+#~ msgid "Choose a category..."
+#~ msgstr "Velg en kategori ..."
+
+#~ msgid "Choose a supplier..."
+#~ msgstr "Velg en leverandør ..."
+
+#~ msgid "8 digits..."
+#~ msgstr "8 siffer ..."
+
+#, fuzzy
+#~ msgid "Equipment name..."
+#~ msgstr "Utstyr"
+
+#~ msgid "NSN..."
+#~ msgstr "NSN..."
+
+#~ msgid "SAP..."
+#~ msgstr "NSN..."
+
+#~ msgid "Vendor part..."
+#~ msgstr "Leverandør del ..."
+
+#~ msgid "Users"
+#~ msgstr "Brukere"
+
+#~ msgid "New user added successfully."
+#~ msgstr "Ny bruker ble opprettet."
+
+#~ msgid "We sent you a new Password, please check your email."
+#~ msgstr "Vi har sendt deg et nytt passord. Vennligst sjekk e-posten din."
+
+#~ msgid "Time to reset your password has expired. Please "
+#~ msgstr "Tidsperioden for å endre passordet har utløpt. Vennligst"
+
+#~ msgid ""
+#~ "Time to reset your password has expired or no results to your "
+#~ "requirement. Please "
+#~ msgstr "Tidsperioden for å endre passordet har utløpt. Vennligst"
+
+#~ msgid "\"x\" users deleted successfully."
+#~ msgstr "\"x\" brukere ble slettet."
+
+#~ msgid "Reset Password"
+#~ msgstr "Reset passord"
+
+#~ msgid ""
+#~ "Your first name contains invalid characters. Only letters are allowed."
+#~ msgstr ""
+#~ "Fornavnet ditt inneholder tegn som ikke er tillatt. Bare bokstaver kan "
+#~ "benyttes."
+
+#~ msgid ""
+#~ "Your last name contains invalid characters. Only letters are allowed."
+#~ msgstr ""
+#~ "Etternavnet ditt inneholder tegn som ikke er tillatt. Bare bokstaver kan "
+#~ "benyttes."
+
+#, fuzzy
+#~ msgid ""
+#~ "Password must include at least one upper case letter, one lower case "
+#~ "letter, and one numeric digit."
+#~ msgstr ""
+#~ "Passordet må være minst 6 tegn, maks 16 tegn og må inneholde minst en "
+#~ "stor bokstav, en liten bokstav og et tall."
+
+#~ msgid "Email"
+#~ msgstr "E-post"
+
+#~ msgid ""
+#~ "Password must be at least 6 characters, no more than 16 characters, and "
+#~ "must include at least one upper case letter, one lower case letter, and "
+#~ "one numeric digit."
+#~ msgstr ""
+#~ "Passordet må være minst 6 tegn, maks 16 tegn og må inneholde minst en "
+#~ "stor bokstav, en liten bokstav og et tall."
+
+#~ msgid "Password"
+#~ msgstr "Passord"
+
+#~ msgid "Confirm your password"
+#~ msgstr "Bekreft passord"
+
+#~ msgid "Address"
+#~ msgstr "Adresse"
+
+#~ msgid "Zip Code"
+#~ msgstr "Postnummer"
+
+#~ msgid "City"
+#~ msgstr "By"
+
+#~ msgid "Phone Number 1"
+#~ msgstr "Telefonnummer 1"
+
+#~ msgid "Phone Number 2"
+#~ msgstr "Telefonnummer 2"
+
+#~ msgid "Language"
+#~ msgstr "Språk"
+
+#~ msgid "Superior"
+#~ msgstr "Overordnet"
+
+#~ msgid "Role"
+#~ msgstr "Rolle"
+
+#~ msgid "You are leaving this page, are you sure?"
+#~ msgstr "Er du sikker på at du vil forlate denne siden?"
+
+#, fuzzy
+#~ msgid "Enter your username and we'll send you a new password"
+#~ msgstr ""
+#~ "Skriv inn ditt brukernavn, så sender en link for å bestille nytt passord"
+
+#, fuzzy
+#~ msgid "E-mail"
+#~ msgstr "E-post"
+
+#~ msgid "Delete Users"
+#~ msgstr "Slett brukere"
+
+#~ msgid "try again"
+#~ msgstr "prøv igjen"
+
+#~ msgid "Tests"
+#~ msgstr "Tester"
+
+#~ msgid "Roles"
+#~ msgstr "Roller"
+
+#~ msgid "My account"
+#~ msgstr "Min konto"
+
+#~ msgid "Settings"
+#~ msgstr "Innstillinger"
+
+#~ msgid "Log out"
+#~ msgstr "Logg ut"
+
+#~ msgid "Log in"
+#~ msgstr "Logg inn"
+
+#~ msgid "Norwegian Armed Forces"
+#~ msgstr "Forsvaret"
+
+#~ msgid "E-mail or Username"
+#~ msgstr "E-post eller Brukernavn"
+
+#~ msgid "Sign up"
+#~ msgstr "Registrer deg"
+
+#~ msgid "Delete User"
+#~ msgstr "Slett bruker"

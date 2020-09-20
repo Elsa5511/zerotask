@@ -1,0 +1,54 @@
+<div class="pagination quiz" style="text-align: center">
+    <ul>
+
+    <?php
+    if ($this->questionNumber > 1) :
+        $prevHref = getHrefValue($this, $this->questionNumber - 1);
+        ?>
+        <li><a href="<?php echo $prevHref ?>">&laquo; <?php echo $this->translate("Prev") ?> </a></li>
+        <?php 
+    endif; 
+
+    for ($page = 1; $page <= $this->totalNoOfQuestions; $page++) :
+        $pageHref = getHrefValue($this, $page);
+        $classToAppend = "";
+        $classActive = "";
+        if($page === $this->questionNumber) {
+            $classToAppend = "in-progress";
+            $classActive = "active";
+            $pageHref = "#";
+        }
+        if(is_array($this->answerStatuses) && !empty($this->answerStatuses[$page - 1])) {
+            $classToAppend = $this->answerStatuses[$page - 1];
+        }
+        ?>
+        <li><a href="<?php echo $pageHref ?>" class="question <?php echo $classToAppend ?> <?php echo $classActive ?>"><?php echo $page ?></a></li>
+
+                <?php
+            endfor;
+            ?>
+
+        <?php
+        if ($this->questionNumber < $this->totalNoOfQuestions) :
+            $nextHref = getHrefValue($this, $this->questionNumber + 1);
+            ?>
+            <li><a href="<?php echo $nextHref ?>">&raquo; <?php echo $this->translate("Next") ?> </a></li>
+            <?php
+        endif;
+        ?>
+    </ul>                
+</div>
+
+<?php
+
+function getHrefValue($view, $questionNumber) {
+    return $view->application()->url(array(
+                'controller' => $view->controller,
+                'action' => $view->action,
+                'quiz' => $view->exerciseAttemptId,
+                'question' => $questionNumber));
+}
+?>
+<?php
+    $this->inlineScript()->appendFile($this->basePath() . '/js/quiz/pagination.js');
+?>

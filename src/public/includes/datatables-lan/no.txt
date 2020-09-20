@@ -1,0 +1,24 @@
+{
+	"oAria": {		
+		"sSortAscending": ": aktiver for &aring; sortere i synkende rekkef&oslash;lge",
+		"sSortDescending": ": aktiver for &aring; sortere i stigende rekkef&oslash;lge"
+	},
+	"oPaginate": {		
+		"sFirst": "F&oslash;rste",
+		"sLast": "Siste",
+        "sNext": "Neste",
+        "sPrevious":"Forrige"
+	},
+	"sEmptyTable": "Fant ingen oppf&oslash;ringer",
+	"sInfo": "Viser _START_ til _END_ av _TOTAL_ rader",
+	"sInfoEmpty": "Viser 0 til 0 av 0 rader",
+	"sInfoFiltered": "(filtrert fra _MAX_ rader totalt)",
+	"sInfoPostFix": "",
+	"sInfoThousands": ",",
+	"sLengthMenu": "_MENU_ <span>rader per side</span>",
+	"sLoadingRecords": "Laster...",
+	"sProcessing": "Laster...",
+	"sSearch": "",
+	"sUrl": "",
+	"sZeroRecords": "Ingen objekter funnet"
+}

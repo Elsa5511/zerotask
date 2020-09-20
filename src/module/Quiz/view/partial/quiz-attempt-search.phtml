@@ -1,0 +1,60 @@
+<div class="row">
+    <a href="#" class="pull-right advanced-search-toggle" data-toggle="collapse" data-target="#advanced-search">
+        <?php echo $this->translate('Advanced search'); ?>
+    </a>
+</div>
+
+<div id="advanced-search" class="collapse <?php echo $this->isSearch ? 'in' : ''; ?>">
+    <?php
+    $form = $this->form;  
+    if($form):
+        $form->setAttribute('action', $this->application()->url(array('controller' => $this->controller, 'action' => 'report')));
+        $form->setAttribute('class', 'well');
+        $fieldset = $form->get('quiz-search');
+        $form->prepare();
+        ?>
+        <button class="close advanced-search-toggle pull-right" data-toggle="collapse" data-target="#advanced-search">&times;</button>
+        <?php echo $this->form()->openTag($form); ?>    
+        <fieldset>
+            <legend><?php echo $this->translate('Advanced search'); ?>
+
+            </legend>
+            <div class="row">
+                <div class="span5">
+                    <div class="control-group">
+                        <label class="control-label" for="user"> <?php echo $this->translate('User'); ?></label>
+                        <div class="controls">
+                            <?php echo $this->formRow($fieldset->get('user')); ?>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="quiz"> <?php echo $this->escapeHtml($this->title); ?></label>
+                        <div class="controls">
+                            <?php echo $this->formRow($fieldset->get('quiz')); ?>
+                        </div>
+                    </div>                
+                </div>
+                <div class="span5">
+                    <div class="control-group">
+                        <label class="control-label" for="status">
+                            <?php echo $this->translate('Attempt status'); ?>
+                        </label>
+                        <div class="controls">
+                            <?php echo $this->formRow($fieldset->get('status')); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn"><i class="icon-search"></i> <?php echo $this->translate('Search'); ?> </button>
+                    <button id="show-all" type="submit" class="btn"><i class="icon-search"></i> <?php echo $this->translate('Show All'); ?> </button>
+                </div>
+            </div>
+        </fieldset>
+        <?php echo $this->form()->closeTag(); ?>
+        
+        <?php echo $this->inlineScript()->appendFile($this->basePath() . '/js/quiz/report.js'); ?>
+
+    <?php endif; ?>
+</div>

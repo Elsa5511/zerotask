@@ -1,0 +1,64 @@
+<?php
+$hideActions = false;
+if(isset($this->hideActions) && $this->hideActions == true)
+    $hideActions = true;
+?>
+<a data-rel="open-attachment"
+   data-link="<?php echo $this->attachment->getLink() ?>"
+   data-extension="<?php echo $this->attachment->getExtension();?>" href="
+    <?php $attachmentUrl = $this->application()->url(
+        array(
+            'controller' => $this->controller,
+            'action' => 'handle',
+            'id' => $this->attachment->getAttachmentId()
+            )
+        );
+        echo $attachmentUrl;
+    ?>
+" >
+    <div class="thumbnail equipment">
+        <?php  
+            $backgroundImageUrl = in_array($this->attachment->getExtension(), array('jpg', 'png', 'gif')) ? 
+                $attachmentUrl : 
+                $this->basePath('/images/training/' . $this->attachment->getExtension() . '.png');
+        ?>
+        <div class="category-image" style="
+            background-image: url('<?php echo $backgroundImageUrl ?>');
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $backgroundImageUrl ?>', sizingMethod='scale');
+            ">
+            <img src="<?php echo $this->basePath('/images/equipment-thumbnail-placeholder.png'); ?>" 
+                 alt="<?php echo $this->escapeHtml($this->attachment->getTitle()) ?>">
+        </div>
+        <div class="vertical-center">
+            <h2><?php echo $this->attachment->getTitle(); ?></h2>
+        </div>
+    </div>
+</a>
+<?php if ($this->isAllowed($attachmentResource, 'update') && !$hideActions): ?>
+    <div class="edit-buttons">
+        <a class="btn btn-mini add-edit-attachment"
+           title ="<?php echo $this->translate('Edit Attachment');?> "
+           href="<?php
+           echo $this->application()->url(array(
+                   'action' => 'edit-attachment',
+                   'controller' => $this->controller,
+                   'id'=>$this->attachment->getAttachmentId()
+               )
+           );
+           ?>"
+            ><i class="icon-pencil"></i></a>
+        <a data-rel="delete" class="btn btn-mini"
+           href="<?php
+           echo $this->application()->url(array(
+                   'action' => 'delete-attachment',
+                   'controller' => $this->controller,
+                   'id' => $this->attachment->getAttachmentId(),
+               )
+           );
+           ?>">
+            <i class="icon-trash"></i>
+        </a>
+
+    </div>
+<?php endif; ?>
+                                                    

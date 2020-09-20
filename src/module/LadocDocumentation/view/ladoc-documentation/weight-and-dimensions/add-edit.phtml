@@ -1,0 +1,59 @@
+<?php
+$title = $this->translate('Section') . ' 2/5: ' . $this->translate('Dimensions, weight and center of gravity');
+$this->headTitle($title);
+$this->layout()->title = $title;
+
+
+if ($this->form) {
+    echo $this->bootstrapForm($this->form);
+
+
+    if ($this->type === 'carrier') {
+        $this->inlineScript()
+            ->appendScript("
+            var imageFiles = " . json_encode($this->imageFiles) . ";
+            ", 'text/javascript', array('noescape' => true));
+        $this->inlineScript()->appendFile($this->basePath() . '/js/ladoc-documentation/carrier-weight-and-dimensions.js');
+    }
+    else if ($this->type === 'load') {
+        $this->headLink()->appendStylesheet('/css/weight-and-dimensions/load.css');
+
+        //Code for attachments
+        $images = array();
+        $attachmentsIndex = "attachments";
+        $attachments = $this->attachments;
+
+        if ($attachments && count($attachments) > 0) {
+            foreach ($attachments as $attachment)
+                $images[] = $attachment->getFile();
+        }
+        $errorAttachments = array();
+        $newAttachments = array();
+        if ($this->customError && is_array($this->customError)) {
+            $errorAttachments = $this->customError['attachments'];
+            $newAttachments = $this->customError['new_attachments'];
+        }
+        $this->inlineScript()->appendFile($this->basePath() . '/js/ladoc-documentation/load-weight-and-dimensions-attachments.js');
+        $this->inlineScript()->appendScript("
+             $('#add-point-btn').removeClass('btn-primary');
+             var pointAttachments = " . json_encode($images) . ";
+             var controllerName = '" . $this->controllerName . "';
+             var attachmentsIndex = '" . $attachmentsIndex . "';
+             var errorAttachments = " . json_encode($errorAttachments) . ";
+             var newAttachments = " . json_encode($newAttachments) . ";
+            ", 'text/javascript', array('noescape' => true));
+    }
+
+    $this->inlineScript()
+        ->appendFile($this->basePath() . '/includes/tinymce/js/tinymce/tinymce.min.js')
+        ->appendFile($this->basePath() . '/js/ladoc-documentation/richtext.js')
+        ->appendFile($this->basePath() . '/js/ladoc-documentation/weight-and-dimensions.js');
+}
+?>
+
+<?php if ($this->showPreviousButton): ?>
+    <?php $this->inlineScript()->appendFile($this->basePath() . '/js/ladoc-documentation/hide-breadcrumb-back.js'); ?>
+    <button id="ladoc-previous-button" type="button" class="btn ladoc-previous-button">
+        <?php echo $this->translate('Previous'); ?>
+    </button>
+<?php endif ?>

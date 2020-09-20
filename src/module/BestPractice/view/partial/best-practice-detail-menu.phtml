@@ -1,0 +1,33 @@
+<ul class="nav nav-tabs nav-stacked">
+    <?php
+    $detailLink = $this->detailAction ? 
+                    $this->application()->url(array('controller' => 'best-practice',
+                                    'action' => $this->detailAction, 'id' => $this->bestPracticeId))
+                    : "#";
+    $activeDetail = $this->detailAction ? "" : "active"; ?>
+    <li class="<?php echo $activeDetail ?>"><a href="<?php echo $detailLink ?>"><?php echo $this->translate("Main page") ?></a></li>
+    
+    <?php
+    $proceduresLink = $this->proceduresAction ?
+                        $this->application()->url(array('controller' => 'best-practice',
+                                    'action' => $this->proceduresAction, 'id' => $this->bestPracticeId))
+                    : "#";
+    $activeProcedures = $this->proceduresAction ? "" : "active"; ?>
+    <li class="<?php echo $activeProcedures ?>"><a href="<?php echo $proceduresLink ?>"><?php echo $this->translate("Procedures") ?></a></li>
+    
+    <?php
+    $userManualLink = $this->userManualAction ? 
+                        $this->application()->url(array('controller' => 'best-practice',
+                                    'action' => $this->userManualAction, 'id' => $this->bestPracticeId))
+                    : "#";
+    $activeUserManual = $this->userManualAction ? "" : "active"; ?>
+    <li class="<?php echo $activeUserManual ?>"><a href="<?php echo $userManualLink ?>"><?php echo $this->translate("User manual") ?></a></li>
+    
+    <?php
+    $additionalInfoLink = $this->additionalInfoAction ? 
+                        $this->application()->url(array('controller' => 'best-practice',
+                                    'action' => $this->additionalInfoAction, 'id' => $this->bestPracticeId))
+                    : "#";
+    $activeAdditionalInfo = $this->additionalInfoAction ? "" : "active"; ?>
+    <li class="<?php echo $activeAdditionalInfo ?>"><a href="<?php echo $additionalInfoLink ?>"><?php echo $this->translate("Additional info") ?></a></li>
+</ul>  

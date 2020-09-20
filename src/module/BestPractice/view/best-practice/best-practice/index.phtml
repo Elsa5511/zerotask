@@ -1,0 +1,95 @@
+<?php
+$title = $this->translate('Best practices'); //$languageId ? $this->translate('Edit language') : $this->translate('Add language');
+$this->layout()->title = $title;
+$this->headTitle($title);
+$hasBestPractices = count($this->bestPractices) > 0;
+$isAdmin = $this->zfcUserIdentity()->hasRole('admin');
+?>
+
+
+<?php if ($hasBestPractices): ?>
+    <ul class="thumbnails">
+    <?php
+    foreach ($this->bestPractices as $bestPractice):
+        ?>
+            <li class="span2 edit-buttons-toggle">
+                <a href="<?php echo $this->application()->url(array(
+                            'controller' => 'best-practice',
+                            'action' => 'detail',
+                            'id' => $bestPractice->getBestPracticeId(),
+                        )) ?>">
+                    <div class="thumbnail best-practice">
+                        <?php $bestPracticeBackgroundImage = $this->basePath() . "/content/best-practice/" . $bestPractice->getFeaturedImage(); ?>
+                        <div class="category-image" style="
+                            background-image: url('<?php echo $bestPracticeBackgroundImage ?>');
+                            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $bestPracticeBackgroundImage ?>', sizingMethod='scale');
+                            ">
+                            <img src='<?php echo $this->basePath() . "/images/best-practice-thumbnail-placeholder.png"; ?>' alt="Automatic Tie">
+                        </div>
+                        <h2><?php echo $this->escapeHtml($bestPractice->getTitle()) ?></h2>
+                        <p><?php echo $this->escapeHtml($bestPractice->getSubTitle()) ?></p>
+                    </div>
+                </a>
+                <?php if ($isAdmin): ?>
+                    <div class="edit-buttons" style="display: none;">
+                        <a class="btn btn-mini edit-element" data-form="equipment_taxonomy_form" href="
+                                <?php
+                        echo $this->application()->url(array(
+                            'controller' => 'best-practice',
+                            'action' => 'edit',
+                            'id' => $bestPractice->getBestPracticeId(),
+                        ))
+                        ?>" title="<?php echo $this->translate('Edit Best Practice'); ?>">
+                            <i class="icon-pencil"></i></a>
+                        <a class="btn btn-mini delete-best-practice" href="
+                                <?php
+                        echo $this->application()->url(array(
+                            'controller' => 'best-practice',
+                            'action' => 'delete',
+                            'id' => $bestPractice->getBestPracticeId(),
+                        ))
+                        ?>" title="<?php echo $this->translate('Delete Best Practice'); ?>">
+                            <i class="icon-trash"></i></a>
+                    </div>
+                <?php endif; ?>
+            </li>
+        <?php
+    endforeach;
+    ?>
+    </ul>
+<?php endif; ?>
+
+<?php if ($isAdmin): ?>
+    <a href="<?php
+    echo $this->application()->url(array(
+        'controller' => 'best-practice',
+        'action' => 'add',
+        'id' => $this->equipmentId,
+    ))
+    ?>" data-rel="add" class="btn">
+        <i class="icon-plus"></i>
+    <?php echo $this->translate("Create new") ?>
+    </a>
+<?php endif; ?>
+
+<!-- Confirm Delete Category Modal -->
+<div class="modal hide fade" role="dialog" id="confirm-delete">
+    <input id="delete_mode_modal" type="hidden" value="">
+    <div class="modal-header"> 
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3><?php echo $this->translate('Delete Best Practice') ?></h3>
+    </div>
+    <div class="modal-body">
+        <p id="count-organizations"><?php echo $this->translate('You are about to delete a Best Practice. This procedure is irreversible.') ?></p>
+        <p><?php echo $this->translate('Do you want to proceed?') ?></p>        
+    </div>
+    <div class="modal-footer">
+        <button id="accept-delete" class="btn btn-danger" href="#"><?php echo $this->translate('Yes') ?></button> 
+        <a class="btn btn-primary" data-dismiss="modal"><?php echo $this->translate('No') ?></a>
+    </div>
+</div>
+
+<?php
+$this->inlineScript()
+        ->appendFile($this->basePath() . '/js/best-practice/best-practice/index.js');
+?>

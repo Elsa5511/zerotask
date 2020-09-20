@@ -1,0 +1,24 @@
+<?php
+if (isset($this->form)) :
+    $title = $this->translate("Check out equipment instances");
+    $this->layout()->title = $title;
+    $this->headTitle($title);
+    $this->inlineScript()->appendFile($this->basePath() . '/js/equipment/checkout.js', 'text/javascript');
+    ?>
+    <div class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label"><?php echo $this->translate('Checkout date') ?></label>
+            <div class="controls">
+                <strong><?php echo date("Y.m.d")?></strong>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label"><?php echo $this->translate('Checked out by') ?></label>
+            <div class="controls">
+                <strong><?php echo $this->escapeHtml($this->currentUser) ?></strong>
+            </div>
+        </div>
+    </div>
+    <?php
+    echo $this->bootstrapForm($this->form);
+endif;

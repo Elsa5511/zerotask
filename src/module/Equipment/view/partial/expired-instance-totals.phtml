@@ -1,0 +1,64 @@
+<?php if ($this->totalExpiredByControlDate +
+    $this->totalExpiredByGuarantee +
+    $this->totalExpiredByLifeTime > 0): ?>
+
+    <?php
+    $controller = 'equipment-instance-report';
+    $actionPostfix = '';
+    $routeParamId = 0;
+    if ($this->categoryId) {
+        $actionPostfix = '-for-category';
+        $routeParamId = $this->categoryId;
+    }
+    if ($this->equipmentId) {
+        $actionPostfix = '-for-equipment';
+        $routeParamId = $this->equipmentId;
+    }
+
+    function createUrlParams($actionName, $actionPostfix, $controller, $routeParamId) {
+        $urlParams = array(
+            'action' => $actionName . $actionPostfix,
+            'controller' => $controller
+        );
+        if ($routeParamId > 0) {
+            $urlParams['id'] = $routeParamId;
+        }
+        return $urlParams;
+    }
+
+    ?>
+
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <?php if ($this->totalExpiredByControlDate > 0): ?>
+            <div>
+                <a class="alert-link" href="<?php
+                echo $this->application()->url(createUrlParams('expired-periodic-control', $actionPostfix, $controller, $routeParamId));
+                ?>">
+                    <?php echo sprintf("%s %s", $this->totalExpiredByControlDate, $this->translate("instances passed periodic control date"));
+                    ?>
+                </a>
+            </div>
+        <?php endif; ?>
+        <?php if ($this->totalExpiredByGuarantee > 0): ?>
+            <div>
+                <a class="alert-link" href="<?php
+                echo $this->application()->url(createUrlParams('expired-guarantee', $actionPostfix, $controller, $routeParamId));
+                ?>">
+                    <?php echo sprintf("%s %s", $this->totalExpiredByGuarantee, $this->translate("instances passed guarantee date"));
+                    ?>
+                </a>
+            </div>
+        <?php endif; ?>
+        <?php if ($this->totalExpiredByLifeTime > 0): ?>
+            <div>
+                <a class="alert-link" href="<?php
+                echo $this->application()->url(createUrlParams('expired-lifetime', $actionPostfix, $controller, $routeParamId));
+                ?>">
+                    <?php echo sprintf("%s %s", $this->totalExpiredByLifeTime, $this->translate("instances passed technical lifetime"));
+                    ?>
+                </a>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif ?>

@@ -1,0 +1,826 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Vidum 0.1\n"
+"POT-Creation-Date: 2015-07-03 10:01-0500\n"
+"PO-Revision-Date: 2015-07-10 08:21-0500\n"
+"Last-Translator: Kjetil <kjetil.sorbo@gmail.com>\n"
+"Language-Team: Sysco Peru\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;translate\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: ../src/Training/Controller/TrainingController.php:52
+msgid "Training"
+msgstr "Entrenamiento"
+
+#: ../view/partial/training-attachment-thumbnail.phtml:27
+msgid "Edit Attachment"
+msgstr "Editar adjunto"
+
+#: ../view/training/training/index.phtml:31
+#: ../view/training/training/index.phtml:79
+msgid "Delete"
+msgstr "Eliminar"
+
+#: ../view/training/training/index.phtml:41
+msgid "Edit Section"
+msgstr "Editar sección"
+
+#: ../view/training/training/index.phtml:42
+#: ../view/training/training/index.phtml:89
+msgid "Edit"
+msgstr "Editar"
+
+#: ../view/training/training/index.phtml:121
+msgid "New Attachment"
+msgstr "Nuevo adjunto"
+
+#: ../view/training/training/index.phtml:122
+#: ../view/training/training/index.phtml:142
+msgid "New item"
+msgstr "Nuevo artículo"
+
+#: ../view/training/training/index.phtml:155
+msgid "New subsection"
+msgstr "Nueva subsección"
+
+#: ../view/training/training/index.phtml:173
+msgid "New section"
+msgstr "Nueva sección"
+
+#: ../view/training/training/index.phtml:178
+msgid "About training"
+msgstr "Acerca del entrenamiento"
+
+#: ../view/training/training/index.phtml:180
+msgid ""
+"In this part of LADOC you will find training material related to the "
+"selected equipment. The training material is divided into different sections."
+msgstr ""
+"En esta parte de LADOC usted encontrará el material de entrenamiento del "
+"equipo seleccionado. El material de entrenamiento está dividido en "
+"diferentes secciones."
+
+#: ../view/training/training/index.phtml:182
+msgid ""
+"In this part of MEDOC you will find training material related to the "
+"selected equipment. The training material is divided into different sections."
+msgstr ""
+"En esta parte de MEDOC usted encontrará el material de entrenamiento del "
+"equipo seleccionado. El material de entrenamiento está dividido en "
+"diferentes secciones."
+
+#: ../view/training/training/index.phtml:184
+msgid ""
+"After completing the training you can go through the exercises in the tests "
+"area to test your knowledge."
+msgstr ""
+"Después de completer el entrenamiento uste puede realizer los ejercicios en "
+"la zona de ejercicios para probar su conocimiento."
+
+#: ../view/training/training/index.phtml:185
+msgid ""
+"When you have completed the available exercises you can ask your superior "
+"for access to the exams that you need to take in order to get a "
+"certification for the equipment."
+msgstr ""
+"Cuando usted haya completado los ejercicios disponibles puede preguntar a su "
+"superior para tener acceso a los exámenes que debe tomar para poder tener la "
+"certificación en el equipo."
+
+#: ../view/training/training/index.phtml:192
+msgid "Section information"
+msgstr "Información de la sección"
+
+#: ../view/training/training/index.phtml:193
+msgid "Save"
+msgstr "Guardar"
+
+#~ msgid "Home"
+#~ msgstr "Hjem"
+
+#~ msgid "Equipment Information was saved succesfully."
+#~ msgstr "Utstyr Informasjon ble lagret."
+
+#~ msgid "Equipment does not exist"
+#~ msgstr "Utstyr eksisterer ikke"
+
+#~ msgid "Equipment"
+#~ msgstr "Utstyr"
+
+#~ msgid "Equipment deleted successfully."
+#~ msgstr "Utstyret ble slettet."
+
+#~ msgid "Equipment(s) deleted successfully."
+#~ msgstr "Utstyr (er) slettet."
+
+#~ msgid "No equipments selected"
+#~ msgstr "Ingen utstyr utvalgte"
+
+#~ msgid "Equipments haven't been deleted "
+#~ msgstr "Utstyr har ikke blitt slettet"
+
+#~ msgid "Equipment doesn't exist"
+#~ msgstr "Utstyr eksisterer ikke"
+
+#~ msgid "Equipment instance doesn't exist"
+#~ msgstr "Utstyr eksempel eksisterer ikke"
+
+#~ msgid "The equipment instance has been successfully saved."
+#~ msgstr "Utstyret eksempel er lagret."
+
+#~ msgid "The equipment instance could not be saved. Try again later."
+#~ msgstr "Utstyret eksempel kunne ikke lagres. Prøv igjen senere."
+
+#~ msgid "Action could not be completed"
+#~ msgstr "Handlingen kunne ikke fullføres"
+
+#~ msgid "Equipment Subinstance was added successfully"
+#~ msgstr "Utstyr Informasjon ble lagret successfully"
+
+#~ msgid "no subinstance added"
+#~ msgstr "Å ha individuelle uten tilsatt"
+
+#~ msgid "EquipmentInstance doesn't exist"
+#~ msgstr "Utstyr enkelte eksisterer ikke"
+
+#~ msgid "The category has been saved."
+#~ msgstr "Kategorien har blitt lagret."
+
+#~ msgid "The category could not be saved."
+#~ msgstr "Kategorien kunne ikke lagres."
+
+#~ msgid "Equipment name"
+#~ msgstr "Utstyr navn"
+
+#~ msgid "Equipment Category"
+#~ msgstr "Utstyr kategori"
+
+#~ msgid "Feature image"
+#~ msgstr "Utvalgte bilde"
+
+#~ msgid "Description"
+#~ msgstr "Beskrivelse"
+
+#~ msgid "Choose an organization"
+#~ msgstr "Velg en organisasjon"
+
+#~ msgid "Vendor"
+#~ msgstr "Leverandør"
+
+#~ msgid "Producer"
+#~ msgstr "Produsent"
+
+#~ msgid "Owner"
+#~ msgstr "Eier"
+
+#~ msgid "Choose an equipment"
+#~ msgstr "Velg en utstyr"
+
+#~ msgid "Has to be used with"
+#~ msgstr "Må brukes med"
+
+#~ msgid "Can be used with"
+#~ msgstr "Kan brukes med"
+
+#~ msgid "The input is less than 3 characters long"
+#~ msgstr "Inngangen er mindre enn 3 tegn"
+
+#~ msgid "The input is more than 100 characters long"
+#~ msgstr "Inngangen er mer enn 100 tegn"
+
+#~ msgid "Value is required and can't be empty"
+#~ msgstr "Verdi er nødvendig, og kan ikke være tom"
+
+#~ msgid "The file must be of type "
+#~ msgstr "Filen må være av typen"
+
+#~ msgid "The file was not detected"
+#~ msgstr "Filen ble ikke oppdaget"
+
+#~ msgid "Serial number"
+#~ msgstr "Serienummer"
+
+#~ msgid "Reg number"
+#~ msgstr "reg nummer"
+
+#~ msgid "Batch number"
+#~ msgstr "batchnummer"
+
+#~ msgid "Certificate number"
+#~ msgstr "sertifikatnummer"
+
+#~ msgid "Choose an usage status"
+#~ msgstr "Velg en forbruksstatus"
+
+#~ msgid "Usage status"
+#~ msgstr "bruk status"
+
+#~ msgid "Choose a location"
+#~ msgstr "Velg et sted"
+
+#~ msgid "Location"
+#~ msgstr "Sted"
+
+#~ msgid "Purchase date"
+#~ msgstr "Kjøpsdato"
+
+#~ msgid "Technical lifetime"
+#~ msgstr "teknisk levetid"
+
+#~ msgid "Guarantee time"
+#~ msgstr "garanti tid"
+
+#~ msgid "Reception control"
+#~ msgstr "Mottakskontroll"
+
+#~ msgid "Periodic control date"
+#~ msgstr "Periodisk kontroll dato"
+
+#~ msgid "Order number"
+#~ msgstr "ordrenummer"
+
+#~ msgid "Remarks"
+#~ msgstr "Merknader"
+
+#~ msgid "Save changes"
+#~ msgstr "Lagre endringer"
+
+#~ msgid "This input contains invalid characters. Only letters are allowed."
+#~ msgstr "Denne inngangen inneholder ugyldige tegn. Kun bokstaver er tillatt."
+
+#~ msgid "Value is required"
+#~ msgstr "Verdi er påkrevd"
+
+#~ msgid "The input is less than \"x\" character(s) long"
+#~ msgstr "Inngangen er mindre enn \"x \" karakter (s) lang"
+
+#~ msgid "The input is more than \"x\" characters long"
+#~ msgstr "Inngangen er mer enn \"x \" tegn"
+
+#~ msgid "Vendor part"
+#~ msgstr "Leverandørens del"
+
+#~ msgid "The input is less than 8 characters long"
+#~ msgstr "Inngangen er mindre enn 8 tegn"
+
+#~ msgid "The input is more than 8 characters long"
+#~ msgstr "Inngangen er mer enn 8 tegn"
+
+#~ msgid "The input must contain only digits"
+#~ msgstr "Inngangen må bare inneholde sifre"
+
+#~ msgid "SAP is already registered"
+#~ msgstr "SAP er allerede registrert"
+
+#~ msgid "The input is less than 13 characters long"
+#~ msgstr "Inngangen er mindre enn 13 tegn"
+
+#~ msgid "The input is more than 13 characters long"
+#~ msgstr "Inngangen er mer enn 13 tegn"
+
+#~ msgid "NSN is already registered"
+#~ msgstr "NSN er allerede registrert"
+
+#~ msgid "Subinstances"
+#~ msgstr "i enkelte"
+
+#~ msgid "Parent Category"
+#~ msgstr "forelder Kategori"
+
+#~ msgid "none"
+#~ msgstr "none"
+
+#~ msgid "Name"
+#~ msgstr "Navn"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "Featured image"
+#~ msgstr "Utvalgte bilde"
+
+#~ msgid "Search"
+#~ msgstr "Søk"
+
+#~ msgid "Incorrect Equipment instance id"
+#~ msgstr "Feil utstyr enkeltes id"
+
+#~ msgid "Equipment Instance was deleted successfully"
+#~ msgstr "Utstyr enkelte ble slettet"
+
+#~ msgid ""
+#~ "can't be deleted because it is related to other entities.\n"
+#~ "                            Edit the relationship and try again. "
+#~ msgstr ""
+#~ "kan ikke slettes fordi det er relatert til andre enheter. Rediger "
+#~ "forholdet og prøv igjen."
+
+#~ msgid "Categories"
+#~ msgstr "kategorier"
+
+#~ msgid "Equipments"
+#~ msgstr "utstyr"
+
+#~ msgid "Pages"
+#~ msgstr "sider"
+
+#~ msgid "Category"
+#~ msgstr "Kategori"
+
+#~ msgid "was removed successfully"
+#~ msgstr "ble fjernet med suksess"
+
+#~ msgid "Category doesn't exist"
+#~ msgstr "Kategorien eksisterer ikke"
+
+#~ msgid "Add new"
+#~ msgstr "Legg til ny"
+
+#~ msgid "Group actions"
+#~ msgstr "Gruppe handlinger"
+
+#~ msgid "Actions"
+#~ msgstr "Handlinger"
+
+#~ msgid "Equipment information"
+#~ msgstr "Utstyr informasjon"
+
+#~ msgid "Choose category"
+#~ msgstr "Velg en kategori"
+
+#~ msgid "Edit category"
+#~ msgstr "Rediger kategori"
+
+#~ msgid "Edit equipment"
+#~ msgstr "Edit utstyr"
+
+#~ msgid "Delete Category"
+#~ msgstr "Slett kategori"
+
+#~ msgid "You are about to delete a Category, this procedure is irreversible."
+#~ msgstr ""
+#~ "Du er i ferd med å slette en kategori, er denne prosedyren irreversible."
+
+#~ msgid "Do you want to proceed?"
+#~ msgstr "Ønsker du å fortsette?"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
+
+#~ msgid "No"
+#~ msgstr "Nei"
+
+#~ msgid "Create new"
+#~ msgstr "Legg til ny"
+
+#~ msgid "Add category"
+#~ msgstr "Legg til kategori"
+
+#~ msgid "Choose supplier"
+#~ msgstr "Velg en leverandør"
+
+#~ msgid "digits"
+#~ msgstr "sifre"
+
+#~ msgid "Add Equipment Subinstance"
+#~ msgstr "Legg Utstyr Subinstance"
+
+#~ msgid "Equipment type"
+#~ msgstr "utstyrstype"
+
+#~ msgid "Instance data"
+#~ msgstr "enkeltes data"
+
+#~ msgid "Periodic control (MOCKUP)"
+#~ msgstr "Periodisk kontroll (mockup)"
+
+#~ msgid "Visual control (MOCKUP)"
+#~ msgstr "Visuell kontroll (mockup)"
+
+#~ msgid "Equipment category"
+#~ msgstr "Utstyr kategori"
+
+#~ msgid "NSN #"
+#~ msgstr "NSN #"
+
+#~ msgid "Material #"
+#~ msgstr "Materiale #"
+
+#~ msgid "Vendor part #"
+#~ msgstr "Leverandør av #"
+
+#~ msgid "Manufacturer"
+#~ msgstr "Produsent"
+
+#~ msgid "Have to be used with"
+#~ msgstr "Må brukes med"
+
+#~ msgid "Checked out"
+#~ msgstr "sjekket ut"
+
+#~ msgid "Next periodic control"
+#~ msgstr "Neste periodisk kontroll"
+
+#~ msgid "Next visual control"
+#~ msgstr "Neste visuell kontroll"
+
+#~ msgid "Serial #"
+#~ msgstr "Serial #"
+
+#~ msgid "Registration #"
+#~ msgstr "Registrering #"
+
+#~ msgid "Batch #"
+#~ msgstr "batch #"
+
+#~ msgid "Certificate #"
+#~ msgstr "sertifikat #"
+
+#~ msgid "Order #"
+#~ msgstr "Bestill #"
+
+#~ msgid "Guarantee date"
+#~ msgstr "garantidatoen"
+
+#~ msgid "Last modified"
+#~ msgstr "Sist endret"
+
+#~ msgid "Last periodic control (MOCKUP)"
+#~ msgstr "Siste periodisk kontroll (mockup)"
+
+#~ msgid "Details"
+#~ msgstr "detaljer"
+
+#~ msgid "Control date"
+#~ msgstr "kontroll dato"
+
+#~ msgid "Result"
+#~ msgstr "resultat"
+
+#~ msgid "Registered by"
+#~ msgstr "registrert av"
+
+#~ msgid "Next control date"
+#~ msgstr "Neste kontroll dato"
+
+#~ msgid "Comments"
+#~ msgstr "kommentarer"
+
+#~ msgid "Last visual control (MOCKUP)"
+#~ msgstr "Siste visuell kontroll (mockup)"
+
+#~ msgid "Unlink"
+#~ msgstr "oppheve koblingen"
+
+#~ msgid "Periodic control"
+#~ msgstr "periodisk kontroll"
+
+#~ msgid "Visual control"
+#~ msgstr "visuell kontroll"
+
+#~ msgid "Check out"
+#~ msgstr "Sjekk ut"
+
+#~ msgid "Check in"
+#~ msgstr "Sjekk inn"
+
+#~ msgid "Control status"
+#~ msgstr "kontroll status"
+
+#~ msgid "Next control"
+#~ msgstr "Neste kontroll"
+
+#~ msgid "Equipment Instance information"
+#~ msgstr "Utstyr Instance informasjon"
+
+#~ msgid "Edit Equipment Instance"
+#~ msgstr "Edit Utstyr Instance"
+
+#~ msgid "Add Equipment Instance"
+#~ msgstr "Legg Utstyr Instance"
+
+#~ msgid "Reg #"
+#~ msgstr "Reg #"
+
+#~ msgid "General information"
+#~ msgstr "oversikt"
+
+#~ msgid "Control points"
+#~ msgstr "Kontrollpunkter"
+
+#~ msgid "Control number"
+#~ msgstr "Kontrollnummer"
+
+#~ msgid "Competent person"
+#~ msgstr "kompetent person"
+
+#~ msgid "Expertise organ"
+#~ msgstr "kompetanse organ"
+
+#~ msgid "A 404 error occurred"
+#~ msgstr "En 404-feil oppstod"
+
+#~ msgid "The requested controller was unable to dispatch the request."
+#~ msgstr ""
+#~ "Den forespurte kontrolleren var ikke i stand til å sende forespørselen."
+
+#~ msgid ""
+#~ "The requested controller could not be mapped to an existing controller "
+#~ "class."
+#~ msgstr ""
+#~ "Den forespurte kontrolleren kunne ikke tilordnes til en eksisterende "
+#~ "kontrolleren klassen."
+
+#~ msgid "The requested controller was not dispatchable."
+#~ msgstr "Den forespurte kontrolleren var ikke Dispatchable."
+
+#~ msgid "The requested URL could not be matched by routing."
+#~ msgstr "Den forespurte nettadressen kan ikke matches av freser."
+
+#~ msgid "We cannot determine at this time why a 404 was generated."
+#~ msgstr ""
+#~ "Vi kan ikke fastslå på dette tidspunktet hvorfor en 404 ble generert."
+
+#~ msgid "Controller"
+#~ msgstr "kontroller"
+
+#~ msgid "resolves to %s"
+#~ msgstr "vedtar å% s"
+
+#~ msgid "File"
+#~ msgstr "Fil"
+
+#~ msgid "Message"
+#~ msgstr "Melding"
+
+#~ msgid "Stack trace"
+#~ msgstr "Stack trace"
+
+#~ msgid "Previous exceptions"
+#~ msgstr "tidligere unntak"
+
+#~ msgid "No Exception available"
+#~ msgstr "Ingen Unntak tilgjengelig"
+
+#~ msgid "An error occurred"
+#~ msgstr "En feil oppstod"
+
+#~ msgid "Vidum Systems"
+#~ msgstr "Vidum Systems"
+
+#~ msgid "Select image"
+#~ msgstr "Velg bilde"
+
+#~ msgid "Remove"
+#~ msgstr "Fjern"
+
+#~ msgid "Change"
+#~ msgstr "endring"
+
+#~ msgid "Cancel"
+#~ msgstr "Avbryte"
+
+#~ msgid "Advanced search"
+#~ msgstr "Avansert søk"
+
+#~ msgid "Supplier"
+#~ msgstr "Leverandør"
+
+#~ msgid "Search for equipment"
+#~ msgstr "Søk etter utstyr"
+
+#~ msgid "Image could not be uploaded just JPG,PNG and GIF files are allowed"
+#~ msgstr "Bildet kunne ikke lastes opp bare JPG, er PNG og GIF-filer tillatt"
+
+#~ msgid "Select one"
+#~ msgstr "Velg ett"
+
+#~ msgid "The input is less than 1 character long"
+#~ msgstr "Inngangen er mindre enn 1 tegn"
+
+#~ msgid "Parent"
+#~ msgstr "Parent"
+
+#, fuzzy
+#~ msgid "Feature Image"
+#~ msgstr "Utvalgte bilde"
+
+#~ msgid "Change category"
+#~ msgstr "Endre kategori"
+
+#~ msgid "Filters"
+#~ msgstr "Filtre"
+
+#~ msgid "Choose a category"
+#~ msgstr "Velg en kategori"
+
+#~ msgid "Warning!! are you sure to delete this Equipment?"
+#~ msgstr "Advarsel! er du sikker på å slette denne Equipment?"
+
+#~ msgid "Choose a vendor"
+#~ msgstr "Velg en leverandør"
+
+#~ msgid "Choose a producer"
+#~ msgstr "Velg en produsent"
+
+#~ msgid "Choose a owner"
+#~ msgstr "Velg en eier"
+
+#~ msgid "Suppliers"
+#~ msgstr "Leverandører"
+
+#~ msgid "Departments"
+#~ msgstr "Avdelinger"
+
+#~ msgid "Owners"
+#~ msgstr "Eiere"
+
+#~ msgid "13 digits"
+#~ msgstr "13 siffer"
+
+#~ msgid "8 digits"
+#~ msgstr "8 sifre"
+
+#~ msgid "Choose a category..."
+#~ msgstr "Velg en kategori ..."
+
+#~ msgid "Choose a supplier..."
+#~ msgstr "Velg en leverandør ..."
+
+#~ msgid "8 digits..."
+#~ msgstr "8 siffer ..."
+
+#, fuzzy
+#~ msgid "Equipment name..."
+#~ msgstr "Utstyr"
+
+#~ msgid "NSN..."
+#~ msgstr "NSN..."
+
+#~ msgid "SAP..."
+#~ msgstr "NSN..."
+
+#~ msgid "Vendor part..."
+#~ msgstr "Leverandør del ..."
+
+#~ msgid "Users"
+#~ msgstr "Brukere"
+
+#~ msgid "New user added successfully."
+#~ msgstr "Ny bruker ble opprettet."
+
+#~ msgid "User updated successfully."
+#~ msgstr "Brukeren ble oppdatert."
+
+#~ msgid "We sent you a new Password, please check your email."
+#~ msgstr "Vi har sendt deg et nytt passord. Vennligst sjekk e-posten din."
+
+#~ msgid "Time to reset your password has expired. Please "
+#~ msgstr "Tidsperioden for å endre passordet har utløpt. Vennligst"
+
+#~ msgid ""
+#~ "Time to reset your password has expired or no results to your "
+#~ "requirement. Please "
+#~ msgstr "Tidsperioden for å endre passordet har utløpt. Vennligst"
+
+#~ msgid "\"x\" users deleted successfully."
+#~ msgstr "\"x\" brukere ble slettet."
+
+#~ msgid "Username"
+#~ msgstr "Brukernavn"
+
+#~ msgid "Reset Password"
+#~ msgstr "Reset passord"
+
+#~ msgid ""
+#~ "Your first name contains invalid characters. Only letters are allowed."
+#~ msgstr ""
+#~ "Fornavnet ditt inneholder tegn som ikke er tillatt. Bare bokstaver kan "
+#~ "benyttes."
+
+#~ msgid ""
+#~ "Your last name contains invalid characters. Only letters are allowed."
+#~ msgstr ""
+#~ "Etternavnet ditt inneholder tegn som ikke er tillatt. Bare bokstaver kan "
+#~ "benyttes."
+
+#, fuzzy
+#~ msgid ""
+#~ "Password must include at least one upper case letter, one lower case "
+#~ "letter, and one numeric digit."
+#~ msgstr ""
+#~ "Passordet må være minst 6 tegn, maks 16 tegn og må inneholde minst en "
+#~ "stor bokstav, en liten bokstav og et tall."
+
+#~ msgid "First name"
+#~ msgstr "Fornavn"
+
+#~ msgid "Email"
+#~ msgstr "E-post"
+
+#~ msgid ""
+#~ "Password must be at least 6 characters, no more than 16 characters, and "
+#~ "must include at least one upper case letter, one lower case letter, and "
+#~ "one numeric digit."
+#~ msgstr ""
+#~ "Passordet må være minst 6 tegn, maks 16 tegn og må inneholde minst en "
+#~ "stor bokstav, en liten bokstav og et tall."
+
+#~ msgid "Password"
+#~ msgstr "Passord"
+
+#~ msgid "Confirm your password"
+#~ msgstr "Bekreft passord"
+
+#~ msgid "Address"
+#~ msgstr "Adresse"
+
+#~ msgid "Zip Code"
+#~ msgstr "Postnummer"
+
+#~ msgid "City"
+#~ msgstr "By"
+
+#~ msgid "Phone Number 1"
+#~ msgstr "Telefonnummer 1"
+
+#~ msgid "Phone Number 2"
+#~ msgstr "Telefonnummer 2"
+
+#~ msgid "Language"
+#~ msgstr "Språk"
+
+#~ msgid "Superior"
+#~ msgstr "Overordnet"
+
+#~ msgid "Role"
+#~ msgstr "Rolle"
+
+#~ msgid "Organization"
+#~ msgstr "Organisasjon"
+
+#, fuzzy
+#~ msgid "Edit language"
+#~ msgstr "Språk"
+
+#~ msgid "You are leaving this page, are you sure?"
+#~ msgstr "Er du sikker på at du vil forlate denne siden?"
+
+#, fuzzy
+#~ msgid "Enter your username and we'll send you a new password"
+#~ msgstr ""
+#~ "Skriv inn ditt brukernavn, så sender en link for å bestille nytt passord"
+
+#~ msgid "You must select a user"
+#~ msgstr "Du må velge en bruker"
+
+#, fuzzy
+#~ msgid "E-mail"
+#~ msgstr "E-post"
+
+#~ msgid "Delete Users"
+#~ msgstr "Slett brukere"
+
+#~ msgid "You are about to delete \"x\" users, this procedure is irreversible."
+#~ msgstr "Du vil slette \"x\" brukere. Denne prosedyren er irreversibel."
+
+#~ msgid "try again"
+#~ msgstr "prøv igjen"
+
+#~ msgid "Tests"
+#~ msgstr "Tester"
+
+#~ msgid "Roles"
+#~ msgstr "Roller"
+
+#~ msgid "My account"
+#~ msgstr "Min konto"
+
+#~ msgid "Settings"
+#~ msgstr "Innstillinger"
+
+#~ msgid "Log out"
+#~ msgstr "Logg ut"
+
+#~ msgid "Log in"
+#~ msgstr "Logg inn"
+
+#~ msgid "Norwegian Armed Forces"
+#~ msgstr "Forsvaret"
+
+#~ msgid "E-mail or Username"
+#~ msgstr "E-post eller Brukernavn"
+
+#~ msgid "Sign up"
+#~ msgstr "Registrer deg"
+
+#~ msgid "Delete User"
+#~ msgstr "Slett bruker"

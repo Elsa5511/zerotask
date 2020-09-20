@@ -1,0 +1,52 @@
+<?php
+$title = $this->translate('Load Security Documents');
+$this->layout()->title = $title;
+$this->headTitle($title);
+?>
+
+<div class="row row-desktop">
+    <div class="span12">
+        <?php
+
+        echo $this->bootstrapDataTable($this->attachments, array(
+            'object_id' => 'id',
+            'actions' => array(
+                'add' => array(
+                    'label' => $this->translate('Add new'),
+                    'attributes' => array(
+                        'href' => $this->application()->url(
+                                    array(
+                                        'controller' => 'load-security-attachment', 
+                                        'action' => 'add'
+                                    )
+                        )
+                    )
+                ),
+                'options' => array(
+                    'edit' => true,
+                    'delete' => true
+                )
+            ),
+            'table_class' => 'table table-striped',
+            'search' => false,
+            'columns' => array(
+                'title' => array(
+                    'label' => $this->translate('Title')
+                ),
+                'file' => array(
+                    'label' => $this->translate('File'),
+                    'callback' => function($file, $view, $attachment) {
+                        $extension = substr(strrchr($file,'.'), 1);
+                        $formattedValue = "<a target='_blank' class='btn btn-mini' data-rel='open-attachment' title='" . 
+                            $attachment->getTitle() . "' href='/content/load-security/" . 
+                            $file . "' data-extension='" . $extension . "'><i class='icon-file'></i></a>";
+                        return $formattedValue;
+                    }
+                ),
+            ),
+            'params' => array(
+                'basic' => array('application', 'controller', 'action')
+            )
+        )); ?>
+    </div>
+</div>

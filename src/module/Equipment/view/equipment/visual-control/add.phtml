@@ -1,0 +1,18 @@
+<?php
+if (isset($this->form)) :
+    $title = $this->translate("Visual control for equipment instances");
+    $this->layout()->title = $title;
+    $this->headTitle($title);
+    $this->inlineScript()->appendFile($this->basePath() . '/js/equipment/periodic-control.js', 'text/javascript');
+    ?>
+    <div class="form-horizontal">        
+        <div class="control-group">
+            <label class="control-label"><?php echo $this->translate('Registered by') ?></label>
+            <div class="controls">
+                <strong><?php echo $this->escapeHtml($this->currentUser) ?></strong>
+            </div>
+        </div>
+    </div>
+    <?php
+    echo $this->bootstrapForm($this->form);
+endif;

@@ -1,0 +1,79 @@
+<?php
+$columns = array(
+    'placement' => array(
+        'label' => $this->translate('Placement')
+    ),
+    'description' => array(
+        'label' => $this->translate('Description')
+    ),
+    'quantity' => array(
+        'label' => $this->translate('Qty')
+    ),
+    'ruptureStrength' => array(
+        'label' => $this->translate('Breaking Strength daN')
+    )
+);
+
+$columns['lc'] = array(
+        'label' => $this->translate('LC daN')
+    );
+
+$columns[$this->type . 'LashingPointAttachments'] =  array(
+        'label' => $this->translate('See attachment'),
+        'callback' => function($attachments, $view) {
+            $formattedValue = "";
+            foreach ($attachments as $attachment) {
+                $formattedValue .= $attachment->getTitle() . ', ';
+            }
+            return rtrim($formattedValue, ', ');
+        }
+    );
+
+if($this->type == 'load')
+    $lashingPointResource = 'LadocDocumentation\Entity\LoadLashingPoint';
+else
+    $lashingPointResource = 'LadocDocumentation\Entity\CarrierLashingPoint';
+
+if ($this->isAllowed($lashingPointResource, 'create')):
+?>
+
+    <a href="<?php echo $this->application()->url(array(
+            'controller' => $this->type . '-lashing-point',
+            'action' => 'index',
+            'documentation_id' => $this->documentationId)) ?>"
+       class="btn btn-small pull-right margin-top-sm margin-bottom"><i class="icon-edit"></i> <?php echo $this->translate("Edit section") ?></a>
+
+    <div class="clearfix"></div>
+
+<?php
+endif;
+
+echo $this->bootstrapDataTable($this->points, array(
+    'object_id' => 'lashingPointId',
+    'actions' => array(),
+    'search' => false,
+    'columns' => $columns,
+    'table_class' => 'table table-striped',
+    'params' => array(
+        'basic' => array('application', 'controller', 'action')
+    )
+));
+
+if($this->descriptionInformation):
+    $description = $this->descriptionInformation->getLashingPointDescription();
+    if($description): ?>
+        <div class="description-html">
+            <p><?php echo nl2br($description) ?></p>
+        </div>
+    <?php
+    endif;
+endif;
+?>
+
+<?php
+    echo $this->partial('ladoc-documentation/partial/point-attachments.phtml', array(
+        'path' => '/content/' . $this->type . '-lashing-point/',
+        'attachments' => $this->attachments));
+?>
+
+

@@ -1,0 +1,26 @@
+<?php
+$this->headTitle('Section');
+$this->layout()->title = 'Section';
+?>
+<?php if( ! isset($message) ): ?>
+<p>
+    <?php
+        echo $this->bootstrapForm($form);
+    ?>
+</p>
+<?php else:
+    $this->inlineScript()
+            ->appendScript(' 
+            var imageDecorator =false;
+            
+
+                 $(".modal-footer button", window.parent.document).hide();
+                parent.location.reload();
+       
+        ', 'text/javascript', array('noescape' => true));
+    
+    endif; 
+
+?>
+
+

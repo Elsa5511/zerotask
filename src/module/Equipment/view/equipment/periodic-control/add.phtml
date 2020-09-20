@@ -1,0 +1,94 @@
+<?php
+$title = $this->translate("Add periodic control");
+if (isset($this->form)):
+    $this->layout()->title = $title;
+    $this->headTitle($title);
+    $this->inlineScript()->appendFile($this->basePath() . '/js/equipment/periodic-control.js', 'text/javascript');
+   
+    echo $this->bootstrapForm($this->form);
+endif;
+$days = $this->equipmentIntervalDays;
+?>
+
+<div id="control-interval-container">
+    <span id="control-interval-for-equipment">
+        <?php echo $this->escapeHtml($days); ?>
+    </span>
+</div>
+
+<?php $this->inlineScript()->captureStart();
+$taxonomiesOptions = '';
+if($this->taxonomies) {
+    foreach($this->taxonomies as $taxonomy)
+        $taxonomiesOptions .= '<option value="' . $taxonomy->getAttachmentTaxonomyId() . '">' . $taxonomy->getType() . '</option>';
+}
+//TODO: move to another js file
+echo <<<JS
+    $(document).ready(function() {
+        //Adding <hr/> tags for each attachment fieldset in case there was any error with existent attachments
+        var attachmentsFieldset = $('form#periodic-control > fieldset:last');
+        var attachmentsLength = attachmentsFieldset.find('fieldset').length;
+        if(attachmentsLength > 1) {
+            var attachmentsFieldsetElements = attachmentsFieldset.find('fieldset');
+            for(var i = 1; i < attachmentsLength; i++) {
+                attachmentsFieldsetElements.eq(i).before('<hr/>');
+            }
+        }
+
+        $('#control-date').on('changeDate', function(ev) {
+            var controlDate = new Date(ev.date)
+            controlDate.setDate(controlDate.getDate() + {$days});
+            $('#next-control-date').datepicker('setValue', controlDate)
+        })        
+        $('#next-control-date').parent().next().append( $( '#control-interval-for-equipment' ) );
+
+        /* Adding layout to the control form */
+        $('#periodic-control fieldset textarea[rows=1]').each(function() {
+            var parentControlGroup = $(this).parent().parent();
+            parentControlGroup.addClass('pull-left');
+            parentControlGroup.prev().addClass('pull-left');
+            parentControlGroup.children().first().addClass('margin-left-sm');
+        });
+
+        $('form#periodic-control #add-attachment-btn').removeClass('btn-primary');
+        $('form#periodic-control #remove-attachment-btn').removeClass('btn-primary').removeClass('btn-default').addClass('btn-danger');
+
+        $('form#periodic-control #add-attachment-btn').on('click', function() {
+            var content = '<fieldset><div class="control-group"><label class="control-label required">' +
+            system.translations.Title + '</label><div class="controls"><input type="text" name="periodicControlAttachments[__index__][title]" required="required" value=""></div></div><div class="control-group"><label class="control-label">' +
+            system.translations.Author + '</label><div class="controls"><input type="text" name="periodicControlAttachments[__index__][author]" value=""></div></div><div class="control-group"><label class="control-label">' +
+            system.translations.Type + '</label><div class="controls"><select name="periodicControlAttachments[__index__][attachmentTaxonomy]"><option value="">' +
+            system.translations.ChooseType + '</option>{$taxonomiesOptions}</select></div></div><div class="control-group"><label class="control-label" for="attachment_id">' +
+            system.translations.File + '</label><div class="controls"><div class="fileupload fileupload-new" data-provides="fileupload"><input type="hidden"><div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="{$this->basepath('/images/placehold_it.png')}"></div><div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div><div><span class="btn btn-file"><span class="fileupload-new">' +
+            system.translations["Select file"] + '</span><span class="fileupload-exists">' +
+            system.translations.Change + '</span><input type="file" name="periodicControlAttachments[__index__][filename]"></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">' +
+            system.translations.Remove + '</a></div></div></div></div>'+
+            '<input type="hidden" name="periodicControlAttachments[__index__][removed_attachment]" class="removed_attachment" value="">' +
+            '<div class="control-group"> <label class="control-label">'+
+            system.translations.Link +'</label> <div class="controls"> <input type="text" name="periodicControlAttachments[__index__][link]" value=""></div> </div>'
+            +'<div class="control-group"><label class="control-label">' +
+            system.translations.Version + '</label><div class="controls"><input type="text" name="periodicControlAttachments[__index__][version]" value=""></div></div><div class="control-group"><label class="control-label">' +
+            system.translations.Description + '</label><div class="controls"><textarea name="periodicControlAttachments[__index__][description]"></textarea></div></div></fieldset>';
+
+            var attachmentsFieldset = $('form#periodic-control > fieldset:last');
+            var index = attachmentsFieldset.find('fieldset').length;
+            content = (index > 0 ? '<hr/>' : '') + content.replace(/__index__/g, index);
+            console.log(content);
+
+            attachmentsFieldset.append(content);
+            attachmentsFieldset.find('fieldset:last select[name="periodicControlAttachments[' + index + '][attachmentTaxonomy]"]').chosen();
+
+            return false;
+        });
+
+        $('form#periodic-control #remove-attachment-btn').on('click', function() {
+            var attachmentsFieldset = $('form#periodic-control > fieldset:last');
+            attachmentsFieldset.find('fieldset:last').remove();
+            attachmentsFieldset.find('hr:last').remove();
+            return false;
+        });
+
+        $('form#periodic-control span.fileupload-new').text(system.translations["Select file"]);
+    });
+JS;
+$this->inlineScript()->captureEnd(); ?>

@@ -1,0 +1,10 @@
+<ul>
+    <li><?php echo $this->translate("The questions are weighted based on importance from 1 to 9. You will pass the test if you reach the total number of points required.") ?></li>
+    <li><?php echo $this->translate("You can move between questions using the pagination links.") ?></li>
+    <li><?php echo $this->translate("When you enter a question, it will be marked as") ?> <span class="label label-warning"><?php echo $this->translate("In progress") ?></span></li>
+    <li><?php echo $this->translate("When you confirm your answer to a question, it will be marked as") ?> <span class="label label-success"><?php echo $this->translate("Correct") ?></span> <?php echo $this->translate("or") ?> <span class="label label-important"><?php echo $this->translate("Incorrect") ?></span></li>
+    <li><?php echo $this->translate("You will not be able to change your answer after confirming") ?></li>
+    <?php if ($this->attemptType === 'exercise'): ?>
+    <li><?php echo $this->translate("A ") ?><a href="#"><?php echo $this->translate("resource link") ?></a> <?php echo $this->translate("pointing to relevant information for the question will be displayed after confirming") ?></li>
+    <?php endif; ?>
+</ul>

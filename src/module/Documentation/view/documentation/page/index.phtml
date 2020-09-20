@@ -1,0 +1,20 @@
+<?php
+
+echo $this->partial('partial/documentationPage.phtml', array(
+    'title' => $this->title,
+    'currentController' => 'page',
+    'sections' => $this->sections,
+    'inlineSections' => $this->inlineSections,
+    'currentSection' => $this->currentSection,
+    'elementId' => $this->pageId,
+    'inlineMethodToGetAttachments'=>'getPageInlineSectionAttachments',
+    //'attachmentController'=>'page-inline-section-attachment',
+    'inlineController' => 'page-inline-section',
+    'htmlContentSectionResource' => 'Documentation\Entity\HtmlContentPageSection',
+    'htmlContentInlineSectionResource' => 'Documentation\Entity\HtmlContentPageInlineSection',
+    'sectionResource' => 'Documentation\Entity\PageSection',
+    'inlineSectionResource' => 'Documentation\Entity\PageInlineSection',
+    'sectionAttachmentResource' => 'Documentation\Entity\PageSectionAttachment',
+    'inlineSectionAttachmentResource' => 'Documentation\Entity\PageInlineSectionAttachment',
+));
+?>

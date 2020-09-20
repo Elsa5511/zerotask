@@ -1,0 +1,72 @@
+<?php
+$columns = array(
+    'description' => array(
+        'label' => $this->translate('Description')
+    ),
+    'nsn' => array(
+        'label' => $this->translate('NATO #')
+    ),
+    'quantity' => array(
+        'label' => $this->translate('Count')
+    ),
+    'length' => array(
+        'label' => $this->translate('Length (m)')
+    ),
+    'lc' => array(
+        'label' => $this->translate('LC daN')
+    ),
+    'carrierLashingEquipmentAttachments' =>  array(
+        'label' => $this->translate('See attachment'),
+        'callback' => function($attachments, $view) {
+            $formattedValue = "";
+            foreach ($attachments as $attachment) {
+                $formattedValue .= $attachment->getTitle() . ', ';
+            }
+            return rtrim($formattedValue, ', ');
+        }
+    )
+);
+
+$lashingEquipmentResource = 'LadocDocumentation\Entity\CarrierLashingEquipment';
+
+if ($this->isAllowed($lashingEquipmentResource, 'create')):
+?>
+
+    <a href="<?php echo $this->application()->url(array(
+            'controller' => 'carrier-lashing-equipment',
+            'action' => 'index',
+            'documentation_id' => $this->documentationId)) ?>"
+       class="btn btn-small pull-right margin-top-sm margin-bottom"><i class="icon-edit"></i> <?php echo $this->translate("Edit section") ?></a>
+
+    <div class="clearfix"></div>
+
+<?php
+endif;
+
+echo $this->bootstrapDataTable($this->points, array(
+    'object_id' => 'lashingEquipmentId',
+    'actions' => array(),
+    'search' => false,
+    'columns' => $columns,
+    'table_class' => 'table table-striped',
+    'params' => array(
+        'basic' => array('application', 'controller', 'action')
+    )
+));
+
+if($this->descriptionInformation):
+    $description = $this->descriptionInformation->getLashingEquipmentDescription();
+    if($description): ?>
+        <div class="description-html">
+            <p><?php echo nl2br($description) ?></p>
+        </div>
+    <?php
+    endif;
+endif;
+?>
+
+<?php
+echo $this->partial('ladoc-documentation/partial/point-attachments.phtml', array(
+    'path' => '/content/carrier-lashing-equipment/',
+    'attachments' => $this->attachments));
+?>

@@ -1,0 +1,178 @@
+<?php
+
+/**
+ * Local Configuration Override
+ *
+ * This contains configuration overrides for bjyauthorize to allow unauthorized access to LADOK
+ * Make sure that other applications are not accessible without login
+ *
+ */
+
+return array(
+    'guest_access_applications' => array('ladoc'),
+    'guest_locale' => 'no',
+    'bjyauthorize' => array(
+        'rule_providers' => array(
+            'BjyAuthorize\Provider\Rule\Config' => array(
+                'allow' => array(
+                    array('guest', 'Application\Entity\Organization', array('read')),
+                    array('guest', 'Documentation\Entity\Page', array('read')),
+                    array('guest', 'Documentation\Entity\HtmlContentPageInlineSection', array('read')),
+                    array('guest', 'Documentation\Entity\HtmlContentPageSection', array('read')),
+                    array('guest', 'Documentation\Entity\PageInlineSection', array('read')),
+                    array('guest', 'Documentation\Entity\PageInlineSectionAttachment', array('read')),
+                    array('guest', 'Documentation\Entity\PageSection', array('read')),
+                    array('guest', 'Documentation\Entity\PageSectionAttachment', array('read')),
+                    array('guest', 'Documentation\Entity\CalculatorInfo', array('read')),
+                    array('guest', 'Documentation\Entity\CalculatorAttachment', array('read')),
+                    array('guest', 'Equipment\Entity\EquipmentTaxonomy', array('read')),
+                    array('guest', 'Equipment\Entity\Equipment', array('read')),
+                    array('guest', 'Equipment\Entity\Equipmentmeta', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LadocDocumentation', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LadocDocumentationDescription', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LadocDocumentationAttachment', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\CarrierBasicInformation', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\CarrierWeightAndDimensions', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\CarrierLashingPoint', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\CarrierLashingPointAttachment', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\CarrierWeight', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\CarrierDimensions', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\CarrierWeightAttachment', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\CarrierDimensionsAttachment', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\CarrierLashingEquipment', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\CarrierLashingEquipmentAttachment', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\FormOfTransportation', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\Stanag', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\ResponsibleOffice', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LoadBasicInformation', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LoadLashingPoint', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LoadLashingPointAttachment', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LoadLiftingPoint', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LoadLiftingPointAttachment', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LoadWeightAndDimensions', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LoadWeightAndDimensionsAttachment', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LadocRestraintCertified', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LadocRestraintCertifiedAttachment', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LadocRestraintNonCertified', array('read')),
+                    array('guest', 'LadocDocumentation\Entity\LadocRestraintCertifiedDocument', array('read')),
+                    array('guest', 'Training\Entity\TrainingSection', array('read')),
+                    array('guest', 'Training\Entity\TrainingSectionAttachment', array('read')),
+                ),
+            ),
+        ),
+        'guards' => array(
+            'BjyAuthorize\Guard\Controller' => array(
+                array(
+                    'controller' => 'Controller\Index',
+                    'action' => array('index'),
+                    'roles' => array('guest', 'user', 'admin')
+                ),
+                array(
+                    'controller' => 'Controller\Application',
+                    'action' => array('index'),
+                    'roles' => array('guest', 'user', 'admin')
+                ),
+                array(
+                    'controller' => 'Controller\Equipment',
+                    'action' => array('index', 'detail', 'attachment-index', 'do-search', 'simple-search'),
+                    'roles' => array('guest', 'user', 'admin', 'controller')
+                ),
+                array(
+                    'controller' => 'Controller\LadocDocumentation',
+                    'action' => array(
+                        'index',
+                        'display',
+                    ),
+                    'roles' => array('guest', 'admin', 'user')
+                ),
+                array(
+                    'controller' => 'Controller\LoadSecurity',
+                    'action' => array('index'),
+                    'roles' => array('guest', 'user', 'admin')
+                ),
+                array(
+                    'controller' => 'Controller\LoadRestraintCertified',
+                    'action' => array(
+                        'detail'
+                    ),
+                    'roles' => array('guest', 'user', 'admin')
+                ),
+                array(
+                    'controller' => 'Controller\LoadRestraintNonCertified',
+                    'action' => array(
+                        'detail'
+                    ),
+                    'roles' => array('guest', 'user', 'admin')
+                ),
+                array(
+                    'controller' => 'Controller\CarrierRestraintCertified',
+                    'action' => array(
+                        'detail'
+                    ),
+                    'roles' => array('guest', 'user', 'admin')
+                ),
+                array(
+                    'controller' => 'Controller\CarrierRestraintNonCertified',
+                    'action' => array(
+                        'detail'
+                    ),
+                    'roles' => array('guest', 'user', 'admin')
+                ),
+                array(
+                    'controller' => 'Controller\Page',
+                    'action' => array(
+                        'index',
+                    ),
+                    'roles' => array('guest', 'admin', 'user')
+                ),
+                array(
+                    'controller' => 'Controller\PageSectionAttachment',
+                    'action' => array(
+                        'handle',
+                        'video-handle'
+                    ),
+                    'roles' => array('guest', 'admin', 'user')
+                ),
+                array(
+                    'controller' => 'Controller\PageInlineSectionAttachment',
+                    'action' => array(
+                        'handle',
+                        'video-handle'
+                    ),
+                    'roles' => array('guest', 'user', 'admin')
+                ),
+                array(
+                    'controller' => 'Controller\Training',
+                    'action' => array(
+                        'index',
+                    ),
+                    'roles' => array('guest', 'admin', 'user')
+                ),
+                array(
+                    'controller' => 'Controller\TrainingSectionAttachment',
+                    'action' => array(
+                        'handle'
+                    ),
+                    'roles' => array('guest', 'user','admin')
+                ),
+                array(
+                    'controller' => 'Controller\Exercise',
+                    'action' => array(
+                        'index',
+                    ),
+                    'roles' => array('guest', 'admin', 'user')
+                ),
+                array(
+                    'controller' => 'Controller\Exam',
+                    'action' => array(
+                        'index',
+                    ),
+                    'roles' => array('guest', 'admin', 'user')
+                ),
+            ),
+            'BjyAuthorize\Guard\Route' => array(
+                array('route' => 'home', 'roles' => array('guest', 'user', 'admin')),
+            )
+        ),
+    ),
+);

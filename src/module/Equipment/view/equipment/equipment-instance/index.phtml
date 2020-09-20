@@ -1,0 +1,377 @@
+<?php
+define('CHECK_OUT_TEXT', $this->translate("Checked out"));
+$this->title = sprintf($this->translate('%s: Instances'), $this->equipmentName);
+$this->headTitle($this->title);
+$this->layout()->title = $this->title;
+$this->inlineScript()->appendFile($this->basePath() . '/js/equipment/periodic-control.js', 'text/javascript');
+$this->inlineScript()->appendFile($this->basePath() . '/js/equipment/checkout.js', 'text/javascript');
+
+$advancedSearch = false;
+if(isset($this->advancedSearch) && $this->advancedSearch)
+    $advancedSearch = true;
+?>
+
+<!-- Alert -->
+<div class="delete-alert alert fade in">
+    <button type="button" class="close">&times;</button>
+    <strong><?php echo $this->translate('You must select an equipment instance') ?></strong>
+</div>
+<div class="different-type-alert alert hide alert-error">
+    <button type="button" class="close">&times;</button>
+    <strong><?php echo $this->translate('You must select only instances with the same equipment type') ?></strong>
+</div>
+
+<?php
+$editButton = array(
+    'label' => $this->translate('Edit'),
+    'icon' => 'edit',
+    'attributes' => array(
+        'href' => $this->application()->url(array('controller' => $this->controller,
+            'action' => 'edit',
+            'id' => ':equipmentInstanceId'))
+    )
+);
+
+$copyButton = array(
+    'label' => $this->translate('Copy'),
+    'icon' => 'book',
+    'attributes' => array(
+        'href' => $this->application()->url(array('controller' => $this->controller,
+            'action' => 'copy',
+            'id' => ':equipmentInstanceId'))
+    )
+);
+
+$deactivateButton = array(
+    'icon' => 'off',
+    'label' => $this->translate('Deactivate'),
+    'attributes' => array(
+        'href' => $this->application()->url(array(
+                'controller' => $this->controller,
+                'action' => 'deactivate',
+                'id' => ':equipmentInstanceId',
+                'equipment_id' => $this->equipmentId ? $this->equipmentId : 0
+            )
+        ),
+        'class' => 'deactivateButton'
+    )
+);
+
+$activateButton = array(
+    'icon' => 'off',
+    'label' => $this->translate('Activate'),
+    'attributes' => array(
+        'href' => $this->application()->url(array(
+                'controller' => $this->controller,
+                'action' => 'activate',
+                'id' => ':equipmentInstanceId',
+                'equipment_id' => $this->equipmentId ? $this->equipmentId : 0
+            )
+        ),
+        'class' => 'activateButton'
+    )
+);
+
+
+$detailButton = array(
+    'label' => $this->translate('Details'),
+    'icon' => 'list',
+    'attributes' => array(
+        'href' => $this->application()->url(array('controller' => $this->controller,
+            'action' => 'detail',
+            'id' => ':equipmentInstanceId'))
+    )
+);
+$checkInButon = array(
+    'icon' => 'arrow-left',
+    'label' => $this->translate('Check in'),
+    'attributes' => array(
+        'href' => $this->application()->url(
+            array(
+                'controller' => 'check-in-and-out',
+                'action' => 'checkin',
+                'id' => ':equipmentInstanceId'
+            )
+        )
+    )
+);
+
+$optionsArray = array();
+$equipmentInstanceResource = 'Equipment\Entity\EquipmentInstance';
+$periodicControlResource = 'Equipment\Entity\PeriodicControl';
+$visualControlResource = 'Equipment\Entity\VisualControl';
+
+if ($this->isAllowed($equipmentInstanceResource, 'update')) {
+    $optionsArray['edit'] = $editButton;
+    $optionsArray['copy'] = $copyButton;
+}
+if ($this->isAllowed($equipmentInstanceResource, 'deactivate')) {
+    $optionsArray['deactivate'] = $deactivateButton;
+}
+
+if ($this->isAllowed($equipmentInstanceResource, 'deactivate')) {
+    $optionsArray['activate'] = $activateButton;
+}
+
+$optionsArray['detail'] = $detailButton;
+if ($this->isAllowed('Equipment\Entity\Checkin', 'update')) {
+    $optionsArray['checkin'] = $checkInButon;
+}
+
+$columns = array();
+$columns['serialNumber'] = array(
+    'label' => nl2br($this->translate("Serial\nnumber")),
+);
+$columns['regNumber'] = array(
+    'label' => $this->translate('Reg. number')
+);
+$columns['location'] = array(
+    'label' => $this->translate('Location'),
+    'callback_method' => 'getSlug',
+);
+$columns['price'] = array(
+    'label' => $this->translate('Price')
+);
+if ($this->shouldDisplayVisualControlFields) {
+    $columns['visualControlStatus'] = array(
+        'label' => $this->translate('Visual control status'),
+        'callback' => 'assignColor',
+    );
+}
+else {
+    $columns['controlStatus'] = array(
+        'label' => nl2br($this->translate("Periodic control\nstatus")),
+        'callback' => 'assignColor',
+    );
+}
+$columns['checkedOut'] = array(
+    'label' => nl2br($this->translate("Check-out\nstatus")),
+    'callback' => 'displayCheckOut',
+);
+if ($this->shouldDisplayVisualControlFields) {
+    $columns['minVisualControlDate'] = array(
+        'label' => $this->translate('Next visual control'),
+        'callback' => function($output, $view) {
+            return $view->dateFormat($output, IntlDateFormatter::SHORT);
+        }
+    );
+}
+else {
+    $columns['minPeriodicControlDate'] = array(
+        'label' => $this->translate('Next periodic control'),
+        'callback' => function($output, $view) {
+            return $view->dateFormat($output, IntlDateFormatter::SHORT);
+        }
+    );
+}
+$columns['status'] = array(
+    'label' => $this->translate('Status'),
+    'callback' => function ($output, $view) {
+        $output = trim(strtolower($output));
+        if ($output === 'active') {
+            return $view->translate("Active");
+        } else if ($output === 'inactive') {
+            return $view->translate("Inactive");
+        }
+        return $output;
+    },
+);
+
+
+if($advancedSearch) {
+    $columns = array_merge_recursive(
+        array(
+            'equipment' => array(
+                'label' => $this->translate('Equipment'),
+                'class' => 'span3 column-equipment'
+            )
+        ), 
+        $columns
+    );
+}
+
+$equipmentInstanceTableConfig = array(
+    'object_id' => 'equipmentInstanceId',
+    'search' => false,
+    'actions' => array(
+        'options' => $optionsArray,
+    ),
+    'table_class' => 'table table-striped data-table-net',
+    'table_row_class' => function ($item) {
+        $equipment = $item->getEquipment();
+        $equipmentClass = 'equipment-' . $equipment->getEquipmentId();
+        $intervalDayClass = ' intervalDays-' . $equipment->getControlIntervalByDays();
+
+        $cssClass = $equipmentClass . $intervalDayClass;
+        if ($item->isCheckedOut()) {
+            $cssClass .= " checkin-show";
+        } else {
+            $cssClass .= " checkin-hide";
+        }
+        $cssClass .= ' status-' . $item->getActiveStatus();
+        return $cssClass;
+    },
+    'columns' => $columns,
+    'params' => array(
+        'basic' => array('application', 'controller', 'action')
+    )
+);
+
+
+$addButtonConfig = array(
+    'label' => $this->translate('Add new'),
+    'attributes' => array(
+        'href' => $this->application()->url(array('controller' => $this->controller,
+            'action' => 'add',
+            'id' => $this->equipmentId))
+    )
+);
+
+$editGroupActionConfig = array(
+    'label' => $this->translate('Edit selected'),
+    'attributes' => array(
+        'href' => $this->application()->url(array('controller' => $this->controller,
+            'action' => 'edit-many',
+            'id' => $this->equipmentId ? $this->equipmentId : 'equipmentId')),
+        'id' => 'edit-many'
+    )
+);
+
+$periodicControlGroupActionConfig = array(
+    'label' => $this->translate('Periodic control'),
+    'attributes' => array(
+        'href' => '#',
+        'id' => 'periodic-control-action'
+    )
+);
+
+$visualControlGroupActionConfig = array(
+    'label' => $this->translate('Visual control'),
+    'attributes' => array(
+        'href' => '#',
+        'id' => 'visual-control-action'
+    )
+);
+
+$checkOutControlGroupActionConfig = array(
+    'label' => $this->translate('Check out'),
+    'attributes' => array(
+        'href' => '#',
+        'id' => 'check-out-button'
+    )
+);
+
+$deactivateGroupActionConfig = array(
+    'label' => $this->translate("Deactivate"),
+    'attributes' => array(
+        'href' => '#',
+        'id' => 'deactivate-many-button'
+    ),
+);
+
+
+if ($this->isAllowed($equipmentInstanceResource, 'create') && !$advancedSearch) {
+    $equipmentInstanceTableConfig['actions']['add'] = $addButtonConfig;
+}
+
+if ($this->isAllowed($equipmentInstanceResource, 'update')) {
+    $equipmentInstanceTableConfig['actions']['group']['edit'] = $editGroupActionConfig;
+}
+if ($this->isAllowed($periodicControlResource, 'create')) {
+    $equipmentInstanceTableConfig['actions']['group']['periodic-control'] = $periodicControlGroupActionConfig;
+}
+
+if ($this->isAllowed($visualControlResource, 'create')) {
+    $equipmentInstanceTableConfig['actions']['group']['visual-control'] = $visualControlGroupActionConfig;
+}
+
+if ($this->isAllowed('Equipment\Entity\Checkout', 'create')) {
+    $equipmentInstanceTableConfig['actions']['group']['check-out'] = $checkOutControlGroupActionConfig;
+}
+
+if ($this->isAllowed($equipmentInstanceResource, 'deactivate')) {
+    $equipmentInstanceTableConfig['actions']['group']['deactivate'] = $deactivateGroupActionConfig;
+}
+
+echo $this->bootstrapDataTable($this->equipmentInstances, $equipmentInstanceTableConfig);
+
+if ($this->searchParams !== null) {
+    echo $this->partial('partial/export-button.phtml', array(
+        'module' => 'application',
+        'controller' => 'equipment-instance',
+        'action' => 'export-search',
+        'routeParams' => $this->searchParams
+    ));
+}
+
+?>
+
+<!-- delete many Modal -->
+<?php
+$deactivateManyModalParams = array(
+    'id' => 'confirm-deactivate-modal',
+    'title' => $this->translate('Deactivate Equipment Instances'),
+    'message' => $this->translate('You are about to deactivate some equipment instances.'),
+    'formAction' => array(
+        'controller' => $this->controller,
+        'action' => 'deactivate-many'
+    ),
+    'hiddenElements' => array(
+        'equipmentId' => $this->equipmentId
+    )
+);
+echo $this->partial('partial/groupActionConfirmModal.phtml', $deactivateManyModalParams);
+?>
+
+<?php echo $this->partial('partial/periodicControlModal.phtml'); ?>
+<?php echo $this->partial('partial/visualControlModal.phtml'); ?>
+
+<!-- Checkout Modal -->
+<?php
+$checkoutModalParams = array(
+    'id' => 'confirm-checkout-modal',
+    'title' => $this->translate('Checking out'),
+    'message' => $this->translate('You are about to check out 0 equipment instances...'),
+    'formAction' => array(
+        'controller' => 'check-in-and-out',
+        'action' => 'checkout'
+    ),
+    'hiddenElements' => array(
+        'equipmentId' => $this->equipmentId
+    )
+);
+echo $this->partial('partial/groupActionConfirmModal.phtml', $checkoutModalParams);
+
+function assignColor($output, $view) {
+    $output = trim(strtolower($output));
+    if ($output === 'expired') {
+        return '<span class="label label-warning">' . $view->translate("Expired") . '</span>';
+    }
+    if ($output === 'not approved') {
+        return '<span class="label label-important">' . $view->translate(ucfirst($output)) . '</span>';
+    }
+    if ($output === 'temporarily approved') {
+        return '<span class="label label-warning">' . $view->translate(ucfirst($output)) . '</span>';
+    }
+    if ($output === 'approved') {
+        return '<span class="label label-success">' . $view->translate(ucfirst($output)) . '</span>';
+    }
+    return $output;
+}
+
+function displayCheckOut($output) {
+    return ($output) ? CHECK_OUT_TEXT : "";
+}
+
+$this->inlineScript()
+    ->prependScript('
+            var titleIframe ="' . $this->translate('Edit multiple equipment instances') . '";
+            var saveButtonName ="' . $this->translate('Save') . '";    
+            ', 'text/javascript', array('noescape' => true));
+
+
+$this->inlineScript()->appendFile($this->basePath() . '/js/equipment/equipment-instance/index.js', 'text/javascript');
+$this->inlineScript()->appendFile($this->basePath() . '/js/application/deactivate-table-buttons.js', 'text/javascript');
+$this->inlineScript()->appendFile($this->basePath() . '/js/application/datatable-active-filter.js', 'text/javascript');
+?>
+

@@ -1,0 +1,399 @@
+<?php
+$title = $this->translate('Load security');
+$this->headLink()->appendStylesheet($this->basePath('/css/load-security.css'));
+$this->headTitle($title);
+$this->layout()->title = $title;
+?>
+
+<style>
+.form-horizontal .control-label {
+    text-align: left;
+    width: 150px;
+}
+.form-horizontal .controls {
+    margin-left: 140px;
+}
+.form-horizontal .control-group.custom-width .control-label {
+    width: 120px;
+}
+.form-horizontal .control-group.custom-width .controls {
+    margin-left: 120px;
+}
+</style>
+
+<!--<ul class="nav nav-tabs">
+    <li id="loadSecurityCalculatorMenuItem" class="active"><a href="#"><?php echo $this->translate('Lashing Calculator'); ?></a></li>
+    <li id="securityFactorLandMenuItem"><a href="#"><?php echo $this->translate('Safety Factor - Land'); ?></a></li>
+    <li id="securityFactorSeaMenuItem"><a href="#"><?php echo $this->translate('Safety Factor - Sea'); ?></a></li>
+    <li id="securityFactorAirMenuItem"><a href="#"><?php echo $this->translate('Safety Factor - Air'); ?></a></li>
+    <li id="securityFactorRailwayMenuItem"><a href="#"><?php echo $this->translate('Safety Factor - Railway'); ?></a></li>
+</ul>-->
+
+<div id="loadSecurityCalculatorSection">
+    <!--<h1><?php echo $this->translate('Lashing Calculator'); ?></h1>-->
+
+    <?php if($this->calculatorInfo->getDescription()): ?>
+    <div class="row">
+        <div class="span9">
+        </div>
+        <div class="span3 no-height">
+            <?php echo $this->calculatorInfo->getDescription() ?>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <div class="row">
+        <div class="span8">
+            <h4 style="font-size: 19px;"><?php echo $this->translate('Load security for direct cross country road transport'); ?></h4>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span8">
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label"><?php echo $this->translate('No. of lashings:') ?></label>
+                    <div class="controls">
+                        <input id="noOfTyings" type="text" class="input-mini">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"><?php echo $this->translate('LC (load capacity):') ?></label>
+                    <div class="controls">
+                        <input id="loadCapacity" type="text" class="input-mini" rel="popover"> daN (kg)
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="span4 thumbnail bottom-spacing">            
+            <div class="truck-image">
+                <img src="<?php echo $this->basePath('/images/load-security/truck-side-view.png'); ?>" alt="Side view of truck." />
+                <div class="angle-line angle-horizontal"> <!-- Do not add this directly to image class -> it will eventually break in Firefox. -->
+                    <img id="horizontalAngleLine" src="<?php echo $this->basePath('/images/load-security/line-left.png'); ?>" alt="Angle line." />
+                </div>
+            </div>
+        </div>
+
+        <div class="span4 thumbnail bottom-spacing">
+            <div class="truck-image">
+                <img src="<?php echo $this->basePath('/images/load-security/truck-top-view.png'); ?>" alt="Top view of truck." />
+                <div class="angle-line angle-vertical vertical-upper">
+                    <img id="upperVerticalAngleLine" src="<?php echo $this->basePath('/images/load-security/line-down.png'); ?>" alt="Angle line." />
+                </div>
+                <div class = "angle-line angle-vertical vertical-lower">
+                    <img id="lowerVerticalAngleLine" src="<?php echo $this->basePath('/images/load-security/line-down.png'); ?>" alt="Angle line." />
+                </div>
+            </div>  
+        </div>
+
+    </div>
+
+
+    <div class="bottom-spacing"></div>
+
+
+    <div class="row">
+        <div class="span4">
+            <form class="form-horizontal">
+                <div class="control-group custom-width">
+                    <label class="control-label"><?php echo $this->translate('Horizontal angle:'); ?></label>
+                    <div class="controls">
+                        <input id="horizontalAngleInput" type="text" class="input-mini"> <?php echo $this->translate('degrees'); ?>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="span4">
+            <form class="form-horizontal">
+                <div class="control-group custom-width">
+                    <label class="control-label"><?php echo $this->translate('Vertical angle:'); ?></label>
+                    <div class="controls">
+                        <input id="verticalAngleInput" type="text" class="input-mini"> <?php echo $this->translate('degrees'); ?>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="span8">
+            <div class="form-horizontal">
+                <button id="calculateLoadSecurity" type="button" class="btn"><?php echo $this->translate('Calculate Load Security Force'); ?></button>
+                <input id="loadSecurityResult" type="text" class="input-mini strong-display" disabled>  daN (kg)
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <span id="errorMessages"
+          data-invalid-value="<?php echo $this->translate("Invalid value."); ?>"
+          data-empty-field="<?php echo $this->translate("Field must be filled out."); ?>">
+    </span>
+
+    <p>&nbsp;</p><p>&nbsp;</p>
+
+    <div class="row">
+        <div class="span12">
+            <?php 
+            $fromModal = $this->from_modal;
+            if ($fromModal != 1 && $this->isAllowed('Documentation\Entity\CalculatorAttachment', 'update')): ?>
+            <a href="<?php echo $this->application()->url(array(
+                'controller' => 'load-security-attachment',
+                'action' => 'index'
+            )) ?>"
+                class="btn btn-small"><i class="icon-edit"></i> <?php echo $this->translate("Edit section") ?></a>
+            
+            <br>
+            <?php endif; ?>
+
+            <?php
+                
+                echo $this->bootstrapDataTable($this->calculatorInfo->getAttachments(), array(
+                    'object_id' => 'id',
+                    'actions' => false,
+                    'table_class' => 'table table-striped',
+                    'search' => false,
+                    'columns' => array(
+                        'title' => array(
+                            'label' => $this->translate('Title')
+                        ),
+                        'file' => array(
+                            'label' => $this->translate('File'),
+                            'callback' => function($file, $view, $attachment) use($fromModal) {
+                                $extension = substr(strrchr($file,'.'), 1);
+                                $dataRel = $fromModal == 1 ? '' : "data-rel='open-attachment'";
+                                $formattedValue = "<a target='_blank' class='btn btn-mini' $dataRel title='" . 
+                                    $attachment->getTitle() . "' href='/content/load-security/" . 
+                                    $file . "' data-extension='" . $extension . "'><i class='icon-file'></i></a>";
+                                return $formattedValue;
+                            }
+                        ),
+                    ),
+                    'params' => array(
+                        'basic' => array('application', 'controller', 'action')
+                    )
+                ));
+            ?>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div id="securityFactorLandSection" hidden>
+
+    <emph><?php echo $this->translate('According to XXXXXXX') ?></emph>
+    <table class="table table-striped">
+        <tr>
+            <th><?php echo $this->translate('Transport Area'); ?></th>
+            <th><?php echo $this->translate('Direction forward'); ?></th>
+            <th><?php echo $this->translate('Direction backward'); ?></th>
+            <th><?php echo $this->translate('Direction sideways'); ?></th>
+            <th><?php echo $this->translate('Down'); ?></th>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>Skyve Tilde</td>
+            <td>Skyve Tilde</td>
+            <td></td>
+            <td>Skyve Tilde</td>
+        </tr>
+
+        <tr>
+            <td><?php echo $this->translate('Road Transport Direct Safety'); ?></td>
+            <td>0,8G</td>
+            <td>0,8G   0,8G</td>
+            <td>0,8G</td>
+            <td>0,8G</td>
+        </tr>
+
+        <tr>
+            <td><?php echo $this->translate('Road Transport Direct Safety'); ?></td>
+            <td>0,8G</td>
+            <td>0,8G   0,8G</td>
+            <td>0,8G</td>
+            <td>0,8G</td>
+        </tr>
+
+        <tr>
+            <td><?php echo $this->translate('Road Transport Direct Safety'); ?></td>
+            <td>0,8G</td>
+            <td>0,8G   0,8G</td>
+            <td>0,8G</td>
+            <td>0,8G</td>
+        </tr>
+
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div id="securityFactorSeaSection" hidden>
+    <emph><?php echo $this->translate('According to EN 12195-1'); ?></emph>
+    <table class="table table-striped">
+        <tr>
+            <td><strong><?php echo $this->translate('TRANSPORT AREA'); ?></strong><br />
+                <span class="mini">
+                    <?php echo $this->translate('According to IMO/ILO/UNECE Guidelines for pacing and cargotransport units (CTUs)'); ?>
+                </span>
+            </td>
+            <th></th>
+            <th><?php echo $this->translate('DIRECTION FORWARDS LENGHWISE'); ?></th>
+            <th><?php echo $this->translate('DIRECTION FORWARDS SIDEWAYS'); ?></th>
+            <th><?php echo $this->translate('DIRECTION DOWN SIDEWAYS'); ?></th>
+            <th><?php echo $this->translate('DIRECTION DOWN LENGHTWISE'); ?></th>
+        </tr>
+
+        <tr>
+            <td rowspan="2"><?php echo $this->translate('AREA A - SEA TRANSPORT'); ?><br />
+                <span class="mini">
+                    <?php echo $this->translate('Baltic sea west of Jylland and
+                    north by a line between Lysekil and Skagen'); ?>
+                </span></td>
+            <td><?php echo $this->translate('LENGTHWISE'); ?></td>
+            <td>0,3 G</td>
+            <td>0,3 G</td>
+            <td>0,3 G</td>
+            <td>0,3 G</td>
+        </tr>
+
+        <tr>
+            <td><?php echo $this->translate('SIDEWAYS'); ?></td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+
+        <tr>
+            <td rowspan="2"><?php echo $this->translate('AREA A - SEA TRANSPORT'); ?><br />
+                <span class="mini">
+                    <?php echo $this->translate('Baltic sea west of Jylland and
+                    north by a line between Lysekil and Skagen'); ?>
+                </span></td>
+            <td><?php echo $this->translate('LENGTHWISE'); ?></td>
+            <td>0,3 G</td>
+            <td>0,3 G</td>
+            <td>0,3 G</td>
+            <td>0,3 G</td>
+        </tr>
+
+        <tr>
+            <td><?php echo $this->translate('SIDEWAYS'); ?></td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+
+        <tr>
+            <td rowspan="2"><?php echo $this->translate('AREA A - SEA TRANSPORT'); ?><br />
+                <span class="mini">
+                    <?php echo $this->translate('Baltic sea west of Jylland and
+                    north by a line between Lysekil and Skagen'); ?>
+                </span></td>
+            <td><?php echo $this->translate('LENGTHWISE'); ?></td>
+            <td>0,3 G</td>
+            <td>0,3 G</td>
+            <td>0,3 G</td>
+            <td>0,3 G</td>
+        </tr>
+
+        <tr>
+            <td><?php echo $this->translate('SIDEWAYS'); ?></td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="securityFactorAirSection" hidden>
+    <emph><?php echo $this->translate('According to XXXXXXX') ?></emph>
+    <table class="table table-striped">
+        <tr>
+            <th><?php echo $this->translate('TRANSPORT AREA') ?></td>
+            <th><?php echo $this->translate('DIRECTION FORWARD') ?></th>
+            <th><?php echo $this->translate('DIRECTION BACKWARD') ?></th>
+            <th><?php echo $this->translate('DIRECTION SIDEWAYS') ?></th>
+            <th><?php echo $this->translate('DOWN') ?></th>
+        </tr>
+
+        <tr>
+            <td><?php echo $this->translate('AIR TRANSPORT PLANE') ?></td>
+            <td>3G</td>
+            <td>1,5G</td>
+            <td>1,5G</td>
+            <td>1,5G</td>
+        </tr>
+
+        <tr>
+            <td><?php echo $this->translate('AIR TRANSPORT HELICOPTER') ?></td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+<div id="securityFactorRailwaySection" hidden>
+    to be filled
+</div>
+-->
+
+
+<?php
+$this->inlineScript()->appendFile(
+        $this->basePath() . '/js/load-security/calculator.js'
+);
+$this->inlineScript()->appendFile(
+        $this->basePath() . '/js/load-security/calculatorInputListener.js'
+);
+$this->inlineScript()->appendFile(
+        $this->basePath() . '/js/load-security/menuListener.js'
+);
+?> 

@@ -1,0 +1,69 @@
+<?php
+$questionsOptions = $this->question->getOptions();
+?>
+<div class="row-fluid question-display">
+    <div class="span5">
+        <?php $imageName = ($this->question->getImage()) ? $this->escapeHtml($this->question->getImage()) : "default.jpg" ?>
+        <img src="<?php echo $this->basePath() ?>/content/question/<?php echo $imageName ?>"  />
+    </div>
+    <div class="span7">
+        <h3><?php echo $this->escapeHtml($this->question->getSubject()); ?></h3>
+        <p><?php echo nl2br($this->escapeHtml($this->question->getExplanatoryText())); ?></p>        
+        <h5><?php echo $this->escapeHtml($this->question->getQuestionText()); ?></h5>        
+        <form action="<?php echo $this->actionForm ?>" method="POST">
+            <input type="hidden" name="quizAttemptId" value="<?php echo $this->escapeHtml($this->attemptId) ?>">
+            <p>
+                <?php
+                if ($this->question->getType() === 'many') {
+                    $inputType = 'checkbox';
+                    $requiredOrEmpty = '';
+                } else {
+                    $inputType = 'radio';
+                    $requiredOrEmpty = 'required';
+                }
+
+                for ($i = 0; $i < count($questionsOptions); $i++) :
+                    ?>
+                    <label class="radio">
+                        <input type="<?php echo $inputType ?>" name="option[]" id="options<?php echo $i ?>"
+                               value="<?php echo $i ?>" <?php echo checkedOrEmpty($questionsOptions[$i], $this->selectedOptions) ?>
+                               <?php echo $requiredOrEmpty ?>
+                               <?php echo (count($this->selectedOptions) > 0) ? 'disabled' : '' ?> />
+                               <?php echo $this->escapeHtml($questionsOptions[$i]->getOptionText()); ?>
+                    </label>
+                    <?php
+                endfor;
+                ?>
+            </p>    
+            <p>
+                <?php if (count($this->selectedOptions) == 0 && !empty($this->actionForm)): ?>
+                    <input type="submit" class="btn" value="<?php echo $this->translate('Confirm answer') ?>" />
+                <?php else: ?>
+                    <?php if($this->showStatusMessage): ?>
+                        <div class="alert <?php echo $this->escapeHtml($this->statusAlert); ?> ">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <?php echo $this->escapeHtml($this->statusMessage); ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($this->attemptType === 'exercise'): ?>
+                        <?php $resourceLink = $this->question->getResourceLink(); ?>
+                        <?php if($resourceLink): ?>
+                            <a href="<?php echo $resourceLink ?>"><?php echo $this->translate('Resource link') ?></a>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </p>
+        </form>
+    </div>
+</div>
+
+<?php
+
+function checkedOrEmpty($currentOption, $selectedOptions) {
+    if ($selectedOptions && in_array($currentOption, $selectedOptions->toArray())) {
+        return 'checked';
+    } else {
+        return '';
+    }
+}
+?>

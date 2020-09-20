@@ -1,0 +1,72 @@
+<?php if ($this->success): ?>
+    <script type="text/javascript">
+        parent.location = parent.location.href;
+    </script>
+    <?php
+elseif (isset($this->form)) :
+    echo $this->bootstrapForm($this->form);
+    ?>
+    <!-- Confirm TemplateType Modification Category Modal -->
+    <div class="modal hide fade" role="dialog" id="confirm-template-change">
+        <div class="modal-body">
+            <p><?php echo $this->translate('Are you sure you want to change the template?') ?></p>
+        </div>
+        <div class="modal-footer">
+            <button id="accept-template-change" class="btn btn-danger"><?php echo $this->translate('Yes') ?></button>
+            <a class="btn btn-primary" data-dismiss="modal"><?php echo $this->translate('No') ?></a>
+        </div>
+    </div>
+    <div class="modal hide fade" role="dialog" id="confirm-template-change-2">
+        <div class="modal-body">
+            <p><?php echo $this->translate('When changing template, information registered for the previous template will no longer be visible. Are you sure you want to change') ?></p>
+        </div>
+        <div class="modal-footer">
+            <button id="accept-template-change-2" class="btn btn-danger"><?php echo $this->translate('Yes') ?></button>
+            <a class="btn btn-primary" data-dismiss="modal"><?php echo $this->translate('No') ?></a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var featureImagePath = '<?php echo $this->featureImage; ?>';
+            if (featureImagePath !== '') {
+
+                var preview = $('.fileupload-preview.fileupload-exists.thumbnail');
+                preview.parent().removeClass('fileupload-new').addClass('fileupload-exists');
+                preview.html(
+                        '<img src="' + system.basePath + '/content/equipment_taxonomy/' + featureImagePath + '">');
+
+            }
+            $('form').append('<input id="remove-image" type="hidden" name="remove_image">');
+            $('a[data-dismiss="fileupload"]').on('click', function() {
+                $('input[name="remove_image"]').val(1);
+            });
+
+            <?php
+            $isLADOC = trim(strtoupper($this->application())) === 'LADOC';
+            if ($isLADOC):
+            ?>
+                parent.$("#add-edit.modal .btn.btn-primary").unbind("click");
+                parent.$("#add-edit.modal .btn.btn-primary").on("click", function() {
+                    var selectedTemplateType = $("select[name='equipment_taxonomy[templateType]']").val();
+                    if(selectedTemplateType != <?php echo $this->templateType ?>) {
+                        $("#confirm-template-change").modal({});
+                    } else {
+                        $("form#equipment_taxonomy_form").submit();
+                    }
+                });
+
+                $("#accept-template-change").on("click", function () {
+                    $("#confirm-template-change").modal('hide')
+                    $("#confirm-template-change-2").modal({});
+                });
+
+                $("#accept-template-change-2").on("click", function () {
+                    $("form#equipment_taxonomy_form").submit();
+                    $("#confirm-template-change-2").modal('hide')
+                });
+            <?php endif; ?>
+        });
+    </script>
+<?php endif; ?>
+
+

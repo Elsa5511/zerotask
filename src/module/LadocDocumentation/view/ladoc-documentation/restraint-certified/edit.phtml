@@ -1,0 +1,136 @@
+<?php
+use Equipment\Entity\EquipmentTaxonomyTemplateTypes;
+
+if($this->type == 'load')
+    $title = $this->translate('Certified carrier: Edit load restraint documentation');
+else
+    $title = $this->translate('Certified load: Edit carrier restraint documentation');
+
+$this->layout()->title = $title;
+$this->headTitle($title);
+?>
+
+
+<a class="btn btn-default pull-right" href="<?php echo $this->application()->url(
+                            array(
+                                'controller' => $this->controllerName,
+                                'action' => 'index',
+                                'documentation_id' => $this->documentationId
+                            )
+                        ); ?>">
+    <i class="icon-list"></i> <?php echo $this->translate('Return to list') ?>
+</a>
+
+
+<?php
+
+echo $this->bootstrapForm($this->form);
+
+//Code for attachments
+$images = array();
+$attachmentsIndex = null;
+$attachments = null;
+$attachments = $this->entity ? $this->entity->getLadocRestraintCertifiedAttachments() : null;
+
+if($attachments && count($attachments) > 0) {
+	foreach($attachments as $attachment)
+		$images[] = $attachment->getFile();
+}
+$errorAttachments = array();
+$newAttachments = array();
+$errorImage = '';
+$errorAttla = '';
+$errorRailwayTunellProfile = '';
+if($this->customError && is_array($this->customError)) {
+    $errorAttachments = $this->customError['attachments'];
+    $newAttachments = $this->customError['new_attachments'];
+    $errorImage = $this->customError['image'];
+    $errorAttla = isset($this->customError['attla']) ? $this->customError['attla'] : '';
+    $errorRailwayTunellProfile = isset($this->customError['railway_tunell_profile']) ? $this->customError['railway_tunell_profile'] : '';
+}
+
+$image = '';
+$illustrationImage = '';
+//$imageIndex = 1;
+$imageIndex = -1;
+
+$pdf = '';
+$pdfIndex = -1;
+$calculation = '';
+$calculationIndex = -1;
+
+$attla = '';
+$attlaIndex = -1;
+$controlList = '';
+$controlListIndex = -1;
+
+$railwayCertificate = '';
+$railwayCertificateIndex = -1;
+$railwayCalculation = '';
+$railwayCalculationIndex = -1;
+$railwayTunellProfile = '';
+$railwayTunellProfileIndex = -1;
+switch($this->templateType) {
+    case EquipmentTaxonomyTemplateTypes::NAVAL_CRAFT:
+    case EquipmentTaxonomyTemplateTypes::COUNTRY_ROAD:
+        $pdfIndex = 0;
+        $calculationIndex = 1;
+        break;
+    case EquipmentTaxonomyTemplateTypes::AIRCRAFT:
+        $attlaIndex = 0;
+        $controlListIndex = 1;
+        break;
+    case EquipmentTaxonomyTemplateTypes::RAILWAY:
+        $railwayCertificateIndex = 0;
+        $railwayTunellProfileIndex = 1;
+        $railwayCalculationIndex = 2;
+        break;
+    default:
+        break;
+}
+
+if($this->entity) {
+    $image = $this->entity->getImage();
+    $pdf = $this->entity->getImageInformation();
+    $calculation = $this->entity->getCalculationInformation();
+    $illustrationImage = $this->entity->getIllustrationImage();
+    $attla = $this->entity->getAttla();
+    $controlList = $this->entity->getControlList();
+    $railwayCertificate = $this->entity->getRailwayCertificate();
+    $railwayTunellProfile = $this->entity->getRailwayTunellProfile();
+    $railwayCalculation = $this->entity->getRailwayCalculation();
+}
+
+$this->inlineScript()
+    ->appendScript("
+            $(document).ready(function () { $('#add-point-btn').removeClass('btn-primary'); });
+             var pointAttachments = " . json_encode($images) . ";
+             var imagePath = 'ladoc-restraint-certified';
+             var attachmentsIndex = 'ladocRestraintCertifiedAttachments';
+             var errorAttachments = " . json_encode($errorAttachments) . ";
+             var errorImage = '" . $errorImage . "';
+             var newAttachments = " . json_encode($newAttachments) . ";
+             var image = '" . $image . "';
+             var imageIndex = " . $imageIndex . ";
+             var imageInformation = '" . $pdf . "';
+             var pdfIndex = " . $pdfIndex . ";
+             var calculationInformation = '" . $calculation . "';
+             var calculationIndex = " . $calculationIndex . ";
+             var attla = '" . $attla . "';
+             var attlaIndex = " . $attlaIndex . ";
+             var errorAttla = '" . $errorAttla . "';
+             var controlList = '" . $controlList . "';
+             var controlListIndex = " . $controlListIndex . ";
+             var railwayCertificate = '" . $railwayCertificate . "';
+             var railwayCertificateIndex = " . $railwayCertificateIndex . ";
+             var railwayTunellProfile = '" . $railwayTunellProfile . "';
+             var railwayTunellProfileIndex = " . $railwayTunellProfileIndex . ";
+             var errorRailwayTunellProfile = '" . $errorRailwayTunellProfile . "';
+             var railwayCalculation = '" . $railwayCalculation . "';
+             var railwayCalculationIndex = " . $railwayCalculationIndex . ";
+             var illustrationImage = '" . $illustrationImage . "';
+            ", 'text/javascript', array('noescape' => true));
+$this->inlineScript()->appendFile($this->basePath() . '/js/ladoc-documentation/restraint-documentations.js');
+$this->inlineScript()
+    ->appendFile($this->basePath() . '/includes/tinymce/js/tinymce/tinymce.min.js')
+    ->appendFile($this->basePath() . '/js/ladoc-documentation/richtext.js');

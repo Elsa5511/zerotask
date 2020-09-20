@@ -1,0 +1,13 @@
+<?php // admin-menu.phtml   ?>
+<ul class="nav nav-tabs nav-stacked">
+    <li><a href="<?php echo $this->application()->url(array('controller' => 'equipment-taxonomy', 'action' => 'admin-index')); ?>"><?php echo $this->translate('Categories'); ?></a></li>
+    <li><a href="<?php echo $this->application()->url(array('controller' => 'equipment', 'action' => 'admin-index')); ?>"><?php echo $this->translate('Equipment'); ?></a></li>
+    <?php if($this->application()->showUrlBySlug('exam')): ?>
+        <li><a href="<?php echo $this->application()->url(array('controller' => 'exam-attempt', 'action' => 'admin')); ?>"><?php echo $this->translate('Exam attempts'); ?></a></li>
+    <?php endif; ?>
+    <li><a href="<?php echo $this->application()->url(array('controller' => 'organization')); ?>"><?php echo $this->translate('Organizations'); ?></a></li>
+    <li><a href="<?php echo $this->application()->url(array('controller' => 'location')); ?>"><?php echo $this->translate('Locations'); ?></a></li>
+    <li><a href="<?php echo $this->application()->url(array('controller' => 'user')); ?>"><?php echo $this->translate('Users'); ?></a></li>
+    <li><a href="<?php echo $this->application()->url(array('controller' => 'role')); ?>"><?php echo $this->translate('Roles'); ?></a></li>
+    <li><a href="<?php echo $this->application()->url(array('controller' => 'language')); ?>"><?php echo $this->translate('Languages'); ?></a></li>
+</ul>

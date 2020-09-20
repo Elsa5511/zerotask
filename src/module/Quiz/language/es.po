@@ -1,0 +1,1380 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Vidum 0.1\n"
+"POT-Creation-Date: 2015-09-15 13:04-0500\n"
+"PO-Revision-Date: 2015-09-15 13:04-0500\n"
+"Last-Translator: Kjetil <kjetil.sorbo@gmail.com>\n"
+"Language-Team: Sysco Peru\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;translate\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: ../src/Quiz/Controller/ExamAttemptController.php:14
+#: ../src/Quiz/Controller/ExamAttemptController.php:37
+msgid "The exam attempt has expired. Ask your superior for a new attempt."
+msgstr ""
+"La oportunidad para realizar el examen ha expirado. Consulte a su superior "
+"para tener una nueva oportunidad.."
+
+#: ../src/Quiz/Controller/ExamAttemptController.php:18
+msgid "Exam has already been started."
+msgstr "El examen ya se ha iniciado."
+
+#: ../src/Quiz/Controller/ExamAttemptController.php:88
+msgid "An exam attempt has been added successfully."
+msgstr "Un intento de examen se ha agregado con éxito."
+
+#: ../src/Quiz/Controller/ExamAttemptController.php:93
+msgid "The exam doesn't have any questions"
+msgstr "El examen no tiene ninguna pregunta."
+
+#: ../src/Quiz/Controller/ExamAttemptController.php:104
+msgid "The exam attempt has been deleted successfully"
+msgstr "El intento de examen se ha eliminado con éxito."
+
+#: ../src/Quiz/Controller/ExamAttemptController.php:173
+msgid ""
+"You have exceeded the time limit for this exam. You may no longer submit "
+"answers to questions."
+msgstr ""
+"Ha excedido el tiempo límite para este exámen. No puede seguir respondiendo "
+"las preguntas."
+
+#: ../src/Quiz/Controller/ExamController.php:33
+#: ../src/Quiz/Form/ExamAttemptFieldset.php:22
+#: ../src/Quiz/Service/ExamAttemptService.php:206
+#: ../view/quiz/exam-attempt/admin.phtml:12
+#: ../view/quiz/exam-attempt/admin.phtml:37
+#: ../view/quiz/exam-attempt/report.phtml:11
+#: ../view/quiz/exam-attempt/report.phtml:28
+msgid "Exam"
+msgstr "Examen"
+
+#: ../src/Quiz/Controller/ExamController.php:47
+#: ../src/Quiz/Controller/ExerciseController.php:77
+msgid "The equipment type does not exist"
+msgstr "El tipo de equipo no existe"
+
+#: ../src/Quiz/Controller/ExamController.php:71
+msgid "Tests"
+msgstr "Pruebas"
+
+#: ../src/Quiz/Controller/ExamController.php:113
+msgid "The exam has been successfully saved."
+msgstr "El examen ha sido guardado con éxito."
+
+#: ../src/Quiz/Controller/ExamController.php:115
+msgid "The exam could not be saved. Try again later."
+msgstr "El exámen no se ha podido guardar. Intente de nuevo más tarde"
+
+#: ../src/Quiz/Controller/ExerciseAttemptController.php:28
+msgid "This exercise does not have any questions."
+msgstr "El ejercicio no tiene ninguna pregunta."
+
+#: ../src/Quiz/Controller/ExerciseController.php:40
+#: ../src/Quiz/Service/ExerciseAttemptService.php:52
+#: ../view/quiz/exercise-attempt/report.phtml:11
+#: ../view/quiz/exercise-attempt/report.phtml:28
+msgid "Exercise"
+msgstr "Ejercicio"
+
+#: ../src/Quiz/Controller/ExerciseController.php:89
+#: ../view/quiz/exercise/index.phtml:19
+msgid "Exercises"
+msgstr "Ejercicios"
+
+#: ../src/Quiz/Controller/QuestionController.php:64
+msgid "The question has been deleted successfully"
+msgstr "La pregunta se ha agregado con éxito."
+
+#: ../src/Quiz/Controller/QuestionController.php:114
+msgid ""
+"You cannot edit this question because it is used in ongoing exam attempts"
+msgstr ""
+"Usted no puede editar la pregunta porque esta siendo utilizada en exámenes "
+"en curso."
+
+#: ../src/Quiz/Controller/QuestionController.php:136
+msgid "The question has been successfully saved."
+msgstr "La pregunta ha sido guardada con éxito."
+
+#: ../src/Quiz/Controller/QuestionController.php:142
+msgid "The question could not be saved."
+msgstr "La pregunta no ha podido ser guardada."
+
+#: ../src/Quiz/Controller/QuizAttemptController.php:108
+msgid "This question has already been answered."
+msgstr "Est pregunta ya se ha respondido."
+
+#: ../src/Quiz/Controller/QuizBaseController.php:40
+msgid "add"
+msgstr "agregar"
+
+#: ../src/Quiz/Controller/QuizBaseController.php:84
+#, php-format
+msgid "The %s has been successfully saved."
+msgstr "%s se ha guardado con éxito."
+
+#: ../src/Quiz/Controller/QuizBaseController.php:87
+#, php-format
+msgid "The %s could not be saved. Try again later."
+msgstr "%s no se ha podido guardar. Intente de nuevo más tarde."
+
+#: ../src/Quiz/Controller/QuizBaseController.php:120
+msgid "edit"
+msgstr "Editar"
+
+#: ../src/Quiz/Controller/QuizBaseController.php:137
+#, php-format
+msgid "The %s has been deleted successfully."
+msgstr "%s ha sido eliminado con éxito"
+
+#: ../src/Quiz/Form/ExamAttemptFieldset.php:23
+#: ../src/Quiz/Form/FormFactory.php:44
+msgid "Choose an exam"
+msgstr "Elegir un examen"
+
+#: ../src/Quiz/Form/ExamAttemptFieldset.php:47
+#: ../src/Quiz/Service/ExamAttemptService.php:205
+#: ../src/Quiz/Service/ExerciseAttemptService.php:51
+#: ../view/partial/quiz-attempt-search.phtml:25
+#: ../view/quiz/exam-attempt/admin.phtml:34
+#: ../view/quiz/exam-attempt/report.phtml:25
+#: ../view/quiz/exercise-attempt/report.phtml:25
+msgid "User"
+msgstr "Usuario"
+
+#: ../src/Quiz/Form/ExamAttemptFieldset.php:48
+#: ../src/Quiz/Form/QuizSearchFieldset.php:24
+msgid "Choose a user"
+msgstr "Escoger un usuario"
+
+#: ../src/Quiz/Form/ExamAttemptFieldset.php:71
+#: ../view/quiz/exam-attempt/admin.phtml:40 ../view/quiz/exam/index.phtml:31
+msgid "Expiration date"
+msgstr "Fecha de expiración"
+
+#: ../src/Quiz/Form/ExamAttemptFieldset.php:83
+#: ../view/quiz/exam-attempt/add.phtml:2
+msgid "Add exam attempt"
+msgstr "Agregar intento de examen"
+
+#: ../src/Quiz/Form/ExamFieldset.php:21 ../view/quiz/exam/index.phtml:88
+msgid "Number of questions"
+msgstr "Número de preguntas"
+
+#: ../src/Quiz/Form/ExamFieldset.php:34
+msgid "Time limit"
+msgstr "Tiempo límite"
+
+#: ../src/Quiz/Form/ExamFieldset.php:35
+msgid "Minutes"
+msgstr "Minutos"
+
+#: ../src/Quiz/Form/ExamFieldset.php:48
+#, fuzzy
+msgid "Based on exercise"
+msgstr "Basado en un ejercicio"
+
+#: ../src/Quiz/Form/ExamFieldset.php:49 ../src/Quiz/Form/FormFactory.php:31
+msgid "Choose an exercise"
+msgstr "Elegir un ejercicio"
+
+#: ../src/Quiz/Form/FormFactory.php:100
+msgid "Save"
+msgstr "Guardar"
+
+#: ../src/Quiz/Form/OptionFieldset.php:27
+msgid "Option text"
+msgstr "Texto opcional"
+
+#: ../src/Quiz/Form/OptionFieldset.php:35
+msgid "Correct answer"
+msgstr "Respuesta correcta"
+
+#: ../src/Quiz/Form/OptionFieldset.php:48
+msgid "Delete option"
+msgstr "Eliminar opción"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:19
+msgid "Subject"
+msgstr "Tema"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:30
+msgid "Explanatory text"
+msgstr "Texto explicativo"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:41
+msgid "Question text"
+msgstr "Texto de la pregunta"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:52
+msgid "Image"
+msgstr "Imagen"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:66
+#: ../view/partial/quiz-question-attempt.phtml:51
+msgid "Resource link"
+msgstr "Enlace de recursos"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:67
+msgid ""
+"Use relative url (e.g /ladoc/page/index/id/5) for internal links and full "
+"url (e.g http://www.google.com) for external links"
+msgstr ""
+"Use el url relativo (p.e. /ladoc/page/index/id/5) para direcciones internas "
+"y el url completo (p.e. http://www.google.com) para direcciones externas"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:78
+msgid "Weighting (1-9)"
+msgstr "Ponderación (1-9)"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:93
+msgid "Question type"
+msgstr "Tipo de pregunta"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:95
+msgid "Single choice"
+msgstr "Elección simple"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:96
+msgid "Multiple choice"
+msgstr "Elección múltiple"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:106
+msgid "Please add answer options"
+msgstr "Por favor agregar opciones de respuesta"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:121
+msgid "Add an option"
+msgstr "Agregar una opción"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:132
+msgid "Save question"
+msgstr "Guardar pregunta"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:169
+msgid "The file must be of type "
+msgstr "El archivo debe ser del tipo"
+
+#: ../src/Quiz/Form/QuestionFieldset.php:171
+msgid "The file was not detected"
+msgstr "El archivo no ha sido detectado"
+
+#: ../src/Quiz/Form/QuizFieldset.php:22 ../view/quiz/exam/index.phtml:28
+#: ../view/quiz/exam/index.phtml:82 ../view/quiz/exercise/index.phtml:23
+msgid "Name"
+msgstr "Nombre"
+
+#: ../src/Quiz/Form/QuizFieldset.php:36
+msgid "Score requirement (&#37;)"
+msgstr "Requerimiento de puntuación (&#37;)"
+
+#: ../src/Quiz/Form/QuizFieldset.php:45
+msgid "Introduction text"
+msgstr "Texto introductivo"
+
+#: ../src/Quiz/Form/QuizSearchFieldset.php:67
+#: ../view/partial/about-tests.phtml:13
+#: ../view/partial/quiz-status-table.phtml:38
+#: ../view/quiz/exam-attempt/admin.phtml:83
+#: ../view/quiz/exam-attempt/report.phtml:76 ../view/quiz/exam/index.phtml:148
+#: ../view/quiz/exercise-attempt/report.phtml:79
+#: ../view/quiz/exercise/index.phtml:67
+msgid "Passed"
+msgstr "Aprobado"
+
+#: ../src/Quiz/Form/QuizSearchFieldset.php:68
+#: ../view/partial/about-tests.phtml:14
+#: ../view/partial/quiz-status-table.phtml:35
+#: ../view/quiz/exam-attempt/admin.phtml:87
+#: ../view/quiz/exam-attempt/report.phtml:80 ../view/quiz/exam/index.phtml:151
+#: ../view/quiz/exercise-attempt/report.phtml:83
+#: ../view/quiz/exercise/index.phtml:70
+msgid "Failed"
+msgstr "Desaprobado"
+
+#: ../src/Quiz/Form/QuizSearchFieldset.php:69
+#: ../view/partial/about-tests.phtml:10
+#: ../view/partial/quiz-instructions.phtml:4
+#: ../view/quiz/exam-attempt/admin.phtml:79
+#: ../view/quiz/exam-attempt/report.phtml:72 ../view/quiz/exam/index.phtml:145
+#: ../view/quiz/exercise-attempt/report.phtml:75
+#: ../view/quiz/exercise/index.phtml:64
+#: ../view/quiz/quiz-attempt/index.phtml:27
+msgid "In progress"
+msgstr "En progreso"
+
+#: ../src/Quiz/Form/QuizSearchFieldset.php:73
+#: ../view/quiz/exam-attempt/admin.phtml:75
+#: ../view/quiz/exam-attempt/report.phtml:68 ../view/quiz/exam/index.phtml:142
+#: ../view/quiz/exercise-attempt/report.phtml:71
+#: ../view/quiz/exercise/index.phtml:61
+msgid "Not started"
+msgstr "No ha comenzado"
+
+#: ../src/Quiz/Repository/ExamRepository.php:18
+#: ../view/quiz/exam-attempt/admin.phtml:2
+msgid "Exam attempts"
+msgstr "Intentos de examen"
+
+#: ../src/Quiz/Repository/ExerciseRepository.php:71
+#: ../view/quiz/exam/index.phtml:92
+msgid "Exams"
+msgstr "Examen"
+
+#: ../src/Quiz/Repository/QuestionRepository.php:18
+msgid "Exercise attempts"
+msgstr "Intentos de ejercicios"
+
+#: ../src/Quiz/Service/ExamAttemptService.php:55
+msgid "Could not delete exam attempt."
+msgstr "El intento de examen no se ha eliminado."
+
+#: ../src/Quiz/Service/ExamAttemptService.php:198
+msgid "Exam Attempts report"
+msgstr "Reporte de Intentos de Exámenes"
+
+#: ../src/Quiz/Service/ExamAttemptService.php:207
+#: ../src/Quiz/Service/ExerciseAttemptService.php:54
+#: ../view/quiz/exam-attempt/report.phtml:31
+#: ../view/quiz/exercise-attempt/report.phtml:34
+msgid "Date"
+msgstr "Fecha"
+
+#: ../src/Quiz/Service/ExamAttemptService.php:208
+#: ../view/quiz/exam-attempt/admin.phtml:52
+#: ../view/quiz/exam-attempt/report.phtml:37 ../view/quiz/exam/index.phtml:42
+msgid "Time used"
+msgstr "Tiempo utilizado"
+
+#: ../src/Quiz/Service/ExamAttemptService.php:209
+#: ../src/Quiz/Service/ExerciseAttemptService.php:55
+#: ../view/quiz/exam-attempt/admin.phtml:55
+#: ../view/quiz/exam-attempt/report.phtml:40 ../view/quiz/exam/index.phtml:52
+#: ../view/quiz/exercise-attempt/report.phtml:40
+msgid "Result"
+msgstr "Resultado"
+
+#: ../src/Quiz/Service/ExamAttemptService.php:210
+#: ../src/Quiz/Service/ExerciseAttemptService.php:56
+#: ../view/quiz/exam-attempt/admin.phtml:58
+#: ../view/quiz/exam-attempt/report.phtml:43 ../view/quiz/exam/index.phtml:55
+#: ../view/quiz/exercise-attempt/report.phtml:43
+#: ../view/quiz/exercise/index.phtml:43
+#: ../view/quiz/quiz-attempt/index.phtml:85
+msgid "Status"
+msgstr "Estado"
+
+#: ../src/Quiz/Service/ExerciseAttemptService.php:44
+#: ../test/QuizTest/Service/ExerciseAttemptServiceTest.php:395
+msgid "Exercise Attempts report"
+msgstr "Reporte de intentos de ejercicios"
+
+#: ../src/Quiz/Service/ExerciseAttemptService.php:53
+#: ../view/quiz/exam/index.phtml:79
+#: ../view/quiz/exercise-attempt/report.phtml:31
+msgid "Equipment type"
+msgstr "Tipo de equipo"
+
+#: ../src/Quiz/Service/QuestionService.php:125
+msgid "Exercise does not exist."
+msgstr "Ejercicio no existe."
+
+#: ../src/Quiz/Service/QuestionService.php:156
+msgid "Could not delete question."
+msgstr "No se puede eliminar la pregunta."
+
+#: ../src/Quiz/Service/QuestionService.php:183
+msgid "Question can't be deleted because it is related to:"
+msgstr "La pregunta no puede ser eliminada porque está relacionada a:"
+
+#: ../src/Quiz/Service/QuestionService.php:184
+#, php-format
+msgid "%d exercise attempts"
+msgstr "%d intento de ejercicios"
+
+#: ../src/Quiz/Service/QuizService.php:58
+msgid "Equipment does not exist."
+msgstr "Equipo no existe."
+
+#: ../src/Quiz/Service/QuizService.php:97
+msgid "Quiz doesn't exist"
+msgstr "Cuestionario no existe"
+
+#: ../src/Quiz/Service/QuizService.php:100
+msgid "Could not delete quiz."
+msgstr "No se puede eliminar el cuestionario."
+
+#: ../view/partial/about-tests.phtml:2 ../view/partial/about-tests.phtml:8
+msgid "About tests"
+msgstr "Acerca de los cuestionarios"
+
+#: ../view/partial/about-tests.phtml:9
+msgid "In this part of"
+msgstr "En esta parte de"
+
+#: ../view/partial/about-tests.phtml:9
+msgid ""
+"you will find different tests related to the selected equipment. You can "
+"choose which test you want to perform in the table to the left. Exercises "
+"can be performed any time and as many times as you want. Exams can only be "
+"performed once and after approval from the admin."
+msgstr ""
+"usted encontrará diversos cuestionarios relacionados al equipo seleccionado. "
+"Usted puede elegir que exámen quiere realizar en la tabla de la izquierda. "
+"Los ejercicios se pueden realizar en cualquier momento y tantas veces como "
+"usted quiera. Los exámenes solo se pueden realizar una vez luedo de la "
+"aprobación del administrador."
+
+#: ../view/partial/about-tests.phtml:10
+msgid "The test will display as"
+msgstr "El examen se mostrará como"
+
+#: ../view/partial/about-tests.phtml:10
+msgid ""
+"until you have answered and confirmed all the questions. If you want to "
+"restart an exercise you can click"
+msgstr ""
+"hasta que haya respondido y confirmado todas las preguntas. Si quiere "
+"reiniciar un ejercicio puede seleccionar el botón"
+
+#: ../view/partial/about-tests.phtml:11 ../view/partial/quiz-index.phtml:66
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: ../view/partial/about-tests.phtml:11
+msgid "to start over."
+msgstr "para comenzar de nuevo."
+
+#: ../view/partial/about-tests.phtml:12
+msgid ""
+"The answers are weighted based on importance from 1 to 9. During the test "
+"the number of correct and incorrect answers will be displayed, as well as "
+"your total score. The test will be marked as "
+msgstr ""
+"Las respuestas son ponderadas sobre la base de su importancia del 1 al 9. "
+"Durante este examen el número correcto e incorrecto de respuestas se "
+"mostrará, así como el total de su puntuación. El exámen estará marcado como"
+
+#: ../view/partial/about-tests.phtml:13
+msgid "if you reached the required number of points, and "
+msgstr "si usted ha alcanzado el número requerido de puntos, y "
+
+#: ../view/partial/about-tests.phtml:14
+msgid "if you did not."
+msgstr "si usted no alcanzó."
+
+#: ../view/partial/obligatory-questions.phtml:3
+msgid "Choose obligatory questions"
+msgstr "Elegir las preguntas obligatorias"
+
+#: ../view/partial/quiz-attempt-search.phtml:3
+#: ../view/partial/quiz-attempt-search.phtml:19
+msgid "Advanced search"
+msgstr "Búsqueda avanzada"
+
+#: ../view/partial/quiz-attempt-search.phtml:40
+msgid "Attempt status"
+msgstr "Estado de intento"
+
+#: ../view/partial/quiz-attempt-search.phtml:50
+msgid "Search"
+msgstr "Buscar"
+
+#: ../view/partial/quiz-attempt-search.phtml:51
+msgid "Show All"
+msgstr "Mostrar todos"
+
+#: ../view/partial/quiz-index.phtml:7
+msgid "Edit"
+msgstr "Editar"
+
+#: ../view/partial/quiz-index.phtml:21
+msgid "Delete"
+msgstr "Eliminar"
+
+#: ../view/partial/quiz-index.phtml:37
+msgid "Questions"
+msgstr "Preguntas"
+
+#: ../view/partial/quiz-index.phtml:52 ../view/quiz/exam/index.phtml:118
+msgid "Start"
+msgstr "Comenzar"
+
+#: ../view/partial/quiz-index.phtml:81 ../view/quiz/exam/index.phtml:136
+msgid "Continue"
+msgstr "Continuar"
+
+#: ../view/partial/quiz-index.phtml:142
+msgid "Create new exercise"
+msgstr "Crear nuevo ejercicio"
+
+#: ../view/partial/quiz-index.phtml:144
+msgid "Create new exam"
+msgstr "Crear nuevo examen"
+
+#: ../view/partial/quiz-instructions.phtml:2
+msgid ""
+"The questions are weighted based on importance from 1 to 9. You will pass "
+"the test if you reach the total number of points required."
+msgstr ""
+"Las preguntas estan ponderadas sobre la base de su importancia del 1 al 9. "
+"Usted aprobará el examen si llega al número total de puntos requeridos."
+
+#: ../view/partial/quiz-instructions.phtml:3
+msgid "You can move between questions using the pagination links."
+msgstr "Usted puede moverse entre preguntas utilizando los enlaces de páginas."
+
+#: ../view/partial/quiz-instructions.phtml:4
+msgid "When you enter a question, it will be marked as"
+msgstr "Cuando ingrese una pregunta esta se marcará como"
+
+#: ../view/partial/quiz-instructions.phtml:5
+msgid "When you confirm your answer to a question, it will be marked as"
+msgstr "Cuando confirme la respuesta a una pregunta esta se marcará como"
+
+#: ../view/partial/quiz-instructions.phtml:5
+#: ../view/quiz/quiz-attempt/index.phtml:13
+msgid "Correct"
+msgstr "Correcto"
+
+#: ../view/partial/quiz-instructions.phtml:5
+msgid "or"
+msgstr "o"
+
+#: ../view/partial/quiz-instructions.phtml:5
+#: ../view/quiz/quiz-attempt/index.phtml:20
+msgid "Incorrect"
+msgstr "Incorrecto"
+
+#: ../view/partial/quiz-instructions.phtml:6
+msgid "You will not be able to change your answer after confirming"
+msgstr "Usted no podrá cambiar la respuesta luego de confirmarla"
+
+#: ../view/partial/quiz-instructions.phtml:8
+#, fuzzy
+msgid "A "
+msgstr "A"
+
+#: ../view/partial/quiz-instructions.phtml:8
+msgid "resource link"
+msgstr "Enlace de recursos"
+
+#: ../view/partial/quiz-instructions.phtml:8
+msgid ""
+"pointing to relevant information for the question will be displayed after "
+"confirming"
+msgstr ""
+"señalando la información relevante para la pregunta se mostrará luego de su "
+"confirmación"
+
+#: ../view/partial/quiz-pagination.phtml:8
+msgid "Prev"
+msgstr "Anterior"
+
+#: ../view/partial/quiz-pagination.phtml:35
+msgid "Next"
+msgstr "Siguiente"
+
+#: ../view/partial/quiz-question-attempt.phtml:40
+msgid "Confirm answer"
+msgstr "Confirme respuesta"
+
+#: ../view/partial/quiz-status-table.phtml:3
+msgid "Questions answered:"
+msgstr "Pregunta respondida:"
+
+#: ../view/partial/quiz-status-table.phtml:11
+msgid "Correct answers:"
+msgstr "Respuestas correctas:"
+
+#: ../view/partial/quiz-status-table.phtml:19
+msgid "Current score:"
+msgstr "Resultado actual:"
+
+#: ../view/partial/quiz-status-table.phtml:25
+msgid "Required score:"
+msgstr "Resultado requerido:"
+
+#: ../view/partial/quiz-status-table.phtml:31
+msgid "Current status:"
+msgstr "Estado actual:"
+
+#: ../view/partial/quiz-status-table.phtml:48
+msgid "Time remaining:"
+msgstr "Tiempo remanente:"
+
+#: ../view/quiz/exam-attempt/admin.phtml:5
+#: ../view/quiz/exam-attempt/report.phtml:5
+#: ../view/quiz/exercise-attempt/report.phtml:5
+msgid "Search results"
+msgstr "Buscar resultados"
+
+#: ../view/quiz/exam-attempt/admin.phtml:46 ../view/quiz/exam/index.phtml:36
+msgid "Completed date"
+msgstr "Fecha en que se completó"
+
+#: ../view/quiz/exam-attempt/report.phtml:2
+msgid "Exam attempts report"
+msgstr "Reporte de intentos de exámenes"
+
+#: ../view/quiz/exam/edit.phtml:3
+msgid "Add Exam"
+msgstr "Agregar Examen"
+
+#: ../view/quiz/exam/edit.phtml:5
+msgid "Edit Exam"
+msgstr "Editar Examen"
+
+#: ../view/quiz/exam/index.phtml:15
+msgid "You need to be logged in order to perform exams"
+msgstr "Tienes que iniciar sesión para hacer examenes"
+
+#: ../view/quiz/exam/index.phtml:18
+msgid "Exams attempts"
+msgstr "Intentos de examen"
+
+#: ../view/quiz/exam/index.phtml:59
+msgid "Options"
+msgstr "Opciones"
+
+#: ../view/quiz/exam/index.phtml:85
+msgid "Based on Exercise"
+msgstr "Basado en un Ejercicio"
+
+#: ../view/quiz/exercise-attempt/report.phtml:2
+msgid "Exercise attempts report"
+msgstr "Reporte de intentos de ejercicios"
+
+#: ../view/quiz/exercise/detail.phtml:19
+msgid "Add new question"
+msgstr "Agregar nueva pregunta"
+
+#: ../view/quiz/exercise/detail.phtml:31
+msgid "Edit question"
+msgstr "Editar pregunta"
+
+#: ../view/quiz/exercise/detail.phtml:40
+msgid "Delete question"
+msgstr "Eliminar pregunta"
+
+#: ../view/quiz/exercise/detail.phtml:47
+#: ../view/quiz/quiz-attempt/index.phtml:34
+#, php-format
+msgid "Question %d"
+msgstr "Pregunta %d"
+
+#: ../view/quiz/exercise/detail.phtml:79
+#: ../view/quiz/quiz-attempt/index.phtml:98
+msgid "Instructions"
+msgstr "Instrucciones"
+
+#: ../view/quiz/exercise/edit.phtml:3
+msgid "exercise"
+msgstr "ejercicio"
+
+#: ../view/quiz/exercise/index.phtml:16
+msgid "You need to be logged in order to perform exercises"
+msgstr "Tienes que iniciar sesión para hacer ejercicios"
+
+#: ../view/quiz/exercise/index.phtml:26
+msgid "Last attempt"
+msgstr "Último intento"
+
+#: ../view/quiz/exercise/index.phtml:34
+msgid "Best result"
+msgstr "Mejor resultado"
+
+#: ../view/quiz/question/edit.phtml:2
+msgid "question"
+msgstr "pregunta"
+
+#: ../view/quiz/question/edit.phtml:14
+msgid "You must select a correct answer"
+msgstr "Usted debe elegir una respuesta"
+
+#: ../view/quiz/question/edit.phtml:19
+msgid "You must select only one correct answer"
+msgstr "Usted solo puede elegir una respuesta"
+
+#: ../view/quiz/quiz-attempt/index.phtml:17
+msgid "The answer is correct"
+msgstr "La respuesta es correcta"
+
+#: ../view/quiz/quiz-attempt/index.phtml:24
+msgid "The answer is incorrect"
+msgstr "La respuesta es incorrecta"
+
+#: ../view/quiz/quiz-attempt/index.phtml:75
+msgid "Quit test"
+msgstr "Salir del cuestionario"
+
+#~ msgid "You need to be logged in to access this functionality"
+#~ msgstr "Tienes que iniciar sesión para acceder a esta funcionalidad"
+
+#~ msgid "Invalid url"
+#~ msgstr "Url inválido"
+
+#~ msgid "The input does not match the expected structure for a url"
+#~ msgstr "La entrada no corresponde a la estructura esperada para un url"
+
+#~ msgid "The input does not appear to be a valid network name"
+#~ msgstr "La entrada no parece ser un nombre válido de la red"
+
+#~ msgid "About exercises"
+#~ msgstr "Acerca de los ejercicios"
+
+#~ msgid "Complete test"
+#~ msgstr "Fullfør test"
+
+#~ msgid "Could not delete an exam attempt \"in progress\""
+#~ msgstr "Kunne ikke slette eksamensforsøk som er \"påbegynt\"."
+
+#~ msgid "Add an exam attempt"
+#~ msgstr "Opprett et eksamensforsøk"
+
+#~ msgid "Optional resource link"
+#~ msgstr "Ressurslink"
+
+#~ msgid "Required for pass (&#37; of total points) "
+#~ msgstr "Krav for å bestå (&#37; av maks poengsum) "
+
+#~ msgid "Home"
+#~ msgstr "Hjem"
+
+#~ msgid "Section information"
+#~ msgstr "Seksjonsinformasjon"
+
+#~ msgid "Equipment Information was saved succesfully."
+#~ msgstr "Utstyr Informasjon ble lagret."
+
+#~ msgid "Equipment"
+#~ msgstr "Utstyr"
+
+#~ msgid "Equipment deleted successfully."
+#~ msgstr "Utstyret ble slettet."
+
+#~ msgid "Equipment(s) deleted successfully."
+#~ msgstr "Utstyr (er) slettet."
+
+#~ msgid "No equipments selected"
+#~ msgstr "Ingen utstyr utvalgte"
+
+#~ msgid "Equipments haven't been deleted "
+#~ msgstr "Utstyr har ikke blitt slettet"
+
+#~ msgid "Equipment instance doesn't exist"
+#~ msgstr "Utstyr eksempel eksisterer ikke"
+
+#~ msgid "Action could not be completed"
+#~ msgstr "Handlingen kunne ikke fullføres"
+
+#~ msgid "Equipment Subinstance was added successfully"
+#~ msgstr "Utstyr Informasjon ble lagret successfully"
+
+#~ msgid "no subinstance added"
+#~ msgstr "Å ha individuelle uten tilsatt"
+
+#~ msgid "EquipmentInstance doesn't exist"
+#~ msgstr "Utstyr enkelte eksisterer ikke"
+
+#~ msgid "The category has been saved."
+#~ msgstr "Kategorien har blitt lagret."
+
+#~ msgid "Equipment name"
+#~ msgstr "Utstyr navn"
+
+#~ msgid "Equipment Category"
+#~ msgstr "Utstyr kategori"
+
+#~ msgid "Feature image"
+#~ msgstr "Utvalgte bilde"
+
+#~ msgid "Choose an organization"
+#~ msgstr "Velg en organisasjon"
+
+#~ msgid "Vendor"
+#~ msgstr "Leverandør"
+
+#~ msgid "Producer"
+#~ msgstr "Produsent"
+
+#~ msgid "Owner"
+#~ msgstr "Eier"
+
+#~ msgid "Has to be used with"
+#~ msgstr "Må brukes med"
+
+#~ msgid "Can be used with"
+#~ msgstr "Kan brukes med"
+
+#~ msgid "The input is less than 3 characters long"
+#~ msgstr "Inngangen er mindre enn 3 tegn"
+
+#~ msgid "The input is more than 100 characters long"
+#~ msgstr "Inngangen er mer enn 100 tegn"
+
+#~ msgid "Value is required and can't be empty"
+#~ msgstr "Verdi er nødvendig, og kan ikke være tom"
+
+#~ msgid "Serial number"
+#~ msgstr "Serienummer"
+
+#~ msgid "Reg number"
+#~ msgstr "reg nummer"
+
+#~ msgid "Batch number"
+#~ msgstr "batchnummer"
+
+#~ msgid "Certificate number"
+#~ msgstr "sertifikatnummer"
+
+#~ msgid "Choose an usage status"
+#~ msgstr "Velg en forbruksstatus"
+
+#~ msgid "Choose a location"
+#~ msgstr "Velg et sted"
+
+#~ msgid "Location"
+#~ msgstr "Sted"
+
+#~ msgid "Purchase date"
+#~ msgstr "Kjøpsdato"
+
+#~ msgid "Technical lifetime"
+#~ msgstr "teknisk levetid"
+
+#~ msgid "Guarantee time"
+#~ msgstr "garanti tid"
+
+#~ msgid "Reception control"
+#~ msgstr "Mottakskontroll"
+
+#~ msgid "Periodic control date"
+#~ msgstr "Periodisk kontroll dato"
+
+#~ msgid "Order number"
+#~ msgstr "ordrenummer"
+
+#~ msgid "Remarks"
+#~ msgstr "Merknader"
+
+#~ msgid "Save changes"
+#~ msgstr "Lagre endringer"
+
+#~ msgid "This input contains invalid characters. Only letters are allowed."
+#~ msgstr "Denne inngangen inneholder ugyldige tegn. Kun bokstaver er tillatt."
+
+#~ msgid "Value is required"
+#~ msgstr "Verdi er påkrevd"
+
+#~ msgid "The input is less than \"x\" character(s) long"
+#~ msgstr "Inngangen er mindre enn \"x \" karakter (s) lang"
+
+#~ msgid "The input is more than \"x\" characters long"
+#~ msgstr "Inngangen er mer enn \"x \" tegn"
+
+#~ msgid "Vendor part"
+#~ msgstr "Leverandørens del"
+
+#~ msgid "The input is less than 8 characters long"
+#~ msgstr "Inngangen er mindre enn 8 tegn"
+
+#~ msgid "The input is more than 8 characters long"
+#~ msgstr "Inngangen er mer enn 8 tegn"
+
+#~ msgid "The input must contain only digits"
+#~ msgstr "Inngangen må bare inneholde sifre"
+
+#~ msgid "The input is less than 13 characters long"
+#~ msgstr "Inngangen er mindre enn 13 tegn"
+
+#~ msgid "The input is more than 13 characters long"
+#~ msgstr "Inngangen er mer enn 13 tegn"
+
+#~ msgid "NSN is already registered"
+#~ msgstr "NSN er allerede registrert"
+
+#~ msgid "Subinstances"
+#~ msgstr "i enkelte"
+
+#~ msgid "Parent Category"
+#~ msgstr "forelder Kategori"
+
+#~ msgid "none"
+#~ msgstr "none"
+
+#~ msgid "Featured image"
+#~ msgstr "Utvalgte bilde"
+
+#~ msgid "Incorrect Equipment instance id"
+#~ msgstr "Feil utstyr enkeltes id"
+
+#~ msgid "Equipment Instance was deleted successfully"
+#~ msgstr "Utstyr enkelte ble slettet"
+
+#~ msgid ""
+#~ "can't be deleted because it is related to other entities.\n"
+#~ "                            Edit the relationship and try again. "
+#~ msgstr ""
+#~ "kan ikke slettes fordi det er relatert til andre enheter. Rediger "
+#~ "forholdet og prøv igjen."
+
+#~ msgid "Categories"
+#~ msgstr "kategorier"
+
+#~ msgid "Equipments"
+#~ msgstr "utstyr"
+
+#~ msgid "Pages"
+#~ msgstr "sider"
+
+#~ msgid "Category"
+#~ msgstr "Kategori"
+
+#~ msgid "was removed successfully"
+#~ msgstr "ble fjernet med suksess"
+
+#~ msgid "Category doesn't exist"
+#~ msgstr "Kategorien eksisterer ikke"
+
+#~ msgid "Group actions"
+#~ msgstr "Gruppe handlinger"
+
+#~ msgid "Equipment information"
+#~ msgstr "Utstyr informasjon"
+
+#~ msgid "Choose category"
+#~ msgstr "Velg en kategori"
+
+#~ msgid "Edit category"
+#~ msgstr "Rediger kategori"
+
+#~ msgid "Edit equipment"
+#~ msgstr "Edit utstyr"
+
+#~ msgid "Delete Category"
+#~ msgstr "Slett kategori"
+
+#~ msgid "You are about to delete a Category, this procedure is irreversible."
+#~ msgstr ""
+#~ "Du er i ferd med å slette en kategori, er denne prosedyren irreversible."
+
+#~ msgid "Do you want to proceed?"
+#~ msgstr "Ønsker du å fortsette?"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
+
+#~ msgid "No"
+#~ msgstr "Nei"
+
+#~ msgid "Add category"
+#~ msgstr "Legg til kategori"
+
+#~ msgid "Choose supplier"
+#~ msgstr "Velg en leverandør"
+
+#~ msgid "digits"
+#~ msgstr "sifre"
+
+#~ msgid "Add Equipment Subinstance"
+#~ msgstr "Legg Utstyr Subinstance"
+
+#~ msgid "Instance data"
+#~ msgstr "enkeltes data"
+
+#~ msgid "Periodic control (MOCKUP)"
+#~ msgstr "Periodisk kontroll (mockup)"
+
+#~ msgid "Visual control (MOCKUP)"
+#~ msgstr "Visuell kontroll (mockup)"
+
+#~ msgid "Attachments"
+#~ msgstr "vedlegg"
+
+#~ msgid "Equipment category"
+#~ msgstr "Utstyr kategori"
+
+#~ msgid "NSN #"
+#~ msgstr "NSN #"
+
+#~ msgid "Material #"
+#~ msgstr "Materiale #"
+
+#~ msgid "Vendor part #"
+#~ msgstr "Leverandør av #"
+
+#~ msgid "Manufacturer"
+#~ msgstr "Produsent"
+
+#~ msgid "Have to be used with"
+#~ msgstr "Må brukes med"
+
+#~ msgid "Checked out"
+#~ msgstr "sjekket ut"
+
+#~ msgid "Next periodic control"
+#~ msgstr "Neste periodisk kontroll"
+
+#~ msgid "Next visual control"
+#~ msgstr "Neste visuell kontroll"
+
+#~ msgid "Serial #"
+#~ msgstr "Serial #"
+
+#~ msgid "Registration #"
+#~ msgstr "Registrering #"
+
+#~ msgid "Batch #"
+#~ msgstr "batch #"
+
+#~ msgid "Certificate #"
+#~ msgstr "sertifikat #"
+
+#~ msgid "Order #"
+#~ msgstr "Bestill #"
+
+#~ msgid "Guarantee date"
+#~ msgstr "garantidatoen"
+
+#~ msgid "Last modified"
+#~ msgstr "Sist endret"
+
+#~ msgid "Last periodic control (MOCKUP)"
+#~ msgstr "Siste periodisk kontroll (mockup)"
+
+#~ msgid "Details"
+#~ msgstr "detaljer"
+
+#~ msgid "Control date"
+#~ msgstr "kontroll dato"
+
+#~ msgid "Registered by"
+#~ msgstr "registrert av"
+
+#~ msgid "Next control date"
+#~ msgstr "Neste kontroll dato"
+
+#~ msgid "Comments"
+#~ msgstr "kommentarer"
+
+#~ msgid "Last visual control (MOCKUP)"
+#~ msgstr "Siste visuell kontroll (mockup)"
+
+#~ msgid "Unlink"
+#~ msgstr "oppheve koblingen"
+
+#~ msgid "Periodic control"
+#~ msgstr "periodisk kontroll"
+
+#~ msgid "Visual control"
+#~ msgstr "visuell kontroll"
+
+#~ msgid "Check out"
+#~ msgstr "Sjekk ut"
+
+#~ msgid "Check in"
+#~ msgstr "Sjekk inn"
+
+#~ msgid "Next control"
+#~ msgstr "Neste kontroll"
+
+#~ msgid "Equipment Instance information"
+#~ msgstr "Utstyr Instance informasjon"
+
+#~ msgid "Edit Equipment Instance"
+#~ msgstr "Edit Utstyr Instance"
+
+#~ msgid "Add Equipment Instance"
+#~ msgstr "Legg Utstyr Instance"
+
+#~ msgid "Reg #"
+#~ msgstr "Reg #"
+
+#~ msgid "General information"
+#~ msgstr "oversikt"
+
+#~ msgid "Control points"
+#~ msgstr "Kontrollpunkter"
+
+#~ msgid "Expertise organ"
+#~ msgstr "kompetanse organ"
+
+#~ msgid "A 404 error occurred"
+#~ msgstr "En 404-feil oppstod"
+
+#~ msgid "The requested controller was unable to dispatch the request."
+#~ msgstr ""
+#~ "Den forespurte kontrolleren var ikke i stand til å sende forespørselen."
+
+#~ msgid ""
+#~ "The requested controller could not be mapped to an existing controller "
+#~ "class."
+#~ msgstr ""
+#~ "Den forespurte kontrolleren kunne ikke tilordnes til en eksisterende "
+#~ "kontrolleren klassen."
+
+#~ msgid "The requested controller was not dispatchable."
+#~ msgstr "Den forespurte kontrolleren var ikke Dispatchable."
+
+#~ msgid "The requested URL could not be matched by routing."
+#~ msgstr "Den forespurte nettadressen kan ikke matches av freser."
+
+#~ msgid "We cannot determine at this time why a 404 was generated."
+#~ msgstr ""
+#~ "Vi kan ikke fastslå på dette tidspunktet hvorfor en 404 ble generert."
+
+#~ msgid "Controller"
+#~ msgstr "kontroller"
+
+#~ msgid "resolves to %s"
+#~ msgstr "vedtar å% s"
+
+#~ msgid "File"
+#~ msgstr "Fil"
+
+#~ msgid "Message"
+#~ msgstr "Melding"
+
+#~ msgid "Stack trace"
+#~ msgstr "Stack trace"
+
+#~ msgid "Previous exceptions"
+#~ msgstr "tidligere unntak"
+
+#~ msgid "No Exception available"
+#~ msgstr "Ingen Unntak tilgjengelig"
+
+#~ msgid "An error occurred"
+#~ msgstr "En feil oppstod"
+
+#~ msgid "Vidum Systems"
+#~ msgstr "Vidum Systems"
+
+#~ msgid "Select image"
+#~ msgstr "Velg bilde"
+
+#~ msgid "Remove"
+#~ msgstr "Fjern"
+
+#~ msgid "Change"
+#~ msgstr "endring"
+
+#~ msgid "Cancel"
+#~ msgstr "Avbryte"
+
+#~ msgid "Supplier"
+#~ msgstr "Leverandør"
+
+#~ msgid "Image could not be uploaded just JPG,PNG and GIF files are allowed"
+#~ msgstr "Bildet kunne ikke lastes opp bare JPG, er PNG og GIF-filer tillatt"
+
+#~ msgid "Select one"
+#~ msgstr "Velg ett"
+
+#~ msgid "The input is less than 1 character long"
+#~ msgstr "Inngangen er mindre enn 1 tegn"
+
+#~ msgid "Parent"
+#~ msgstr "Parent"
+
+#, fuzzy
+#~ msgid "Feature Image"
+#~ msgstr "Utvalgte bilde"
+
+#~ msgid "Change category"
+#~ msgstr "Endre kategori"
+
+#~ msgid "Filters"
+#~ msgstr "Filtre"
+
+#~ msgid "Choose a category"
+#~ msgstr "Velg en kategori"
+
+#~ msgid "Warning!! are you sure to delete this Equipment?"
+#~ msgstr "Advarsel! er du sikker på å slette denne Equipment?"
+
+#~ msgid "Choose a vendor"
+#~ msgstr "Velg en leverandør"
+
+#~ msgid "Choose a producer"
+#~ msgstr "Velg en produsent"
+
+#~ msgid "Suppliers"
+#~ msgstr "Leverandører"
+
+#~ msgid "Departments"
+#~ msgstr "Avdelinger"
+
+#~ msgid "Owners"
+#~ msgstr "Eiere"
+
+#~ msgid "13 digits"
+#~ msgstr "13 siffer"
+
+#~ msgid "8 digits"
+#~ msgstr "8 sifre"
+
+#~ msgid "Choose a category..."
+#~ msgstr "Velg en kategori ..."
+
+#~ msgid "Choose a supplier..."
+#~ msgstr "Velg en leverandør ..."
+
+#~ msgid "8 digits..."
+#~ msgstr "8 siffer ..."
+
+#, fuzzy
+#~ msgid "Equipment name..."
+#~ msgstr "Utstyr"
+
+#~ msgid "NSN..."
+#~ msgstr "NSN..."
+
+#~ msgid "SAP..."
+#~ msgstr "NSN..."
+
+#~ msgid "Vendor part..."
+#~ msgstr "Leverandør del ..."
+
+#~ msgid "New user added successfully."
+#~ msgstr "Ny bruker ble opprettet."
+
+#~ msgid "User updated successfully."
+#~ msgstr "Brukeren ble oppdatert."
+
+#~ msgid "We sent you a new Password, please check your email."
+#~ msgstr "Vi har sendt deg et nytt passord. Vennligst sjekk e-posten din."
+
+#~ msgid "Time to reset your password has expired. Please "
+#~ msgstr "Tidsperioden for å endre passordet har utløpt. Vennligst"
+
+#~ msgid ""
+#~ "Time to reset your password has expired or no results to your "
+#~ "requirement. Please "
+#~ msgstr "Tidsperioden for å endre passordet har utløpt. Vennligst"
+
+#~ msgid "Username"
+#~ msgstr "Brukernavn"
+
+#~ msgid "Reset Password"
+#~ msgstr "Reset passord"
+
+#~ msgid ""
+#~ "Your first name contains invalid characters. Only letters are allowed."
+#~ msgstr ""
+#~ "Fornavnet ditt inneholder tegn som ikke er tillatt. Bare bokstaver kan "
+#~ "benyttes."
+
+#~ msgid ""
+#~ "Your last name contains invalid characters. Only letters are allowed."
+#~ msgstr ""
+#~ "Etternavnet ditt inneholder tegn som ikke er tillatt. Bare bokstaver kan "
+#~ "benyttes."
+
+#, fuzzy
+#~ msgid ""
+#~ "Password must include at least one upper case letter, one lower case "
+#~ "letter, and one numeric digit."
+#~ msgstr ""
+#~ "Passordet må være minst 6 tegn, maks 16 tegn og må inneholde minst en "
+#~ "stor bokstav, en liten bokstav og et tall."
+
+#~ msgid "First name"
+#~ msgstr "Fornavn"
+
+#~ msgid "Email"
+#~ msgstr "E-post"
+
+#~ msgid ""
+#~ "Password must be at least 6 characters, no more than 16 characters, and "
+#~ "must include at least one upper case letter, one lower case letter, and "
+#~ "one numeric digit."
+#~ msgstr ""
+#~ "Passordet må være minst 6 tegn, maks 16 tegn og må inneholde minst en "
+#~ "stor bokstav, en liten bokstav og et tall."
+
+#~ msgid "Address"
+#~ msgstr "Adresse"
+
+#~ msgid "Zip Code"
+#~ msgstr "Postnummer"
+
+#~ msgid "City"
+#~ msgstr "By"
+
+#~ msgid "Phone Number 1"
+#~ msgstr "Telefonnummer 1"
+
+#~ msgid "Phone Number 2"
+#~ msgstr "Telefonnummer 2"
+
+#~ msgid "Language"
+#~ msgstr "Språk"
+
+#~ msgid "Superior"
+#~ msgstr "Overordnet"
+
+#~ msgid "Role"
+#~ msgstr "Rolle"
+
+#~ msgid "Organization"
+#~ msgstr "Organisasjon"
+
+#, fuzzy
+#~ msgid "Edit language"
+#~ msgstr "Språk"
+
+#~ msgid "You are leaving this page, are you sure?"
+#~ msgstr "Er du sikker på at du vil forlate denne siden?"
+
+#, fuzzy
+#~ msgid "Enter your username and we'll send you a new password"
+#~ msgstr ""
+#~ "Skriv inn ditt brukernavn, så sender en link for å bestille nytt passord"
+
+#, fuzzy
+#~ msgid "E-mail"
+#~ msgstr "E-post"
+
+#~ msgid "You are about to delete \"x\" users, this procedure is irreversible."
+#~ msgstr "Du vil slette \"x\" brukere. Denne prosedyren er irreversibel."
+
+#~ msgid "try again"
+#~ msgstr "prøv igjen"
+
+#~ msgid "Roles"
+#~ msgstr "Roller"
+
+#~ msgid "My account"
+#~ msgstr "Min konto"
+
+#~ msgid "Settings"
+#~ msgstr "Innstillinger"
+
+#~ msgid "Log out"
+#~ msgstr "Logg ut"
+
+#~ msgid "Log in"
+#~ msgstr "Logg inn"
+
+#~ msgid "Norwegian Armed Forces"
+#~ msgstr "Forsvaret"
+
+#~ msgid "E-mail or Username"
+#~ msgstr "E-post eller Brukernavn"
+
+#~ msgid "Sign up"
+#~ msgstr "Registrer deg"
+
+#~ msgid "Delete User"
+#~ msgstr "Slett bruker"

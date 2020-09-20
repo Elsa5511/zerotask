@@ -1,0 +1,431 @@
+<?php require_once 'layout.php' ?>
+<?php echo $this->doctype(); ?>
+<html lang="<?php echo $this->language; ?>">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('Vidum Systems'))->setSeparator(' | ')->setAutoEscape(false) ?>
+
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendName('msapplication-TileColor', '#D83434')
+                ->appendName('msapplication-TileImage', $this->basePath('/icons/apple-touch-icon-ipad.png'))
+        ?>
+
+        <script>
+            var system = {
+                basePath: '<?php echo $this->basePath(); ?>',
+                application: '<?php echo $this->application(); ?>',
+                language: '<?php echo $this->language; ?>',
+                user: {},
+                translations: {
+                    'Select image': '<?php echo $this->translate('Select image'); ?>',
+                    'Select document': '<?php echo $this->translate('Select document'); ?>',
+                    'Remove': '<?php echo $this->translate('Remove'); ?>',
+                    'Change': '<?php echo $this->translate('Change'); ?>',
+                    'Cancel': '<?php echo $this->translate('Cancel'); ?>',
+                    'deleteManyAttachmentMessage': '<?php echo $this->translate('You must select an attachment'); ?>',
+                    'singleSelect': '<?php echo $this->translate('Select an option') ?>',
+                    'multipleSelect': '<?php echo $this->translate('Select some options') ?>',
+                    'optionText': '<?php echo $this->translate('Option text') ?>',
+                    'isCorrectAnswer': '<?php echo $this->translate('Is it a correct answer?') ?>',
+                    'deleteOption': '<?php echo $this->translate('Delete option') ?>',
+                    'Active': '<?php echo $this->translate('Active') ?>',
+                    'Inactive': '<?php echo $this->translate('Inactive') ?>',
+                    'showInactive': '<?php echo $this->translate('Show inactive') ?>',
+                    'Save': '<?php echo $this->translate('Save') ?>',
+                    'showExpiredExamAttempts': '<?php echo $this->translate('Show expired exam attempts.') ?>',
+                    'Select file': '<?php echo $this->translate('Select file') ?>',
+                    'Title': '<?php echo $this->translate('Title') ?>',
+                    'Description': '<?php echo $this->translate('Description') ?>',
+                    'File': '<?php echo $this->translate('File') ?>',
+                    'Author': '<?php echo $this->translate('Author') ?>',
+                    'Type': '<?php echo $this->translate('Type') ?>',
+                    'ChooseType': '<?php echo $this->translate('Choose Type') ?>',
+                    'Version': '<?php echo $this->translate('Version') ?>',
+                    'deleteAttachment': '<?php echo $this->translate('Delete attachment') ?>',
+                    'Weight': '<?php echo $this->translate('Weight') ?>',
+                    'Dimensions': '<?php echo $this->translate('Dimensions') ?>',
+                    'Link': '<?php echo $this->translate('Link') ?>'
+                }
+            };
+            function Variable(basePath) {
+                this.basePath = basePath;
+            }
+            var sysco = new Variable("<?php echo $this->escapeUrl($this->basePath()); ?>");
+        </script>
+
+        <!-- Styles -->
+        <?php
+        echo $this
+                ->headLink(array('rel' => 'apple-touch-icon', 'href' => $this->basePath('/icon/apple-touch-icon-ipad.png'), 'extras' => array('sizes' => '144x144')))
+                ->headLink(array('rel' => 'apple-touch-icon', 'href' => $this->basePath('/icon/apple-touch-icon-iphone.png'), 'extras' => array('sizes' => '114x114')))
+                ->headLink(array('rel' => 'shortcut icon', 'type' => 'image/x-icon', 'href' => $this->basePath('/icon/favicon.ico')))
+                ->appendStylesheet($this->basePath() . '/css/fonts.css')
+                ->appendStylesheet($this->basePath() . '/includes/bootstrap/css/bootstrap.min.css')
+                ->appendStylesheet($this->basePath() . '/includes/bootstrap/css/bootstrap-responsive.min.css')
+                ->appendStylesheet($this->basePath() . '/includes/bootstrap-modalbox/css/bootstrap-modal.css')
+                ->appendStylesheet($this->basePath() . '/includes/jasny-bootstrap/css/jasny-bootstrap.min.css')
+                ->appendStylesheet($this->basePath() . '/includes/chosen/chosen.css')
+                ->appendStylesheet($this->basePath() . '/css/style.css')
+                ->appendStylesheet($this->basePath() . '/css/responsive.css')
+                ->appendStylesheet($this->basePath() . '/css/ie8.css', 'screen', 'lte IE 8')
+                ->appendStylesheet($this->basePath() . '/css/style-print.css', 'print')
+                ->appendStylesheet($this->basePath() . '/includes/bootstrap-datepicker/css/datepicker.css');
+        echo $this->headScript()
+                ->appendFile($this->basePath() . '/includes/html5-3.6-respond-1.4.2.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->appendFile($this->basePath() . '/js/ie.js', 'text/javascript', array('conditional' => 'lte IE 9',))
+                ->appendFile($this->basePath() . '/includes/jquery.min.js')
+                ->appendFile($this->basePath() . '/includes/moment.min.js');
+        ?>  
+    </head>
+    <body class="vidum">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="<?php echo $this->url('home') ?>">
+                        <img alt="Vidum Systems" src="<?php echo $this->basePath('/images/logo-vidum-37.png'); ?>">                    
+                        <?php echo $this->translate('Vidum Systems') ?>
+                    </a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <?php if ($this->zfcUserIdentity()): ?>
+                                <?php
+                                    $applicationName = trim(strtoupper($this->application()));
+                                    $helpPages = array(
+                                        'LADOC' => array(
+                                            'Bruker' => 14,
+                                            'Administrator' => 15,
+                                            'Support' => 16,
+                                        ),
+                                        'VEDOS-MEDICAL' => array(
+                                            'Bruker' => 4,
+                                            'Administrator' => 3,
+                                            'Support' => 5,
+                                        ),
+                                        'VEDOS-MECHANICAL' => array(
+                                            'Bruker' => 5,
+                                            'Administrator' => 3,
+                                            'Support' => 4,
+                                        ),
+                                    );
+                                ?>
+                                <?php if(isset($helpPages[$applicationName])): ?>
+                                    <li class="dropdown">
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                            <?php echo $this->translate('Help'); ?>
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <?php
+                                            if($applicationName == "LADOC"): ?>
+                                                <li class="help-submenu">
+                                                    <p style="margin-bottom: 3px;"><strong><?php echo $this->translate("Support"); ?></strong><br>
+                                                    <?php echo $this->translate("See the support page on the Internet for useful <br> information and answers to common questions") ?></p>
+                                                    <strong><?php echo $this->translate("Helpdesk 06006"); ?></strong><p style="margin-top: 2px; margin-bottom: 0;">
+                                                    <?php //echo $this->translate("Manuals are under") ?>
+                                                    <i><?php //echo $this->translate("Information > Important for all > Training and other info") ?>
+                                                        <?php echo sprintf($this->translate("For user manuals, follow this %slink%s"), "<a href='https://no-ladoc.vidumsystems.com/ladoc/page/index/id/502005/sectionId/502014'>", "</a>") ?>
+                                                    </i></p>
+                                                </li>
+                                            <?php else:
+                                                foreach($helpPages[$applicationName] as $pageName => $pageId): ?>
+                                                    <li><a href="<?php
+                                                        echo $this->application()->url(
+                                                            array(
+                                                                'controller' => 'page',
+                                                                'action' => 'index',
+                                                                'id' => $pageId)
+                                                        );
+                                                        ?>"><?php echo $pageName; ?></a></li>
+                                                <?php endforeach;
+                                            endif;
+                                            ?>
+                                        </ul>
+                                    </li>
+                                <?php endif; ?>
+                                <?php
+                                $routeName = $this->application()->getRouteName();
+                                if ($routeName !== 'home/wildcard' && $routeName !== 'user/wildcard'):
+
+                                    //checking if "Reports" menu has submenus. If yes, we check for each submenu if it should be shown by application
+                                    if ($this->application()->showUrlBySlug(array('certification', 'exercise', 'exam', 'instances'))):
+                                        ?>
+                                        <li class="dropdown">
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                                <?php echo $this->translate('Reports'); ?>
+                                                <b class="caret"></b>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <?php if ($this->application()->showUrlBySlug('certification')): ?>
+                                                    <li><a href="<?php
+                                                        echo $this->application()->url(
+                                                                array(
+                                                                    'controller' => 'certification',
+                                                                    'action' => 'report')
+                                                        );
+                                                        ?>"><?php echo $this->translate('Equipment certifications'); ?></a></li>
+                                                    <?php endif; ?>
+                                                    <?php if ($this->application()->showUrlBySlug('exercise')): ?>
+                                                    <li><a href="<?php
+                                                        echo $this->application()->url(
+                                                                array(
+                                                                    'controller' => 'exercise-attempt',
+                                                                    'action' => 'report')
+                                                        );
+                                                        ?>"><?php echo $this->translate('Equipment exercise attempts'); ?></a></li>
+                                                    <?php endif; ?>
+                                                    <?php if ($this->application()->showUrlBySlug('exam')): ?>
+                                                    <li><a href="<?php
+                                                        echo $this->application()->url(
+                                                                array(
+                                                                    'controller' => 'exam-attempt',
+                                                                    'action' => 'report')
+                                                        );
+                                                        ?>"><?php echo $this->translate('Equipment exam attempts'); ?></a></li>
+                                                    <?php endif; ?>
+                                                    <?php if ($this->application()->showUrlBySlug('instances')): ?>
+                                                    <li><a href="<?php
+                                                        echo $this->application()->url(
+                                                                array(
+                                                                    'controller' => 'equipment-instance-report',
+                                                                    'action' => 'expired-periodic-control')
+                                                        );
+                                                        ?>">
+                                                            <?php echo $this->translate('Instances expired on control date'); ?></a></li>
+                                                    <li><a href="<?php
+                                                        echo $this->application()->url(
+                                                                array(
+                                                                    'controller' => 'equipment-instance-report',
+                                                                    'action' => 'expired-guarantee')
+                                                        );
+                                                        ?>"><?php echo $this->translate('Instances expired on guarantee date'); ?></a></li>
+                                                    <li><a href="<?php
+                                                        echo $this->application()->url(
+                                                                array(
+                                                                    'controller' => 'equipment-instance-report',
+                                                                    'action' => 'expired-lifetime')
+                                                        );
+                                                        ?>"><?php echo $this->translate('Instances expired on lifetime'); ?></a></li>
+                                                    <?php endif; ?>
+                                            </ul>
+                                        </li>
+                                    <?php endif; ?>
+
+                                    <li class="dropdown">
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                            Admin
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="<?php echo $this->application()->url(array('controller' => 'equipment-taxonomy', 'action' => 'admin-index')); ?>"><?php echo $this->translate('Categories'); ?></a></li>
+                                            <li><a href="<?php echo $this->application()->url(array('controller' => 'equipment', 'action' => 'admin-index')); ?>"><?php echo $this->translate('Equipment'); ?></a></li>
+                                            <?php if($this->application()->showUrlBySlug('exam')): ?>
+                                                <li><a href="<?php echo $this->application()->url(array('controller' => 'exam-attempt', 'action' => 'admin')); ?>"><?php echo $this->translate('Exam attempts'); ?></a></li>
+                                            <?php endif; ?>
+                                            <li class="divider"></li>
+                                            <li><a href="<?php echo $this->application()->url(array('controller' => 'organization')); ?>"><?php echo $this->translate('Organizations'); ?></a></li>
+                                            <li><a href="<?php echo $this->application()->url(array('controller' => 'location')); ?>"><?php echo $this->translate('Locations'); ?></a></li>
+                                            <li><a href="<?php echo $this->application()->url(array('controller' => 'user')); ?>"><?php echo $this->translate('Users'); ?></a></li>
+                                            <li><a href="<?php echo $this->application()->url(array('controller' => 'role')); ?>"><?php echo $this->translate('Roles'); ?></a></li>
+                                            <li><a href="<?php echo $this->application()->url(array('controller' => 'language')); ?>"><?php echo $this->translate('Languages'); ?></a></li>
+                                        </ul>
+                                    </li>
+                                <?php endif; ?>
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        <?php echo $this->translate('My account'); ?>
+                                        <b class="caret"></b>
+                                    </a>
+                                    <?php
+                                    if ($routeName == 'base/wildcard')
+                                        $accountUrl = $this->application()->url(array('controller' => 'user', 'action' => 'account'));
+                                    else
+                                        $accountUrl = $this->url('user', array('action' => 'account'));
+                                    ?>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?php echo $accountUrl; ?>"><?php echo $this->translate('Settings'); ?></a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="<?php echo $this->url('user', array('action' => 'logout')); ?>"><?php echo $this->translate('Log out'); ?></a></li>
+                                    </ul>
+                                </li>
+                            <?php else: ?>
+                                <?php if ($this->application()->hasGuestAccess()): ?>
+                                    <?php
+                                    $applicationName = trim(strtoupper($this->application()));
+                                    $helpPages = array(
+                                        'LADOC' => array(
+                                            'Bruker' => 14,
+                                        ),
+                                    );
+                                    ?>
+                                    <?php if(isset($helpPages[$applicationName])): ?>
+                                        <li class="dropdown">
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                                <?php echo $this->translate('Help'); ?>
+                                                <b class="caret"></b>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <?php foreach($helpPages[$applicationName] as $pageName => $pageId): ?>
+                                                    <li><a href="<?php
+                                                        echo $this->application()->url(
+                                                            array(
+                                                                'controller' => 'page',
+                                                                'action' => 'index',
+                                                                'id' => $pageId)
+                                                        );
+                                                        ?>"><?php echo $pageName; ?></a></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                                <li>
+                                    <a href="<?php echo $this->url('user', array('action' => 'login')); ?>"><?php echo $this->translate('Login'); ?></a>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="container inner-wrapper">
+                <?php if (isset($this->title)): ?>
+                    <div class="page-header">
+                        <div class="row">
+                            <?php $simpleSearch = $this->placeholder('simple-search')->getValue(); ?>
+                            <h1 <?php echo!empty($simpleSearch) ? 'class="span6"' : 'class="span12"' ?>>
+                                <?php echo $this->title; ?>
+                            </h1>
+                            <?php echo $this->placeholder('simple-search') ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php echo $this->bootstrapAlert(); ?>
+                <?php if (isset($this->searchForms)): ?>
+                    <?php echo $this->searchForms; ?>
+                <?php endif; ?>
+                <?php
+                $responseAndPermissionOk = false;
+
+                if ($this->application()->showBreadcrumbs() && ($this->zfcUserIdentity() || $this->application()->hasGuestAccess())) {
+                    echo $this->navigation('navigation')->breadcrumbs()
+                            ->setMinDepth(1)
+                            ->setMaxDepth(10)
+                            ->setPartial('partial/breadcrumbs.phtml');
+                    $responseAndPermissionOk = true;
+                }
+                ?>
+
+                <?php echo $this->content; ?>
+                <?php if($responseAndPermissionOk): ?>
+                <div>
+                    <?php if (trim(strtoupper($this->application())) === 'LADOC'): ?>
+                        <a class="btn btn-default btn-lg pull-right btn-bottom-page btn-modal-lashing-calculator" 
+                            href="<?php
+                                    echo $this->application()->url(array('controller' => 'load-security', 'action' => 'index', 'modal' => 1));
+                                    ?>"
+                            target="bootstrap-modal"
+                            data-height="600px"
+                            data-width="1000px"
+                            title="<?php echo $this->translate('Lashing Calculator'); ?>">
+                            <i class="icon-th"></i>
+                            <?php echo $this->translate('Lashing Calculator'); ?>
+                        </a>
+                    <?php endif; ?>
+                    <button type="button" class="btn btn-default btn-lg pull-right btn-bottom-page btn-print-page" onclick="javascript: window.print();">
+                      <span class="icon-print"></span> <?php echo $this->translate('Print Page'); ?>
+                    </button>
+                </div>
+                <?php endif; ?>
+            </div> <!-- /container -->
+            <div class="push"></div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <?php
+                /*if (getLanguageIsoCode($this->zfcUserIdentity()) === 'no') {
+                    $customerLogo = 'norwegian-armed-forces-logo-no.png';
+                } else {
+                    $customerLogo = 'norwegian-armed-forces-logo-en.png';
+                }*/
+                ?>
+                <!--<img alt="<?php echo $this->translate('Norwegian Armed Forces'); ?>" src="<?php //echo $this->basePath('/images/' . $customerLogo); ?>" id="customer-logo">-->
+            </div>
+        </footer>        
+<?php
+echo $this->headScript()
+        ->appendFile($this->basePath() . '/includes/bootstrap/js/bootstrap.min.js')
+        ->appendFile($this->basePath() . '/includes/bootstrap-modalbox/bootstrap-modalmanager.js')
+        ->appendFile($this->basePath() . '/includes/bootstrap-modalbox/bootstrap-modal.js')
+        ->appendFile($this->basePath() . '/includes/bootstrap-modalbox/bootstrap-modalbox.js')
+        ->appendFile($this->basePath() . '/includes/chosen/chosen.jquery.js')
+        ->appendFile($this->basePath() . '/includes/ajax-chosen/ajax-chosen.min.js')
+        ->appendFile($this->basePath() . '/includes/jasny-bootstrap/js/jasny-bootstrap.min.js')
+//        ->appendFile($this->basePath() . '/includes/jquery.maskedinput.min.js')
+        ->appendFile($this->basePath() . '/includes/datatables/js/jquery.dataTables.min.js')
+        ->appendFile($this->basePath() . '/includes/datatables/paging.js')
+        ->appendFile($this->basePath() . '/js/default.js')
+        ->appendFile($this->basePath() . '/js/application/attachment-modal.js')
+        ->appendFile($this->basePath() . '/includes/bootstrap-datepicker/js/bootstrap-datepicker.js', 'text/javascript')
+?>
+
+        <?php
+        echo $this->inlineScript()
+                ->appendFile($this->basePath() . '/js/sysco.js');
+        ?> 
+        <script>
+            jQuery(document).ready(function($) {
+                //$('select').chosen({});
+                $('a[data-rel=delete]').on('click', function(evt) {
+                    evt.preventDefault();
+                    var deleteSettings = $(evt.target).attr('data-delete-settings');
+                    var settings;
+                    if (typeof deleteSettings === 'undefined') {
+                        settings = {};
+                    } else {
+                        settings = jQuery.parseJSON(deleteSettings);
+                    }
+
+                    var defaults = {
+                        'title': '<?php echo $this->translate('Delete'); ?>',
+                        'type': 'inline',
+                        'source': '<p><?php echo $this->translate('Are you sure you want to delete this element?'); ?></p>',
+                        'buttons': [{
+                                'text': '<?php echo $this->translate('Yes'); ?>',
+                                'class': 'btn btn-danger',
+                                'on': {
+                                    'click': function() {
+                                        window.location.href = evt.currentTarget.href;
+                                    }
+                                }
+                            },
+                            {
+                                'text': '<?php echo $this->translate('No'); ?>',
+                                'class': 'btn btn-default',
+                                'data-dismiss': 'modal'
+                            }
+                        ]
+                    };
+                    settings = $.extend({}, defaults, settings);
+                    $.modalbox(settings);
+                });
+                $('a.go-back').on('click', function(evt) {
+                    evt.preventDefault();
+                    window.history.back();
+                });
+            });
+            $(window).load(function() {
+                $('div.dataTables_filter label input').attr('placeholder',
+                        '<?php echo $this->translate('Search') ?>');
+            });
+        </script>
+    </body>
+</html>

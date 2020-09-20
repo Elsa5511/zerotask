@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+    ServerName vidum.local
+    DocumentRoot path\to\vidum\src\public
+    SetEnv APPLICATION_ENV "development"
+    AliasMatch /vidum-public/([^/]+)/(.*) path\to\vidum\src/vendor/Vidum/$1/public/$2
+    AliasMatch /([^/]+)-public/(.*) path\to\vidum\src/module/$1/public/$2
+    AliasMatch $/image/(.*) path\to\vidum\src/data/image/$1
+
+    <Directory path\to\vidum\src\public>
+        Options Indexes FollowSymLinks
+        DirectoryIndex index.php
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>

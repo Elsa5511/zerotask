@@ -1,0 +1,17 @@
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Autoclaves');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('CT Scanner');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Decotron');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Dental X-ray');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Dental equipment');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Hazard class I');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Hazard class II a');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Hazard class II b');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Hazard class III');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('GE');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Lab equipment');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Philips');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Cleaner');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Portable fluoroscopy devices');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Portable X-ray devices');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Ultrasound devices');
+INSERT INTO `competence_area_taxonomy` (`name`) VALUES ('Washer, decontaminator');

@@ -1,0 +1,119 @@
+<?php
+$this->headTitle($this->title);
+$this->layout()->title =  $this->titlePrefix . $this->translate('Instances expired on technical lifetime');
+$this->inlineScript()->appendFile($this->basePath() . '/js/equipment/periodic-control.js', 'text/javascript');
+?>
+
+<!-- Alert -->
+<div class="delete-alert alert fade in">
+    <button type="button" class="close">&times;</button>    
+    <strong><?php echo $this->translate('You must select an equipment instance') ?></strong>
+</div>
+<div class="different-type-alert alert hide alert-error">
+    <button type="button" class="close">&times;</button>    
+    <strong><?php echo $this->translate('You must select only instances with the same equipment type') ?></strong>
+</div>
+
+<?php
+echo $this->bootstrapDataTable($this->equipmentInstances, array(
+    'object_id' => 'equipmentInstanceId',
+    'search' => false,
+    'actions' => array(
+        'add' => null,
+        'options' => array(
+            'detail' => array(
+                'label' => $this->translate('Details'),
+                'icon' => 'list',
+                'attributes' => array(
+                    'href' => $this->application()->url(array('controller' => 'equipment-instance',
+                        'action' => 'detail',
+                        'id' => ':equipmentInstanceId'))
+                )
+            ),
+        ),
+        
+    ),
+    'table_class' => 'table table-striped data-table-net',
+    'table_row_class' => 'getTableRowClass',
+    'columns' => array(
+        'equipment' => array(
+            'label' => $this->translate('Equipment type'),
+            'class' => 'span3 column-equipment'
+        ),
+        'serialNumber' => array(
+            'label' => $this->translate('Serial #'),
+        ),
+        'regNumber' => array(
+            'label' => $this->translate('Reg. number'),
+        ),
+        'location' => array(
+            'label' => $this->translate('Location'),
+            'callback_method' => 'getSlug',
+        ),
+        'usageStatus' => array(
+            'label' => $this->translate('Usage status'),
+            'callback' => 'getTranslatedValue',
+        ),
+        'minTechnicalLifetime' => array(
+            'label' => $this->translate('Technical lifetime'),
+            'callback' => function($output, $view) {
+                return $view->dateFormat($output, IntlDateFormatter::SHORT);
+            }
+        )
+    ),
+    'params' => array(
+        'basic' => array('application', 'controller', 'action')
+    )
+        )
+);
+?>
+
+<?php
+
+$routeParams = array();
+if ($this->reportLevel) {
+    $routeParams['report_level'] = $this->reportLevel;
+    $routeParams['id'] = $this->id;
+}
+
+echo $this->partial('partial/export-button.phtml', array(
+    'module' => 'application',
+    'controller' => 'equipment-instance',
+    'action' => 'export-expired-lifetime-report',
+    'routeParams' => $routeParams
+));
+?>
+
+<?php
+
+function getTranslatedValue($output, $view) {
+    return $view->translate((string) $output);
+}
+
+function assignColor($output)
+{
+    $output = trim(strtolower($output));
+    if ($output === 'expired') {
+        return '<span class="label label-warning">' . ucfirst($output) . '</span>';
+    }
+    if ($output === 'not approved') {
+        return '<span class="label label-important">' . ucfirst($output) . '</span>';
+    }
+    if ($output === 'temporarily approved') {
+        return '<span class="label label-warning">' . ucfirst($output) . '</span>';
+    }
+    if ($output === 'approved') {
+        return '<span class="label label-success">' . ucfirst($output) . '</span>';
+    }
+    return $output;
+}
+
+function getTableRowClass($item)
+{
+    $equipment = $item->getEquipment();
+    $equipmentClass = 'equipment-' . $equipment->getEquipmentId();
+    $intervalDayClass = 'intervalDays-' . (int)$equipment->getControlIntervalByDays();
+    $newTableRowClass = $equipmentClass . ' ' . $intervalDayClass;
+    return $newTableRowClass;
+}
+?>

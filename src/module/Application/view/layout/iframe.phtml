@@ -1,0 +1,76 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('ZF2 ' . $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+
+        <!-- Styles -->
+        <?php
+        $escapedBasePath = $this->escapeHtml($this->basePath());
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $escapedBasePath . '/img/favicon.ico'))
+                ->appendStylesheet($escapedBasePath . '/includes/bootstrap/css/bootstrap.min.css')
+                ->appendStylesheet($escapedBasePath . '/includes/bootstrap/css/bootstrap-responsive.min.css')
+                ->appendStylesheet($escapedBasePath . '/includes/jasny-bootstrap/css/jasny-bootstrap.min.css')
+                ->appendStylesheet($escapedBasePath . '/includes/chosen/chosen.css')
+                ->appendStylesheet($escapedBasePath . '/css/style.css')
+                ->appendStylesheet($escapedBasePath . '/css/style-iframe.css')
+        ?>
+
+        <!-- Scripts -->
+        <script>
+            var system = {
+                basePath: '<?php echo $this->basePath(); ?>',
+                language: '<?php echo $this->language; ?>',
+                user: {},
+                translations: {
+                    'Select image': '<?php echo $this->translate('Select image'); ?>',
+                    'Remove': '<?php echo $this->translate('Remove'); ?>',
+                    'Change': '<?php echo $this->translate('Change'); ?>',
+                    'Cancel': '<?php echo $this->translate('Cancel'); ?>',
+                    'maxFileSize':'<?php echo $this->translate('Maximum allowed size for file is 10MB')?>',
+                    'multipleSelect': '<?php echo $this->translate('Select some options') ?>',
+                    'Select file': '<?php echo $this->translate('Select file') ?>',
+                    'Title': '<?php echo $this->translate('Title') ?>',
+                    'Description': '<?php echo $this->translate('Description') ?>',
+                    'File': '<?php echo $this->translate('File') ?>',
+                    'deleteAttachment': '<?php echo $this->translate('Delete attachment') ?>'
+                }
+            };
+            function Variable(basePath) {
+                this.basePath = basePath;
+            }
+            var sysco = new Variable("<?php echo $this->basePath(); ?>");
+        </script>
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath() . '/includes/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath() . '/js/fileSizeValidation.js')
+                ->prependFile($this->basePath() . '/js/default.js')
+                ->prependFile($this->basePath() . '/js/application/attachment-modal.js')
+//                ->prependFile($this->basePath() . '/includes/jquery.maskedinput.min.js')
+                ->prependFile($this->basePath() . '/includes/jasny-bootstrap/js/jasny-bootstrap.min.js')
+                ->prependFile($this->basePath() . '/includes/bootstrap/js/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/includes/chosen/chosen.jquery.js')
+                ->prependFile($this->basePath() . '/includes/jquery.min.js')
+
+
+
+        ?>
+
+    </head>
+    <body>
+
+        <div class="iframe-container">
+            <?php echo $this->bootstrapAlert(); ?>
+            <?php echo $this->content; ?>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+        <script>
+            jQuery(document).ready(function($) {
+                $('select').chosen({});
+            });
+        </script>
+    </body>
+</html>

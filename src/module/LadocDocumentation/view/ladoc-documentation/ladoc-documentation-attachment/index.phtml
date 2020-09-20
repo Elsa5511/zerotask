@@ -1,0 +1,67 @@
+<?php
+use LadocDocumentation\Entity\LadocDocumentation;
+use Zend\View\Model\ViewModel;
+
+$title = $this->translate('Section') . ' 5/5: ' . $this->translate('Documentation attachments');
+$this->headTitle($title);
+$this->layout()->title = $title;
+
+$descriptionForm = $this->layout()->getVariable('descriptionForm');
+if($descriptionForm)
+    echo $descriptionForm;
+?>
+
+<hr />
+
+
+<?php
+echo $this->bootstrapDataTable($attachments, array(
+    'object_id' => 'pointAttachmentId',
+    'actions' => array(
+        'add' => array(
+            'label' => $this->translate('Add new'),
+            'attributes' => array(
+                'href' => $this->application()->url(
+                            array(
+                                'controller' => 'ladoc-documentation-attachment',
+                                'action' => 'add',
+                                'documentation_id' => $this->documentationId
+                            )
+                )
+            )
+        ),
+        'options' => array(
+            'edit' => true,
+            'delete' => true
+        )
+    ),
+    'table_class' => 'table table-striped',
+    'search' => false,
+    'columns' => array(
+        'description' => array(
+            'label' => $this->translate('Description')
+        ),
+        'file' => array(
+            'label' => $this->translate('File'),
+            'callback' => function($file, $view, $attachment) {
+                $formattedValue = "<a target='_blank' class='btn btn-mini' data-rel='open-attachment' title='" . $attachment->getTitle() . "' href='/content/ladoc-documentation-attachment/" . $file . "'><i class='icon-file'></i></a>";
+                return $formattedValue;
+            }
+        ),
+    ),
+    'params' => array(
+        'basic' => array('application', 'controller', 'action')
+    )
+));
+?>
+
+
+<div class="row-fluid">
+    <?php echo $this->partial('ladoc-documentation/partial/previous-next-link-buttons.phtml',
+        $this->buttonConfig); ?>
+</div>
+
+<?php
+$this->inlineScript()
+    ->appendFile($this->basePath() . '/includes/tinymce/js/tinymce/tinymce.min.js')
+    ->appendFile($this->basePath() . '/js/ladoc-documentation/richtext.js');

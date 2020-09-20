@@ -1,0 +1,5 @@
+CREATE TABLE ladoc_restraint_certified_document (point_attachment_id INT AUTO_INCREMENT NOT NULL, ladoc_restraint_certified_id INT DEFAULT NULL, title VARCHAR(255) NOT NULL, file VARCHAR(255) NOT NULL, INDEX IDX_43976571FB7224DA (ladoc_restraint_certified_id), PRIMARY KEY(point_attachment_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;
+ALTER TABLE ladoc_restraint_certified_document ADD CONSTRAINT FK_43976571FB7224DA FOREIGN KEY (ladoc_restraint_certified_id) REFERENCES ladoc_restraint_certified (id);
+
+CREATE TABLE calculator_attachment (point_attachment_id INT AUTO_INCREMENT NOT NULL, calculator_info_id INT DEFAULT NULL, title VARCHAR(255) NOT NULL, file VARCHAR(255) NOT NULL, INDEX IDX_3462DB9E6E4C33E (calculator_info_id), PRIMARY KEY(point_attachment_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;
+ALTER TABLE calculator_attachment ADD CONSTRAINT FK_3462DB9E6E4C33E FOREIGN KEY (calculator_info_id) REFERENCES calculator_info (calculator_info_id);

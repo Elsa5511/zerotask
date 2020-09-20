@@ -1,0 +1,377 @@
+<?php
+$title = ($title === null ? $this->translate($this->applicationName) : $title);
+$this->headTitle($title);
+$this->layout()->title = $title;
+$hasCategories = count($this->categories) > 0;
+$hasEquipment = count($this->equipment) > 0;
+$hasPages = count($this->pages) > 0;
+$isLADOC = trim(strtoupper($this->application())) === 'LADOC';
+$equipmentTaxonomyResource = 'Equipment\Entity\EquipmentTaxonomy';
+$equipmentResource = 'Equipment\Entity\Equipment';
+$pageResource = 'Documentation\Entity\Page';
+$calculatorInfoResource = "Documentation\Entity\CalculatorInfo";
+$canCreateEquipmentTaxonomy = $this->isAllowed($equipmentTaxonomyResource, 'create');
+$canCreateEquipment = $this->isAllowed($equipmentResource, 'create');
+$canCreatePage = $this->isAllowed($pageResource, 'create');
+$shouldDisplayCreateDropDownMenu = $canCreateEquipmentTaxonomy || $canCreateEquipment || $canCreatePage;
+?>
+
+<?php echo $this->partial('partial/expired-instance-totals.phtml', $this->expiredInstanceTotals); ?>
+
+<?php if (trim(strtoupper($this->application())) === 'MEDOC' && $this->isRootPage): ?>
+    <div>
+        <p>
+            <?php echo $this->translate("HMS and quality assurance suite for medical equipment containing:") ?><br><br>
+            - <?php echo $this->translate("Technical Documentation") ?><br>
+            - <?php echo $this->translate("Training") ?><br>
+            - <?php echo $this->translate("Exercises") ?><br>
+            - <?php echo $this->translate("Test and Certification") ?><br>
+            - <?php echo $this->translate("Competence register") ?>
+        </p>
+    </div>
+<?php endif; ?>
+
+    <!--listing categories and equipment -->
+<?php if ($hasCategories || $hasEquipment || $hasPages): ?>
+    <ul class="thumbnails">
+        <?php if ($hasCategories): ?>
+            <?php foreach ($this->categories as $category): ?>
+                <li class="span2 edit-buttons-toggle">
+                    <a href="<?php
+                    echo $this->application()->url(array('action' => 'index',
+                            'controller' => 'equipment',
+                            'category' => $category->getEquipmentTaxonomyId()
+                        )
+                    );
+                    ?>">
+                        <div class="thumbnail category">
+                            <?php if($this->currentApplication->getShowCategoryFeatureImage()): ?>
+                                <?php $categoryBackgroundImage = $this->basePath() . '/content/equipment_taxonomy/' . $this->escapeHtml($category->getFeaturedImage()); ?>
+                                <div class="category-image" style="
+                                         background-image:url('<?php echo $categoryBackgroundImage; ?>');
+                                         filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $categoryBackgroundImage; ?>', sizingMethod='scale');
+                                     ">
+                                    <img alt="<?php echo $this->escapeHtml($category->getName()); ?>"
+                                         src="<?php echo $this->basePath(); ?>/images/equipment-thumbnail-placeholder.png"/>
+                                </div>
+                            <?php endif; ?>
+                            <div class="vertical-center-wrapper">
+                                <div class="vertical-center">
+                                    <h2><?php echo $category->getName(); ?></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="edit-buttons">
+                        <?php if ($this->isAllowed($equipmentTaxonomyResource, 'update')): ?>
+                            <a class="btn btn-mini edit-element" data-form="equipment_taxonomy_form"
+                               href="
+                                       <?php
+                               echo $this->application()->url(array(
+                                       'action' => 'edit',
+                                       'controller' => 'equipment-taxonomy',
+                                       'id' => $category->getEquipmentTaxonomyId(),
+                                       'parent_id' => $category->getParentId()
+                                   )
+                               );
+                               ?>"
+                               title="<?php echo $this->translate('Edit category'); ?>"><i
+                                    class="icon-pencil"></i></a>
+                        <?php endif; ?>
+                        <?php if ($this->isAllowed($equipmentTaxonomyResource, 'delete')): ?>
+                            <button class="btn btn-mini"
+                                    data-action="confirm-deactivate-category"
+                                    data-id=<?php echo $category->getEquipmentTaxonomyId() ?>>
+                                <i class="icon-off"></i>
+                            </button>
+                        <?php endif; ?>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
+        <?php if ($hasPages): ?>
+            <?php foreach ($this->pages as $page): ?>
+                <li class="span2 edit-buttons-toggle">
+                    <a href="<?php
+                    echo $this->application()->url(array('action' => 'index',
+                            'controller' => 'page',
+                            'id' => $page->getPageId()
+                        )
+                    );
+                    ?>">
+                        <div class="thumbnail category">
+                            <?php if($this->currentApplication->getShowCategoryFeatureImage()): ?>
+                                <?php $pageBackgroundImage = $this->basePath() . '/content/page/' . $this->escapeHtml($page->getFeaturedImage()); ?>
+                                <div class="category-image" style="
+                                    background-image:url('<?php echo $pageBackgroundImage; ?>');
+                                    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $pageBackgroundImage; ?>', sizingMethod='scale');
+                                ">
+                                    <img alt="<?php echo $this->escapeHtml($page->getName()); ?>"
+                                         src="<?php echo $this->basePath(); ?>/images/equipment-thumbnail-placeholder.png"/>
+                                </div>
+                            <?php endif; ?>
+                            <div class="vertical-center-wrapper">
+                                <div class="vertical-center">
+                                    <h2><?php echo $this->escapeHtml($page->getName()); ?></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="edit-buttons">
+                        <?php if ($this->isAllowed($pageResource, 'update')): ?>
+                            <a class="btn btn-mini edit-element" href="<?php
+                            echo $this->application()->url(array('controller' => 'page',
+                                'action' => 'edit-page',
+                                'id' => $page->getPageId(),
+                            ));
+                            ?>"
+                               data-form="page_form"
+                               title="<?php echo $this->translate('Edit Page'); ?>"><i class="icon-pencil"></i></a>
+                        <?php endif; ?>
+                        <?php if ($this->isAllowed($pageResource, 'delete')): ?>
+                            <a class="btn btn-mini delete-equipment" data-rel="delete"
+                               href="<?php
+                               echo $this->application()->url(array(
+                                       'action' => 'delete',
+                                       'controller' => 'page',
+                                       'id' => $page->getPageId()
+                                   )
+                               );
+                               ?>">
+                                <i class="icon-trash"></i></a>
+                        <?php endif; ?>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
+        <?php if ($hasEquipment): ?>
+            <?php foreach ($this->equipment as $equipment): ?>
+                <li class="span2 edit-buttons-toggle">
+                    <a href="<?php
+                    echo $this->application()->url(array('controller' => 'equipment',
+                        'action' => 'detail',
+                        'id' => $equipment->getEquipmentId(),
+                    ))
+                    ?>">
+                        <div class="thumbnail equipment">
+                            <?php if($this->currentApplication->getShowEquipmentFeatureImage()): ?>
+                                <?php $equipmentBackgroundImage = $this->basePath() . '/content/equipment/' . $this->escapeHtml($equipment->getFeatureImage()); ?>
+                                <div class="category-image" style="
+                                        background-image:url('<?php echo $equipmentBackgroundImage; ?>');
+                                        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $equipmentBackgroundImage; ?>', sizingMethod='scale');
+                                    ">
+                                    <img alt="<?php echo $equipment->getTitle(); ?>"
+                                         src="<?php echo $this->basePath(); ?>/images/equipment-thumbnail-placeholder.png"/>
+                                </div>
+                            <?php endif; ?>
+                            <div class="vertical-center-wrapper">
+                                <div class="vertical-center">
+                                    <h2>
+                                        <?php echo $this->escapeHtml($equipment->getTitle()); ?>
+                                        <?php if($isLADOC && $this->isSearch && $equipment->getLadocDocumentation()): ?>
+                                            (<?php echo $equipment->getLadocDocumentation()->getType() == 'load' ?
+                                                $this->translate("Load") :
+                                                $this->translate("Carrier")
+                                            ?>)
+                                        <?php endif; ?>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="edit-buttons">
+                        <?php if ($this->isAllowed($equipmentResource, 'update')): ?>
+                            <a class="btn btn-mini edit-element" href="<?php
+                            echo $this->application()->url(array('controller' => 'equipment',
+                                'action' => 'edit',
+                                'id' => $equipment->getEquipmentId(),
+                            ));
+                            ?>"
+                               data-form="equipment-form"
+                               title="<?php echo $this->translate('Edit equipment'); ?>"><i
+                                    class="icon-pencil"></i></a>
+                        <?php endif; ?>
+
+                        <?php if ($this->isAllowed($equipmentResource, 'delete')): ?>
+
+                            <button title="<?php echo $this->translate('Deactivate equipment'); ?>"
+                                    class="btn btn-mini deactivate-equipment-button"
+                                    data-id="<?php echo $equipment->getEquipmentId() ?>">
+                                <i class="icon-off"></i>
+                            </button>
+                        <?php endif; ?>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <?php if ($isLADOC && $this->isRootPage): ?>
+            <li class="span2 edit-buttons-toggle">
+                <a href="<?php
+                if ($this->categoryId > 0):
+                    echo $this->application()->url(array('controller' => 'load-security',
+                        'action' => 'index', 'id' => $this->categoryId
+                    ));
+                else:
+                    echo $this->application()->url(array('controller' => 'load-security',
+                        'action' => 'index'
+                    ));
+                endif;
+                ?>">
+                    <div class="thumbnail category">
+                        <div class="category-image" style="background-image:url('<?php echo $this->basePath(); ?>/images/load-security/menu-icon.jpg')">
+                            <img alt="Lashing Calculator" src="<?php echo $this->basePath(); ?>/images/equipment-thumbnail-placeholder.png" />
+                        </div>
+                        <div class="vertical-center-wrapper">
+                            <div class="vertical-center">
+                                <h2><?php echo $this->translate('Lashing Calculator'); ?></h2>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="edit-buttons">
+                    <?php if ($this->isAllowed($calculatorInfoResource, 'update')): ?>
+                        <a class="btn btn-mini edit-element" data-form="calculator_info" data-height="600" data-width="810"
+                           href="
+                                       <?php
+                           echo $this->application()->url(array(
+                                   'action' => 'edit',
+                                   'controller' => 'calculator-info'
+                               )
+                           );
+                           ?>"
+                           title="<?php echo $this->translate('Edit Lashing Calculator information'); ?>"><i
+                                class="icon-pencil"></i></a>
+                    <?php endif; ?>
+                </div>
+            </li>
+        <?php endif; ?>
+    </ul>
+<?php endif; ?>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Confirm Delete Category Modal -->
+    <div class="modal hide fade" role="dialog" id="confirm-delete">
+        <input id="delete_mode_modal" type="hidden" value="">
+
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">&times;</a>
+
+            <h3><?php echo $this->translate('Delete Category') ?></h3>
+        </div>
+        <div class="modal-body">
+            <p id="count-organizations"><?php echo $this->translate('You are about to delete a Category, this procedure is irreversible.') ?></p>
+
+            <p><?php echo $this->translate('Do you want to proceed?') ?></p>
+        </div>
+        <div class="modal-footer">
+
+            <button id="accept-delete" class="btn btn-danger" href="#"><?php echo $this->translate('Yes') ?></button>
+            <a class="btn btn-primary" data-dismiss="modal"><?php echo $this->translate('No') ?></a>
+
+        </div>
+    </div>
+
+    <!-- Button to trigger modal -->
+<?php if ($shouldDisplayCreateDropDownMenu): ?>
+
+    <div class="btn-group">
+        <button class="btn btn-small" data-toggle="dropdown"><i
+                class="icon-plus"></i> <?php echo $this->translate('Create new') ?></button>
+        <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <?php if ($canCreateEquipmentTaxonomy): ?>
+                <li><a href="<?php
+                    echo $this->application()->url(array('controller' => 'equipment-taxonomy',
+                        'action' => 'add',
+                        'parent_id' => intval($this->categoryId),
+                    ));
+                    ?>"
+
+                       class="add-element" data-form="equipment_taxonomy_form"
+                       title="<?php echo $this->translate('Add category'); ?>"
+                        ><?php echo $this->translate('Category') ?></a>
+
+                </li>
+            <?php endif; ?>
+
+            <?php if ($this->categoryId > 0 && $canCreateEquipment): ?>
+
+                <li><a href="<?php
+                    echo $this->application()->url(array('controller' => 'equipment',
+                        'action' => 'add',
+                        'category' => $this->categoryId,
+                    ));
+                    ?>"
+                       class="add-element" data-form="equipment-form"
+                       title="<?php echo $this->translate('Add Equipment'); ?>"
+                        >
+                        <?php echo $this->translate('Equipment') ?></a></li>
+            <?php endif; ?>
+            <?php if ($canCreatePage): ?>
+
+                <li><a href="<?php
+                    echo $this->application()->url(array('controller' => 'page',
+                        'action' => 'add-page',
+                        'category' => intval($this->categoryId),
+                    ));
+                    ?>"
+                       class="add-element" data-form="page_form"
+                       title="<?php echo $this->translate('Add Page'); ?>"><?php echo $this->translate('Page') ?></a>
+                </li>
+            <?php endif; ?>
+
+        </ul>
+    </div>
+<?php endif; ?>
+
+<?php
+
+
+echo $this->partial('partial/submit-modal.phtml', array(
+    'controller' => 'equipment',
+    'action' => 'deactivate',
+    'title' => $this->translate('Deactivate equipment'),
+    'message' => $this->translate('You are about to deactivate this equipment.')
+));
+
+echo $this->partial('partial/submit-modal.phtml', array(
+    'name' => 'deactivate-category',
+    'controller' => 'equipment-taxonomy',
+    'action' => 'deactivate',
+    'title' => $this->translate('Deactivate category'),
+    'message' => $this->translate('You are about to deactivate this category.')
+));
+
+
+$this->inlineScript()
+    ->appendScript('
+          
+            var titleIframe ="' . $this->translate('Equipment information') . '";
+            var saveButtonName ="' . $this->translate('Save') . '";    
+            ', 'text/javascript', array('noescape' => true))
+    ->appendFile($this->basePath() . '/js/equipment/equipment/index.js')
+    ->appendScript('
+        $(document).ready(function() {
+
+//            $("#category").attr("data-placeholder",\'' . $this->translate('Choose category') . ' \');
+//            $("#supplier").attr("data-placeholder",\'' . $this->translate('Choose supplier') . ' \');
+//            $("#nsn").attr("placeholder",\'13 ' . $this->translate('digits') . ' \');
+//            $("#sap").attr("placeholder",\'8 ' . $this->translate('digits') . ' \');
+
+        });    
+        ', 'text/javascript', array('noescape' => true));
+?>

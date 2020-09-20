@@ -1,0 +1,36 @@
+<div class="span9">
+    <div class="row-fluid">
+        <ul class="thumbnails">
+            <?php
+            foreach ($this->attachments as $attachment) :
+                ?>
+                <li class="span3 edit-buttons-toggle">
+                    <?php
+                    echo $this->partial('partial/attachment-thumbnail.phtml', array(
+                        'controller' => 'best-practice-attachment',
+                        'attachment' => $attachment,
+                        'hideActions' => !$this->isLastRevision));
+                    ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>    
+        <?php
+        $isAdmin = $this->zfcUserIdentity()->hasRole('admin');
+        if ($isAdmin && $this->isLastRevision) :
+            $addAttachmentLink = $this->application()->url(array('controller' => 'best-practice-attachment',
+                                            'action' => 'add-attachment', 'id' => $this->bestPracticeId));
+            $addAttachmentTitle = $this->translate('New Attachment');
+            ?>
+        <a href="<?php echo $addAttachmentLink ?>" title ="<?php echo $addAttachmentTitle ?>" class="btn btn-mini add-edit-attachment">
+            <i class="icon-plus"></i><?php echo $addAttachmentTitle ?></a>
+            <?php
+        endif;
+        ?>
+    </div>
+</div>
+<?php
+if($this->isLastRevision){
+    $this->inlineScript()
+            ->appendScript('var saveButtonName = "' . $this->translate('Save') . '";', 'text/javascript', array('noescape' => true))
+            ->appendFile($this->basePath() . '/js/application/attachments/default.js');
+}

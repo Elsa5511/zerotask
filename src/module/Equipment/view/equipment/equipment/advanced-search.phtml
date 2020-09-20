@@ -1,0 +1,17 @@
+<?php
+    $advancedSearchLinks = array("advanced-search-equipment" => $this->translate('Advanced search'));
+    $this->placeholder('simple-search')->set($this->partial('partial/simple-search.phtml',
+        array(
+            'jsonEquipments' => $this->jsonEquipments,
+            'advancedSearchLinks' => $advancedSearchLinks
+        )
+    ));
+?>
+
+<!--advanced search-->
+<?php echo $this->partial('partial/advanced-search.phtml', array(
+    'form' => $this->searchAdvancedForm,
+    'application' => $this->application
+)) ?>
+
+

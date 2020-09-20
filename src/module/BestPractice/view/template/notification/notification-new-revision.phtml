@@ -1,0 +1,19 @@
+<?php
+$newRevisionPath = $_SERVER['SERVER_NAME'] .
+        $this->application()->url(array('controller' => 'best-practice',
+            'action' => 'detail',
+            'id' => $this->bestPracticeId
+        ));
+?>
+
+<h2><strong><?php echo $this->translate('Mr/Mrs.') . ' ' . $this->escapeHtml($this->userFullname); ?> :</strong></h2>
+
+<p>
+    <?php
+        echo $this->translate("An administrator has created a new revision for a Best Practice:");
+    ?>
+</p>
+<strong><?php echo $this->escapeHtml($this->title); ?> : </strong><?php echo $this->escapeHtml($this->subtitle); ?>
+<p>
+    <a href="<?php echo $newRevisionPath ?>" ><?php echo $this->translate('View last revision') ?></a>
+</p>

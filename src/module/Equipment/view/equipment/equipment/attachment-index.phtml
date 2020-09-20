@@ -1,0 +1,24 @@
+<?php
+
+$this->headTitle($title);
+$this->layout()->title = $title;
+
+echo $this->attachmentTable;
+ 
+$deleteManymodalParams = array(
+    'id' => 'delete-many-attachments',
+    'title' => $this->translate('Delete attachments'),
+    'message' => $this->translate('Are you sure to delete selected attachments'),
+    'formAction' => array(
+        'controller' => 'equipment-attachment',
+        'action' => 'delete-many-attachment',
+    )
+);
+echo $this->partial('partial/groupActionConfirmModal.phtml',$deleteManymodalParams);
+
+$this->inlineScript()
+        ->appendScript(' 
+            var titleIframe ="' . $this->translate('Equipment attachment') . '";
+            var saveButtonName ="' . $this->translate('Save') . '";  
+            ', 'text/javascript', array('noescape' => true))
+        ->appendFile($this->basePath() . '/js/application/attachments/default.js');

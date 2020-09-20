@@ -1,0 +1,22 @@
+<?php
+$title = $this->translate('Section') . ' 1/5: ' . $this->translate('Basic information');
+$this->headTitle($title);
+$this->layout()->title = $title;
+
+if($this->form) {
+    echo $this->bootstrapForm($this->form);
+}
+?>
+<?php
+if (!empty($this->image)):
+    $this->inlineScript()
+        ->appendScript('
+             var imageSrc ="' . $this->image . '";
+            ', 'text/javascript', array('noescape' => true))
+        ->appendFile($this->basePath() . '/js/ladoc-documentation/image.js');
+endif;
+
+if (!$this->showBackLink) {
+    $this->inlineScript()->appendFile($this->basePath() . '/js/ladoc-documentation/hide-breadcrumb-back.js');
+}
+?>

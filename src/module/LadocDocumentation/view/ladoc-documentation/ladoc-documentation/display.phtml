@@ -1,0 +1,205 @@
+<?php
+use Equipment\Entity\EquipmentTaxonomyTemplateTypes;
+
+$title = $this->type === 'load' ?
+    $this->title . ': ' . $this->translate('Load documentation') :
+    $this->title . ': ' . $this->translate('Carrier documentation');
+$this->headTitle($title);
+$this->layout()->title = $title;
+?>
+
+<style>
+    .restraint-certifieds-table th:first-of-type {
+        width: 70%;
+    }
+</style>
+
+<div class="wrapper frontend" >
+    <div class="container inner-wrapper">
+        <div class="row">
+            <div class="span12">
+                <?php echo $this->partial('ladoc-documentation/partial/basic-information.phtml', $this->basicInformation); ?>
+                <div class="accordion" id="accordion1">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse2">
+                                <i class="icon-chevron-down"></i>
+                                <?php if ($this->type === 'load') {
+                                    echo $this->translate('Dimensions, weight and center of gravity');
+                                }
+                                elseif ($this->type === 'carrier') {
+                                    echo $this->translate('Dimensions and weight');
+                                }
+                                ?>
+                            </a>
+                        </div>
+                        <div id="collapse2" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <?php if ($this->type === 'load') {
+                                    echo $this->partial('ladoc-documentation/partial/load-weight-and-dimensions.phtml', $this->weightAndDimensions);
+                                }
+                                elseif ($this->type === 'carrier') {
+                                    echo $this->partial('ladoc-documentation/partial/carrier-weight-and-dimensions.phtml', $this->weightAndDimensions);
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse3">
+                                <i class="icon-chevron-down"></i><?php echo $this->translate('Lashing points'); ?>
+                            </a>
+                        </div>
+                        <div id="collapse3" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <?php echo $this->partial('ladoc-documentation/partial/lashing-points.phtml', $this->lashingPoints); ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php if($this->type == 'load'): ?>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse5">
+                                <i class="icon-chevron-down"></i><?php echo $this->translate('Lifting points'); ?>
+                            </a>
+                        </div>
+                        <div id="collapse5" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <?php echo $this->partial('ladoc-documentation/partial/lifting-points.phtml', $this->liftingPoints); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+
+                    <?php if($this->type == 'carrier'): ?>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse6">
+                                <i class="icon-chevron-down"></i><?php echo $this->translate('Lashing Equipments'); ?>
+                            </a>
+                        </div>
+                        <div id="collapse6" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <?php echo $this->partial('ladoc-documentation/partial/lashing-equipments.phtml', $this->lashingEquipments); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse4">
+                                <i class="icon-chevron-down"></i><?php echo $this->translate('Documentation'); ?>
+                            </a>
+                        </div>
+                        <div id="collapse4" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <?php echo $this->partial('ladoc-documentation/partial/documentation-attachments.phtml', $this->documentationAttachments); ?>
+                            </div>
+                        </div>
+                    </div>
+                                
+                    <?php if($this->type == 'load'): ?>
+                        <!-- show 4 sections, ignore templates and take "Laster" -->
+                        <?php
+                            $templateSections = array(EquipmentTaxonomyTemplateTypes::COUNTRY_ROAD,
+                                                        EquipmentTaxonomyTemplateTypes::NAVAL_CRAFT,
+                                                        EquipmentTaxonomyTemplateTypes::RAILWAY,
+                                                        EquipmentTaxonomyTemplateTypes::AIRCRAFT);
+                            foreach ($templateSections as $ts): ?>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse7<?php echo $ts ?>">
+                                            <i class="icon-chevron-down"></i><?php
+                                            switch($ts) {
+                                                case EquipmentTaxonomyTemplateTypes::COUNTRY_ROAD:
+                                                    echo $this->translate('Load on carrier, Road');
+                                                    break;
+                                                case EquipmentTaxonomyTemplateTypes::NAVAL_CRAFT:
+                                                    echo $this->translate('Load on carrier, Sea');
+                                                    break;
+                                                case EquipmentTaxonomyTemplateTypes::AIRCRAFT:
+                                                    echo $this->translate('Load on carrier, Air');
+                                                    break;
+                                                case EquipmentTaxonomyTemplateTypes::RAILWAY:
+                                                    echo $this->translate('Load on carrier, Railway');
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                            ?>
+                                        </a>
+                                    </div>
+                                    <div id="collapse7<?php echo $ts ?>" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <div class="row-fluid">
+                                                <div class="span6">
+                                                    <?php
+                                                    $restraintCertifieds = $this->restraintCertifieds;
+                                                    $restraintCertifieds["templateType"] = $ts;
+                                                    echo $this->partial('ladoc-documentation/partial/restraint-certifieds.phtml', $restraintCertifieds); ?>
+                                                </div>
+                                                <div class="span6">
+                                                    <?php
+                                                    $restraintNonCertifieds = $this->restraintNonCertifieds;
+                                                    $restraintNonCertifieds["templateType"] = $ts;
+                                                    echo $this->partial('ladoc-documentation/partial/restraint-non-certifieds.phtml', $restraintNonCertifieds); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse7">
+                                    <i class="icon-chevron-down"></i><?php
+                                        switch($this->templateType) {
+                                            case EquipmentTaxonomyTemplateTypes::COUNTRY_ROAD:
+                                                echo $this->translate('Load on carrier, Road');
+                                                break;
+                                            case EquipmentTaxonomyTemplateTypes::NAVAL_CRAFT:
+                                                echo $this->translate('Load on carrier, Sea');
+                                                break;
+                                            case EquipmentTaxonomyTemplateTypes::AIRCRAFT:
+                                                echo $this->translate('Load on carrier, Air');
+                                                break;
+                                            case EquipmentTaxonomyTemplateTypes::RAILWAY:
+                                                echo $this->translate('Load on carrier, Railway');
+                                                break;
+                                            default:
+                                                echo $this->translate('Load on carrier, Sea');
+                                                break;
+                                        }
+                                    ?>
+                                </a>
+                            </div>
+                            <div id="collapse7" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <div class="row-fluid">
+                                        <div class="span6">
+                                            <?php 
+                                            $restraintCertifieds = $this->restraintCertifieds;
+                                            $restraintCertifieds["templateType"] = $this->templateType;
+                                            echo $this->partial('ladoc-documentation/partial/restraint-certifieds.phtml', $restraintCertifieds); ?>
+                                        </div>
+                                        <div class="span6">
+                                            <?php 
+                                            $restraintNonCertifieds = $this->restraintNonCertifieds;
+                                            $restraintNonCertifieds["templateType"] = $this->templateType;
+                                            echo $this->partial('ladoc-documentation/partial/restraint-non-certifieds.phtml', $restraintNonCertifieds); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <div class="push"></div>
+    </div>
+</div>

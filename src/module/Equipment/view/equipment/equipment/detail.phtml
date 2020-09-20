@@ -1,0 +1,32 @@
+<?php
+$this->headTitle($this->title);
+$this->layout()->title = $this->title;
+?>
+
+<?php echo $this->partial('partial/expired-instance-totals.phtml', $this->expiredInstanceTotals); ?>
+
+<?php if (!empty($this->features)): ?>
+    <ul class="thumbnails">
+        <?php foreach ($this->features as $feature): ?>
+            <li class="span2">
+                <a href="<?php echo $this->application()->url(array_merge($feature->getRoute(), array('id' => $this->equipmentId))); ?>">
+                    <div class="thumbnail module">
+                        <?php $featureBackgroundImage = $this->basePath() . '/images/features/' . $this->escapeHtml($feature->getSlug()) . '.png'; ?>
+                        <div class="category-image" style="
+                            background-image:url('<?php echo $featureBackgroundImage; ?>');
+                            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $featureBackgroundImage; ?>', sizingMethod='scale');
+                            ">
+                            <img alt="<?php echo $this->translate($this->escapeHtml($feature->getName())) ?>" src="<?php echo $this->basePath('/images/equipment-thumbnail-placeholder.png'); ?>" />
+                        </div>
+                        <h2><?php echo $this->translate($this->escapeHtml($feature->getName())); ?></h2>
+                        <!-- _('Certifications'); -->
+                    </div>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <?php 
+        /* Only for translation */
+        $this->translate('Instances'); 
+    ?>
+<?php endif; ?>

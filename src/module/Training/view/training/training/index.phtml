@@ -1,0 +1,195 @@
+<?php
+$title = ($title === null ? $this->application() : $title);
+$this->headTitle($title);
+$this->layout()->title = $title;
+$this->inlineScript()
+        ->appendFile($this->basePath() . '/js/application/attachments/default.js');
+?>
+
+<div class="row">
+    <div class="span8">
+
+        <?php
+        $sectionNumber = 1;
+        foreach ($sections as $section):
+            ?>
+            <div id="section-<?php echo $sectionNumber ?>">
+                <h3 class="page-header edit-buttons-toggle">
+                <?php if ($this->isAllowed('Training\Entity\TrainingSection', 'update')): ?>
+                    <div class="edit-buttons">
+                        <a href="
+                           <?php echo $this->application()->url(
+                                    array(
+                                        'action' => 'delete-section',
+                                        'controller' => 'training-section',
+                                        'id' => $section->getSectionId(),
+                                        'referenceId' => $equipmentId
+                                    )
+                                );
+                           ?>
+                        " class="btn btn-mini pull-right" data-rel="delete"><i class="icon-trash"></i> <?php echo $this->translate('Delete') ?></a>
+                        <a href="
+                           <?php echo $this->application()->url(
+                                    array(
+                                        'action' => 'edit-section',
+                                        'controller' => 'training-section',
+                                        'id' => $section->getSectionId(),
+                                    )
+                                );
+                           ?>
+                           " class="btn btn-mini add-edit-section pull-right" title="<?php echo $this->translate('Edit Section')?>">
+                            <i class="icon-edit"></i> <?php echo $this->translate('Edit') ?></a>
+                    </div>
+                <?php endif; ?>
+                <?php echo $sectionNumber ?>. <?php echo $this->escapeHtml($section->getLabel()) ?></h3>
+                <div class="row-fluid">
+                    <ul class="thumbnails">
+                        <?php
+                        foreach ($section->getTrainingSectionAttachments() as $trainingMaterial):
+                            ?>
+                            <li class="span3 edit-buttons-toggle">
+                                <?php echo $this->partial('partial/training-attachment-thumbnail.phtml', 
+                                        array('trainingMaterial' => $trainingMaterial, 'equipmentId' => $equipmentId)); ?>
+                            </li>
+                            <?php
+                        endforeach;
+                        ?>
+                    </ul>
+                </div>
+                <div class="accordion" id="accordion<?php echo $sectionNumber ?>">
+                    <?php
+                    $subSectionNumber = 1;
+                    foreach ($section->getChildren() as $subSection):
+                        ?>
+                        <div class="accordion-group">
+                            <div class="accordion-heading edit-buttons-toggle">
+                            <?php if ($this->isAllowed('Training\Entity\TrainingSection', 'update')): ?>
+                                <div class="edit-buttons">
+                                    <a href="
+                                    <?php echo $this->application()->url(
+                                             array(
+                                                 'action' => 'delete-section',
+                                                 'controller' => 'training-section',
+                                                 'id' => $subSection->getSectionId(),
+                                                 'referenceId' => $equipmentId
+                                             )
+                                         );
+                                    ?>
+                                    " class="btn btn-mini pull-right" data-rel="delete"><i class="icon-trash"></i> <?php echo $this->translate('Delete') ?></a>
+                                    <a href="
+                                       <?php echo $this->application()->url(
+                                                array(
+                                                    'action' => 'edit-section',
+                                                    'controller' => 'training-section',
+                                                    'id' => $subSection->getSectionId(),
+                                                )
+                                            );
+                                       ?>
+                                    " class="btn btn-mini add-edit-section pull-right"><i class="icon-edit"></i> <?php echo $this->translate('Edit') ?></a>
+                                </div>
+                            <?php endif; ?>
+
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<?php echo $sectionNumber ?>" href="#collapse-<?php echo $sectionNumber ?>-<?php echo $subSectionNumber ?>">
+                                    <i class="icon-chevron-down pull-left"></i>
+                                    <?php echo $sectionNumber ?>.<?php echo $subSectionNumber ?> <?php echo $this->escapeHtml($subSection->getLabel()) ?>
+                                </a>
+                            </div>
+                            <div id="collapse-<?php echo $sectionNumber ?>-<?php echo $subSectionNumber ?>" class="accordion-body collapse <?php echo ($subSectionNumber == 1 && $sectionNumber == 1) ? 'in' : '' ?>">
+                                <div class="accordion-inner row-fluid">
+                                    <ul class="thumbnails">
+                                        <?php
+                                        foreach ($subSection->getTrainingSectionAttachments() as $trainingMaterial):
+                                            ?>
+                                            <li class="span3 edit-buttons-toggle">
+                                                <?php echo $this->partial('partial/training-attachment-thumbnail.phtml', 
+                                                        array('trainingMaterial' => $trainingMaterial, 'equipmentId' => $equipmentId)); ?>
+                                            </li>
+                                            <?php
+                                        endforeach;
+                                        ?>
+                                    </ul>
+                                    <?php if ($this->isAllowed('Training\Entity\TrainingSectionAttachment', 'create')): ?>
+                                        <a href="<?php
+                                        echo $this->application()->url(array('action' => 'add-attachment',
+                                            'controller' => 'training-section-attachment',
+                                            'id' => $subSection->getSectionId(),
+                                                )
+                                        );
+                                        ?>
+                                           " 
+                                           title="<?php echo $this->translate('New Attachment')?>"
+                                           class="btn btn-mini add-edit-attachment"><i class="icon-plus"></i> <?php echo $this->translate('New item'); ?></a>
+
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                        $subSectionNumber++;
+                    endforeach;
+                    ?>
+                </div>
+                <?php if ($this->isAllowed('Training\Entity\TrainingSectionAttachment', 'create')): ?>
+                    <a href="<?php
+                    echo $this->application()->url(array('action' => 'add-attachment',
+                        'controller' => 'training-section-attachment',
+                        'id' => $section->getSectionId(),
+                            )
+                    );
+                    ?>
+                       " 
+                       class="btn btn-mini add-edit-attachment"><i class="icon-plus"></i> <?php echo $this->translate('New item'); ?></a>
+
+                <?php endif; ?>
+                <?php if ($this->isAllowed('Training\Entity\TrainingSection', 'create')): ?>
+                    <a href="
+                        <?php
+                            echo $this->application()->url(array('action' => 'add-section',
+                                'controller' => 'training-section',
+                                'id' => $equipmentId,
+                                'sectionId' => $section->getSectionId()
+                                    )
+                            );
+                        ?>"
+                    class="btn btn-mini add-edit-section"><i class="icon-plus"></i> <?php echo $this->translate('New subsection') ?></a>
+                <?php endif; ?>
+                <hr>
+            </div>
+            <?php
+            $sectionNumber++;
+        endforeach;
+        ?>
+        <?php if ($this->isAllowed('Training\Entity\TrainingSection', 'create')): ?>
+            
+                <a href="
+                    <?php
+                        echo $this->application()->url(array('action' => 'add-section',
+                            'controller' => 'training-section',
+                            'id' => $equipmentId,
+                                )
+                        );
+                    ?>"
+                class="btn btn-mini add-edit-section"><i class="icon-plus"></i> <?php echo $this->translate('New section') ?></a>
+            <?php endif; ?>
+    
+    </div>
+    <div class="span4">      
+        <h3 class="page-header"><?php echo $this->translate('About training') ?></h3>
+        <?php if(strtoupper($this->application()) === 'LADOC'): ?>
+            <p><?php echo $this->translate('In this part of LADOC you will find training material related to the selected equipment. The training material is divided into different sections.') ?></p>
+        <?php else: ?>
+            <p><?php echo $this->translate('In this part of MEDOC you will find training material related to the selected equipment. The training material is divided into different sections.') ?></p>
+        <?php endif; ?>
+        <p><?php echo $this->translate('After completing the training you can go through the exercises in the tests area to test your knowledge.') ?></p>
+        <p><?php echo $this->translate('When you have completed the available exercises you can ask your superior for access to the exams that you need to take in order to get a certification for the equipment.') ?></p>
+    </div>
+</div>
+
+<?php
+$this->inlineScript()
+        ->appendScript(' 
+            var titleIframe ="' . $this->translate('Section information') . '";
+            var saveButtonName ="' . $this->translate('Save') . '";    
+            ', 'text/javascript', array('noescape' => true))
+        ->appendFile($this->basePath() . '/js/application/sections/default.js');
+?>

@@ -1,0 +1,25 @@
+<?php
+if($this->type == 'load')
+    $title = $this->translate('Non-certified carrier: Edit load restraint documentation');
+else
+    $title = $this->translate('Non-certified load: Edit Carrier restraint documentation');
+
+$this->layout()->title = $title;
+$this->headTitle($title);
+
+?>
+
+
+<a class="btn btn-default pull-right" href="<?php echo $this->application()->url(
+                            array(
+                                'controller' => $this->type . '-restraint-non-certified',
+                                'action' => 'index',
+                                'documentation_id' => $this->documentationId
+                            )
+                        ); ?>">
+    <i class="icon-list"></i> <?php echo $this->translate('Return to list') ?>
+</a>
+
+<?php
+
+echo $this->bootstrapForm($this->form);
